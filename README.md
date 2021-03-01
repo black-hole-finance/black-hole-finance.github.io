@@ -1,1 +1,1 @@
-# black-hole-finance.girhub.io
+# black-hole-finance.github.io
