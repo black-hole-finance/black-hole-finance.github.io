@@ -14,24 +14,15 @@ jobs:
     steps:
     - uses: actions/setup-node@v2
       with:
-        node-version: '12'
+        node-version: '14'
+        
+    - name: node version
+      run: node -v
+    
+    - name: npm version
+      run: npm -v
       
     - uses: actions/checkout@v2
 
-    - name: 'build'
-    - run : npm i
-      shell: bash
-    - run : npm ci
-      shell: bash
-    - run : npm run build
-      shell: bash
-    - run : git config user.name github-actions
-      shell: bash
-    - run : git config user.email github-actions@github.com
-      shell: bash
-    - run : git --work-tree build add --all
-      shell: bash
-    - run : git commit -m "Automatic Deploy action run by github-actions"
-      shell: bash
-    - run : git push origin HEAD:gh-pages --force
-      shell: bash
+    - name: Deploy react app to github pages
+      uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
