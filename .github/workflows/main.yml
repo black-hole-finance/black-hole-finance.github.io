@@ -36,3 +36,4 @@ jobs:
       with:
         email: black-h0le-finance@protonmail.com
         build_dir: build
+        branch: gh-pages
