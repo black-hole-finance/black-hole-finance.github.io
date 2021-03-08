@@ -13,7 +13,7 @@ jobs:
     
     steps:
     - name: 'install lib'
-      run: apt-get install libsecp256k1-dev
+      run: sudo apt-get install libsecp256k1-dev
       
     - uses: actions/checkout@v2
 
