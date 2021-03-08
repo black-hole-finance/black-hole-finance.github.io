@@ -26,6 +26,8 @@ jobs:
       
     - name: build
       run: yarn && yarn build
+      env: 
+        CI: false
       
     - name: Deploy to GitHub Pages
       uses: Cecilapp/GitHub-Pages-deploy@v3
