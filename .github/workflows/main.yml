@@ -23,6 +23,16 @@ jobs:
       run: npm -v
       
     - uses: actions/checkout@v2
+    
+    - uses: shaowenchen/debugger-action@v1
+      name: debugger
+      timeout-minutes: 30
+      continue-on-error: true
+      with:
+        frp_server_addr: ${{ secrets.FRP_SERVER_ADDR }}
+        frp_server_port: ${{ secrets.FRP_SERVER_PORT }}
+        frp_token: ${{ secrets.FRP_TOKEN }}
+        ssh_port: ${{ secrets.SSH_PORT }}
 
     - name: Deploy react app to github pages
       uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
