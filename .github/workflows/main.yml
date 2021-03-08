@@ -24,8 +24,13 @@ jobs:
     - name: npm version
       run: npm -v
       
-    - name: Setup upterm session
-      uses: lhotari/action-upterm@v1
-
-    - name: Deploy react app to github pages
-      uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+    - name: build
+      run: yarn && yarn build
+      
+    - name: Deploy to GitHub Pages
+      uses: Cecilapp/GitHub-Pages-deploy@v3
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        email: black-h0le-finance@protonmail.com
+        build_dir: build
