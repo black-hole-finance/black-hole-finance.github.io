@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/views/layout/header/index.less"],"names":[],"mappings":"AAAA,QACE,WAAA,CACA,UAAA,CACA,qBACF","file":"main.9d22f63a.chunk.css","sourcesContent":[".header {\n  height: 70px;\n  width: 100%;\n  background-color: #333;\n}\n"]}
