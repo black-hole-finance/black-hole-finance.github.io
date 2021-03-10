@@ -4,16 +4,20 @@ import Banner from './banner'
 import Footer from './footer'
 
 import Home from '../pages/home'
+import Detail from '../pages/detail'
 
-export default function () {
+function App() {
   return (
     <Router>
       <div>
         <Header />
-        <Banner />
         <Switch>
-          <Route path='/'>
+          <Route exact path='/'>
+            <Banner />
             <Home />
+          </Route>
+          <Route exact path='/detail/:address'>
+            <Detail />
           </Route>
         </Switch>
         <Footer />
@@ -21,3 +25,5 @@ export default function () {
     </Router>
   )
 }
+
+export default App
