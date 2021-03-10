@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { message } from 'antd'
 import cs from 'classnames'
+import { FormattedMessage } from 'react-intl'
 import SmallLogoText from '../../../assets/image/small_logo_text@2x.png'
 import chromeLine from '../../../assets/image/footer/chromeLine@2x.png'
 import GitHub from '../../../assets/image/footer/github@2x.png'
@@ -16,9 +17,9 @@ const Detail = () => {
     <div className='detail'>
       <h3 className='detail_banner_text'>Black Hole</h3>
       <p className='detail_banner_dec'>
-        0x4F7d4aCF1A2d92C5b64a7365e3cD214aCF1A2d92C5b
+        XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
         <CopyToClipboard
-          text='0x4F7d4aCF1A2d92C5b64a7365e3cD214aCF1A2d92C5b'
+          text='XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
           onCopy={() => {
             message.success('copy success')
           }}
@@ -27,8 +28,7 @@ const Detail = () => {
         </CopyToClipboard>
       </p>
       <p className='detail_banner_withdraw_tip'>
-        This is a smart contract address, please do not transfer any token into
-        it.
+        <FormattedMessage id='detail_text_1' />
       </p>
       <div className='detail_card'>
         <div className='detail_card_content'>
@@ -36,11 +36,17 @@ const Detail = () => {
             <p className='detail_card_logo'>
               <img src={SmallLogoText} />
             </p>
-            <p className='detail_card_logo_text'>Seed Round</p>
+            <p className='detail_card_logo_text'>
+              <FormattedMessage id='detail_text_2' />
+            </p>
           </div>
           <div className='detail_card_content_title'>
-            <span>Swap Amount</span>
-            <span>My Quota</span>
+            <span>
+              <FormattedMessage id='detail_text_3' />
+            </span>
+            <span>
+              <FormattedMessage id='detail_text_4' />
+            </span>
           </div>
 
           <div className='detail_card_content_title detail_card_val'>
@@ -48,7 +54,9 @@ const Detail = () => {
             <span>XXXXXU</span>
           </div>
           <div className='detail_card_content_title detail_card_swap_progress'>
-            <span>Swap Progress</span>
+            <span>
+              <FormattedMessage id='detail_text_5' />
+            </span>
           </div>
           <div className='detail_card_progress__bar'>
             <p>
@@ -72,19 +80,18 @@ const Detail = () => {
       <div className='detail_btn_box'>
         {/* detail_btn_disable */}
         <a className={'detail_btn detail_btn_active'} onClick={() => {}}>
-          Jion Pool
+          <FormattedMessage id='detail_text_6' />
         </a>
         <a
           className='detail_btn'
-          href={`https://hecoinfo.com/address/0x4F7d4aCF1A2d92C5b64a7365e3cD214aCF1A2d92C5b`}
+          href={`https://hecoinfo.com/address/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`}
           target='_blank'
         >
-          View Heco
+          <FormattedMessage id='detail_text_7' />
         </a>
       </div>
       <div className='detail_tip'>
-        Sorry, you are not eligable for this project since you are not involved
-        in the whitelist.
+        <FormattedMessage id='detail_text_8' />
       </div>
       <div className='detail_content'>
         <div className='detail_content_tab'>
@@ -92,13 +99,13 @@ const Detail = () => {
             onClick={() => setDetailTab('detail')}
             className={cs(detailTab === 'detail' && 'active')}
           >
-            Pool Details
+            <FormattedMessage id='detail_text_9' />
           </a>
           <a
             onClick={() => setDetailTab('project')}
             className={cs(detailTab === 'project' && 'active')}
           >
-            About the Project
+            <FormattedMessage id='detail_text_10' />
           </a>
         </div>
         {detailTab === 'detail' && (
@@ -106,14 +113,18 @@ const Detail = () => {
             <table className='detail_table pools-detail_table__left'>
               <thead>
                 <tr>
-                  <th>Pool Information</th>
+                  <th>
+                    <FormattedMessage id='detail_text_11' />
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
                     <p>
-                      <span>Token Distribution</span>
+                      <span>
+                        <FormattedMessage id='detail_text_12' />
+                      </span>
                       <span>February 27th 2021, 9:30PM SGT</span>
                     </p>
                   </td>
@@ -121,7 +132,9 @@ const Detail = () => {
                 <tr>
                   <td>
                     <p>
-                      <span>Allocation(Min)-Allocation(Max)</span>
+                      <span>
+                        <FormattedMessage id='detail_text_13' />
+                      </span>
                       <span>0-XXX USDT</span>
                     </p>
                   </td>
@@ -129,7 +142,9 @@ const Detail = () => {
                 <tr>
                   <td>
                     <p>
-                      <span>Min Swap Level</span>
+                      <span>
+                        <FormattedMessage id='detail_text_14' />
+                      </span>
                       <span>XXXXX USDT</span>
                     </p>
                   </td>
@@ -139,14 +154,18 @@ const Detail = () => {
             <table className='detail_table pools-detail_table__right'>
               <thead>
                 <tr>
-                  <th>Token Information</th>
+                  <th>
+                    <FormattedMessage id='detail_text_15' />
+                  </th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>
                     <p>
-                      <span>Name</span>
+                      <span>
+                        <FormattedMessage id='detail_text_16' />
+                      </span>
                       <span>Black Hole</span>
                     </p>
                   </td>
@@ -154,15 +173,19 @@ const Detail = () => {
                 <tr>
                   <td>
                     <p>
-                      <span>Address</span>
-                      <span>0x4F7d4aCF1A2d92C5b64a7365e3cD214aCF1A2d92C5b</span>
+                      <span>
+                        <FormattedMessage id='detail_text_17' />
+                      </span>
+                      <span>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span>
                     </p>
                   </td>
                 </tr>
                 <tr>
                   <td>
                     <p>
-                      <span>Total Supply</span>
+                      <span>
+                        <FormattedMessage id='detail_text_18' />
+                      </span>
                       <span>100,000,000.00</span>
                     </p>
                   </td>
@@ -190,9 +213,7 @@ const Detail = () => {
               https://github.com/blackhole
             </a>
             <a className='no_link'>
-              BlackHole-protocol is License-free Decentralized Token Burning
-              Protocol, the Blockchain Ecosystem Reconfigurator for Permanent
-              Deflation
+              <FormattedMessage id='detail_text_19' />
             </a>
           </div>
         )}

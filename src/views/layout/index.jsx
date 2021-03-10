@@ -5,24 +5,27 @@ import Footer from './footer'
 
 import Home from '../pages/home'
 import Detail from '../pages/detail'
+import Intl from '../../locale/intl'
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Header />
-        <Switch>
-          <Route exact path='/'>
-            <Banner />
-            <Home />
-          </Route>
-          <Route exact path='/detail/:address'>
-            <Detail />
-          </Route>
-        </Switch>
-        <Footer />
-      </div>
-    </Router>
+    <Intl>
+      <Router>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact path='/'>
+              <Banner />
+              <Home />
+            </Route>
+            <Route exact path='/detail/:address'>
+              <Detail />
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    </Intl>
   )
 }
 

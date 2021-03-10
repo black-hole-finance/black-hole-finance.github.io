@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import cs from 'classnames'
 import { withRouter } from 'react-router'
+import { FormattedMessage } from 'react-intl'
 import './index.less'
 import SketchMap from '../../../assets/image/sketch_map@2x.png'
 import SmallLogoText from '../../../assets/image/small_logo_text@2x.png'
@@ -8,24 +9,19 @@ import SmallLogoText from '../../../assets/image/small_logo_text@2x.png'
 const Home = (props) => {
   const [hoverFlag, setHoverFlag] = useState(false)
   const goDetail = (e) => {
-    props.history.push(`/detail/0x4F7d4aCF1A2d92C5b64a7365e3cD214aCF1A2d92C5b`)
-    console.log(e)
+    props.history.push(`/detail/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`)
   }
 
   return (
     <>
-      <div className='home'>
+      <div className='home' id='Whitepaper'>
         <div className='content'>
           <h2 className='home_title'>
-            Governance token BLACK token black hole deflation burning mechanism
-            schematic
+            <FormattedMessage id='home_text_1' />
           </h2>
           <div className='home_content'>
             <p className='home_content_text'>
-              The creator holds X tokens and Black's liquidity to create a black
-              hole burn pool without a license, in which they can invest new
-              tokens Y to incentivize the burn. 80% of the actual burn volume is
-              also used by Black to incentivize the burn.
+              <FormattedMessage id='home_text_2' />
             </p>
             <a className='home_sketch_map'></a>
           </div>
@@ -33,7 +29,9 @@ const Home = (props) => {
       </div>
       <div className='roadmap'>
         <div className='content'>
-          <h2 className='roadmap_title'>Roadmap</h2>
+          <h2 className='roadmap_title'>
+            <FormattedMessage id='home_text_3' />
+          </h2>
           <p className='roadmap_timeline'>
             <span></span>
             <span></span>
@@ -41,66 +39,77 @@ const Home = (props) => {
           </p>
           <div className='roadmap_card'>
             <div className='roadmap_card_content'>
-              <h3>2021Q2</h3>
+              <h3>
+                <FormattedMessage id='home_text_4' />
+              </h3>
               <p className='roadmap_card_text'>
-                Perform IDO to generate initial circulation
+                <FormattedMessage id='home_text_5' />
               </p>
               <p className='roadmap_card_text'>
-                Go live with liquidity farming pool
+                <FormattedMessage id='home_text_6' />
               </p>
               <p className='roadmap_card_text'>
-                Go live with single token burning protocol
+                <FormattedMessage id='home_text_7' />
               </p>
               <p className='roadmap_card_text'>
-                Go live with liquidity token burning protocol
-              </p>
-            </div>
-            <div className='roadmap_card_content'>
-              <h3>2021Q3</h3>
-              <p className='roadmap_card_text'>
-                Goes live with cross-chain aggregated burning protocols (
-                Ethereum, Polka, BSC, Heco, etc.)
-              </p>
-              <p className='roadmap_card_text'>
-                Launch of the initial burning offering platform (IBO)
-              </p>
-              <p className='roadmap_card_text'>
-                Go live Token governance platform
+                <FormattedMessage id='home_text_8' />
               </p>
             </div>
             <div className='roadmap_card_content'>
-              <h3>2021Q4</h3>
+              <h3>
+                <FormattedMessage id='home_text_9' />
+              </h3>
               <p className='roadmap_card_text'>
-                Start V2 Black Hole Protocol version - Big Disruption.
+                <FormattedMessage id='home_text_10' />
+              </p>
+              <p className='roadmap_card_text'>
+                <FormattedMessage id='home_text_11' />
+              </p>
+              <p className='roadmap_card_text'>
+                <FormattedMessage id='home_text_12' />
+              </p>
+            </div>
+            <div className='roadmap_card_content'>
+              <h3>
+                <FormattedMessage id='home_text_13' />
+              </h3>
+              <p className='roadmap_card_text'>
+                <FormattedMessage id='home_text_14' />
               </p>
             </div>
           </div>
           <a className='roadmap_png'></a>
         </div>
       </div>
-      <div className='i_do'>
+      <div className='i_do' id='IDO'>
         <div className='content'>
-          <h2 className='i_do_title'>IDO</h2>
+          <h2 className='i_do_title'>
+            <FormattedMessage id='home_text_15' />
+          </h2>
           <div className='enter_pool'>
             <div className='enter_pool_card'>
               <div className='enter_pool_title'>
                 <p className='enter_pool_title_left'>
                   <img src={SmallLogoText} />
                 </p>
-                <p className='enter_pool_title_right'>Seed Round</p>
+                <p className='enter_pool_title_right'>
+                  <FormattedMessage id='home_text_16' />
+                </p>
               </div>
               <div className='enter_pool_title'>
                 <p className='enter_pool_ratio'>
-                  Ratio
+                  <FormattedMessage id='home_text_17' />
                   <i>0.1U=1BLACK</i>
                 </p>
                 <p className='enter_pool_ratio' style={{ textAlign: 'right' }}>
-                  Total funds will be raised
+                  <FormattedMessage id='home_text_18' />
                   <i>XXXXXU</i>
                 </p>
               </div>
               <div className='enter_pool_title'>
-                <p className='enter_pool_ratio enter_pool_progress'>Progress</p>
+                <p className='enter_pool_ratio enter_pool_progress'>
+                  <FormattedMessage id='home_text_19' />
+                </p>
               </div>
               <div className='enter_pool_percentage'>
                 <a>
@@ -119,14 +128,14 @@ const Home = (props) => {
               </div>
               <div className='enter_pool_title'>
                 <p className='enter_pool_ratio enter_pool_access'>
-                  Access Type
+                  <FormattedMessage id='home_text_20' />
                 </p>
                 <p
                   className='enter_pool_ratio enter_pool_access'
                   style={{ textAlign: 'right' }}
                 >
                   <span className={cs('crown', 'crown-highlight')}></span>
-                  Private
+                  <FormattedMessage id='home_text_21' />
                   <span
                     className='tips'
                     onMouseOver={() => setHoverFlag(1)}
@@ -134,7 +143,7 @@ const Home = (props) => {
                   >
                     {hoverFlag === 1 && (
                       <i className='tips_content'>
-                        这是一个私有池，只有获得白名单才能兑换
+                        <FormattedMessage id='home_text_22' />
                       </i>
                     )}
                   </span>
@@ -146,13 +155,17 @@ const Home = (props) => {
                   goDetail(e)
                 }}
               >
-                Enter Pool
+                <FormattedMessage id='home_text_23' />
               </a>
             </div>
             <div className='enter_pool_card'>
-              <h1 className='coming_soon_title'>ComingSoon</h1>
+              <h1 className='coming_soon_title'>
+                <FormattedMessage id='home_text_24' />
+              </h1>
               <div className='enter_pool_title'>
-                <p className='enter_pool_ratio coming_soon_ratio'>Progress</p>
+                <p className='enter_pool_ratio coming_soon_ratio'>
+                  <FormattedMessage id='home_text_19' />
+                </p>
               </div>
               <div className='enter_pool_percentage'>
                 <a>
@@ -179,7 +192,7 @@ const Home = (props) => {
                   goDetail(e)
                 }}
               >
-                Enter Pool
+                <FormattedMessage id='home_text_23' />
               </a>
             </div>
           </div>
@@ -187,7 +200,9 @@ const Home = (props) => {
       </div>
       <div className='backed_by'>
         <div className='content'>
-          <h2 className='backed_by_title'>Backed By</h2>
+          <h2 className='backed_by_title'>
+            <FormattedMessage id='home_text_25' />
+          </h2>
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
               {/* <img src='' />

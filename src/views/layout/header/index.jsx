@@ -1,6 +1,7 @@
 import './index.less'
 import { withRouter } from 'react-router'
 import { Link } from 'react-router-dom'
+import { FormattedMessage } from 'react-intl'
 import LogoText from '../../../assets/image/Logo_text@2x.png'
 import SmallLogo from '../../../assets/image/small_logo@2x.png'
 
@@ -13,7 +14,9 @@ const Header = (props) => {
         </Link>
         <div className='header_connect_btn'>
           <img className='header_small_logo' src={SmallLogo} />
-          <span className='connect_text'>App Coming Soon</span>
+          <span className='connect_text'>
+            <FormattedMessage id='header_text_1' />
+          </span>
         </div>
       </div>
     </div>
