@@ -1,26 +1,32 @@
-import {
-    HashRouter as Router,
-    Switch,
-    Route,
-    Link
-} from 'react-router-dom'
-import Header from "./header";
-import Footer from "./footer";
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import Header from './header'
+import Banner from './banner'
+import Footer from './footer'
 
 import Home from '../pages/home'
+import Detail from '../pages/detail'
+import Intl from '../../locale/intl'
 
-export default function() {
-    return (
-        <Router>
-            <div>
-                <Header/>
-                <Switch>
-                    <Route path="/">
-                        <Home/>
-                    </Route>
-                </Switch>
-                <Footer/>
-            </div>
-        </Router>
-    )
+function App() {
+  return (
+    <Intl>
+      <Router>
+        <div>
+          <Header />
+          <Switch>
+            <Route exact path='/'>
+              <Banner />
+              <Home />
+            </Route>
+            <Route exact path='/detail/:address'>
+              <Detail />
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
+      </Router>
+    </Intl>
+  )
 }
+
+export default App
