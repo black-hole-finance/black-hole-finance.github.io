@@ -27,16 +27,16 @@ const Banner = () => {
             </p>
           </div>
           <div className='banner_btn'>
-            <a>
+            <a href='https://docsend.com/view/gwm65k85my5rf68f' target='_blank'>
               <FormattedMessage id='banner_text_4' />
             </a>
-            <a
+            {/* <a
               onClick={(e) => {
                 jumpPosition(e)
               }}
             >
               <FormattedMessage id='banner_text_5' />
-            </a>
+            </a> */}
             <a
               onClick={(e) => {
                 jumpPosition(e)

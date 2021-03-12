@@ -1,5 +1,6 @@
 const zh_CN = {
   header_text_1: 'App Coming Soon',
+  header_text_2: 'Connect Wallet',
   banner_text_1: 'Black Hole — Protocol',
   banner_text_2:
     'License-free Decentralized Token Burning Protocol, the Blockchain Ecosystem Reconfigurator for Permanent Deflation',
