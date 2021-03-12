@@ -73,7 +73,9 @@ const Detail = () => {
             <span>100%</span>
           </div>
           <div className='detail_card_content_title detail_card_val detail_card_total_val'>
-            <span>300,000/600,000 BLACK</span>
+            <span className='detail_card_bottom_val'>
+              300,000/600,000 BLACK
+            </span>
           </div>
         </div>
       </div>
