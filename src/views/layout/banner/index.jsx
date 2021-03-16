@@ -44,7 +44,7 @@ const Banner = (props) => {
             </a> */}
             <a
               onClick={(e) => {
-                goDetail(e)
+                // goDetail(e)
               }}
             >
               <FormattedMessage id='home_text_15' />
