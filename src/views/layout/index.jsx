@@ -1,7 +1,6 @@
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import Header from './header'
 import Banner from './banner'
-import Footer from './footer'
 
 import Home from '../pages/home'
 import Detail from '../pages/detail'
@@ -22,7 +21,6 @@ function App() {
               <Detail />
             </Route>
           </Switch>
-          <Footer />
         </div>
       </Router>
     </Intl>

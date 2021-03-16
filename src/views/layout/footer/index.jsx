@@ -1,8 +1,8 @@
 import './index.less'
-import Medium from '../../../assets/image/footer/medium@2x.png'
-import GitHub from '../../../assets/image/footer/github@2x.png'
-import Telegram from '../../../assets/image/footer/telegram@2x.png'
-import Twitter from '../../../assets/image/footer/twitter@2x.png'
+import Medium from '../../../assets/image/footer/medium.svg'
+import GitHub from '../../../assets/image/footer/github.svg'
+import Telegram from '../../../assets/image/footer/telegram.svg'
+import Twitter from '../../../assets/image/footer/twitter.svg'
 
 const Footer = () => {
   return (
@@ -20,7 +20,7 @@ const Footer = () => {
         </li>
         <li>
           <a href='https://github.com/blackhole' target='_blank'>
-            <img className='gitHub_png' src={GitHub} />
+            <img src={GitHub} />
           </a>
         </li>
         <li>

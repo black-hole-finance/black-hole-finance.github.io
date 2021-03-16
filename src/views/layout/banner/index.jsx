@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
+import { withRouter } from 'react-router'
 import './index.less'
 
-const Banner = () => {
+const Banner = (props) => {
   const jumpPosition = (e) => {
     //e.target.innerText与id相同
     //获取到元素的offsetTop顶部距离
     let offsetTop = document.getElementById(e.target.innerText).offsetTop
     //滚动页面的section标签内的部分
     window.scrollTo({ top: offsetTop })
+  }
+
+  const goDetail = (e) => {
+    props.history.push(`/detail/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`)
   }
 
   return (
@@ -39,7 +44,7 @@ const Banner = () => {
             </a> */}
             <a
               onClick={(e) => {
-                jumpPosition(e)
+                goDetail(e)
               }}
             >
               <FormattedMessage id='home_text_15' />
@@ -51,4 +56,4 @@ const Banner = () => {
   )
 }
 
-export default Banner
+export default withRouter(Banner)
