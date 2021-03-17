@@ -47,7 +47,7 @@ const Banner = (props) => {
                 // goDetail(e)
               }}
             >
-              <FormattedMessage id='home_text_15' />
+              <FormattedMessage id='banner_text_6' />
             </a>
           </div>
         </div>

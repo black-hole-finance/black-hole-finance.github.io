@@ -1,5 +1,5 @@
 const zh_CN = {
-  header_text_1: 'App Coming Soon',
+  header_text_1: 'Dapp Coming Soon',
   header_text_2: 'Connect Wallet',
   banner_text_1: 'Black Hole — Protocol',
   banner_text_2:
@@ -8,6 +8,7 @@ const zh_CN = {
     'The Blackhole protocol is a license-free cross-chain burning platform based on the Ethereum network.Any user or project governor can create a burning pool by holding the Blackhole protocol burning token BLACK with the old token LP to permanently destroy the old Token and generate a new Token, thus gaining a new ecological vitality.',
   banner_text_4: 'Summary',
   banner_text_5: 'Whitepaper',
+  banner_text_6: 'Contribute',
   home_text_1:
     'Governance token BLACK token black hole deflation burning mechanism schematic',
   home_text_2:
@@ -51,15 +52,18 @@ const zh_CN = {
     'Sorry, you are not eligable for this project since you are not involved in the whitelist.',
   detail_text_9: 'Pool Details',
   detail_text_10: 'About the Project',
-  detail_text_11: 'Pool Information',
-  detail_text_12: 'Token Distribution',
-  detail_text_13: 'Allocation(Min)-Allocation(Max)',
-  detail_text_14: 'Min Swap Level',
-  detail_text_15: 'Token Information',
+  detail_text_11: 'Investor Information',
+  detail_text_12: 'Address',
+  detail_text_13: 'Round',
+  detail_text_14: 'BLACK In Wallet',
+  detail_text_15: 'Cliamable balance',
   detail_text_16: 'Name',
   detail_text_17: 'Address',
   detail_text_18: 'Total Supply',
   detail_text_19:
     'BlackHole-protocol is License-free Decentralized Token Burning Protocol, the Blockchain Ecosystem Reconfigurator for Permanent Deflation',
+  detail_text_20: 'USDT Allocation',
+  detail_text_21: 'BLACK Token Allocation',
+  detail_text_22: 'Claim',
 }
 export default zh_CN

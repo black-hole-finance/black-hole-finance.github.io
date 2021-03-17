@@ -1,5 +1,5 @@
 const en_US = {
-  header_text_1: 'App Coming Soon',
+  header_text_1: 'Dapp Coming Soon',
   header_text_2: 'Connect Wallet',
   banner_text_1: 'Black Hole — Protocol',
   banner_text_2:
@@ -8,6 +8,7 @@ const en_US = {
     'The Blackhole protocol is a license-free cross-chain burning platform based on the Ethereum network.Any user or project governor can create a burning pool by holding the Blackhole protocol burning token BLACK with the old token LP to permanently destroy the old Token and generate a new Token, thus gaining a new ecological vitality.',
   banner_text_4: 'Summary',
   banner_text_5: 'Whitepaper',
+  banner_text_6: 'Contribute',
   home_text_1:
     'Governance token BLACK token black hole deflation burning mechanism schematic',
   home_text_2:
