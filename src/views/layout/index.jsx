@@ -1,6 +1,6 @@
 import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom'
-import { Web3ReactProvider } from '@web3-react/core'
-import getLibrary from '../../utils/getLibrary'
+import {useWeb3React, Web3ReactProvider} from '@web3-react/core'
+import {getLibrary} from '../../utils/getLibrary'
 import Header from './header'
 import Banner from './banner'
 
@@ -8,10 +8,31 @@ import Home from '../pages/home'
 import Detail from '../pages/detail'
 import ConnectWallet from '../pages/connectWallet'
 import Intl from '../../locale/intl'
+import {useActiveWeb3React, useEagerConnect, useInactiveListener} from "../../hooks";
+import {injected} from "../../connectors";
+import {useEffect, useMemo} from "react";
+import {useBalance} from "../../hooks/wallet";
 
 function App() {
+  const {activate, account} = useWeb3React()
+  const tried = useEagerConnect()
+  // 调用合约，获取用户余额
+  const balance = useBalance(account)
+  useInactiveListener()
+
+  useMemo(() => {
+    activate(injected).then(console.log).catch(console.log)
+  }, [])
+
+  useMemo(() => {
+    console.log('当前账户余额', balance)
+  }, [balance])
+
+  useEffect(() => {
+    console.log(tried)
+  }, [tried])
+
   return (
-    <Web3ReactProvider getLibrary={getLibrary}>
       <Intl>
         <Router>
           <div>
@@ -31,7 +52,6 @@ function App() {
           </div>
         </Router>
       </Intl>
-    </Web3ReactProvider>
   )
 }
 
