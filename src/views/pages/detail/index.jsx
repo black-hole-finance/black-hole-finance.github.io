@@ -69,7 +69,7 @@ const Detail = () => {
           </tr>
           <tr>
             <td>
-              <p>
+              <div>
                 <span>
                   <FormattedMessage id='detail_text_15' />
                 </span>
@@ -79,7 +79,7 @@ const Detail = () => {
                     <FormattedMessage id='detail_text_22' />
                   </a>
                 </p>
-              </p>
+              </div>
             </td>
           </tr>
         </tbody>

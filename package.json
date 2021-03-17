@@ -4,6 +4,9 @@
   "private": true,
   "dependencies": {
     "@babel/core": "7.12.3",
+    "@ethersproject/contracts": "^5.0.5",
+    "@ethersproject/providers": "^5.0.24",
+    "@ethersproject/solidity": "^5.0.5",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
     "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "^5.11.4",

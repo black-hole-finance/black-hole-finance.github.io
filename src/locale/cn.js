@@ -65,5 +65,14 @@ const zh_CN = {
   detail_text_20: 'USDT Allocation',
   detail_text_21: 'BLACK Token Allocation',
   detail_text_22: 'Claim',
+  connect_wallet_text_1: 'Investment Portal',
+  connect_wallet_text_2:
+    'Welcome to Antimatter family! Please connect your wallet to see if you are eligible for contribution',
+  connect_wallet_text_3: 'Connect Wallet',
+  failePopup_text_1:
+    'Sorry, you are not eligable for this project since you are not involved in the whitelist.',
+  successPopup_text_1: 'Your Contribution Amount is : ',
+  successPopup_text_2: 'Approve',
+  successPopup_text_3: 'Contribute',
 }
 export default zh_CN

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { withRouter } from 'react-router'
+import { useActiveWeb3React } from '../../../hooks'
+import { Web3ReactActivate } from '../../../connectors'
+
 import './index.less'
 
 const Banner = (props) => {
+  Web3ReactActivate()
+  const { active, chainId } = useActiveWeb3React()
+  console.log(active, chainId, 112233)
   const jumpPosition = (e) => {
     //e.target.innerText与id相同
     //获取到元素的offsetTop顶部距离
@@ -13,6 +19,10 @@ const Banner = (props) => {
   }
 
   const goDetail = (e) => {
+    if (!active) {
+      props.history.push('/connectWallet')
+      return
+    }
     props.history.push(`/detail/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`)
   }
 
@@ -44,7 +54,7 @@ const Banner = (props) => {
             </a> */}
             <a
               onClick={(e) => {
-                // goDetail(e)
+                goDetail(e)
               }}
             >
               <FormattedMessage id='banner_text_6' />

@@ -12,22 +12,24 @@ const Header = (props) => {
         <Link to='/'>
           <img className='header_logo' src={LogoText} />
         </Link>
-        {props.location.pathname.indexOf('detail') === -1 && (
-          <div className='header_connect_btn'>
-            <img className='header_small_logo' src={SmallLogo} />
-            <span className='connect_text'>
-              <FormattedMessage id='header_text_1' />
-            </span>
-          </div>
-        )}
-        {props.location.pathname.indexOf('detail') > -1 && (
-          <div className='header_connect_btn'>
-            <span className='connect_text'>
-              <FormattedMessage id='header_text_2' />
-            </span>
-            <i className='connect_wallet'></i>
-          </div>
-        )}
+        {props.location.pathname.indexOf('connectWallet') === -1 &&
+          props.location.pathname.indexOf('detail') === -1 && (
+            <div className='header_connect_btn'>
+              <img className='header_small_logo' src={SmallLogo} />
+              <span className='connect_text'>
+                <FormattedMessage id='header_text_1' />
+              </span>
+            </div>
+          )}
+        {props.location.pathname.indexOf('connectWallet') === -1 &&
+          props.location.pathname.indexOf('detail') > -1 && (
+            <div className='header_connect_btn'>
+              <span className='connect_text'>
+                <FormattedMessage id='header_text_2' />
+              </span>
+              <i className='connect_wallet'></i>
+            </div>
+          )}
       </div>
     </div>
   )
