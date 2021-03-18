@@ -25,7 +25,7 @@ function App() {
   useInactiveListener()
 
   useMemo(() => {
-    activate(injected).then(console.log).catch(console.log)
+    // activate(injected).then(console.log).catch(console.log)
   }, [])
 
   useMemo(() => {
