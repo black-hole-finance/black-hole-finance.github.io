@@ -74,5 +74,9 @@ const zh_CN = {
   successPopup_text_1: 'Your Contribution Amount is : ',
   successPopup_text_2: 'Approve',
   successPopup_text_3: 'Contribute',
+  changeNetwork_text_1:
+    "We've detected that you need to switch your wallet's network from local to mainnet network for this Dapp.",
+  changeNetwork_text_2:
+    '*Some wallets may not support changing networks. If you can not change networks in your wallet you may consider switching to a different wallet.',
 }
 export default zh_CN

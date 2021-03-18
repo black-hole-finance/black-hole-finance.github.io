@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import cs from 'classnames'
 import { FormattedMessage } from 'react-intl'
 import './index.less'
-import FiledPng from '../../../assets/image/popup/failed.svg'
 
 const ConnectWalletSuccessPopup = () => {
   const [account, setAccount] = useState(10)
