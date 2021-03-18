@@ -3,12 +3,14 @@ const zh_CN = {
   header_text_2: 'Connect Wallet',
   banner_text_1: 'Black Hole — Protocol',
   banner_text_2:
-    'License-free decentralized cross-chain burning protocol, perpetual deflationary blockchain ecosystem reconfigurator',
+    'An approval-free decentralized & cross-chain burning protocol, innovator of perpetual deflationary blockchain ecosystem.',
   banner_text_3:
-    'The Blackhole protocol is a license-free cross-chain burning platform based on the Ethereum network.Any user or project governor can create a burning pool by holding the Blackhole protocol burning token BLACK with the old token LP to permanently destroy the old Token and generate a new Token, thus gaining a new ecological vitality.',
+    'The Blackhole protocol is an approval-free cross-chain burning platform based on Ethereum network. Any user or project governor could create a burning pool by holding BLACK and old token LP to permanently burn the old Token into a new Token, thus gaining a new ecological vitality.',
   banner_text_4: 'Summary',
   banner_text_5: 'Whitepaper',
   banner_text_6: 'Contribute',
+  banner_text_7:
+    'Blackhole protocol originates from Ethereum network and gradually spread to Polkadot, BSC, Heco, Sol and eventually the whole blockchain world. ',
   home_text_1:
     'Governance token BLACK token black hole deflation burning mechanism schematic',
   home_text_2:
