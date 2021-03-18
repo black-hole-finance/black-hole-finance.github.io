@@ -7,7 +7,6 @@ import { Web3ReactActivate } from '../../../connectors'
 import './index.less'
 
 const Banner = (props) => {
-  Web3ReactActivate()
   const { active, chainId } = useActiveWeb3React()
   console.log(active, chainId, 112233)
   const jumpPosition = (e) => {

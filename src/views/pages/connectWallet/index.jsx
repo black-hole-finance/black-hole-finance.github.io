@@ -8,19 +8,22 @@ import { useActiveWeb3React } from '../../../hooks'
 import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
+import {connectWallet} from "../../../utils";
 
 const ConnectWallet = () => {
   const { activate } = useWeb3React()
   const { active, chainId } = useActiveWeb3React()
   const [changeNetwork, setChangeNetwork] = useState(false)
   const connectWalletClick = () => {
-    activate(injected, (e) => {}, true)
-      .then(console.log)
-      .catch((e) => {
-        if (e instanceof UnsupportedChainIdError) {
-          // 重新调起小狐狸
-          setChangeNetwork(true)
-        }
+      connectWallet(activate, injected).then(() => {
+          console.log('连接成功')
+      }).catch((error) => {
+          // error
+          if (error instanceof UnsupportedChainIdError) {
+              // 重新调起小狐狸
+              // 这个弹窗可以提到全局， error已经在connectWallet内部判断过了
+              setChangeNetwork(true)
+          }
       })
   }
   return (

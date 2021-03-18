@@ -22,11 +22,7 @@ function App() {
   const tried = useEagerConnect()
   // 调用合约，获取用户余额
   const balance = useBalance(account)
-  useInactiveListener()
-
-  useMemo(() => {
-    // activate(injected).then(console.log).catch(console.log)
-  }, [])
+  useInactiveListener(!tried)
 
   useMemo(() => {
     console.log('当前账户余额', balance)
