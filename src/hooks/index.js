@@ -1,7 +1,7 @@
 import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
-import {useState, useEffect} from "react";
+import { useState, useEffect } from 'react'
 import { isMobile } from 'react-device-detect'
-import {injected} from "../connectors";
+import { injected } from '../connectors'
 
 export const useActiveWeb3React = () => {
   const context = useWeb3ReactCore()
@@ -11,13 +11,12 @@ export const useActiveWeb3React = () => {
   // return context.active ? context : contextNetwork
 }
 
-
 export function useEagerConnect() {
   const { activate, active } = useWeb3ReactCore() // specifically using useWeb3ReactCore because of what this hook does
   const [tried, setTried] = useState(false)
 
   useEffect(() => {
-    injected.isAuthorized().then(isAuthorized => {
+    injected.isAuthorized().then((isAuthorized) => {
       if (isAuthorized) {
         activate(injected, undefined, true).catch(() => {
           setTried(true)
@@ -57,7 +56,7 @@ export function useInactiveListener(suppress = false) {
     if (ethereum && ethereum.on && !active && !error && !suppress) {
       const handleChainChanged = () => {
         // eat errors
-        activate(injected, undefined, true).catch(error => {
+        activate(injected, undefined, true).catch((error) => {
           console.error('Failed to activate after chain changed', error)
         })
       }
@@ -65,7 +64,7 @@ export function useInactiveListener(suppress = false) {
       const handleAccountsChanged = (accounts) => {
         if (accounts.length > 0) {
           // eat errors
-          activate(injected, undefined, true).catch(error => {
+          activate(injected, undefined, true).catch((error) => {
             console.error('Failed to activate after accounts changed', error)
           })
         }
