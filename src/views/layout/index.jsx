@@ -7,6 +7,7 @@ import Banner from './banner'
 import Home from '../pages/home'
 import Detail from '../pages/detail'
 import ConnectWallet from '../pages/connectWallet'
+import InitPage from '../pages/initPage'
 import Intl from '../../locale/intl'
 import {
   useActiveWeb3React,
@@ -49,6 +50,7 @@ function App() {
               <ConnectWallet />
             </Route>
           </Switch>
+          <InitPage />
         </div>
       </Router>
     </Intl>

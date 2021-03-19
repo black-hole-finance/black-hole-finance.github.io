@@ -1,9 +1,15 @@
-import {UnsupportedChainIdError, useWeb3React as useWeb3ReactCore} from '@web3-react/core'
+import {
+  UnsupportedChainIdError,
+  useWeb3React as useWeb3ReactCore,
+} from '@web3-react/core'
 import { useState, useEffect } from 'react'
 import { isMobile } from 'react-device-detect'
 import { injected } from '../connectors'
-import {NoEthereumProviderError, UserRejectedRequestError} from "@web3-react/injected-connector";
-import {connectWallet} from "../utils";
+import {
+  NoEthereumProviderError,
+  UserRejectedRequestError,
+} from '@web3-react/injected-connector'
+import { connectWallet } from '../utils'
 
 export const useActiveWeb3React = () => {
   const context = useWeb3ReactCore()
@@ -24,19 +30,23 @@ export function useEagerConnect() {
     // 如果已经验证过的话，直接链接
     injected.isAuthorized().then((isAuthorized) => {
       if (isAuthorized) {
-        connectWallet(activate, injected).then(() => {
-          console.log('连接成功')
-        }).catch(() => {
-          setTried(true)
-        })
+        connectWallet(activate, injected)
+          .then(() => {
+            console.log('连接成功')
+          })
+          .catch(() => {
+            setTried(true)
+          })
       } else {
         // 如果是手机前钱包，尝试直接链接
         if (isMobile && window.ethereum) {
-          connectWallet(activate, injected).then(() => {
-            console.log('连接成功')
-          }).catch(() => {
-            setTried(true)
-          })
+          connectWallet(activate, injected)
+            .then(() => {
+              console.log('连接成功')
+            })
+            .catch(() => {
+              setTried(true)
+            })
         } else {
           //其他情况
           setTried(true)
@@ -67,21 +77,25 @@ export function useInactiveListener(suppress = false) {
     if (ethereum && ethereum.on && !active && !error && !suppress) {
       const handleChainChanged = () => {
         // 切换链
-        connectWallet(activate, injected).then(() => {
-          console.log('连接成功')
-        }).catch((error) => {
-          console.error('Failed to activate after chain changed', error)
-        })
+        connectWallet(activate, injected)
+          .then(() => {
+            console.log('连接成功')
+          })
+          .catch((error) => {
+            console.error('Failed to activate after chain changed', error)
+          })
       }
 
       const handleAccountsChanged = (accounts) => {
         if (accounts.length > 0) {
           // eat errors
-          connectWallet(activate, injected).then(() => {
-            console.log('连接成功')
-          }).catch((error) => {
-            console.error('Failed to activate after accounts changed', error)
-          })
+          connectWallet(activate, injected)
+            .then(() => {
+              console.log('连接成功')
+            })
+            .catch((error) => {
+              console.error('Failed to activate after accounts changed', error)
+            })
         }
       }
 

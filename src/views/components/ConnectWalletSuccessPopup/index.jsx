@@ -1,16 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
 import cs from 'classnames'
 import { FormattedMessage } from 'react-intl'
+import { withRouter } from 'react-router'
 import './index.less'
 
-const ConnectWalletSuccessPopup = () => {
-  const [account, setAccount] = useState(10)
+const ConnectWalletSuccessPopup = (props) => {
   return (
     <div className='connect_wallet_success_popup'>
       <span className='account_png'></span>
       <p>
         <FormattedMessage id='successPopup_text_1' />
-        <span>{account} USDT</span>
+        <span>{props.balance} USDT</span>
       </p>
       <div className='connect_wallet_success_popup_btn'>
         <a>
@@ -24,4 +24,4 @@ const ConnectWalletSuccessPopup = () => {
   )
 }
 
-export default ConnectWalletSuccessPopup
+export default withRouter(ConnectWalletSuccessPopup)
