@@ -23,7 +23,6 @@ const InitPage = (props) => {
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
     if (active && props.location.pathname.indexOf('connectWallet') > -1) {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
-      console.log(props.connectWalletFailedFlag, 'ddddd')
     } else {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
     }
