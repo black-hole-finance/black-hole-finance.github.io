@@ -37,7 +37,7 @@ function App() {
     <Intl>
       <Router>
         <div>
-          <Header />
+          <Header balance={balance} />
           <Switch>
             <Route exact path='/'>
               <Banner />

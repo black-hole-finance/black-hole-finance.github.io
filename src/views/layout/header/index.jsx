@@ -8,7 +8,7 @@ import { message } from 'antd'
 import LogoText from '../../../assets/image/Logo_text@2x.png'
 import SmallLogo from '../../../assets/image/small_logo@2x.png'
 
-const Header = () => {
+const Header = (props) => {
   const { active, chainId, account } = useActiveWeb3React()
   return (
     <div className='header'>
@@ -26,7 +26,9 @@ const Header = () => {
         )}
         {active && (
           <div className='header_connect_btn'>
-            <span className='connect_text'>0 BLACK</span>
+            <span className='connect_text balance_text'>
+              {props.balance} BLACK
+            </span>
             <span className='balance_line'></span>
             <span className='connect_text balance_text'>{account}</span>
             <CopyToClipboard
