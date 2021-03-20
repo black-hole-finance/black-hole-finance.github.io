@@ -15,7 +15,6 @@ const ConnectWallet = (props) => {
   const { dispatch } = props
   const { activate } = useWeb3React()
   const { active, chainId } = useActiveWeb3React()
-  console.log(props, useActiveWeb3React(), 'useActiveWeb3React')
   const [changeNetwork, setChangeNetwork] = useState(false)
   const connectWalletClick = () => {
     connectWallet(activate, injected)
