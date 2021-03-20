@@ -4,8 +4,8 @@ import { withRouter } from 'react-router'
 import { FormattedMessage } from 'react-intl'
 import Footer from '../../layout/footer'
 import './index.less'
-import SketchMap from '../../../assets/image/sketch_map@2x.png'
-import SmallLogoText from '../../../assets/image/small_logo_text@2x.png'
+import Metamask from '../../../assets/image/Metamask@2x.png'
+import Trust_wallet from '../../../assets/image/Trust_wallet@2x.png'
 
 const Home = (props) => {
   return (
@@ -101,20 +101,9 @@ const Home = (props) => {
           </h2>
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
-              {/* <img src='' />
-            <img src='' />
-            <img src='' /> */}
-              <p>LOGO</p>
-              <p>LOGO</p>
-              <p>LOGO</p>
-            </div>
-            <div className='backed_by_content_box'>
-              {/* <img src='' />
-            <img src='' />
-            <img src='' /> */}
-              <p>LOGO</p>
-              <p>LOGO</p>
-              <p>LOGO</p>
+              <img src={Trust_wallet} />
+              <span className='line'></span>
+              <img src={Metamask} />
             </div>
           </div>
         </div>

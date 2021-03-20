@@ -69,7 +69,7 @@ const en_US = {
   detail_text_22: 'Claim',
   connect_wallet_text_1: 'Investment Portal',
   connect_wallet_text_2:
-    'Welcome to Antimatter family! Please connect your wallet to see if you are eligible for contribution',
+    'Welcome to Black Hole family! Please connect your wallet to see if you are eligible for contribution',
   connect_wallet_text_3: 'Connect Wallet',
   failePopup_text_1:
     'Sorry, you are not eligable for this project since you are not involved in the whitelist.',
