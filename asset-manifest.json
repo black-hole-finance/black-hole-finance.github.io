@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.d293a356.chunk.css",
-    "main.js": "/static/js/main.19f9c0be.chunk.js",
-    "main.js.map": "/static/js/main.19f9c0be.chunk.js.map",
+    "main.css": "/static/css/main.221b1420.chunk.css",
+    "main.js": "/static/js/main.03df9d13.chunk.js",
+    "main.js.map": "/static/js/main.03df9d13.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.6cf1653f.js",
     "runtime-main.js.map": "/static/js/runtime-main.6cf1653f.js.map",
     "static/css/2.1d32bad1.chunk.css": "/static/css/2.1d32bad1.chunk.css",
@@ -10,12 +10,17 @@
     "static/js/2.e5b05342.chunk.js.map": "/static/js/2.e5b05342.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.1d32bad1.chunk.css.map": "/static/css/2.1d32bad1.chunk.css.map",
-    "static/css/main.d293a356.chunk.css.map": "/static/css/main.d293a356.chunk.css.map",
+    "static/css/main.221b1420.chunk.css.map": "/static/css/main.221b1420.chunk.css.map",
     "static/js/2.e5b05342.chunk.js.LICENSE.txt": "/static/js/2.e5b05342.chunk.js.LICENSE.txt",
+    "static/media/Bounce@2x.6f75670c.png": "/static/media/Bounce@2x.6f75670c.png",
+    "static/media/Metamask@2x.266701e9.png": "/static/media/Metamask@2x.266701e9.png",
+    "static/media/Trust_wallet@2x.749c88ac.png": "/static/media/Trust_wallet@2x.749c88ac.png",
+    "static/media/WeStarter@2x.2647ba56.png": "/static/media/WeStarter@2x.2647ba56.png",
     "static/media/index.less": "/static/media/sketch_map_H5@2x.da4fb731.png",
     "static/media/github.4a8c994d.svg": "/static/media/github.4a8c994d.svg",
+    "static/media/helmet@2x.6c0ec636.png": "/static/media/helmet@2x.6c0ec636.png",
     "static/media/medium.a862c568.svg": "/static/media/medium.a862c568.svg",
-    "static/media/small_logo_text@2x.15f217c0.png": "/static/media/small_logo_text@2x.15f217c0.png",
+    "static/media/polkastarter@2x.138cc15a.png": "/static/media/polkastarter@2x.138cc15a.png",
     "static/media/telegram.c64393d6.svg": "/static/media/telegram.c64393d6.svg",
     "static/media/twitter.5ed612cd.svg": "/static/media/twitter.5ed612cd.svg"
   },
@@ -23,7 +28,7 @@
     "static/js/runtime-main.6cf1653f.js",
     "static/css/2.1d32bad1.chunk.css",
     "static/js/2.e5b05342.chunk.js",
-    "static/css/main.d293a356.chunk.css",
-    "static/js/main.19f9c0be.chunk.js"
+    "static/css/main.221b1420.chunk.css",
+    "static/js/main.03df9d13.chunk.js"
   ]
 }
