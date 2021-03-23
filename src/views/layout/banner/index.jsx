@@ -35,7 +35,7 @@ const Banner = (props) => {
             </p>
           </div>
           <div className='banner_btn'>
-            <a href='https://docsend.com/view/bibkri6huvhcezru' target='_blank'>
+            <a href='https://docsend.com/view/9bn3sk2nyftxc5rj' target='_blank'>
               <FormattedMessage id='banner_text_4' />
             </a>
             {/* <a
