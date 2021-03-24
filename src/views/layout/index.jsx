@@ -9,6 +9,7 @@ import Detail from '../pages/detail'
 import ConnectWallet from '../pages/connectWallet'
 import InitPage from '../pages/initPage'
 import Intl from '../../locale/intl'
+
 import {
   useActiveWeb3React,
   useEagerConnect,
@@ -20,10 +21,11 @@ import { useBalance } from '../../hooks/wallet'
 
 function App() {
   const { activate, account } = useWeb3React()
+
   const tried = useEagerConnect()
   // 调用合约，获取用户余额
   const balance = useBalance(account)
-  useInactiveListener(!tried)
+  // useInactiveListener(!tried)
 
   useMemo(() => {
     console.log('当前账户余额', balance)

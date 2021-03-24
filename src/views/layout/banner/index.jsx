@@ -8,7 +8,6 @@ import './index.less'
 
 const Banner = (props) => {
   const { active, chainId } = useActiveWeb3React()
-  console.log(active, chainId, 112233)
   const jumpPosition = (e) => {
     //e.target.innerText与id相同
     //获取到元素的offsetTop顶部距离

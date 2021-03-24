@@ -13,12 +13,7 @@ const InitPage = (props) => {
   const balance = useBalance()
   const { active, chainId } = useActiveWeb3React()
   useEffect(() => {
-    // 如果未链接钱包情况下 && 在 connectWallet 页面时，弹框提示
-    if (!active && props.location.pathname.indexOf('connectWallet') > -1) {
-      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
-    } else {
-      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
-    }
+    dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
     if (active && props.location.pathname.indexOf('connectWallet') > -1) {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
