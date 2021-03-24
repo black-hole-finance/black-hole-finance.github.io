@@ -4,6 +4,10 @@ import { withRouter } from 'react-router'
 import { FormattedMessage } from 'react-intl'
 import Footer from '../../layout/footer'
 import './index.less'
+import Bounce from '../../../assets/image/Bounce@2x.png'
+import Polkastarter from '../../../assets/image/polkastarter@2x.png'
+import Helmet from '../../../assets/image/helmet@2x.png'
+import WeStarter from '../../../assets/image/WeStarter@2x.png'
 import Metamask from '../../../assets/image/Metamask@2x.png'
 import Trust_wallet from '../../../assets/image/Trust_wallet@2x.png'
 
@@ -101,9 +105,18 @@ const Home = (props) => {
           </h2>
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
-              <img src={Trust_wallet} />
+              <img src={Bounce} />
+              <span className='line'></span>
+              <img className='polkastarter_png' src={Polkastarter} />
+              <span className='line'></span>
+              <img src={Helmet} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={WeStarter} />
               <span className='line'></span>
               <img src={Metamask} />
+              <span className='line'></span>
+              <img className='trust_wallet_png' src={Trust_wallet} />
             </div>
           </div>
         </div>
