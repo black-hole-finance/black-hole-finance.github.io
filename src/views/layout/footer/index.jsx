@@ -24,7 +24,7 @@ const Footer = () => {
           </a>
         </li>
         <li>
-          <a href='https://www.blackhole.black' target='_blank'>
+          <a href='https://blackholeprotocol.medium.com/' target='_blank'>
             <img src={Medium} />
           </a>
         </li>
