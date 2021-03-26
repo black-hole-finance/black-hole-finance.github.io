@@ -9,12 +9,12 @@ const Footer = () => {
     <div className='footer'>
       <ul className='footer_links'>
         <li>
-          <a href='https://t.me/blackhole' target='_blank'>
+          <a href='https://t.me/BlackholeProtocolOfficial' target='_blank'>
             <img src={Telegram} />
           </a>
         </li>
         <li>
-          <a href='https://twitter.com/blackhole' target='_blank'>
+          <a href='https://twitter.com/BlackHoleBurn' target='_blank'>
             <img src={Twitter} />
           </a>
         </li>
