@@ -5,6 +5,9 @@ import {
 import { useState, useEffect } from 'react'
 import { isMobile } from 'react-device-detect'
 import { injected } from '../connectors'
+import { getContract } from '../constants'
+import { store } from '../store'
+import Offering from '../constants/abis/Offering.json'
 import {
   NoEthereumProviderError,
   UserRejectedRequestError,
@@ -111,4 +114,35 @@ export function useInactiveListener(suppress = false) {
     }
     return undefined
   }, [active, error, suppress, activate])
+}
+
+export const usePoolsInfo = (address = '') => {
+  const { account, active, library } = useActiveWeb3React()
+  const [poolsInfo, setPoolsInfo] = useState()
+  useEffect(() => {
+    if (active) {
+      const pool_contract = getContract(library, Offering, address)
+      const promise_list = [
+        pool_contract.methods.getQuota(account).call({ from: account }),
+        pool_contract.methods.getVolume(account).call({ from: account }),
+        pool_contract.methods.unlocked(account).call({ from: account }),
+        pool_contract.methods.unlockCapacity(account).call({ from: account }),
+      ]
+      return Promise.all(promise_list).then(
+        ([quota, volume, unlocked, unlockCapacity]) => {
+          store.dispatch({
+            type: 'CONNECT_POOLS',
+            payload: Object.assign(store.getState().pools.connectPools, {
+              quota: quota,
+              volume: volume,
+              unlocked: unlocked,
+              unlockCapacity: unlockCapacity,
+            }),
+          })
+          // setPoolsInfo(token)
+        }
+      )
+    }
+  }, [active, account])
+  // return poolsInfo
 }

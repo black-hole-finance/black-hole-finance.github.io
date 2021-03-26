@@ -4,7 +4,6 @@ import { FormattedMessage } from 'react-intl'
 import './index.less'
 import { withRouter } from 'react-router'
 import { useWeb3React, UnsupportedChainIdError } from '@web3-react/core'
-import { useActiveWeb3React } from '../../../hooks'
 import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
@@ -14,7 +13,6 @@ import { injected } from '../../../connectors'
 const ConnectWallet = (props) => {
   const { dispatch } = props
   const { activate } = useWeb3React()
-  const { active, chainId } = useActiveWeb3React()
   const [changeNetwork, setChangeNetwork] = useState(false)
   const connectWalletClick = () => {
     connectWallet(activate, injected)

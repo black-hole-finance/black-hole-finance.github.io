@@ -1,10 +1,35 @@
 import React, { useContext, useEffect, useState } from 'react'
 import cs from 'classnames'
 import { FormattedMessage } from 'react-intl'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+import { useActiveWeb3React } from '../../../hooks'
+import Offering from '../../../constants/abis/Offering.json'
+import { getContract } from '../../../constants'
 import './index.less'
 
-const Detail = () => {
-  const [detailTab, setDetailTab] = useState('detail')
+const Detail = (props) => {
+  const {
+    address,
+    currency_symbol,
+    currency_allocation,
+    token_symbol,
+    token_allocation,
+    cliamable_balance,
+    wallet_amount,
+    round,
+  } = props.connectPools
+  const { active, chainId, library, account } = useActiveWeb3React()
+
+  const onClaim = () => {
+    const pool_contract = getContract(library, Offering, address)
+    pool_contract.methods
+      .unlock()
+      .send({ from: account })
+      .then((re) => {
+        console.log(re)
+      })
+  }
 
   return (
     <div className='detail'>
@@ -14,8 +39,8 @@ const Detail = () => {
             <FormattedMessage id='detail_text_20' />
           </a>
           <p className='detail_allocation_coin'>
-            000,000
-            <span>（USDT）</span>
+            {currency_allocation}
+            <span>（{currency_symbol}）</span>
           </p>
         </div>
         <div className='detail_allocation_btn'>
@@ -23,8 +48,8 @@ const Detail = () => {
             <FormattedMessage id='detail_text_21' />
           </a>
           <p className='detail_allocation_coin'>
-            000,000,000
-            <span>（BLACK）</span>
+            {token_allocation}
+            <span>（{token_symbol}）</span>
           </p>
         </div>
       </div>
@@ -43,7 +68,7 @@ const Detail = () => {
                 <span>
                   <FormattedMessage id='detail_text_12' />
                 </span>
-                <span>0X000000000000XXXXXXXXXXXXXXXXXXX</span>
+                <span>{address}</span>
               </p>
             </td>
           </tr>
@@ -53,7 +78,7 @@ const Detail = () => {
                 <span>
                   <FormattedMessage id='detail_text_13' />
                 </span>
-                <span>SEED</span>
+                <span>{round}</span>
               </p>
             </td>
           </tr>
@@ -63,7 +88,7 @@ const Detail = () => {
                 <span>
                   <FormattedMessage id='detail_text_14' />
                 </span>
-                <span>0</span>
+                <span>{wallet_amount}</span>
               </p>
             </td>
           </tr>
@@ -74,8 +99,10 @@ const Detail = () => {
                   <FormattedMessage id='detail_text_15' />
                 </span>
                 <p className='money_claim'>
-                  <span>0 BLACK</span>
-                  <a>
+                  <span>
+                    {cliamable_balance} {token_symbol}
+                  </span>
+                  <a onClick={onClaim}>
                     <FormattedMessage id='detail_text_22' />
                   </a>
                 </p>
@@ -84,11 +111,13 @@ const Detail = () => {
           </tr>
         </tbody>
       </table>
-      <a className='detail_claim_btn'>
+      <a className='detail_claim_btn' onClick={onClaim}>
         <FormattedMessage id='detail_text_22' />
       </a>
     </div>
   )
 }
 
-export default Detail
+export default connect((store) => ({
+  connectPools: store.pools.connectPools,
+}))(withRouter(Detail))

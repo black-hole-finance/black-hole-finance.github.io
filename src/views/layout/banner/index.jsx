@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 import { useActiveWeb3React } from '../../../hooks'
 import { Web3ReactActivate } from '../../../connectors'
 
 import './index.less'
 
 const Banner = (props) => {
+  const { address } = props.connectPools
   const { active, chainId } = useActiveWeb3React()
   const jumpPosition = (e) => {
     //e.target.innerText与id相同
@@ -21,7 +23,7 @@ const Banner = (props) => {
       props.history.push('/connectWallet')
       return
     }
-    props.history.push(`/detail/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`)
+    props.history.push(`/detail/${address}`)
   }
 
   return (
@@ -67,4 +69,6 @@ const Banner = (props) => {
   )
 }
 
-export default withRouter(Banner)
+export default connect((store) => ({
+  connectPools: store.pools.connectPools,
+}))(withRouter(Banner))

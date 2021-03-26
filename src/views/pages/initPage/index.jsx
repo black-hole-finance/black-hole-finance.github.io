@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './index.less'
 import { withRouter } from 'react-router'
 import { useActiveWeb3React } from '../../../hooks'
@@ -6,11 +6,10 @@ import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
 import { connect } from 'react-redux'
-import { useBalance } from '../../../hooks/wallet'
 
 const InitPage = (props) => {
   const { dispatch } = props
-  const balance = useBalance()
+  const { quota, unOffer } = props.connectPools
   const { active, chainId } = useActiveWeb3React()
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
@@ -21,7 +20,7 @@ const InitPage = (props) => {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
     }
     // 如果链接钱包成功后，在 connectWallet 页面时，展示余额信息 弹框提示
-    if (active && props.location.pathname.indexOf('connectWallet') > -1) {
+    if (active && !unOffer && props.location.pathname !== '/') {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
@@ -52,7 +51,7 @@ const InitPage = (props) => {
       {props.connectWalletSuccessFlag && (
         <div className='init_page_box'>
           <div className='connect_wallet_popup'>
-            <ConnectWalletSuccessPopup balance={balance} />
+            <ConnectWalletSuccessPopup balance={quota} />
           </div>
         </div>
       )}
@@ -61,6 +60,7 @@ const InitPage = (props) => {
 }
 
 export default connect((store) => ({
+  connectPools: store.pools.connectPools,
   changeNetworkFlag: store.popup.changeNetworkFlag,
   connectWalletFailedFlag: store.popup.connectWalletFailedFlag,
   connectWalletSuccessFlag: store.popup.connectWalletSuccessFlag,

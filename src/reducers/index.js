@@ -2,8 +2,10 @@
 import { combineReducers } from 'redux'
 import locale from './locale'
 import popup from './popup'
+import pools from './pools'
 
 export default combineReducers({
   locale,
   popup,
+  pools,
 })

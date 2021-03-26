@@ -1,5 +1,6 @@
 import './index.less'
 import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { FormattedMessage } from 'react-intl'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
@@ -9,6 +10,7 @@ import LogoText from '../../../assets/image/Logo_text@2x.png'
 import SmallLogo from '../../../assets/image/small_logo@2x.png'
 
 const Header = (props) => {
+  const { token_symbol } = props.connectPools
   const { active, chainId, account } = useActiveWeb3React()
   return (
     <div className='header'>
@@ -27,7 +29,7 @@ const Header = (props) => {
         {active && (
           <div className='header_connect_btn'>
             <span className='connect_text balance_text'>
-              {props.balance} BLACK
+              {props.balance} {token_symbol}
             </span>
             <span className='balance_line'></span>
             <span className='connect_text balance_text'>{account}</span>
@@ -46,4 +48,6 @@ const Header = (props) => {
   )
 }
 
-export default withRouter(Header)
+export default connect((store) => ({
+  connectPools: store.pools.connectPools,
+}))(withRouter(Header))
