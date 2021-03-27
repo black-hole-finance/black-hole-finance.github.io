@@ -100,9 +100,14 @@ const Home = (props) => {
 
       <div className='backed_by'>
         <div className='content'>
-          <h2 className='backed_by_title'>
-            <FormattedMessage id='home_text_25' />
-          </h2>
+          {
+            false && (
+                <h2 className='backed_by_title'>
+                  <FormattedMessage id='home_text_25' />
+                </h2>
+            )
+          }
+
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
               <img src={Bounce} />
