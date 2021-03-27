@@ -5,8 +5,7 @@ import Header from './header'
 import Banner from './banner'
 
 import Home from '../pages/home'
-import Detail from '../pages/detail'
-import ConnectWallet from '../pages/connectWallet'
+import Investment from '../pages/investment'
 import InitPage from '../pages/initPage'
 import Intl from '../../locale/intl'
 
@@ -27,7 +26,6 @@ function App() {
   const tried = useEagerConnect()
   // 调用合约，获取用户余额
   const balance = useBalance(account)
-  // useInactiveListener(!tried)
   const pools = usePoolsInfo(store.getState().pools.connectPools.address)
 
   useMemo(() => {
@@ -48,11 +46,8 @@ function App() {
               <Banner />
               <Home />
             </Route>
-            <Route exact path='/detail/:address'>
-              <Detail />
-            </Route>
-            <Route exact path='/connectWallet'>
-              <ConnectWallet />
+            <Route exact path='/investment'>
+              <Investment/>
             </Route>
           </Switch>
           <InitPage />

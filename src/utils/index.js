@@ -56,10 +56,45 @@ export function getScanLink(chainId, data, type) {
   }
 }
 
-export function connectWallet(activate, connector) {
+
+
+
+export function connectWallet(activate, connector, deactivate) {
   return new Promise((reslove, reject) => {
     activate(connector, undefined, true)
-      .then(reslove)
+      .then((e) => {
+        if(window.ethereum){
+          // 监听钱包事件
+          console.log('注册事件')
+          const {ethereum} = window
+          ethereum.on('accountsChanged', (accounts) => {
+            if(accounts.length === 0){
+              //无账号，则代表锁定了,主动断开
+              deactivate()
+            }
+          })
+
+          ethereum.on('disconnect', () => {
+            // 断开连接
+            deactivate()
+          })
+
+          ethereum.on('close', () => {
+            // 断开连接
+            deactivate()
+          })
+
+          ethereum.on('message', (e) => {
+            console.log('message',e)
+          })
+
+          ethereum.on('chainChanged', () => {
+            // 链改了，刷新网页
+            window.location.reload();
+          })
+        }
+        reslove(e)
+      })
       .catch((error) => {
         switch (true) {
           case error instanceof UnsupportedChainIdError:
