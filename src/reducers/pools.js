@@ -12,12 +12,7 @@ const initState = {
     token_allocation: '100,000,000',
     cliamable_balance: '999',
     round: 'SEED',
-    wallet_amount: '0',
-    quota: '0', // 额度
-    volume: '0',
-    unlocked: '0',
-    unlockCapacity: '0',
-    unOffer: false, // 是否募资
+    wallet_amount: '0'
   },
 }
 

@@ -7,12 +7,13 @@ import { isMobile } from 'react-device-detect'
 import { injected } from '../connectors'
 import { getContract } from '../constants'
 import { store } from '../store'
-import Offering from '../constants/abis/Offering.json'
+import offering from '../constants/abis/offering.json'
 import {
   NoEthereumProviderError,
   UserRejectedRequestError,
 } from '@web3-react/injected-connector'
 import { connectWallet } from '../utils'
+import {useQuota, useUnlocked, useVolume} from "./offering";
 
 export const useActiveWeb3React = () => {
   const context = useWeb3ReactCore()
@@ -68,33 +69,20 @@ export function useEagerConnect() {
   return tried
 }
 
-export const usePoolsInfo = (address = '') => {
+export function useBlockHeight() {
   const { account, active, library } = useActiveWeb3React()
-  const [poolsInfo, setPoolsInfo] = useState()
+  const [blockNumber, setBlockNumber] = useState(0)
+
+  const updateBlockNumber = (blockNumber) => {
+    setBlockNumber(blockNumber)
+  }
+
   useEffect(() => {
-    if (active) {
-      const pool_contract = getContract(library, Offering, address)
-      const promise_list = [
-        pool_contract.methods.getQuota(account).call({ from: account }),
-        pool_contract.methods.getVolume(account).call({ from: account }),
-        pool_contract.methods.unlocked(account).call({ from: account }),
-        pool_contract.methods.unlockCapacity(account).call({ from: account }),
-      ]
-      return Promise.all(promise_list).then(
-        ([quota, volume, unlocked, unlockCapacity]) => {
-          store.dispatch({
-            type: 'CONNECT_POOLS',
-            payload: Object.assign(store.getState().pools.connectPools, {
-              quota: quota,
-              volume: volume,
-              unlocked: unlocked,
-              unlockCapacity: unlockCapacity,
-            }),
-          })
-          // setPoolsInfo(token)
-        }
-      )
+    library && library.once('block', updateBlockNumber)
+    return () => {
+      library && library.off('block', updateBlockNumber)
     }
-  }, [active, account])
-  // return poolsInfo
+  }, [blockNumber, library])
+
+  return blockNumber
 }

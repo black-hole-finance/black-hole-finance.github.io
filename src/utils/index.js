@@ -57,8 +57,6 @@ export function getScanLink(chainId, data, type) {
 }
 
 
-
-
 export function connectWallet(activate, connector, deactivate) {
   return new Promise((reslove, reject) => {
     activate(connector, undefined, true)

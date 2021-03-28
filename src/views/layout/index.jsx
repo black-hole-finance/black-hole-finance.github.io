@@ -19,28 +19,19 @@ import { store } from '../../store'
 import { injected } from '../../connectors'
 import { useEffect, useMemo } from 'react'
 import { useBalance } from '../../hooks/wallet'
+import {useQuota, useUnlocked, useVolume} from "../../hooks/offering";
 
 function App() {
   const { activate, account } = useWeb3React()
 
   const tried = useEagerConnect()
-  // 调用合约，获取用户余额
-  const balance = useBalance(account)
-  const pools = usePoolsInfo(store.getState().pools.connectPools.address)
-
-  useMemo(() => {
-    console.log('当前账户余额', balance)
-  }, [balance])
-
-  useEffect(() => {
-    console.log(tried)
-  }, [tried])
+  // const pools = usePoolsInfo(store.getState().pools.connectPools.address)
 
   return (
     <Intl>
       <Router>
         <div>
-          <Header balance={balance} />
+          <Header/>
           <Switch>
             <Route exact path='/'>
               <Banner />

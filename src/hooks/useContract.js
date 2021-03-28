@@ -4,7 +4,7 @@ import { getContract } from '../utils'
 import { MULTICALL_NETWORKS } from '../constants'
 import { MULTICALL_ABI } from '../constants/abis/multicall'
 
-function useContract(address, ABI, withSignerIfPossible = true) {
+export function useContract(address, ABI, withSignerIfPossible = true) {
   const { library, account } = useActiveWeb3React()
 
   return useMemo(() => {

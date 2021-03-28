@@ -4,13 +4,14 @@ import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { useActiveWeb3React } from '../../../hooks'
-import Offering from '../../../constants/abis/Offering.json'
-import { getContract } from '../../../constants'
+import Offering from '../../../constants/abis/offering.json'
+import {BLACK_ADDRESS, ChainId, getContract, OFFERING_ADDRESS} from '../../../constants'
 import './index.less'
+import {useInvestmentInfo} from "../../../hooks/offering";
+import {formatAmount, fromWei} from "../../../utils/format";
 
 const Detail = (props) => {
   const {
-    address,
     currency_symbol,
     currency_allocation,
     token_symbol,
@@ -20,9 +21,10 @@ const Detail = (props) => {
     round,
   } = props.connectPools
   const { active, chainId, library, account } = useActiveWeb3React()
+  useInvestmentInfo()
 
   const onClaim = () => {
-    const pool_contract = getContract(library, Offering, address)
+    const pool_contract = getContract(library, Offering, OFFERING_ADDRESS[chainId])
     pool_contract.methods
       .unlock()
       .send({ from: account })
@@ -39,7 +41,7 @@ const Detail = (props) => {
             <FormattedMessage id='detail_text_20' />
           </a>
           <p className='detail_allocation_coin'>
-            {currency_allocation}
+            {formatAmount(currency_allocation, chainId === ChainId.RINKEBY ? 6 : 18)}
             <span>（{currency_symbol}）</span>
           </p>
         </div>
@@ -48,7 +50,7 @@ const Detail = (props) => {
             <FormattedMessage id='detail_text_21' />
           </a>
           <p className='detail_allocation_coin'>
-            {token_allocation}
+            {formatAmount(token_allocation)}
             <span>（{token_symbol}）</span>
           </p>
         </div>
@@ -68,7 +70,7 @@ const Detail = (props) => {
                 <span>
                   <FormattedMessage id='detail_text_12' />
                 </span>
-                <span>{address}</span>
+                <span>{BLACK_ADDRESS[chainId]}</span>
               </p>
             </td>
           </tr>
@@ -88,7 +90,7 @@ const Detail = (props) => {
                 <span>
                   <FormattedMessage id='detail_text_14' />
                 </span>
-                <span>{wallet_amount}</span>
+                <span>{formatAmount(wallet_amount)}</span>
               </p>
             </td>
           </tr>
@@ -100,7 +102,7 @@ const Detail = (props) => {
                 </span>
                 <p className='money_claim'>
                   <span>
-                    {cliamable_balance} {token_symbol}
+                    {formatAmount(cliamable_balance)} {token_symbol}
                   </span>
                   <a onClick={onClaim}>
                     <FormattedMessage id='detail_text_22' />
