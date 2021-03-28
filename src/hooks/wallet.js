@@ -62,11 +62,8 @@ export function useTokenAllowance(address, token_address){
     const contract = useContract(token_address, ERC20_ABI, false)
     const [allowance, setAllowancee] = useState('0')
     useEffect(() => {
-        console.log('111111111')
-        console.log(address)
         if(address) {
             contract.allowance(account, address).then(allowance => {
-                console.log('allowance', allowance)
                 setAllowancee(allowance.toString())
             }).catch(e => {
                 console.log(e)

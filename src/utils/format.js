@@ -30,7 +30,6 @@ const toWei = (value, decimals) => {
 }
 
 export const weiPlus = (value1, value2) => {
-  console.log('weiPlus', value1, value2)
   return new BigNumber(
     new BigNumber(value1 ? value1 : 0)
       .plus(new BigNumber(value2 ? value2 : 0))
@@ -44,7 +43,6 @@ export const weiDiv = (value1, value2) => {
   if (value1 == 0 || value2 == 0) {
     return 0
   }
-  console.log('weiDiv', value1, value2)
   return new BigNumber(
     new BigNumber(value1).dividedBy(new BigNumber(value2)).toFixed(6)
   )

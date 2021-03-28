@@ -19,7 +19,6 @@ const ConnectWalletSuccessPopup = (props) => {
   const allowance = useTokenAllowance(OFFERING_ADDRESS[chainId], USDT_ADDRESS[chainId])
 
   useEffect(() => {
-    console.log(allowance)
     if(parseInt(allowance) > 0){
       // 如果大于0
       setBtnFlag(1)
