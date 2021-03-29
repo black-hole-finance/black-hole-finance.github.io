@@ -4,53 +4,48 @@ import { FormattedMessage } from 'react-intl'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { useActiveWeb3React } from '../../../hooks'
-import Offering from '../../../constants/abis/Offering.json'
+import Offering from '../../../constants/abis/offering.json'
 import ERC20 from '../../../constants/abis/erc20.json'
-import { getContract } from '../../../constants'
+import {BLACK_ADDRESS, ChainId, getContract, OFFERING_ADDRESS, USDT_ADDRESS} from '../../../constants'
 import './index.less'
+import {useTokenAllowance} from "../../../hooks/wallet";
+import {formatAmount} from "../../../utils/format";
 
 const ConnectWalletSuccessPopup = (props) => {
   const { dispatch } = props
-  const { address, token_address, currency_symbol } = props.connectPools
+  const { token_address, currency_symbol, currency_allocation } = props.connectPools
   const { active, chainId, library, account } = useActiveWeb3React()
-  const [btnFlag, setBtnFlag] = useState('0')
-  // 判断是否授权 返回值为 0 则未授权，否则 已授权
-  const whetherApprove = () => {
-    let pool_contract = getContract(library, ERC20, token_address)
-    pool_contract.methods
-      .allowance(account, address)
-      .call({ from: account })
-      .then((re) => {
-        setBtnFlag(re)
-      })
-      .catch((e) => {
-        console.log(e)
-      })
-  }
+  const [btnFlag, setBtnFlag] = useState(0)
+  const allowance = useTokenAllowance(OFFERING_ADDRESS[chainId], USDT_ADDRESS[chainId])
 
   useEffect(() => {
-    whetherApprove()
-  }, [btnFlag])
+    if(parseInt(allowance) > 0){
+      // 如果大于0
+      setBtnFlag(1)
+    }else{
+      setBtnFlag(0)
+    }
+  }, [allowance])
 
   // 授权
   const onApprove = () => {
     if (btnFlag - 0) return
-    let pool_contract = getContract(library, ERC20, token_address)
+    let pool_contract = getContract(library, ERC20, USDT_ADDRESS[chainId])
     pool_contract.methods
       .approve(
-        address,
+        OFFERING_ADDRESS[chainId],
         '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
       )
       .send({ from: account })
       .then((re) => {
         console.log(re)
-        whetherApprove()
       })
   }
+
   // 付款 募资
   const onContribute = () => {
     if (!(btnFlag - 0)) return
-    let pool_contract = getContract(library, Offering, address)
+    let pool_contract = getContract(library, Offering, OFFERING_ADDRESS[chainId])
     pool_contract.methods
       .offer()
       .send({ from: account })
@@ -67,7 +62,7 @@ const ConnectWalletSuccessPopup = (props) => {
       <p>
         <FormattedMessage id='successPopup_text_1' />
         <span>
-          {props.balance} {currency_symbol}
+          {formatAmount(currency_allocation, chainId === ChainId.RINKEBY ? 6 : 18, 2)} {currency_symbol}
         </span>
       </p>
       <div className='connect_wallet_success_popup_btn'>

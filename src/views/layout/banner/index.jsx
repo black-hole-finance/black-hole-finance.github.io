@@ -8,8 +8,6 @@ import { Web3ReactActivate } from '../../../connectors'
 import './index.less'
 
 const Banner = (props) => {
-  const { address } = props.connectPools
-  const { active, chainId } = useActiveWeb3React()
   const jumpPosition = (e) => {
     //e.target.innerText与id相同
     //获取到元素的offsetTop顶部距离
@@ -19,11 +17,7 @@ const Banner = (props) => {
   }
 
   const goDetail = (e) => {
-    if (!active) {
-      props.history.push('/connectWallet')
-      return
-    }
-    props.history.push(`/detail/${address}`)
+    props.history.push(`/investment`)
   }
 
   return (

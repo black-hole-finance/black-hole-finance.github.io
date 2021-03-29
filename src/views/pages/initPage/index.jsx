@@ -9,7 +9,7 @@ import { connect } from 'react-redux'
 
 const InitPage = (props) => {
   const { dispatch } = props
-  const { quota, unOffer } = props.connectPools
+  const { quota, token_allocation } = props.connectPools
   const { active, chainId } = useActiveWeb3React()
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
@@ -20,12 +20,12 @@ const InitPage = (props) => {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
     }
     // 如果链接钱包成功后，在 connectWallet 页面时，展示余额信息 弹框提示
-    if (active && !unOffer && props.location.pathname !== '/') {
+    if (active && token_allocation == 0 && props.location.pathname !== '/') {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
     }
-  }, [active, props.location])
+  }, [active, token_allocation, props.location])
 
   return (
     <>

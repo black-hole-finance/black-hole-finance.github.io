@@ -5,8 +5,7 @@ import Header from './header'
 import Banner from './banner'
 
 import Home from '../pages/home'
-import Detail from '../pages/detail'
-import ConnectWallet from '../pages/connectWallet'
+import Investment from '../pages/investment'
 import InitPage from '../pages/initPage'
 import Intl from '../../locale/intl'
 
@@ -20,39 +19,26 @@ import { store } from '../../store'
 import { injected } from '../../connectors'
 import { useEffect, useMemo } from 'react'
 import { useBalance } from '../../hooks/wallet'
+import {useQuota, useUnlocked, useVolume} from "../../hooks/offering";
 
 function App() {
   const { activate, account } = useWeb3React()
 
   const tried = useEagerConnect()
-  // 调用合约，获取用户余额
-  const balance = useBalance(account)
-  // useInactiveListener(!tried)
-  const pools = usePoolsInfo(store.getState().pools.connectPools.address)
-
-  useMemo(() => {
-    console.log('当前账户余额', balance)
-  }, [balance])
-
-  useEffect(() => {
-    console.log(tried)
-  }, [tried])
+  // const pools = usePoolsInfo(store.getState().pools.connectPools.address)
 
   return (
     <Intl>
       <Router>
         <div>
-          <Header balance={balance} />
+          <Header/>
           <Switch>
             <Route exact path='/'>
               <Banner />
               <Home />
             </Route>
-            <Route exact path='/detail/:address'>
-              <Detail />
-            </Route>
-            <Route exact path='/connectWallet'>
-              <ConnectWallet />
+            <Route exact path='/investment'>
+              <Investment/>
             </Route>
           </Switch>
           <InitPage />

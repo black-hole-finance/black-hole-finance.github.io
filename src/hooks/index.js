@@ -7,12 +7,13 @@ import { isMobile } from 'react-device-detect'
 import { injected } from '../connectors'
 import { getContract } from '../constants'
 import { store } from '../store'
-import Offering from '../constants/abis/Offering.json'
+import offering from '../constants/abis/offering.json'
 import {
   NoEthereumProviderError,
   UserRejectedRequestError,
 } from '@web3-react/injected-connector'
 import { connectWallet } from '../utils'
+import {useQuota, useUnlocked, useVolume} from "./offering";
 
 export const useActiveWeb3React = () => {
   const context = useWeb3ReactCore()
@@ -27,13 +28,13 @@ export const useActiveWeb3React = () => {
  * @returns {boolean}
  */
 export function useEagerConnect() {
-  const { activate, active } = useWeb3ReactCore() // specifically using useWeb3ReactCore because of what this hook does
+  const { activate, deactivate, active } = useWeb3ReactCore() // specifically using useWeb3ReactCore because of what this hook does
   const [tried, setTried] = useState(false)
   useEffect(() => {
     // 如果已经验证过的话，直接链接
     injected.isAuthorized().then((isAuthorized) => {
       if (isAuthorized) {
-        connectWallet(activate, injected)
+        connectWallet(activate, injected, deactivate)
           .then(() => {
             console.log('连接成功')
           })
@@ -43,7 +44,7 @@ export function useEagerConnect() {
       } else {
         // 如果是手机前钱包，尝试直接链接
         if (isMobile && window.ethereum) {
-          connectWallet(activate, injected)
+          connectWallet(activate, injected, deactivate)
             .then(() => {
               console.log('连接成功')
             })
@@ -68,81 +69,20 @@ export function useEagerConnect() {
   return tried
 }
 
-/**
- * Use for network and injected - logs user in
- * and out after checking what network theyre on
- */
-export function useInactiveListener(suppress = false) {
-  const { active, error, activate } = useWeb3ReactCore() // specifically using useWeb3React because of what this hook does
-
-  useEffect(() => {
-    const { ethereum } = window
-    if (ethereum && ethereum.on && !active && !error && !suppress) {
-      const handleChainChanged = () => {
-        // 切换链
-        connectWallet(activate, injected)
-          .then(() => {
-            console.log('连接成功')
-          })
-          .catch((error) => {
-            console.error('Failed to activate after chain changed', error)
-          })
-      }
-
-      const handleAccountsChanged = (accounts) => {
-        if (accounts.length > 0) {
-          // eat errors
-          connectWallet(activate, injected)
-            .then(() => {
-              console.log('连接成功')
-            })
-            .catch((error) => {
-              console.error('Failed to activate after accounts changed', error)
-            })
-        }
-      }
-
-      ethereum.on('chainChanged', handleChainChanged)
-      ethereum.on('accountsChanged', handleAccountsChanged)
-
-      return () => {
-        if (ethereum.removeListener) {
-          ethereum.removeListener('chainChanged', handleChainChanged)
-          ethereum.removeListener('accountsChanged', handleAccountsChanged)
-        }
-      }
-    }
-    return undefined
-  }, [active, error, suppress, activate])
-}
-
-export const usePoolsInfo = (address = '') => {
+export function useBlockHeight() {
   const { account, active, library } = useActiveWeb3React()
-  const [poolsInfo, setPoolsInfo] = useState()
+  const [blockNumber, setBlockNumber] = useState(0)
+
+  const updateBlockNumber = (blockNumber) => {
+    setBlockNumber(blockNumber)
+  }
+
   useEffect(() => {
-    if (active) {
-      const pool_contract = getContract(library, Offering, address)
-      const promise_list = [
-        pool_contract.methods.getQuota(account).call({ from: account }),
-        pool_contract.methods.getVolume(account).call({ from: account }),
-        pool_contract.methods.unlocked(account).call({ from: account }),
-        pool_contract.methods.unlockCapacity(account).call({ from: account }),
-      ]
-      return Promise.all(promise_list).then(
-        ([quota, volume, unlocked, unlockCapacity]) => {
-          store.dispatch({
-            type: 'CONNECT_POOLS',
-            payload: Object.assign(store.getState().pools.connectPools, {
-              quota: quota,
-              volume: volume,
-              unlocked: unlocked,
-              unlockCapacity: unlockCapacity,
-            }),
-          })
-          // setPoolsInfo(token)
-        }
-      )
+    library && library.once('block', updateBlockNumber)
+    return () => {
+      library && library.off('block', updateBlockNumber)
     }
-  }, [active, account])
-  // return poolsInfo
+  }, [blockNumber, library])
+
+  return blockNumber
 }
