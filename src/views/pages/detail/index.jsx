@@ -5,10 +5,14 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { useActiveWeb3React } from '../../../hooks'
 import Offering from '../../../constants/abis/offering.json'
-import {BLACK_ADDRESS, ChainId, getContract, OFFERING_ADDRESS} from '../../../constants'
+import {
+  BLACK_ADDRESS,
+  ChainId,
+  getContract,
+  OFFERING_ADDRESS,
+} from '../../../constants'
 import './index.less'
-import {useInvestmentInfo} from "../../../hooks/offering";
-import {formatAmount, fromWei} from "../../../utils/format";
+import { formatAmount, fromWei } from '../../../utils/format'
 
 const Detail = (props) => {
   const {
@@ -21,10 +25,13 @@ const Detail = (props) => {
     round,
   } = props.connectPools
   const { active, chainId, library, account } = useActiveWeb3React()
-  useInvestmentInfo()
 
   const onClaim = () => {
-    const pool_contract = getContract(library, Offering, OFFERING_ADDRESS[chainId])
+    const pool_contract = getContract(
+      library,
+      Offering,
+      OFFERING_ADDRESS[chainId]
+    )
     pool_contract.methods
       .unlock()
       .send({ from: account })
@@ -41,7 +48,10 @@ const Detail = (props) => {
             <FormattedMessage id='detail_text_20' />
           </a>
           <p className='detail_allocation_coin'>
-            {formatAmount(currency_allocation, chainId === ChainId.RINKEBY ? 6 : 18)}
+            {formatAmount(
+              currency_allocation,
+              chainId === ChainId.RINKEBY ? 6 : 18
+            )}
             <span>（{currency_symbol}）</span>
           </p>
         </div>

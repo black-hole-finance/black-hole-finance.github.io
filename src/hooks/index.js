@@ -13,7 +13,7 @@ import {
   UserRejectedRequestError,
 } from '@web3-react/injected-connector'
 import { connectWallet } from '../utils'
-import {useQuota, useUnlocked, useVolume} from "./offering";
+import { useQuota, useUnlocked, useVolume } from './offering'
 
 export const useActiveWeb3React = () => {
   const context = useWeb3ReactCore()

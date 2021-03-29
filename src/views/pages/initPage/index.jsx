@@ -9,12 +9,16 @@ import { connect } from 'react-redux'
 
 const InitPage = (props) => {
   const { dispatch } = props
-  const { quota, token_allocation } = props.connectPools
+  const { token_allocation, currency_allocation } = props.connectPools
   const { active, chainId } = useActiveWeb3React()
   useEffect(() => {
-    dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
+    if (!active && props.location.pathname !== '/') {
+      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
+    } else {
+      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
+    }
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
-    if (active && props.location.pathname.indexOf('connectWallet') > -1) {
+    if (active && currency_allocation == 0 && props.location.pathname !== '/') {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
@@ -25,7 +29,7 @@ const InitPage = (props) => {
     } else {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
     }
-  }, [active, token_allocation, props.location])
+  }, [active, token_allocation, currency_allocation, props.location])
 
   return (
     <>
@@ -51,7 +55,7 @@ const InitPage = (props) => {
       {props.connectWalletSuccessFlag && (
         <div className='init_page_box'>
           <div className='connect_wallet_popup'>
-            <ConnectWalletSuccessPopup balance={quota} />
+            <ConnectWalletSuccessPopup />
           </div>
         </div>
       )}

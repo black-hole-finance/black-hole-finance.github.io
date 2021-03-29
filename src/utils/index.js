@@ -56,17 +56,16 @@ export function getScanLink(chainId, data, type) {
   }
 }
 
-
 export function connectWallet(activate, connector, deactivate) {
   return new Promise((reslove, reject) => {
     activate(connector, undefined, true)
       .then((e) => {
-        if(window.ethereum){
+        if (window.ethereum) {
           // 监听钱包事件
           console.log('注册事件')
-          const {ethereum} = window
+          const { ethereum } = window
           ethereum.on('accountsChanged', (accounts) => {
-            if(accounts.length === 0){
+            if (accounts.length === 0) {
               //无账号，则代表锁定了,主动断开
               deactivate()
             }
@@ -83,12 +82,12 @@ export function connectWallet(activate, connector, deactivate) {
           })
 
           ethereum.on('message', (e) => {
-            console.log('message',e)
+            console.log('message', e)
           })
 
-          ethereum.on('chainChanged', () => {
+          ethereum.on('networkChanged', () => {
             // 链改了，刷新网页
-            window.location.reload();
+            window.location.reload()
           })
         }
         reslove(e)

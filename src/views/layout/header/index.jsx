@@ -8,12 +8,11 @@ import { useActiveWeb3React } from '../../../hooks'
 import { message } from 'antd'
 import LogoText from '../../../assets/image/Logo_text@2x.png'
 import SmallLogo from '../../../assets/image/small_logo@2x.png'
-import {useBalance} from "../../../hooks/wallet";
+import { formatAmount } from '../../../utils/format'
 
 const Header = (props) => {
-  const { token_symbol } = props.connectPools
+  const { token_symbol, wallet_amount } = props.connectPools
   const { active, chainId, account } = useActiveWeb3React()
-  const balance = useBalance()
   return (
     <div className='header'>
       <div className='header_box'>
@@ -31,7 +30,7 @@ const Header = (props) => {
         {active && (
           <div className='header_connect_btn'>
             <span className='connect_text balance_text'>
-              {balance} {token_symbol}
+              {formatAmount(wallet_amount)} {token_symbol}
             </span>
             <span className='balance_line'></span>
             <span className='connect_text balance_text'>{account}</span>

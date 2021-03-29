@@ -16,14 +16,15 @@ import {
   useInactiveListener,
 } from '../../hooks'
 import { store } from '../../store'
+import { useInvestmentInfo } from '../../hooks/offering'
 import { injected } from '../../connectors'
 import { useEffect, useMemo } from 'react'
 import { useBalance } from '../../hooks/wallet'
-import {useQuota, useUnlocked, useVolume} from "../../hooks/offering";
+import { useQuota, useUnlocked, useVolume } from '../../hooks/offering'
 
 function App() {
+  useInvestmentInfo()
   const { activate, account } = useWeb3React()
-
   const tried = useEagerConnect()
   // const pools = usePoolsInfo(store.getState().pools.connectPools.address)
 
@@ -31,14 +32,14 @@ function App() {
     <Intl>
       <Router>
         <div>
-          <Header/>
+          <Header />
           <Switch>
             <Route exact path='/'>
               <Banner />
               <Home />
             </Route>
             <Route exact path='/investment'>
-              <Investment/>
+              <Investment />
             </Route>
           </Switch>
           <InitPage />
