@@ -16,6 +16,7 @@ const ConnectWallet = (props) => {
       .then(() => console.log)
       .catch(() => console.log)
   }
+
   return (
     <>
       <div className='connect_wallet_box'>

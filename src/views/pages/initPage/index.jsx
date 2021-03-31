@@ -12,11 +12,7 @@ const InitPage = (props) => {
   const { token_allocation, currency_allocation } = props.connectPools
   const { active, chainId } = useActiveWeb3React()
   useEffect(() => {
-    if (!active && props.location.pathname !== '/') {
-      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
-    } else {
-      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
-    }
+    dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
     if (active && currency_allocation == 0 && props.location.pathname !== '/') {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
