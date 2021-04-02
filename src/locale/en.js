@@ -67,5 +67,18 @@ const en_US = {
   detail_text_20: 'USDT Allocation',
   detail_text_21: 'BLACK Token Allocation',
   detail_text_22: 'Claim',
+  connect_wallet_text_1: 'Investment Portal',
+  connect_wallet_text_2:
+    'Welcome to Black Hole family! Please connect your wallet to see if you are eligible for contribution',
+  connect_wallet_text_3: 'Connect Wallet',
+  failePopup_text_1:
+    'Sorry, you are not eligable for this project since you are not involved in the whitelist.',
+  successPopup_text_1: 'Your Contribution Amount is : ',
+  successPopup_text_2: 'Approve',
+  successPopup_text_3: 'Contribute',
+  changeNetwork_text_1:
+    "We've detected that you need to switch your wallet's network from local to mainnet network for this Dapp.",
+  changeNetwork_text_2:
+    '*Some wallets may not support changing networks. If you can not change networks in your wallet you may consider switching to a different wallet.',
 }
 export default en_US
