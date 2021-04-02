@@ -49,13 +49,13 @@ const Banner = (props) => {
             >
               <FormattedMessage id='banner_text_5' />
             </a> */}
-            <a
+            {/* <a
               onClick={(e) => {
                 goDetail(e)
               }}
             >
               <FormattedMessage id='banner_text_6' />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
