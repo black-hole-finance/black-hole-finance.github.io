@@ -26,6 +26,12 @@ const Detail = (props) => {
   } = props.connectPools
   const { active, chainId, library, account } = useActiveWeb3React()
 
+  useEffect(() => {
+    if (props.location.pathname.indexOf('investment') > -1) {
+      window.document.getElementById('container').style.display = 'none'
+    }
+  }, [])
+
   const onClaim = () => {
     const pool_contract = getContract(
       library,

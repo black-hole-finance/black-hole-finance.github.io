@@ -16,6 +16,11 @@ const ConnectWallet = (props) => {
       .then(() => console.log)
       .catch(() => console.log)
   }
+  useEffect(() => {
+    if (!activate) {
+      window.document.getElementById('container').style.display = ''
+    }
+  }, [activate, props.location.pathname])
 
   return (
     <>

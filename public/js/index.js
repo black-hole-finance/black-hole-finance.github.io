@@ -16,7 +16,6 @@ if (width > 747) {
   var camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000)
   camera.position.z = 500
 }
-console.log(width, 'widthwidthwidth')
 
 system = new THREE.Group() // planetary system
 

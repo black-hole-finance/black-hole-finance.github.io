@@ -13,7 +13,6 @@
   .home {
     padding-top: 120px;
     position: relative;
-    height: 1180px;
     .home_title {
       padding: 0 10px;
       font-size: 36px;
@@ -24,12 +23,13 @@
       font-family: Jost-Bold;
     }
     .home_content {
-      padding: 100px 0 100px;
+      padding-top: 100px;
       height: 100%;
     }
     .home_content_text {
-      padding: 38px 42px 38px 30px;
-      width: 826px;
+      margin: 0 auto;
+      padding: 36px 70px 36px 56px;
+      width: 980px;
       font-size: 26px;
       line-height: 36px;
       font-weight: 500;
@@ -38,12 +38,10 @@
       border-radius: 20px;
     }
     .home_sketch_map {
-      position: absolute;
-      top: 200px;
-      left: 50%;
-      transform: translateX(-50%);
+      display: inline-block;
+      margin: 86px auto 62px;
       width: 1200px;
-      height: 608px;
+      height: 546px;
       background: url('../../../assets/image/sketch_map@2x.png') no-repeat;
       background-size: 100% 100%;
     }
@@ -196,12 +194,13 @@
       font-family: Jost-Bold;
     }
     .home_content {
-      padding: 136px 0 100px;
+      padding-top: 100px;
       height: 100%;
     }
     .home_content_text {
-      padding: 38px 42px 38px 30px;
-      width: 826px;
+      margin: 0 auto;
+      padding: 36px 70px 36px 56px;
+      width: 980px;
       font-size: 26px;
       line-height: 36px;
       font-weight: 500;
@@ -210,14 +209,14 @@
       border-radius: 20px;
     }
     .home_sketch_map {
-      position: absolute;
-      top: 200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1200px;
-      height: 608px;
-      background: url('../../../assets/image/sketch_map@2x.png') no-repeat;
-      background-size: 100% 100%;
+      .home_sketch_map {
+        display: inline-block;
+        margin: 86px auto 62px;
+        width: 1200px;
+        height: 546px;
+        background: url('../../../assets/image/sketch_map@2x.png') no-repeat;
+        background-size: 100% 100%;
+      }
     }
   }
   .roadmap {

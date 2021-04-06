@@ -10,8 +10,16 @@ import Helmet from '../../../assets/image/helmet@2x.png'
 import WeStarter from '../../../assets/image/WeStarter@2x.png'
 import Metamask from '../../../assets/image/Metamask@2x.png'
 import Trust_wallet from '../../../assets/image/Trust_wallet@2x.png'
+import Antimatter from '../../../assets/image/antimatter@2x.png'
 
 const Home = (props) => {
+  useEffect(() => {
+    if (props.location.pathname.indexOf('investment') > -1) {
+      window.document.getElementById('container').style.display = 'none'
+    } else {
+      window.document.getElementById('container').style.display = ''
+    }
+  }, [props.location.pathname])
   return (
     <>
       <div className='home_box'>
@@ -100,28 +108,26 @@ const Home = (props) => {
 
       <div className='backed_by'>
         <div className='content'>
-          {
-            false && (
-                <h2 className='backed_by_title'>
-                  <FormattedMessage id='home_text_25' />
-                </h2>
-            )
-          }
+          {false && (
+            <h2 className='backed_by_title'>
+              <FormattedMessage id='home_text_25' />
+            </h2>
+          )}
 
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
               <img src={Bounce} />
               <span className='line'></span>
-              <img className='polkastarter_png' src={Polkastarter} />
+              <img className='polkastarter_png' src={WeStarter} />
               <span className='line'></span>
               <img src={Helmet} />
             </div>
             <div className='backed_by_content_box'>
-              <img src={WeStarter} />
+              <img src={Antimatter} />
               <span className='line'></span>
               <img src={Metamask} />
-              <span className='line'></span>
-              <img className='trust_wallet_png' src={Trust_wallet} />
+              {/* <span className='line'></span>
+              <img className='trust_wallet_png' src={Trust_wallet} /> */}
             </div>
           </div>
         </div>
