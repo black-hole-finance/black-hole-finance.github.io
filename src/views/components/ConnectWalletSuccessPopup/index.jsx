@@ -43,6 +43,15 @@ const ConnectWalletSuccessPopup = (props) => {
     }
   }, [allowance])
 
+  useEffect(() => {
+    if (parseInt(allowance) > 0) {
+      // 如果大于0
+      setBtnFlag(1)
+    } else {
+      setBtnFlag(0)
+    }
+  }, [onApproveLoadingFlag])
+
   // 授权
   const onApprove = () => {
     if (btnFlag - 0 || onApproveLoadingFlag) return
@@ -56,9 +65,12 @@ const ConnectWalletSuccessPopup = (props) => {
       .send({ from: account }, () => {
         setOnApproveLoadingFlag(true)
       })
-      .then((re) => {
-        btnFlag - 0 !== 0 && setOnApproveLoadingFlag(false)
+      .on('transactionHash', (re) => {
+        setOnApproveLoadingFlag(false)
         console.log(re)
+      })
+      .on('error', () => {
+        setOnApproveLoadingFlag(false)
       })
   }
 
@@ -75,11 +87,14 @@ const ConnectWalletSuccessPopup = (props) => {
       .send({ from: account }, () => {
         setLoadingFlag(true)
       })
-      .then((re) => {
+      .on('transactionHash', (re) => {
         console.log(re)
         setLoadingFlag(false)
         // 当募资完成后关闭弹框
         dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
+      })
+      .on('error', () => {
+        setLoadingFlag(false)
       })
   }
 
