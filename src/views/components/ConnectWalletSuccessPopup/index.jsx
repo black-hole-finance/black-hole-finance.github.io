@@ -54,7 +54,7 @@ const ConnectWalletSuccessPopup = (props) => {
 
   // 授权
   const onApprove = () => {
-    if (btnFlag - 0 || onApproveLoadingFlag) return
+    // if (btnFlag - 0 || onApproveLoadingFlag) return
     let pool_contract = getContract(library, ERC20, USDT_ADDRESS[chainId])
     pool_contract.methods
       .approve(
@@ -65,9 +65,8 @@ const ConnectWalletSuccessPopup = (props) => {
       .send({ from: account }, () => {
         setOnApproveLoadingFlag(true)
       })
-      .on('transactionHash', (re) => {
-        setOnApproveLoadingFlag(false)
-        console.log(re)
+      .on('confirmation', (confirmationNumber) => {
+        confirmationNumber - 0 === 0 && setOnApproveLoadingFlag(false)
       })
       .on('error', () => {
         setOnApproveLoadingFlag(false)
@@ -87,9 +86,9 @@ const ConnectWalletSuccessPopup = (props) => {
       .send({ from: account }, () => {
         setLoadingFlag(true)
       })
-      .on('transactionHash', (re) => {
-        console.log(re)
-        setLoadingFlag(false)
+      .on('confirmation', (confirmationNumber) => {
+        console.log(confirmationNumber)
+        confirmationNumber - 0 === 0 && setLoadingFlag(false)
         // 当募资完成后关闭弹框
         dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
       })
