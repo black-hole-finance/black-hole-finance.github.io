@@ -12,22 +12,20 @@ const InitPage = (props) => {
   const { token_allocation, currency_allocation } = props.connectPools
   const { active, chainId } = useActiveWeb3React()
   useEffect(() => {
-    console.log(
-      active && currency_allocation == 0 && props.location.pathname !== '/',
-      currency_allocation,
-      token_allocation,
-      'currency_allocation'
-    )
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
-    // if (active && currency_allocation == 0 && props.location.pathname !== '/') {
-    //   dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
-    // } else {
-    //   dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
-    // }
+    if (active && currency_allocation == 0 && props.location.pathname !== '/') {
+      dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
+    } else {
+      dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
+    }
     // 如果链接钱包成功后，在 connectWallet 页面时，展示余额信息 弹框提示
-    // currency_allocation - 0 !== 0 &&
-    if (active && token_allocation == 0 && props.location.pathname !== '/') {
+    if (
+      active &&
+      currency_allocation - 0 !== 0 &&
+      token_allocation == 0 &&
+      props.location.pathname !== '/'
+    ) {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
