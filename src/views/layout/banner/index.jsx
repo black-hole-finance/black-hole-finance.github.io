@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { withRouter } from 'react-router'
+import { connect } from 'react-redux'
+import { useActiveWeb3React } from '../../../hooks'
+import { Web3ReactActivate } from '../../../connectors'
+
 import './index.less'
 
 const Banner = (props) => {
@@ -13,7 +17,7 @@ const Banner = (props) => {
   }
 
   const goDetail = (e) => {
-    props.history.push(`/detail/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX`)
+    props.history.push(`/investment`)
   }
 
   return (
@@ -26,12 +30,6 @@ const Banner = (props) => {
             </h2>
             <p className='banner_text_top'>
               <FormattedMessage id='banner_text_2' />
-            </p>
-            <p className='banner_text'>
-              <FormattedMessage id='banner_text_3' />
-            </p>
-            <p className='banner_text'>
-              <FormattedMessage id='banner_text_7' />
             </p>
           </div>
           <div className='banner_btn'>
@@ -47,7 +45,7 @@ const Banner = (props) => {
             </a> */}
             {/* <a
               onClick={(e) => {
-                // goDetail(e)
+                goDetail(e)
               }}
             >
               <FormattedMessage id='banner_text_6' />
@@ -59,4 +57,6 @@ const Banner = (props) => {
   )
 }
 
-export default withRouter(Banner)
+export default connect((store) => ({
+  connectPools: store.pools.connectPools,
+}))(withRouter(Banner))

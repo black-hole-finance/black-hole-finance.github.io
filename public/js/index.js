@@ -8,10 +8,13 @@ container.appendChild(renderer.domElement)
 
 var scene = new THREE.Scene()
 
-var camera = new THREE.PerspectiveCamera(50, aspect, 0.1, 1000)
-camera.position.z = 500
 if (width > 747) {
+  var camera = new THREE.PerspectiveCamera(50, aspect, 0.1, 1000)
+  camera.position.z = 500
   camera.position.set(-100, 0, 500)
+} else {
+  var camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000)
+  camera.position.z = 500
 }
 console.log(width, 'widthwidthwidth')
 
