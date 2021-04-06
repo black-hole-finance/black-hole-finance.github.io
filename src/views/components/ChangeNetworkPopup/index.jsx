@@ -11,7 +11,7 @@ const ChangeNetworkPopup = () => {
         <FormattedMessage id='changeNetwork_text_1' />
       </p>
       <p style={{ marginTop: '20px' }}>
-        <FormattedMessage id='changeNetwork_text_1' />
+        <FormattedMessage id='changeNetwork_text_2' />
       </p>
     </div>
   )

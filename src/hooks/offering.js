@@ -19,7 +19,7 @@ import { useTokenBalance } from './wallet'
  * @returns {string}
  */
 export const useQuota = () => {
-  const { account, chainId } = useActiveWeb3React()
+  const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
   const contract = useContract(
     chainId && OFFERING_ADDRESS[chainId],
@@ -28,7 +28,7 @@ export const useQuota = () => {
   )
   const [quota, setQuota] = useState('0')
   useEffect(() => {
-    if (account) {
+    if (account && contract) {
       contract.getQuota(account).then((quota) => {
         setQuota(quota.toString())
       })
@@ -51,7 +51,7 @@ export const useVolume = () => {
   )
   const [volume, setVolume] = useState('0')
   useEffect(() => {
-    if (account) {
+    if (account && contract) {
       contract.getVolume(account).then((volume) => {
         setVolume(volume.toString())
       })
@@ -74,13 +74,32 @@ export const useUnlocked = () => {
   )
   const [unlocked, setUnlocked] = useState('0')
   useEffect(() => {
-    if (account) {
+    if (account && contract) {
       contract.unlocked(account).then((unlocked) => {
         setUnlocked(unlocked.toString())
       })
     }
   }, [account, blockHeight])
   return unlocked
+}
+
+export const useUnlockCapacity = () => {
+  const { account, chainId } = useActiveWeb3React()
+  const blockHeight = useBlockHeight()
+  const contract = useContract(
+    chainId && OFFERING_ADDRESS[chainId],
+    OFFERING_ABI,
+    false
+  )
+  const [unlockCapacity, setUnlockCapacity] = useState('0')
+  useEffect(() => {
+    if (account && contract) {
+      contract.unlockCapacity(account).then((unlocked) => {
+        setUnlockCapacity(unlocked.toString())
+      })
+    }
+  }, [account, blockHeight])
+  return unlockCapacity
 }
 
 /**
@@ -90,7 +109,7 @@ export const useInvestmentInfo = () => {
   const { chainId } = useActiveWeb3React()
   const quota = useQuota()
   const volume = useVolume()
-  const unlocked = useUnlocked()
+  const unlockCapacity = useUnlockCapacity()
   const token_balance = useTokenBalance(BLACK_ADDRESS[chainId])
   useEffect(() => {
     store.dispatch({
@@ -99,8 +118,8 @@ export const useInvestmentInfo = () => {
         wallet_amount: token_balance,
         currency_allocation: quota,
         token_allocation: volume,
-        cliamable_balance: unlocked,
+        cliamable_balance: unlockCapacity,
       }),
     })
-  }, [quota, volume, unlocked, token_balance])
+  }, [quota, volume, unlockCapacity, token_balance])
 }
