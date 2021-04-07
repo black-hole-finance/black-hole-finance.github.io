@@ -19,6 +19,20 @@ import PowerLaw from '../../../assets/image/power_law@2x.png'
 import ShinChan from '../../../assets/image/shin_chan@2x.png'
 import X21 from '../../../assets/image/x21@2x.png'
 
+import BounceSmall from '../../../assets/image/Bounce_small@2x.png'
+import Au21Small from '../../../assets/image/au21_small@2x.png'
+import HelmetSmall from '../../../assets/image/helmet_small@2x.png'
+import WeStarterSmall from '../../../assets/image/WeStarter_small@2x.png'
+import BigcoiubSmall from '../../../assets/image/bigcoiub_small@2x.png'
+import ChainswapSmall from '../../../assets/image/chainswap_small@2x.png'
+import CryptoTimesSmall from '../../../assets/image/crypto_times_small@2x.png'
+import NGCSmall from '../../../assets/image/NGC_small@2x.png'
+import OasisCapitalSmall from '../../../assets/image/oasis_capital_small@2x.png'
+import OxAlphaCapitalSmall from '../../../assets/image/OxAlpha_capital_small@2x.png'
+import PowerLawSmall from '../../../assets/image/power_law_small@2x.png'
+import ShinChanSmall from '../../../assets/image/shin_chan_small@2x.png'
+import X21Small from '../../../assets/image/x21_small@2x.png'
+
 const Home = (props) => {
   useEffect(() => {
     if (props.location.pathname.indexOf('investment') > -1) {
@@ -122,23 +136,23 @@ const Home = (props) => {
             <div className='backed_by_content_box'>
               <img src={NGC} />
               <span className='line'></span>
-              <img className='polkastarter_png' src={PowerLaw} />
+              <img src={PowerLaw} />
               <span className='line'></span>
-              <img className='au_21' src={Au21} />
+              <img src={Au21} />
             </div>
             <div className='backed_by_content_box'>
-              <a className='x21'></a>
+              <img src={X21} />
               <span className='line'></span>
-              <img className='shin_chan' src={ShinChan} />
+              <img src={ShinChan} />
               <span className='line'></span>
-              <img className='trust_wallet_png' src={OasisCapital} />
+              <img src={OasisCapital} />
             </div>
             <div className='backed_by_content_box'>
               <img src={CryptoTimes} />
               <span className='line'></span>
               <img src={OxAlphaCapital} />
               <span className='line'></span>
-              <img className='trust_wallet_png' src={Bigcoiub} />
+              <img src={Bigcoiub} />
             </div>
           </div>
         </div>
@@ -150,7 +164,7 @@ const Home = (props) => {
             <div className='backed_by_content_box'>
               <img src={Bounce} />
               <span className='line'></span>
-              <img className='polkastarter_png' src={WeStarter} />
+              <img src={WeStarter} />
             </div>
             <div className='backed_by_content_box'>
               <img src={Helmet} />
@@ -167,47 +181,47 @@ const Home = (props) => {
           </h2>
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
-              <img src={NGC} />
+              <img src={NGCSmall} />
               <span className='line'></span>
-              <img className='polkastarter_png' src={PowerLaw} />
+              <img src={PowerLawSmall} />
             </div>
             <div className='backed_by_content_box'>
-              <img className='x21' src={X21} />
+              <img src={X21Small} />
               <span className='line'></span>
-              <img src={Au21} />
+              <img src={Au21Small} />
             </div>
             <div className='backed_by_content_box'>
-              <img src={ShinChan} />
+              <img src={ShinChanSmall} />
               <span className='line'></span>
-              <img src={OasisCapital} />
+              <img src={OasisCapitalSmall} />
             </div>
             <div className='backed_by_content_box'>
-              <img src={CryptoTimes} />
+              <img src={CryptoTimesSmall} />
               <span className='line'></span>
-              <img className='trust_wallet_png' src={OxAlphaCapital} />
+              <img src={OxAlphaCapitalSmall} />
             </div>
             <div
               className='backed_by_content_box'
               style={{ justifyContent: 'left' }}
             >
-              <img className='trust_wallet_png' src={Bigcoiub} />
+              <img src={BigcoiubSmall} />
             </div>
           </div>
         </div>
         <div className='content'>
           <h2 className='backed_by_title backed_by_title_support'>
-            <FormattedMessage id='home_text_25' />
+            <FormattedMessage id='home_text_26' />
           </h2>
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
-              <img src={Bounce} />
+              <img src={BounceSmall} />
               <span className='line'></span>
-              <img className='polkastarter_png' src={WeStarter} />
+              <img src={WeStarterSmall} />
             </div>
             <div className='backed_by_content_box'>
-              <img src={Helmet} />
+              <img src={HelmetSmall} />
               <span className='line'></span>
-              <img src={Chainswap} />
+              <img src={ChainswapSmall} />
             </div>
           </div>
         </div>
