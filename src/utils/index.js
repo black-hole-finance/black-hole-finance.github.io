@@ -69,6 +69,8 @@ export function connectWallet(activate, connector, deactivate) {
               //无账号，则代表锁定了,主动断开
               deactivate()
             }
+            // 账号改了，刷新网页
+            window.location.reload()
           })
 
           window.ethereum.on('disconnect', () => {
