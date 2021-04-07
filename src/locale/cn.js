@@ -42,6 +42,7 @@ const zh_CN = {
   home_text_23: 'Enter Pool',
   home_text_24: 'ComingSoon',
   home_text_25: 'Backed By',
+  home_text_26: 'Support Partners',
   detail_text_1:
     'This is a smart contract address, please do not transfer any token into it.',
   detail_text_2: 'Seed Round',
