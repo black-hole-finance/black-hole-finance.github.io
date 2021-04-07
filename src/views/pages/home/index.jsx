@@ -158,7 +158,7 @@ const Home = (props) => {
         </div>
         <div className='content'>
           <h2 className='backed_by_title backed_by_title_support'>
-            <FormattedMessage id='home_text_25' />
+            <FormattedMessage id='home_text_26' />
           </h2>
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
