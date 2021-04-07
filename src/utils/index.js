@@ -60,32 +60,32 @@ export function connectWallet(activate, connector, deactivate) {
   return new Promise((reslove, reject) => {
     activate(connector, undefined, true)
       .then((e) => {
-        if (window.ethereum) {
+        if (window.ethereum.on) {
           // 监听钱包事件
           console.log('注册事件')
-          const { ethereum } = window
-          ethereum.on('accountsChanged', (accounts) => {
+          // const { ethereum } = window
+          window.ethereum.on('accountsChanged', (accounts) => {
             if (accounts.length === 0) {
               //无账号，则代表锁定了,主动断开
               deactivate()
             }
           })
 
-          ethereum.on('disconnect', () => {
+          window.ethereum.on('disconnect', () => {
             // 断开连接
             deactivate()
           })
 
-          ethereum.on('close', () => {
+          window.ethereum.on('close', () => {
             // 断开连接
             deactivate()
           })
 
-          ethereum.on('message', (e) => {
+          window.ethereum.on('message', (e) => {
             console.log('message', e)
           })
 
-          ethereum.on('networkChanged', () => {
+          window.ethereum.on('networkChanged', () => {
             // 链改了，刷新网页
             window.location.reload()
           })

@@ -33,6 +33,7 @@ const Detail = (props) => {
   }, [])
 
   const onClaim = () => {
+    if (formatAmount(cliamable_balance) - 0 === 0) return
     const pool_contract = getContract(
       library,
       Offering,
@@ -120,7 +121,13 @@ const Detail = (props) => {
                   <span>
                     {formatAmount(cliamable_balance)} {token_symbol}
                   </span>
-                  <a onClick={onClaim}>
+                  <a
+                    className={cs(
+                      formatAmount(cliamable_balance) - 0 === 0 &&
+                        'disable_style'
+                    )}
+                    onClick={onClaim}
+                  >
                     <FormattedMessage id='detail_text_22' />
                   </a>
                 </p>
@@ -129,7 +136,13 @@ const Detail = (props) => {
           </tr>
         </tbody>
       </table>
-      <a className='detail_claim_btn' onClick={onClaim}>
+      <a
+        className={cs(
+          formatAmount(cliamable_balance) - 0 === 0 && 'disable_style',
+          'detail_claim_btn'
+        )}
+        onClick={onClaim}
+      >
         <FormattedMessage id='detail_text_22' />
       </a>
     </div>

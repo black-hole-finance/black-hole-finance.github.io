@@ -5,12 +5,19 @@ import { FormattedMessage } from 'react-intl'
 import Footer from '../../layout/footer'
 import './index.less'
 import Bounce from '../../../assets/image/Bounce@2x.png'
-import Polkastarter from '../../../assets/image/polkastarter@2x.png'
+import Au21 from '../../../assets/image/au21@2x.png'
 import Helmet from '../../../assets/image/helmet@2x.png'
 import WeStarter from '../../../assets/image/WeStarter@2x.png'
 import Metamask from '../../../assets/image/Metamask@2x.png'
-import Trust_wallet from '../../../assets/image/Trust_wallet@2x.png'
-import Antimatter from '../../../assets/image/antimatter@2x.png'
+import Bigcoiub from '../../../assets/image/bigcoiub@2x.png'
+import Chainswap from '../../../assets/image/chainswap@2x.png'
+import CryptoTimes from '../../../assets/image/crypto_times@2x.png'
+import NGC from '../../../assets/image/NGC@2x.png'
+import OasisCapital from '../../../assets/image/oasis_capital@2x.png'
+import OxAlphaCapital from '../../../assets/image/OxAlpha_capital@2x.png'
+import PowerLaw from '../../../assets/image/power_law@2x.png'
+import ShinChan from '../../../assets/image/shin_chan@2x.png'
+import X21 from '../../../assets/image/x21@2x.png'
 
 const Home = (props) => {
   useEffect(() => {
@@ -106,28 +113,101 @@ const Home = (props) => {
         </div>
       </div>
 
-      <div className='backed_by'>
+      <div className='backed_by backed_by_big'>
         <div className='content'>
-          {false && (
-            <h2 className='backed_by_title'>
-              <FormattedMessage id='home_text_25' />
-            </h2>
-          )}
-
+          <h2 className='backed_by_title'>
+            <FormattedMessage id='home_text_25' />
+          </h2>
+          <div className='backed_by_content'>
+            <div className='backed_by_content_box'>
+              <img src={NGC} />
+              <span className='line'></span>
+              <img className='polkastarter_png' src={PowerLaw} />
+              <span className='line'></span>
+              <img className='au_21' src={Au21} />
+            </div>
+            <div className='backed_by_content_box'>
+              <a className='x21'></a>
+              <span className='line'></span>
+              <img className='shin_chan' src={ShinChan} />
+              <span className='line'></span>
+              <img className='trust_wallet_png' src={OasisCapital} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={CryptoTimes} />
+              <span className='line'></span>
+              <img src={OxAlphaCapital} />
+              <span className='line'></span>
+              <img className='trust_wallet_png' src={Bigcoiub} />
+            </div>
+          </div>
+        </div>
+        <div className='content'>
+          <h2 className='backed_by_title backed_by_title_support'>
+            <FormattedMessage id='home_text_25' />
+          </h2>
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
               <img src={Bounce} />
               <span className='line'></span>
               <img className='polkastarter_png' src={WeStarter} />
-              <span className='line'></span>
-              <img src={Helmet} />
             </div>
             <div className='backed_by_content_box'>
-              <img src={Antimatter} />
+              <img src={Helmet} />
               <span className='line'></span>
-              <img src={Metamask} />
-              {/* <span className='line'></span>
-              <img className='trust_wallet_png' src={Trust_wallet} /> */}
+              <img src={Chainswap} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className='backed_by backed_by_small'>
+        <div className='content'>
+          <h2 className='backed_by_title'>
+            <FormattedMessage id='home_text_25' />
+          </h2>
+          <div className='backed_by_content'>
+            <div className='backed_by_content_box'>
+              <img src={NGC} />
+              <span className='line'></span>
+              <img className='polkastarter_png' src={PowerLaw} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img className='x21' src={X21} />
+              <span className='line'></span>
+              <img src={Au21} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={ShinChan} />
+              <span className='line'></span>
+              <img src={OasisCapital} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={CryptoTimes} />
+              <span className='line'></span>
+              <img className='trust_wallet_png' src={OxAlphaCapital} />
+            </div>
+            <div
+              className='backed_by_content_box'
+              style={{ justifyContent: 'left' }}
+            >
+              <img className='trust_wallet_png' src={Bigcoiub} />
+            </div>
+          </div>
+        </div>
+        <div className='content'>
+          <h2 className='backed_by_title backed_by_title_support'>
+            <FormattedMessage id='home_text_25' />
+          </h2>
+          <div className='backed_by_content'>
+            <div className='backed_by_content_box'>
+              <img src={Bounce} />
+              <span className='line'></span>
+              <img className='polkastarter_png' src={WeStarter} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={Helmet} />
+              <span className='line'></span>
+              <img src={Chainswap} />
             </div>
           </div>
         </div>

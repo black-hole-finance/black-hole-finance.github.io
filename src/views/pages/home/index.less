@@ -51,9 +51,9 @@
     height: 860px;
     .roadmap_title {
       padding: 0 10px;
-      font-size: 60px;
+      font-size: 36px;
       color: #1e1e1e;
-      line-height: 70px;
+      line-height: 50px;
       text-align: center;
     }
     .roadmap_png {
@@ -61,7 +61,7 @@
     }
     .roadmap_timeline {
       position: relative;
-      margin: 82px auto 36px;
+      margin: 76px auto 36px;
       width: 100%;
       height: 4px;
       background-color: rgba(13, 13, 13, 0.6);
@@ -122,26 +122,33 @@
       }
     }
   }
+  .backed_by_small {
+    display: none;
+  }
   .backed_by {
-    padding: 122px 0 40px;
+    padding: 108px 0 40px;
     background-color: #000;
     .backed_by_title {
-      font-size: 60px;
-      line-height: 60px;
+      font-size: 36px;
+      line-height: 50px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 256px;
+    }
     .backed_by_content {
-      padding: 140px 0 0;
+      padding: 104px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 64px;
         img {
           display: inline-block;
           width: 240px;
-          height: 46px;
+          height: 50px;
           &:hover {
             cursor: pointer;
           }
@@ -153,14 +160,29 @@
           height: 70px;
           background-color: #3c3c3c;
         }
-        &:nth-child(2) {
-          margin-top: 64px;
+        &:last-child {
+          margin-bottom: 0;
         }
         .polkastarter_png {
           height: 36px;
         }
         .trust_wallet_png {
           height: 60px;
+        }
+        .au_21 {
+          height: 32px;
+        }
+        .x21 {
+          display: inline-block;
+          width: 240px;
+          height: 56px;
+          background: url('../../../assets/image/x21@2x.png') no-repeat;
+          background-size: 90px 56px;
+          background-position: 50% 0;
+        }
+        .shin_chan {
+          width: 214px;
+          height: 30px;
         }
       }
     }
@@ -224,9 +246,9 @@
     height: 860px;
     .roadmap_title {
       padding: 0 10px;
-      font-size: 60px;
+      font-size: 36px;
       color: #1e1e1e;
-      line-height: 70px;
+      line-height: 50px;
       text-align: center;
     }
     .roadmap_png {
@@ -234,7 +256,7 @@
     }
     .roadmap_timeline {
       position: relative;
-      margin: 82px auto 36px;
+      margin: 76px auto 36px;
       width: 100%;
       height: 4px;
       background-color: rgba(13, 13, 13, 0.6);
@@ -295,23 +317,30 @@
       }
     }
   }
+  .backed_by_small {
+    display: none;
+  }
   .backed_by {
-    padding: 122px 0 40px;
+    padding: 108px 0 40px;
     min-width: 1200px;
     background-color: #000;
     .backed_by_title {
-      font-size: 60px;
-      line-height: 60px;
+      font-size: 36px;
+      line-height: 50px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 256px;
+    }
     .backed_by_content {
-      padding: 140px 0 0;
+      padding: 104px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 64px;
         img {
           display: inline-block;
           width: 240px;
@@ -333,8 +362,11 @@
         .trust_wallet_png {
           height: 60px;
         }
-        &:nth-child(2) {
-          margin-top: 64px;
+        .au_21 {
+          height: 32px;
+        }
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -409,35 +441,55 @@
       display: none;
     }
   }
+  .backed_by_big {
+    display: none;
+  }
   .backed_by {
-    padding: 37px 15px 24px;
+    padding: 37px 45px 24px;
     background-color: #000;
     .backed_by_title {
       font-size: 24px;
+      line-height: 30px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 82px;
+    }
     .backed_by_content {
-      padding: 12px 0 0;
+      padding: 42px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 64px;
         img {
-          display: block;
-          margin: 27px auto 0;
-          padding: 16px 34px;
-          width: 230px;
-          height: 70px;
-          border: 1px solid #494949;
-          border-radius: 5px;
+          display: inline-block;
+          width: 110px;
+          height: 36px;
           &:hover {
             cursor: pointer;
           }
         }
+        .line {
+          display: inline-block;
+          margin: 0 28px;
+          width: 1px;
+          height: 24px;
+          background-color: #3c3c3c;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
         .polkastarter_png {
-          height: 60px;
+          height: 36px;
         }
         .trust_wallet_png {
-          height: 80px;
+          height: 60px;
+        }
+        .au_21 {
+          height: 32px;
         }
       }
     }
@@ -512,35 +564,55 @@
       display: none;
     }
   }
+  .backed_by_big {
+    display: none;
+  }
   .backed_by {
-    padding: 37px 15px 24px;
+    padding: 37px 45px 24px;
     background-color: #000;
     .backed_by_title {
       font-size: 24px;
+      line-height: 30px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 82px;
+    }
     .backed_by_content {
-      padding: 12px 0 0;
+      padding: 42px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 64px;
         img {
-          display: block;
-          margin: 27px auto 0;
-          padding: 16px 34px;
-          width: 230px;
-          height: 70px;
-          border: 1px solid #494949;
-          border-radius: 5px;
+          display: inline-block;
+          width: 110px;
+          height: 36px;
           &:hover {
             cursor: pointer;
           }
         }
+        .line {
+          display: inline-block;
+          margin: 0 28px;
+          width: 1px;
+          height: 24px;
+          background-color: #3c3c3c;
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
         .polkastarter_png {
-          height: 60px;
+          height: 36px;
         }
         .trust_wallet_png {
-          height: 80px;
+          height: 60px;
+        }
+        .au_21 {
+          height: 32px;
         }
       }
     }
