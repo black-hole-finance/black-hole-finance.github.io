@@ -5,29 +5,31 @@
     height: 100%;
   }
   .home_box {
-    background: url('../../../assets/image/home_bg@2x.png') no-repeat;
+    // background: url('../../../assets/image/home_bg@2x.png') no-repeat;
     background-size: 1646px 1428px;
     background-color: #ececec;
     background-position: center 298px;
   }
   .home {
-    padding-top: 80px;
+    padding-top: 120px;
     position: relative;
-    height: 1180px;
     .home_title {
       padding: 0 10px;
-      font-size: 60px;
+      font-size: 36px;
       color: #1e1e1e;
-      line-height: 70px;
+      line-height: 50px;
       text-align: center;
+      font-weight: bold;
+      font-family: Jost-Bold;
     }
     .home_content {
-      padding: 136px 0 100px;
+      padding-top: 100px;
       height: 100%;
     }
     .home_content_text {
-      padding: 38px 42px 38px 30px;
-      width: 826px;
+      margin: 0 auto;
+      padding: 36px 70px 36px 56px;
+      width: 980px;
       font-size: 26px;
       line-height: 36px;
       font-weight: 500;
@@ -36,12 +38,10 @@
       border-radius: 20px;
     }
     .home_sketch_map {
-      position: absolute;
-      top: 200px;
-      left: 50%;
-      transform: translateX(-50%);
+      display: inline-block;
+      margin: 86px auto 62px;
       width: 1200px;
-      height: 608px;
+      height: 546px;
       background: url('../../../assets/image/sketch_map@2x.png') no-repeat;
       background-size: 100% 100%;
     }
@@ -51,9 +51,9 @@
     height: 860px;
     .roadmap_title {
       padding: 0 10px;
-      font-size: 60px;
+      font-size: 36px;
       color: #1e1e1e;
-      line-height: 70px;
+      line-height: 50px;
       text-align: center;
     }
     .roadmap_png {
@@ -61,7 +61,7 @@
     }
     .roadmap_timeline {
       position: relative;
-      margin: 82px auto 36px;
+      margin: 76px auto 36px;
       width: 100%;
       height: 4px;
       background-color: rgba(13, 13, 13, 0.6);
@@ -122,45 +122,46 @@
       }
     }
   }
+  .backed_by_small {
+    display: none;
+  }
   .backed_by {
-    padding: 122px 0 40px;
+    padding: 108px 0 40px;
     background-color: #000;
     .backed_by_title {
-      font-size: 60px;
-      line-height: 60px;
+      font-size: 36px;
+      line-height: 50px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 236px;
+    }
     .backed_by_content {
-      padding: 140px 0 0;
+      padding: 104px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 64px;
         img {
           display: inline-block;
-          width: 240px;
-          height: 46px;
+          width: 340px;
+          height: 90px;
           &:hover {
             cursor: pointer;
           }
         }
         .line {
           display: inline-block;
-          margin: 0 116px;
+          margin: 0 26px;
           width: 2px;
-          height: 70px;
+          height: 60px;
           background-color: #3c3c3c;
         }
-        &:nth-child(2) {
-          margin-top: 64px;
-        }
-        .polkastarter_png {
-          height: 36px;
-        }
-        .trust_wallet_png {
-          height: 60px;
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -175,29 +176,32 @@
   }
   .home_box {
     min-width: 1200px;
-    background: url('../../../assets/image/home_bg@2x.png') no-repeat;
+    // background: url('../../../assets/image/home_bg@2x.png') no-repeat;
     background-size: 1646px 1428px;
     background-color: #ececec;
     background-position: center 298px;
   }
   .home {
-    padding-top: 80px;
+    padding-top: 120px;
     position: relative;
     height: 1180px;
     .home_title {
       padding: 0 10px;
-      font-size: 60px;
+      font-size: 36px;
       color: #1e1e1e;
-      line-height: 70px;
+      line-height: 50px;
       text-align: center;
+      font-weight: bold;
+      font-family: Jost-Bold;
     }
     .home_content {
-      padding: 136px 0 100px;
+      padding-top: 100px;
       height: 100%;
     }
     .home_content_text {
-      padding: 38px 42px 38px 30px;
-      width: 826px;
+      margin: 0 auto;
+      padding: 36px 70px 36px 56px;
+      width: 980px;
       font-size: 26px;
       line-height: 36px;
       font-weight: 500;
@@ -206,14 +210,14 @@
       border-radius: 20px;
     }
     .home_sketch_map {
-      position: absolute;
-      top: 200px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1200px;
-      height: 608px;
-      background: url('../../../assets/image/sketch_map@2x.png') no-repeat;
-      background-size: 100% 100%;
+      .home_sketch_map {
+        display: inline-block;
+        margin: 86px auto 62px;
+        width: 1200px;
+        height: 546px;
+        background: url('../../../assets/image/sketch_map@2x.png') no-repeat;
+        background-size: 100% 100%;
+      }
     }
   }
   .roadmap {
@@ -221,9 +225,9 @@
     height: 860px;
     .roadmap_title {
       padding: 0 10px;
-      font-size: 60px;
+      font-size: 36px;
       color: #1e1e1e;
-      line-height: 70px;
+      line-height: 50px;
       text-align: center;
     }
     .roadmap_png {
@@ -231,7 +235,7 @@
     }
     .roadmap_timeline {
       position: relative;
-      margin: 82px auto 36px;
+      margin: 76px auto 36px;
       width: 100%;
       height: 4px;
       background-color: rgba(13, 13, 13, 0.6);
@@ -292,46 +296,47 @@
       }
     }
   }
+  .backed_by_small {
+    display: none;
+  }
   .backed_by {
-    padding: 122px 0 40px;
+    padding: 108px 0 40px;
     min-width: 1200px;
     background-color: #000;
     .backed_by_title {
-      font-size: 60px;
-      line-height: 60px;
+      font-size: 36px;
+      line-height: 50px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 236px;
+    }
     .backed_by_content {
-      padding: 140px 0 0;
+      padding: 104px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
         display: flex;
         justify-content: center;
         align-items: center;
+        margin-bottom: 64px;
         img {
           display: inline-block;
-          width: 240px;
-          height: 46px;
+          width: 340px;
+          height: 90px;
           &:hover {
             cursor: pointer;
           }
         }
         .line {
           display: inline-block;
-          margin: 0 116px;
+          margin: 0 26px;
           width: 2px;
-          height: 70px;
+          height: 60px;
           background-color: #3c3c3c;
         }
-        .polkastarter_png {
-          height: 36px;
-        }
-        .trust_wallet_png {
-          height: 60px;
-        }
-        &:nth-child(2) {
-          margin-top: 64px;
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -406,35 +411,46 @@
       display: none;
     }
   }
+  .backed_by_big {
+    display: none;
+  }
   .backed_by {
-    padding: 37px 15px 24px;
+    padding: 37px 45px 24px;
     background-color: #000;
     .backed_by_title {
       font-size: 24px;
+      line-height: 30px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 82px;
+    }
     .backed_by_content {
-      padding: 12px 0 0;
+      padding: 42px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 28px;
         img {
-          display: block;
-          margin: 27px auto 0;
-          padding: 16px 34px;
-          width: 230px;
-          height: 70px;
-          border: 1px solid #494949;
-          border-radius: 5px;
+          display: inline-block;
+          width: 136px;
+          height: 40px;
           &:hover {
             cursor: pointer;
           }
         }
-        .polkastarter_png {
-          height: 60px;
+        .line {
+          display: inline-block;
+          margin: 0 6px;
+          width: 1px;
+          height: 24px;
+          background-color: #3c3c3c;
         }
-        .trust_wallet_png {
-          height: 80px;
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }
@@ -509,35 +525,46 @@
       display: none;
     }
   }
+  .backed_by_big {
+    display: none;
+  }
   .backed_by {
-    padding: 37px 15px 24px;
+    padding: 37px 45px 24px;
     background-color: #000;
     .backed_by_title {
       font-size: 24px;
+      line-height: 30px;
       color: #ffffff;
       text-align: center;
     }
+    .backed_by_title_support {
+      margin-top: 82px;
+    }
     .backed_by_content {
-      padding: 12px 0 0;
+      padding: 42px 0 0;
       margin: 0 auto;
       .backed_by_content_box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 28px;
         img {
-          display: block;
-          margin: 27px auto 0;
-          padding: 16px 34px;
-          width: 230px;
-          height: 70px;
-          border: 1px solid #494949;
-          border-radius: 5px;
+          display: inline-block;
+          width: 136px;
+          height: 40px;
           &:hover {
             cursor: pointer;
           }
         }
-        .polkastarter_png {
-          height: 60px;
+        .line {
+          display: inline-block;
+          margin: 0 6px;
+          width: 1px;
+          height: 24px;
+          background-color: #3c3c3c;
         }
-        .trust_wallet_png {
-          height: 80px;
+        &:last-child {
+          margin-bottom: 0;
         }
       }
     }

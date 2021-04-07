@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+@media (min-width: 1200px) {
+  #container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 1200px;
+    height: 1080px;
+    background-position: top center;
+  }
+}
+@media (min-width: 747px) and (max-width: 1199px) {
+  #container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-width: 1200px;
+    height: 1080px;
+    background-position: top center;
+  }
+}
+@media (min-width: 359px) and (max-width: 747px) {
+  #container {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 296px;
+    background-position: top center;
+  }
+}
+@media (max-width: 359px) {
+  #container {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 296px;
+    background-position: top center;
+  }
+}

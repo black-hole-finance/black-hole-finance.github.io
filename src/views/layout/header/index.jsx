@@ -19,7 +19,7 @@ const Header = (props) => {
         <Link to='/'>
           <img className='header_logo' src={LogoText} />
         </Link>
-        {!active && (
+        {(!active || props.location.pathname === '/') && (
           <div className='header_connect_btn'>
             <img className='header_small_logo' src={SmallLogo} />
             <span className='connect_text'>
@@ -27,7 +27,7 @@ const Header = (props) => {
             </span>
           </div>
         )}
-        {active && (
+        {active && props.location.pathname !== '/' && (
           <div className='header_connect_btn'>
             <span className='connect_text balance_text'>
               {formatAmount(wallet_amount)} {token_symbol}

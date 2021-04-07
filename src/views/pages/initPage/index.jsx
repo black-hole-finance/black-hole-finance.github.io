@@ -10,7 +10,7 @@ import { connect } from 'react-redux'
 const InitPage = (props) => {
   const { dispatch } = props
   const { token_allocation, currency_allocation } = props.connectPools
-  const { active, chainId } = useActiveWeb3React()
+  const { active, chainId, account } = useActiveWeb3React()
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
