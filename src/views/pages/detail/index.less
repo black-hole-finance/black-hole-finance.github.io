@@ -390,9 +390,8 @@
 @media (max-width: 359px) {
   .detail {
     position: relative;
-    padding: 260px 0 300px;
+    padding: 126px 0 70px;
     width: 100%;
-    min-width: 1200px;
     height: 100%;
     background: url('../../../assets/image/detail_bg_H5.jpg') no-repeat;
     background-color: #000;
@@ -402,14 +401,15 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
     &_allocation_btn {
       a {
         display: inline-block;
         padding: 0 26px;
-        height: 48px;
-        line-height: 48px;
-        font-size: 22px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 16px;
         color: #000000;
         background: #ececec;
         border-radius: 10px;
@@ -418,41 +418,41 @@
         }
       }
       .detail_allocation_coin {
-        margin-top: 32px;
-        font-size: 36px;
-        line-height: 36px;
+        margin-top: 30px;
+        font-size: 26px;
+        line-height: 26px;
         font-weight: 500;
         color: #ffffff;
         span {
-          font-size: 18px;
+          font-size: 16px;
           font-family: SimSun;
           font-weight: 400;
           color: #ffffff;
         }
       }
       &:first-child {
-        margin-right: 270px;
+        margin-bottom: 46px;
       }
     }
     &_table {
-      margin: 104px auto 0;
-      width: 1200px;
+      margin: 62px auto 0;
+      width: 314px;
       background: rgba(0, 0, 0, 0.6);
       border: 2px solid #3c3c3c;
-      border-radius: 40px;
+      border-radius: 20px;
       tr {
-        height: 108px;
+        height: 62px;
         border-bottom: 2px solid #3c3c3c;
         th {
-          font-size: 48px;
+          font-size: 18px;
           font-weight: 500;
           color: #fefefe;
-          line-height: 100px;
+          line-height: 62px;
           text-align: center;
         }
         td {
-          font-size: 24px;
-          line-height: 28px;
+          font-size: 12px;
+          line-height: 18px;
           font-weight: 500;
           color: #666;
           p,
@@ -469,6 +469,7 @@
           span:last-child {
             margin-left: 10px;
             text-align: right;
+            font-size: 14px;
             color: #fff;
             word-break: break-all;
           }
@@ -483,28 +484,20 @@
         .money_claim {
           span {
             display: inline-block;
-            margin-right: 30px;
-            font-size: 24px;
+            font-size: 14px;
             font-weight: 500;
             color: #ffffff;
           }
           a {
-            width: 224px;
-            height: 60px;
-            line-height: 60px;
-            font-size: 24px;
-            font-weight: 500;
-            color: #ffffff;
-            border: 1px solid #3c3c3c;
-            border-radius: 10px;
+            display: none;
           }
         }
       }
       th {
-        padding: 0 60px;
+        padding: 0 20px;
       }
       td {
-        padding: 0 60px;
+        padding: 0 20px;
       }
     }
     .disable_style {
