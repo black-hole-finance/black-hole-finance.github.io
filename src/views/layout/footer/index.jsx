@@ -19,7 +19,7 @@ const Footer = () => {
           </a>
         </li>
         <li>
-          <a href='https://github.com/blackhole' target='_blank'>
+          <a href='https://github.com/black-hole-financ' target='_blank'>
             <img src={GitHub} />
           </a>
         </li>
