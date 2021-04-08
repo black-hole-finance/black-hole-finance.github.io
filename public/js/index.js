@@ -72,14 +72,28 @@ for (i = 0; i < 10; i++) {
       size: Math.random() * 5,
     })
   )
-  for (j = 0; j < 20; j++) {
-    var vertex = new THREE.Vector3()
-    vertex.x = Math.random() * width * 1.1 - (width * 1.1) / 2
-    vertex.y = Math.random() * height * 1.1 - (height * 1.1) / 2
-    vertex.z = -500
-    particles.geometry.vertices.push(vertex)
-    particles.material.color.setScalar(Math.random() * 0.4 + 0.2)
+  if (width > 747) {
+    for (j = 0; j < 20; j++) {
+      var vertex = new THREE.Vector3()
+      vertex.x = Math.random() * width * 1.1 - (width * 1.1) / 2
+      vertex.y = Math.random() * height * 1.1 - (height * 1.1) / 2
+      vertex.z = -500
+      particles.geometry.vertices.push(vertex)
+      particles.material.color.setScalar(Math.random() * 0.4 + 0.2)
+    }
   }
+
+  if (width <= 747) {
+    for (j = 0; j < 20; j++) {
+      var vertex = new THREE.Vector3()
+      vertex.x = Math.random() * width * 1.1 - (width * 1.1) / 2
+      vertex.y = Math.random() * height * 1.1 - (height * 1.1) / 2
+      vertex.z = -10
+      particles.geometry.vertices.push(vertex)
+      particles.material.color.setScalar(Math.random() * 0.3 + 0.2)
+    }
+  }
+
   scene.add(particles)
 }
 
