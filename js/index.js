@@ -9,9 +9,9 @@ container.appendChild(renderer.domElement)
 var scene = new THREE.Scene()
 
 if (width > 747) {
-  var camera = new THREE.PerspectiveCamera(55, aspect, 0.1, 1000)
+  var camera = new THREE.PerspectiveCamera(50, aspect, 0.1, 1000)
   camera.position.z = 500
-  camera.position.set(-140, 20, 500)
+  camera.position.set(-200, 20, 500)
 } else {
   var camera = new THREE.PerspectiveCamera(45, aspect, 0.1, 1000)
   camera.position.z = 500
@@ -48,9 +48,9 @@ for (var p = 0; p < Math.PI * 2; p = p + Math.random() * 0.15) {
 
   rand = Math.random() * 60 - 30
   asteroid.position.set(
-    170 * Math.sin(p) + rand,
+    150 * Math.sin(p) + rand,
     rand,
-    170 * Math.cos(p) + rand
+    150 * Math.cos(p) + rand
   )
 
   asteroid.geometry.computeFlatVertexNormals()
