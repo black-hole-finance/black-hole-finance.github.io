@@ -15,8 +15,8 @@ body {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
-    max-width: 1200px;
+    /* width: 100%; */
+    width: 1200px;
     height: 100%;
     z-index: 1;
     background-position: top center;
@@ -28,8 +28,8 @@ body {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
-    max-width: 1200px;
+    /* width: 100%; */
+    width: 1200px;
     height: 100%;
     z-index: 1;
     background-position: top center;
