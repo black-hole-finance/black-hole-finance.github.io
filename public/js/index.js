@@ -48,9 +48,9 @@ for (var p = 0; p < Math.PI * 2; p = p + Math.random() * 0.15) {
 
   rand = Math.random() * 60 - 30
   asteroid.position.set(
-    160 * Math.sin(p) + rand,
+    150 * Math.sin(p) + rand,
     rand,
-    160 * Math.cos(p) + rand
+    150 * Math.cos(p) + rand
   )
 
   asteroid.geometry.computeFlatVertexNormals()
@@ -59,7 +59,7 @@ for (var p = 0; p < Math.PI * 2; p = p + Math.random() * 0.15) {
 
 system.add(asteroids)
 // 围绕大球的小颗粒位置和方向
-system.rotation.x = 0.2
+system.rotation.x = 0.1
 system.rotation.y = -0.3
 system.rotation.z = -0.4
 
