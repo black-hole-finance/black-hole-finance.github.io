@@ -5,16 +5,26 @@ import { useActiveWeb3React } from '../../../hooks'
 import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
+import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
 
 const InitPage = (props) => {
   const { dispatch } = props
-  const { token_allocation, currency_allocation } = props.connectPools
+  const {
+    token_allocation,
+    currency_allocation,
+    popupLoadingFlag,
+  } = props.connectPools
   const { active, chainId, account } = useActiveWeb3React()
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
-    if (active && currency_allocation == 0 && props.location.pathname !== '/') {
+    if (
+      active &&
+      !popupLoadingFlag &&
+      currency_allocation == 0 &&
+      props.location.pathname !== '/'
+    ) {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
@@ -23,6 +33,7 @@ const InitPage = (props) => {
     if (
       active &&
       currency_allocation - 0 !== 0 &&
+      !popupLoadingFlag &&
       token_allocation == 0 &&
       props.location.pathname !== '/'
     ) {
@@ -30,10 +41,24 @@ const InitPage = (props) => {
     } else {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
     }
-  }, [active, token_allocation, currency_allocation, props.location])
+  }, [
+    active,
+    token_allocation,
+    popupLoadingFlag,
+    currency_allocation,
+    props.location,
+  ])
 
   return (
     <>
+      {/*loading*/}
+      {props.popupLoadingFlag && (
+        <div className='init_page_box'>
+          <div className='connect_wallet_popup'>
+            <LoadingPopup />
+          </div>
+        </div>
+      )}
       {/* 连接错误弹框 */}
       {props.changeNetworkFlag && (
         <div className='init_page_box'>
@@ -42,7 +67,6 @@ const InitPage = (props) => {
           </div>
         </div>
       )}
-
       {/* 登录成功后判断用户是否是白名单 */}
       {props.connectWalletFailedFlag && (
         <div className='init_page_box'>
@@ -51,7 +75,6 @@ const InitPage = (props) => {
           </div>
         </div>
       )}
-
       {/* 登录后弹框展示🐟额 */}
       {props.connectWalletSuccessFlag && (
         <div className='init_page_box'>
