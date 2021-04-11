@@ -19,6 +19,12 @@ import { useTokenBalance } from './wallet'
  * @returns {string}
  */
 export const useQuota = () => {
+  store.dispatch({
+    type: 'CONNECT_POOLS',
+    payload: Object.assign(store.getState().pools.connectPools, {
+      popupLoadingFlag: true,
+    }),
+  })
   const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
   const contract = useContract(
@@ -31,6 +37,12 @@ export const useQuota = () => {
     if (account && contract) {
       contract.getQuota(account).then((quota) => {
         setQuota(quota.toString())
+        store.dispatch({
+          type: 'CONNECT_POOLS',
+          payload: Object.assign(store.getState().pools.connectPools, {
+            popupLoadingFlag: false,
+          }),
+        })
       })
     }
   }, [account, blockHeight])

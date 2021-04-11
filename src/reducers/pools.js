@@ -6,13 +6,14 @@ const initState = {
     address: '0x6c9d4B938A119f91e7eEaCd97cB4BEd2b8F5D1af',
     currency_address: '',
     currency_symbol: 'USDT',
-    currency_allocation: '100,000',
+    currency_allocation: '',
     token_address: '0xdac17f958d2ee523a2206206994597c13d831ec7',
     token_symbol: 'BLACK',
     token_allocation: '100,000,000',
     cliamable_balance: '999',
     round: 'SEED',
-    wallet_amount: '0'
+    wallet_amount: '0',
+    popupLoadingFlag: false,
   },
 }
 
