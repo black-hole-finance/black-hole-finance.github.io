@@ -56,7 +56,7 @@ const zh_CN = {
   detail_text_9: 'Pool Details',
   detail_text_10: 'About the Project',
   detail_text_11: 'Investor Information',
-  detail_text_12: 'Address',
+  detail_text_12: 'BLACK Contract Address',
   detail_text_13: 'Round',
   detail_text_14: 'BLACK In Wallet',
   detail_text_15: 'Cliamable balance',

@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { useActiveWeb3React } from '../../../hooks'
+import { message } from 'antd'
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import Offering from '../../../constants/abis/offering.json'
 import {
   BLACK_ADDRESS,
@@ -83,12 +85,25 @@ const Detail = (props) => {
         <tbody>
           <tr>
             <td>
-              <p>
+              <div>
                 <span>
                   <FormattedMessage id='detail_text_12' />
                 </span>
-                <span>{BLACK_ADDRESS[chainId]}</span>
-              </p>
+                <p>
+                  <span className='address_style'>
+                    {BLACK_ADDRESS[chainId]}
+                  </span>
+
+                  <CopyToClipboard
+                    text={BLACK_ADDRESS[chainId]}
+                    onCopy={() => {
+                      message.success('copy success')
+                    }}
+                  >
+                    <a className='connect_wallet'></a>
+                  </CopyToClipboard>
+                </p>
+              </div>
             </td>
           </tr>
           <tr>
