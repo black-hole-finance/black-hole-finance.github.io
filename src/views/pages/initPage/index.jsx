@@ -47,8 +47,8 @@ const InitPage = (props) => {
 
   return (
     <>
-      {/*loading*/}
-      {props.popupLoadingFlag && props.location.pathname !== '/' && (
+      {/*loading */}
+      {active && props.popupLoadingFlag && props.location.pathname !== '/' && (
         <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <LoadingPopup />

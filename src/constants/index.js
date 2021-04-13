@@ -20,7 +20,7 @@ export const NetworkRPC = {
 
 export const SCAN_ADDRESS = {
   [ChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
-  [ChainId.ETH]: 'https://hecoinfo.com',
+  [ChainId.ETH]: 'https://etherscan.io/',
 }
 
 export const MULTICALL_NETWORKS = {
