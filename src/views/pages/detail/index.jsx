@@ -20,6 +20,7 @@ const Detail = (props) => {
   const {
     currency_symbol,
     currency_allocation,
+    eth_usdt,
     token_symbol,
     token_allocation,
     cliamable_balance,
@@ -57,10 +58,7 @@ const Detail = (props) => {
             <FormattedMessage id='detail_text_20' />
           </a>
           <p className='detail_allocation_coin'>
-            {formatAmount(
-              currency_allocation,
-              chainId === ChainId.RINKEBY ? 6 : 18
-            )}
+            {formatAmount(currency_allocation, eth_usdt)}
             <span>（{currency_symbol}）</span>
           </p>
         </div>

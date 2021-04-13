@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './index.less'
 import { withRouter } from 'react-router'
 import { useActiveWeb3React } from '../../../hooks'
@@ -10,30 +10,26 @@ import { connect } from 'react-redux'
 
 const InitPage = (props) => {
   const { dispatch } = props
-  const {
-    token_allocation,
-    currency_allocation,
-    popupLoadingFlag,
-  } = props.connectPools
+  const { token_allocation, currency_allocation } = props.connectPools
   const { active, chainId, account } = useActiveWeb3React()
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示
     if (
       active &&
-      !popupLoadingFlag &&
-      currency_allocation == 0 &&
+      currency_allocation - 0 == 0 &&
+      currency_allocation.length > 0 &&
       props.location.pathname !== '/'
     ) {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: false })
     }
+
     // 如果链接钱包成功后，在 connectWallet 页面时，展示余额信息 弹框提示
     if (
       active &&
       currency_allocation - 0 !== 0 &&
-      !popupLoadingFlag &&
       token_allocation == 0 &&
       props.location.pathname !== '/'
     ) {
@@ -44,7 +40,7 @@ const InitPage = (props) => {
   }, [
     active,
     token_allocation,
-    popupLoadingFlag,
+    props.popupLoadingFlag,
     currency_allocation,
     props.location,
   ])
@@ -52,7 +48,7 @@ const InitPage = (props) => {
   return (
     <>
       {/*loading*/}
-      {props.popupLoadingFlag && (
+      {props.popupLoadingFlag && props.location.pathname !== '/' && (
         <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <LoadingPopup />
@@ -92,4 +88,5 @@ export default connect((store) => ({
   changeNetworkFlag: store.popup.changeNetworkFlag,
   connectWalletFailedFlag: store.popup.connectWalletFailedFlag,
   connectWalletSuccessFlag: store.popup.connectWalletSuccessFlag,
+  popupLoadingFlag: store.popup.popupLoadingFlag,
 }))(withRouter(InitPage))

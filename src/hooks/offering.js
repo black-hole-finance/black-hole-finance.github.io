@@ -6,6 +6,7 @@ import {
   OFFERING_ADDRESS,
   USDT_ADDRESS,
 } from '../constants'
+import { POPUP_LOADING_FLAG } from '../const'
 import offering from '../constants/abis/offering.json'
 import { store } from '../store'
 import { useActiveWeb3React, useBlockHeight } from './index'
@@ -20,10 +21,8 @@ import { useTokenBalance } from './wallet'
  */
 export const useQuota = () => {
   store.dispatch({
-    type: 'CONNECT_POOLS',
-    payload: Object.assign(store.getState().pools.connectPools, {
-      popupLoadingFlag: true,
-    }),
+    type: 'POPUP_LOADING_FLAG',
+    payload: true,
   })
   const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
@@ -32,17 +31,15 @@ export const useQuota = () => {
     OFFERING_ABI,
     false
   )
-  const [quota, setQuota] = useState('0')
+  const [quota, setQuota] = useState('')
   useEffect(() => {
     if (account && contract) {
       contract.getQuota(account).then((quota) => {
-        setQuota(quota.toString())
         store.dispatch({
-          type: 'CONNECT_POOLS',
-          payload: Object.assign(store.getState().pools.connectPools, {
-            popupLoadingFlag: false,
-          }),
+          type: 'POPUP_LOADING_FLAG',
+          payload: false,
         })
+        setQuota(quota.toString())
       })
     }
   }, [account, blockHeight])

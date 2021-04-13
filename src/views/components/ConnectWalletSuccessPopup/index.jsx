@@ -23,6 +23,7 @@ const ConnectWalletSuccessPopup = (props) => {
     token_address,
     currency_symbol,
     currency_allocation,
+    eth_usdt,
   } = props.connectPools
   const { active, chainId, library, account } = useActiveWeb3React()
   const [btnFlag, setBtnFlag] = useState(0)
@@ -87,7 +88,6 @@ const ConnectWalletSuccessPopup = (props) => {
         setLoadingFlag(true)
       })
       .on('confirmation', (confirmationNumber) => {
-        console.log(confirmationNumber)
         confirmationNumber - 0 === 0 && setLoadingFlag(false)
         // 当募资完成后关闭弹框
         dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
@@ -103,12 +103,7 @@ const ConnectWalletSuccessPopup = (props) => {
       <p>
         <FormattedMessage id='successPopup_text_1' />
         <span>
-          {formatAmount(
-            currency_allocation,
-            chainId === ChainId.RINKEBY ? 6 : 18,
-            2
-          )}{' '}
-          {currency_symbol}
+          {formatAmount(currency_allocation, eth_usdt, 2)} {currency_symbol}
         </span>
       </p>
       <div className='connect_wallet_success_popup_btn'>
