@@ -8,9 +8,7 @@ const ConnectWalletFailedPopup = () => {
   return (
     <div className='connect_wallet_failed_popup'>
       <img src={FiledPng} />
-      <p>
-        <Spin tip='Loading...'></Spin>
-      </p>
+      <Spin tip='Loading...'></Spin>
     </div>
   )
 }

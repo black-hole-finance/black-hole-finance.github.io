@@ -2,12 +2,14 @@ import {
   CONNECT_WALLET_FAILED_FLAG,
   CONNECT_WALLET_SUCCESS_FLAG,
   CHANGE_NETWORK_FLAG,
+  POPUP_LOADING_FLAG,
 } from '../const'
 
 const initState = {
   connectWalletFailedFlag: false,
   connectWalletSuccessFlag: false,
   changeNetworkFlag: false,
+  popupLoadingFlag: false,
 }
 
 const reduces = {
@@ -22,6 +24,9 @@ const reduces = {
   // 链接 链错误
   [CHANGE_NETWORK_FLAG](state, payload) {
     return { ...state, changeNetworkFlag: payload }
+  },
+  [POPUP_LOADING_FLAG](state, payload) {
+    return { ...state, popupLoadingFlag: payload }
   },
 }
 

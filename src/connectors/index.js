@@ -5,12 +5,12 @@ import { useWeb3React } from '@web3-react/core'
 import { ChainId, NetworkRPC } from '../constants'
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [ChainId.RINKEBY, ChainId.HECO],
+  supportedChainIds: [ChainId.RINKEBY, ChainId.ETH],
 })
 
 export const network = new NetworkConnector({
   urls: NetworkRPC,
-  defaultChainId: ChainId.HECO,
+  defaultChainId: ChainId.ETH,
   pollingInterval: 8000,
   requestTimeoutMs: 15000,
 })
