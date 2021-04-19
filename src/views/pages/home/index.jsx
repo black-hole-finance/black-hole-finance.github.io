@@ -18,6 +18,11 @@ import OxAlphaCapital from '../../../assets/image/OxAlpha_capital@2x.png'
 import PowerLaw from '../../../assets/image/power_law@2x.png'
 import ShinChan from '../../../assets/image/shin_chan@2x.png'
 import X21 from '../../../assets/image/x21@2x.png'
+import GateIO from '../../../assets/image/gate.io@2x.png'
+import MXC from '../../../assets/image/MXC@2x.png'
+import HongLian from '../../../assets/image/honglian@2x.png'
+import Winkrypto from '../../../assets/image/Winkrypto@2x.png'
+import HeartBit from '../../../assets/image/heart_bit@2x.png'
 
 import BounceSmall from '../../../assets/image/Bounce_small@2x.png'
 import Au21Small from '../../../assets/image/au21_small@2x.png'
@@ -32,6 +37,11 @@ import OxAlphaCapitalSmall from '../../../assets/image/OxAlpha_capital_small@2x.
 import PowerLawSmall from '../../../assets/image/power_law_small@2x.png'
 import ShinChanSmall from '../../../assets/image/shin_chan_small@2x.png'
 import X21Small from '../../../assets/image/x21_small@2x.png'
+import GateIOSmall from '../../../assets/image/gate.io_small@2x.png'
+import MXCSmall from '../../../assets/image/MXC_small@2x.png'
+import HongLianSmall from '../../../assets/image/honglian_small@2x.png'
+import WinkryptoSmall from '../../../assets/image/Winkrypto_small@2x.png'
+import HeartBitSmall from '../../../assets/image/heart_bit_small@2x.png'
 
 const Home = (props) => {
   useEffect(() => {
@@ -154,6 +164,24 @@ const Home = (props) => {
               <span className='line'></span>
               <img src={Bigcoiub} />
             </div>
+            <div className='backed_by_content_box'>
+              <img src={GateIO} />
+              <span className='line'></span>
+              <img src={MXC} />
+              <span className='line'></span>
+              <img src={HongLian} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={Winkrypto} />
+              <span className='line'></span>
+              <img src={HeartBit} />
+
+              {/*占位*/}
+              <>
+                <span className='line' style={{visibility: 'hidden'}}></span>
+                <img style={{visibility: 'hidden'}}/>
+              </>
+            </div>
           </div>
         </div>
         <div className='content'>
@@ -200,11 +228,20 @@ const Home = (props) => {
               <span className='line'></span>
               <img src={OxAlphaCapitalSmall} />
             </div>
-            <div
-              className='backed_by_content_box'
-              style={{ justifyContent: 'left' }}
-            >
+            <div className='backed_by_content_box'>
               <img src={BigcoiubSmall} />
+              <span className='line'></span>
+              <img src={GateIOSmall} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={MXCSmall} />
+              <span className='line'></span>
+              <img src={HongLianSmall} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={WinkryptoSmall} />
+              <span className='line'></span>
+              <img src={HeartBitSmall} />
             </div>
           </div>
         </div>
