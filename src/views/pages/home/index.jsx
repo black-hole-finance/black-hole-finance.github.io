@@ -145,41 +145,41 @@ const Home = (props) => {
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
               <img src={NGC} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={PowerLaw} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={Au21} />
             </div>
             <div className='backed_by_content_box'>
               <img src={X21} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={ShinChan} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={OasisCapital} />
             </div>
             <div className='backed_by_content_box'>
               <img src={CryptoTimes} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={OxAlphaCapital} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={Bigcoiub} />
             </div>
             <div className='backed_by_content_box'>
               <img src={GateIO} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={MXC} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={HongLian} />
             </div>
             <div className='backed_by_content_box'>
               <img src={Winkrypto} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={HeartBit} />
 
               {/*占位*/}
               <>
-                <span className='line' style={{visibility: 'hidden'}}></span>
-                <img style={{visibility: 'hidden'}}/>
+                <span className='line' style={{ visibility: 'hidden' }}></span>
+                <img style={{ visibility: 'hidden' }} />
               </>
             </div>
           </div>
@@ -189,14 +189,14 @@ const Home = (props) => {
             <FormattedMessage id='home_text_26' />
           </h2>
           <div className='backed_by_content'>
-            <div className='backed_by_content_box'>
+            <div className='backed_by_content_box backed_by_content_box_footer'>
               <img src={Bounce} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={WeStarter} />
             </div>
-            <div className='backed_by_content_box'>
+            <div className='backed_by_content_box backed_by_content_box_footer'>
               <img src={Helmet} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={Chainswap} />
             </div>
           </div>
@@ -210,37 +210,37 @@ const Home = (props) => {
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
               <img src={NGCSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={PowerLawSmall} />
             </div>
             <div className='backed_by_content_box'>
               <img src={X21Small} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={Au21Small} />
             </div>
             <div className='backed_by_content_box'>
               <img src={ShinChanSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={OasisCapitalSmall} />
             </div>
             <div className='backed_by_content_box'>
               <img src={CryptoTimesSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={OxAlphaCapitalSmall} />
             </div>
             <div className='backed_by_content_box'>
               <img src={BigcoiubSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={GateIOSmall} />
             </div>
             <div className='backed_by_content_box'>
               <img src={MXCSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={HongLianSmall} />
             </div>
             <div className='backed_by_content_box'>
               <img src={WinkryptoSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={HeartBitSmall} />
             </div>
           </div>
@@ -252,12 +252,12 @@ const Home = (props) => {
           <div className='backed_by_content'>
             <div className='backed_by_content_box'>
               <img src={BounceSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={WeStarterSmall} />
             </div>
             <div className='backed_by_content_box'>
               <img src={HelmetSmall} />
-              <span className='line'></span>
+              {/* <span className='line'></span> */}
               <img src={ChainswapSmall} />
             </div>
           </div>
