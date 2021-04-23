@@ -23,6 +23,7 @@ import MXC from '../../../assets/image/MXC@2x.png'
 import HongLian from '../../../assets/image/honglian@2x.png'
 import Winkrypto from '../../../assets/image/Winkrypto@2x.png'
 import HeartBit from '../../../assets/image/heart_bit@2x.png'
+import NULS from '../../../assets/image/NULS@2x.png'
 
 import BounceSmall from '../../../assets/image/Bounce_small@2x.png'
 import Au21Small from '../../../assets/image/au21_small@2x.png'
@@ -42,6 +43,7 @@ import MXCSmall from '../../../assets/image/MXC_small@2x.png'
 import HongLianSmall from '../../../assets/image/honglian_small@2x.png'
 import WinkryptoSmall from '../../../assets/image/Winkrypto_small@2x.png'
 import HeartBitSmall from '../../../assets/image/heart_bit_small@2x.png'
+import NULSSmall from '../../../assets/image/NULS_small@2x.png'
 
 const Home = (props) => {
   useEffect(() => {
@@ -189,15 +191,18 @@ const Home = (props) => {
             <FormattedMessage id='home_text_26' />
           </h2>
           <div className='backed_by_content'>
-            <div className='backed_by_content_box backed_by_content_box_footer'>
+            <div className='backed_by_content_box'>
               <img src={Bounce} />
               {/* <span className='line'></span> */}
               <img src={WeStarter} />
-            </div>
-            <div className='backed_by_content_box backed_by_content_box_footer'>
-              <img src={Helmet} />
               {/* <span className='line'></span> */}
+              <img src={Helmet} />
+            </div>
+            {/* backed_by_content_box_footer */}
+            <div className='backed_by_content_box'>
               <img src={Chainswap} />
+              {/* <span className='line'></span> */}
+              <img src={NULS} />
             </div>
           </div>
         </div>
@@ -259,6 +264,15 @@ const Home = (props) => {
               <img src={HelmetSmall} />
               {/* <span className='line'></span> */}
               <img src={ChainswapSmall} />
+            </div>
+            <div className='backed_by_content_box'>
+              <img src={NULSSmall} />
+              {/* <span className='line'></span> */}
+              {/*占位*/}
+              <>
+                <span className='line' style={{ visibility: 'hidden' }}></span>
+                <img style={{ visibility: 'hidden' }} />
+              </>
             </div>
           </div>
         </div>
