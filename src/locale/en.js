@@ -59,7 +59,7 @@ const en_US = {
   detail_text_12: 'BLACK Contract Address',
   detail_text_13: 'Round',
   detail_text_14: 'BLACK In Wallet',
-  detail_text_15: 'Cliamable balance',
+  detail_text_15: 'Claimable balance',
   detail_text_16: 'Name',
   detail_text_17: 'Address',
   detail_text_18: 'Total Supply',
