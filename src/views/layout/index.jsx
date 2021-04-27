@@ -7,6 +7,7 @@ import Banner from './banner'
 import Home from '../pages/home'
 import Investment from '../pages/investment'
 import InitPage from '../pages/initPage'
+import LBP from '../pages/lbp'
 import Intl from '../../locale/intl'
 
 import {
@@ -40,6 +41,9 @@ function App() {
             </Route>
             <Route exact path='/investment'>
               <Investment />
+            </Route>
+            <Route exact path='/LBP'>
+              <LBP/>
             </Route>
           </Switch>
           <InitPage />
