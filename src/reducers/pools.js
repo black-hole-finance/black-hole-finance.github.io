@@ -12,7 +12,7 @@ const initState = {
     token_symbol: 'BLACK',
     token_allocation: '100,000,000',
     cliamable_balance: '999',
-    round: 'SEED',
+    round: 'Ambassador',
     wallet_amount: '0',
   },
 }
