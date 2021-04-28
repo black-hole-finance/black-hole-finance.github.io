@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './index.less'
 import { withRouter } from 'react-router'
 import { useActiveWeb3React } from '../../../hooks'
 import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
+import LBPPopup from '../../components/LBPPopup'
+import SuccessPopup from '../../components/SuccessPopup'
 import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
 
@@ -19,7 +21,7 @@ const InitPage = (props) => {
       active &&
       currency_allocation - 0 == 0 &&
       currency_allocation.length > 0 &&
-      props.location.pathname !== '/'
+      props.location.pathname === '/investment'
     ) {
       dispatch({ type: 'CONNECT_WALLET_FAILED_FLAG', payload: true })
     } else {
@@ -31,11 +33,15 @@ const InitPage = (props) => {
       active &&
       currency_allocation - 0 !== 0 &&
       token_allocation == 0 &&
-      props.location.pathname !== '/'
+      props.location.pathname === '/investment'
     ) {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
+    }
+
+    if (props.location.pathname.toLowerCase().indexOf('lbp') == -1) {
+      dispatch({ type: 'HANDLE_WALLET_MODAL', payload: null })
     }
   }, [
     active,
@@ -43,6 +49,7 @@ const InitPage = (props) => {
     props.popupLoadingFlag,
     currency_allocation,
     props.location,
+    props.slippage,
   ])
 
   return (
@@ -79,6 +86,21 @@ const InitPage = (props) => {
           </div>
         </div>
       )}
+
+      {props.walletModal === 'slippage' && (
+        <div className='init_page_box'>
+          <div className='connect_wallet_popup'>
+            <LBPPopup />
+          </div>
+        </div>
+      )}
+      {props.walletModal === 'slippageSuccess' && (
+        <div className='init_page_box'>
+          <div className='connect_wallet_popup'>
+            <SuccessPopup />
+          </div>
+        </div>
+      )}
     </>
   )
 }
@@ -89,4 +111,5 @@ export default connect((store) => ({
   connectWalletFailedFlag: store.popup.connectWalletFailedFlag,
   connectWalletSuccessFlag: store.popup.connectWalletSuccessFlag,
   popupLoadingFlag: store.popup.popupLoadingFlag,
+  walletModal: store.popup.walletModal,
 }))(withRouter(InitPage))

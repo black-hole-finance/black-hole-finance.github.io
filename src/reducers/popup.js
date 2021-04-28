@@ -3,6 +3,8 @@ import {
   CONNECT_WALLET_SUCCESS_FLAG,
   CHANGE_NETWORK_FLAG,
   POPUP_LOADING_FLAG,
+  HANDLE_WALLET_MODAL,
+  CHANGE_SLIPPAGE,
 } from '../const'
 
 const initState = {
@@ -10,6 +12,10 @@ const initState = {
   connectWalletSuccessFlag: false,
   changeNetworkFlag: false,
   popupLoadingFlag: false,
+  walletModal: null,
+  slippage: false,
+  slippageVal: 10,
+  slippageSuccess: false,
 }
 
 const reduces = {
@@ -27,6 +33,13 @@ const reduces = {
   },
   [POPUP_LOADING_FLAG](state, payload) {
     return { ...state, popupLoadingFlag: payload }
+  },
+  [HANDLE_WALLET_MODAL](state, payload) {
+    return { ...state, walletModal: payload }
+  },
+
+  [CHANGE_SLIPPAGE](state, payload) {
+    return { ...state, slippageVal: payload }
   },
 }
 
