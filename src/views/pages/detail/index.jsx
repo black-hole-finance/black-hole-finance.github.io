@@ -15,6 +15,7 @@ import {
 } from '../../../constants'
 import './index.less'
 import { formatAmount, fromWei } from '../../../utils/format'
+import {useInvestmentInfo} from "../../../hooks/offering";
 
 const Detail = (props) => {
   const {
@@ -27,6 +28,7 @@ const Detail = (props) => {
     wallet_amount,
     round,
   } = props.connectPools
+  useInvestmentInfo()
   const { active, chainId, library, account } = useActiveWeb3React()
 
   useEffect(() => {
