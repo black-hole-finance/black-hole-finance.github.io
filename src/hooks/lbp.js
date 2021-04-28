@@ -107,7 +107,7 @@ export const useLBP = () => {
     }
 
     if (end_at < now) {
-      status = 2 // 结束
+      status = 3 // 结束
     }
 
     store.dispatch({

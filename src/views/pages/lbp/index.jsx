@@ -29,17 +29,24 @@ const LBP = (props) => {
   useLBP()
 
   useEffect(() => {
-    if (props.location.pathname.indexOf('LBP') > -1) {
-      window.document.getElementById('container').style.display = 'none'
-    } else {
-      window.document.getElementById('container').style.display = ''
-    }
+    window.document.getElementById('container').style.display = 'none'
   }, [])
 
   const { start_at, end_at, price, status, balance } = props.info
   console.table(props.info)
 
   const [amount, setAmount] = useState()
+
+  useEffect(() => {
+    if (props.info) {
+      const { status, start_at, end_at, timeClose, type } = props.info
+      if (status === 0) {
+        setLeftTime(start_at * 1000 - Date.now())
+      } else if (status === 1) {
+        setLeftTime((end_at - now) * 1000)
+      }
+    }
+  }, [props])
 
   const onMax = async () => {
     if (balance <= 0) {
