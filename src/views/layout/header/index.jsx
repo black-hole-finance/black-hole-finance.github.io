@@ -9,21 +9,34 @@ import { message } from 'antd'
 import LogoText from '../../../assets/image/Logo_text@2x.png'
 import SmallLogo from '../../../assets/image/small_logo@2x.png'
 import { formatAmount } from '../../../utils/format'
+import {connectWallet} from "../../../utils";
+import {injected} from "../../../connectors";
 
 const Header = (props) => {
   const { token_symbol, wallet_amount } = props.connectPools
-  const { active, chainId, account } = useActiveWeb3React()
+  const { active, chainId, account, activate, deactivate } = useActiveWeb3React()
+  console.log(props.location.pathname)
+
+  const connectWalletClick = () => {
+    if(props.location.pathname === '/') return
+    connectWallet(activate, injected, deactivate)
+      .then(() => console.log)
+      .catch(() => console.log)
+  }
   return (
     <div className='header'>
       <div className='header_box'>
         <Link to='/'>
           <img className='header_logo' src={LogoText} />
         </Link>
-        {(!active || props.location.pathname === '/') && (
-          <div className='header_connect_btn'>
+        {(!active) && (
+          <div className='header_connect_btn' onClick={connectWalletClick}>
             <img className='header_small_logo' src={SmallLogo} />
             <span className='connect_text'>
-              <FormattedMessage id='header_text_1' />
+              {
+                props.location.pathname === '/' ? <FormattedMessage id='header_text_1' /> : <FormattedMessage id='header_text_2' />
+              }
+
             </span>
           </div>
         )}
