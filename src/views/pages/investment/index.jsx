@@ -7,7 +7,7 @@ import {useInvestmentInfo} from "../../../hooks/offering";
 export default function Investment() {
     const {active ,library} = useActiveWeb3React()
     const [flag, setFlag] = useState()
-    useInvestmentInfo()
+
     useEffect(() => {
         setFlag(library)
     }, [library])
