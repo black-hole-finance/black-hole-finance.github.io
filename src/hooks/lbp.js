@@ -11,7 +11,7 @@ import offering from '../constants/abis/offering.json'
 import { store } from '../store'
 import { useActiveWeb3React, useBlockHeight } from './index'
 import { useContract } from './useContract'
-import {formatAmount, fromWei} from '../utils/format'
+import { formatAmount, fromWei } from '../utils/format'
 import Web3 from 'web3'
 import { useBalance, useTokenBalance } from './wallet'
 import { LBP_ABI } from '../constants/abis/lbp'
@@ -83,7 +83,6 @@ export const useLBP = () => {
   const span = useSpan()
   const price = usePrice()
   const balance = useBalance(account)
-  console.log(price, 'price')
   useEffect(() => {
     const now = parseInt(Date.now() / 1000)
     if (account && library) {
@@ -93,7 +92,9 @@ export const useLBP = () => {
         end_at: begin * 1 + span * 1,
         price,
         balance,
-        ratio: `1${info.underlying.symbol}= ${ formatAmount(price)}${info.currency.symbol}`,
+        ratio: `1${info.underlying.symbol}= ${formatAmount(price)}${
+          info.currency.symbol
+        }`,
       })
     }
 
