@@ -1,0 +1,542 @@
+.ant-spin {
+  color: #000 !important;
+  --antd-wave-shadow-color: #000 !important;
+}
+::selection {
+  background: #000 !important;
+}
+.ant-spin-dot-item {
+  background: #000 !important;
+}
+.ant-spin-spinning {
+  margin-top: 20px !important;
+}
+@media (min-width: 1200px) {
+  .pools_slippage {
+    margin: 0 auto;
+    width: 480px;
+    padding: 40px 58px 30px;
+    background: #f2f0eb;
+    border-radius: 8px;
+    &_percentage {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &_percentage_value {
+      display: inline-block;
+      width: 70px;
+      height: 42px;
+      line-height: 42px;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        color: #22292f;
+        background: #d4e9e2;
+        border: 1px solid #0f8c20;
+      }
+    }
+    &_percentage_active {
+      color: #22292f;
+      background: #d4e9e2;
+      border: 1px solid #0f8c20;
+    }
+    &_percentage_box {
+      position: relative;
+      width: 90px;
+      height: 42px;
+      line-height: 42px;
+      span {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #22292f;
+      }
+    }
+    &_percentage_input {
+      padding: 0 16px 0 10px;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+      &:focus {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+    }
+    &_percentage_input_active {
+      outline: none;
+      border-color: #0f8c20 !important;
+    }
+    .form-app__inputbox-after-text {
+      margin: 0 0 14px !important;
+    }
+
+    &_success_img {
+      display: block;
+      margin: 0 auto;
+      width: 48px;
+      height: 48px;
+    }
+    &_success_title {
+      margin: 0;
+      text-align: center !important;
+    }
+    &_success_text {
+      display: inline-block;
+      margin: 0 !important;
+      width: 100%;
+      font-size: 12px;
+      color: #0f8c20;
+      text-align: center;
+      &:hover {
+        color: #00b900;
+      }
+    }
+    .form-app__submit--row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+      .btn {
+        display: inline-block;
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
+        color: #010101;
+        background-color: #fff;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-left: 20px;
+          color: #010101;
+          background-color: rgba(163, 163, 163, 0.1);
+        }
+        &:hover {
+          background-color: rgba(163, 163, 163, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 747px) and (max-width: 1199px) {
+  .pools_slippage {
+    margin: 0 auto;
+    width: 480px;
+    padding: 40px 58px 30px;
+    background: #f2f0eb;
+    border-radius: 8px;
+    &_percentage {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &_percentage_value {
+      display: inline-block;
+      width: 70px;
+      height: 42px;
+      line-height: 42px;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        color: #22292f;
+        background: #d4e9e2;
+        border: 1px solid #0f8c20;
+      }
+    }
+    &_percentage_active {
+      color: #22292f;
+      background: #d4e9e2;
+      border: 1px solid #0f8c20;
+    }
+    &_percentage_box {
+      position: relative;
+      width: 90px;
+      height: 42px;
+      line-height: 42px;
+      span {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #22292f;
+      }
+    }
+    &_percentage_input {
+      padding: 0 16px 0 10px;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+      &:focus {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+    }
+    &_percentage_input_active {
+      outline: none;
+      border-color: #0f8c20 !important;
+    }
+    .form-app__inputbox-after-text {
+      margin: 0 0 14px !important;
+    }
+
+    &_success_img {
+      display: block;
+      margin: 0 auto;
+      width: 48px;
+      height: 48px;
+    }
+    &_success_title {
+      margin: 0;
+      text-align: center !important;
+    }
+    &_success_text {
+      display: inline-block;
+      margin: 0 !important;
+      width: 100%;
+      font-size: 12px;
+      color: #0f8c20;
+      text-align: center;
+      &:hover {
+        color: #00b900;
+      }
+    }
+    .form-app__submit--row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+      .btn {
+        display: inline-block;
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
+        color: #010101;
+        background-color: #fff;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-left: 20px;
+          color: #010101;
+          background-color: rgba(163, 163, 163, 0.1);
+        }
+        &:hover {
+          background-color: rgba(163, 163, 163, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 359px) and (max-width: 747px) {
+  .pools_slippage {
+    margin: 170px auto 0;
+    width: 320px;
+    padding: 16px 20px 20px;
+    background: #f2f0eb;
+    border-radius: 8px;
+    .form-app__title {
+      font-size: 26px;
+    }
+    &_percentage {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &_percentage_value {
+      display: inline-block;
+      width: 60px;
+      height: 42px;
+      line-height: 42px;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        color: #22292f;
+        background: #d4e9e2;
+        border: 1px solid #0f8c20;
+      }
+    }
+    &_percentage_active {
+      color: #22292f;
+      background: #d4e9e2;
+      border: 1px solid #0f8c20;
+    }
+    &_percentage_box {
+      position: relative;
+      width: 90px;
+      height: 42px;
+      line-height: 42px;
+      span {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #22292f;
+      }
+    }
+    &_percentage_input {
+      padding: 0 16px 0 10px;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+      &:focus {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+    }
+    &_percentage_input_active {
+      outline: none;
+      border-color: #0f8c20 !important;
+    }
+    .form-app__inputbox-after-text {
+      margin: 0 0 14px !important;
+    }
+
+    &_success_img {
+      display: block;
+      margin: 0 auto;
+      width: 48px;
+      height: 48px;
+    }
+    &_success_title {
+      margin: 0;
+      text-align: center !important;
+    }
+    &_success_text {
+      display: inline-block;
+      margin: 0 !important;
+      width: 100%;
+      font-size: 12px;
+      color: #0f8c20;
+      text-align: center;
+      &:hover {
+        color: #00b900;
+      }
+    }
+    .form-app__submit--row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+      .btn {
+        display: inline-block;
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
+        color: #010101;
+        background-color: #fff;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-left: 20px;
+          color: #010101;
+          background-color: rgba(163, 163, 163, 0.1);
+        }
+        &:hover {
+          background-color: rgba(163, 163, 163, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 359px) {
+  .pools_slippage {
+    margin: 170px auto 0;
+    width: 320px;
+    padding: 16px 20px 20px;
+    background: #f2f0eb;
+    border-radius: 8px;
+    .form-app__title {
+      font-size: 26px;
+    }
+    &_percentage {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    &_percentage_value {
+      display: inline-block;
+      width: 60px;
+      height: 42px;
+      line-height: 42px;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        color: #22292f;
+        background: #d4e9e2;
+        border: 1px solid #0f8c20;
+      }
+    }
+    &_percentage_active {
+      color: #22292f;
+      background: #d4e9e2;
+      border: 1px solid #0f8c20;
+    }
+    &_percentage_box {
+      position: relative;
+      width: 90px;
+      height: 42px;
+      line-height: 42px;
+      span {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 14px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+        color: #22292f;
+      }
+    }
+    &_percentage_input {
+      padding: 0 16px 0 10px;
+      width: 100%;
+      height: 100%;
+      font-size: 14px;
+      font-family: PingFangSC-Medium, PingFang SC;
+      font-weight: 500;
+      color: #22292f;
+      background: #ffffff;
+      border-radius: 5px;
+      text-align: center;
+      border: 1px solid #ebe9e3;
+      &:hover {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+      &:focus {
+        outline: none;
+        border-color: #0f8c20 !important;
+      }
+    }
+    &_percentage_input_active {
+      outline: none;
+      border-color: #0f8c20 !important;
+    }
+    .form-app__inputbox-after-text {
+      margin: 0 0 14px !important;
+    }
+
+    &_success_img {
+      display: block;
+      margin: 0 auto;
+      width: 48px;
+      height: 48px;
+    }
+    &_success_title {
+      margin: 0;
+      text-align: center !important;
+    }
+    &_success_text {
+      display: inline-block;
+      margin: 0 !important;
+      width: 100%;
+      font-size: 12px;
+      color: #0f8c20;
+      text-align: center;
+      &:hover {
+        color: #00b900;
+      }
+    }
+    .form-app__submit--row {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+      width: 100%;
+      .btn {
+        display: inline-block;
+        padding: 0 16px;
+        height: 40px;
+        line-height: 40px;
+        color: #010101;
+        background-color: #fff;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        &:nth-child(2) {
+          margin-left: 20px;
+          color: #010101;
+          background-color: rgba(163, 163, 163, 0.1);
+        }
+        &:hover {
+          background-color: rgba(163, 163, 163, 0.2);
+        }
+      }
+    }
+  }
+}

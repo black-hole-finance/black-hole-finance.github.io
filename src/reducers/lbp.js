@@ -4,9 +4,15 @@ const initState = {
   info: {
     balance: '',
     price: '',
-    start_at: '',
-    end_at: '',
-    status: '',
+    start_at: '1619492400',
+    end_at: '1619611200',
+    status: '0',
+    ratio: '1BLACK=?HT', // 兑换比例需要确认
+    currency: {
+      address: '0x0', // 如果是0x0则是ht
+      decimal: 18,
+      symbol: 'HT',
+    },
   },
 }
 

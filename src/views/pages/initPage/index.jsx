@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import './index.less'
 import { withRouter } from 'react-router'
 import { useActiveWeb3React } from '../../../hooks'
 import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
+import LBPPopup from '../../components/LBPPopup'
 import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
 
@@ -36,6 +37,10 @@ const InitPage = (props) => {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: true })
     } else {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
+    }
+
+    if (props.location.pathname.indexOf('LBP') == -1) {
+      dispatch({ type: 'HANDLE_WALLET_MODAL', payload: false })
     }
   }, [
     active,
@@ -79,6 +84,14 @@ const InitPage = (props) => {
           </div>
         </div>
       )}
+
+      {props.slippage && (
+        <div className='init_page_box'>
+          <div className='connect_wallet_popup'>
+            <LBPPopup />
+          </div>
+        </div>
+      )}
     </>
   )
 }
@@ -89,4 +102,5 @@ export default connect((store) => ({
   connectWalletFailedFlag: store.popup.connectWalletFailedFlag,
   connectWalletSuccessFlag: store.popup.connectWalletSuccessFlag,
   popupLoadingFlag: store.popup.popupLoadingFlag,
+  slippage: store.popup.slippage,
 }))(withRouter(InitPage))

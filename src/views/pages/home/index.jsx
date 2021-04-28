@@ -47,7 +47,10 @@ import NULSSmall from '../../../assets/image/NULS_small@2x.png'
 
 const Home = (props) => {
   useEffect(() => {
-    if (props.location.pathname.indexOf('investment') > -1) {
+    if (
+      props.location.pathname.indexOf('investment') > -1 ||
+      props.location.pathname.indexOf('LBP') > -1
+    ) {
       window.document.getElementById('container').style.display = 'none'
     } else {
       window.document.getElementById('container').style.display = ''
