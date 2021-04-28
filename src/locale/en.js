@@ -81,7 +81,7 @@ const en_US = {
     "We've detected that you need to switch your wallet's network from local to mainnet network for this Dapp.",
   changeNetwork_text_2:
     '*Some wallets may not support changing networks. If you can not change networks in your wallet you may consider switching to a different wallet.',
-  warLBP1: 'Participate Chainswap Token',
+  warLBP1: 'Participate BLACK Token',
   warLBP2: 'Purchase',
   warLBP3: 'Your Balance: ',
   warLBP4: 'Transaction Settings',
