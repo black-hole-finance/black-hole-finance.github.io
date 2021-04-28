@@ -31,7 +31,7 @@ const InitPage = (props) => {
       active &&
       currency_allocation - 0 !== 0 &&
       token_allocation == 0 &&
-      props.location.pathname !== '/'
+      props.location.pathname === '/investment'
     ) {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: true })
     } else {
