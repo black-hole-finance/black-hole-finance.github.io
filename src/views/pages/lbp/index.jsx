@@ -32,30 +32,27 @@ const LBP = (props) => {
     activate,
     deactivate,
   } = useActiveWeb3React()
-  const [now, setNow] = useState(parseInt(Date.now() / 1000))
-  const [left_time, setLeftTime] = useState(0)
+  const now = parseInt(Date.now() / 1000)
+  // const [left_time, setLeftTime] = useState(0)
   const [fee, setFee] = useState(0)
 
   useLBP()
-
-  useEffect(() => {
-    // window.document.getElementById('container').style.display = 'none'
-  }, [])
 
   const { start_at, end_at, price, status, balance } = props.info
   console.table(props.info)
 
   const [amount, setAmount] = useState(1)
 
-  useEffect(() => {
-    if (props.info) {
-      if (props.info.status === 0) {
-        setLeftTime(props.info.start_at * 1000 - Date.now())
-      } else if (props.info.status === 1) {
-        setLeftTime((props.info.end_at - now) * 1000)
-      }
-    }
-  }, [props])
+  let left_time = 0
+  switch (status){
+    case 0:
+      left_time = (start_at - now) * 1000
+      break;
+    case 1:
+      left_time = (end_at - now)  * 1000
+      break;
+  }
+  console.log(left_time)
 
   const onMax = async () => {
     if (props.info.balance <= 0) {
