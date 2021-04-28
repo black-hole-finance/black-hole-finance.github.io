@@ -11,7 +11,7 @@ import offering from '../constants/abis/offering.json'
 import { store } from '../store'
 import { useActiveWeb3React, useBlockHeight } from './index'
 import { useContract } from './useContract'
-import { fromWei } from '../utils/format'
+import {formatAmount, fromWei} from '../utils/format'
 import Web3 from 'web3'
 import { useBalance, useTokenBalance } from './wallet'
 import { LBP_ABI } from '../constants/abis/lbp'
@@ -93,10 +93,7 @@ export const useLBP = () => {
         end_at: begin * 1 + span * 1,
         price,
         balance,
-        ratio: `1${info.underlying.symbol}= ${Web3.utils.fromWei(
-          price,
-          'ether'
-        )}${info.currency.symbol}`,
+        ratio: `1${info.underlying.symbol}= ${ formatAmount(price)}${info.currency.symbol}`,
       })
     }
 
