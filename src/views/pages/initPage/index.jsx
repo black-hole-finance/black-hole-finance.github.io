@@ -39,7 +39,7 @@ const InitPage = (props) => {
       dispatch({ type: 'CONNECT_WALLET_SUCCESS_FLAG', payload: false })
     }
 
-    if (props.location.pathname.indexOf('LBP') == -1) {
+    if (props.location.pathname.toLowerCase().indexOf('lbp') == -1) {
       dispatch({ type: 'HANDLE_WALLET_MODAL', payload: false })
     }
   }, [
