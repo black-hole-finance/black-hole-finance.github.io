@@ -20,7 +20,6 @@ import { useTokenBalance } from './wallet'
  * @returns {string}
  */
 export const useQuota = () => {
-  debugger
   store.dispatch({
     type: 'POPUP_LOADING_FLAG',
     payload: true,
