@@ -19,17 +19,33 @@ import { LBP_ABI } from '../../../constants/abis/lbp'
 import { numToWei, formatAmount } from '../../../utils/format'
 import './index.less'
 import { message } from 'antd'
+import { connectWallet } from '../../../utils'
+import { injected } from '../../../connectors'
 
 const LBP = (props) => {
   const { intl, dispatch, slippageVal } = props // 滑点
-  const { active, chainId, library, account } = useActiveWeb3React()
+  const {
+    active,
+    chainId,
+    library,
+    account,
+    activate,
+    deactivate,
+  } = useActiveWeb3React()
   const [now, setNow] = useState(parseInt(Date.now() / 1000))
   const [left_time, setLeftTime] = useState(0)
   const [fee, setFee] = useState(0)
 
   useLBP()
 
-  const [amount, setAmount] = useState()
+  useEffect(() => {
+    // window.document.getElementById('container').style.display = 'none'
+  }, [])
+
+  const { start_at, end_at, price, status, balance } = props.info
+  console.table(props.info)
+
+  const [amount, setAmount] = useState(1)
 
   useEffect(() => {
     if (props.info) {
@@ -90,6 +106,19 @@ const LBP = (props) => {
 
   // 募资事件
   const onPurchase = async () => {
+    if (isNaN(amount * 1)) {
+      return false
+    }
+
+    if (amount < 0) {
+      return false
+    }
+
+    if (!active) {
+      connectWallet(activate, injected, deactivate)
+      return false
+    }
+
     const lbp_contract = getContract(library, LBP_ABI, LBP_ADDRESS[chainId])
 
     const strapOut = await lbp_contract.methods
