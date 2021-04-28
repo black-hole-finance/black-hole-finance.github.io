@@ -2,6 +2,7 @@ import { LBP_INFO } from '../const'
 
 const initState = {
   info: {
+    name: 'BLACK LBP',
     balance: '',
     price: '',
     start_at: '1619492400',

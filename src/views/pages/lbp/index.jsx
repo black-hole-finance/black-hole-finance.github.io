@@ -19,18 +19,15 @@ const LBP = (props) => {
   const [now, setNow] = useState(parseInt(Date.now() / 1000))
   const [left_time, setLeftTime] = useState(0)
   const [fee, setFee] = useState(0)
-  // useLBP()
+  useLBP()
 
   useEffect(() => {
-    if (
-      props.location.pathname.indexOf('investment') > -1 ||
-      props.location.pathname.indexOf('LBP') > -1
-    ) {
+    if (props.location.pathname.indexOf('LBP') > -1) {
       window.document.getElementById('container').style.display = 'none'
     } else {
       window.document.getElementById('container').style.display = ''
     }
-  }, [props.location.pathname])
+  }, [])
 
   const { start_at, end_at, price, status, balance } = props.info
   console.table(props.info)
@@ -47,9 +44,7 @@ const LBP = (props) => {
     }
     setAmount(formatAmount(max, props.info.currency.decimal, 6))
   }
-  useEffect(() => {
-    console.log(props, 111111)
-  }, [props])
+
   const onChange = (e) => {
     const { value } = e.target
     const re = /^[0-9]+([.|,][0-9]+)?$/g
@@ -88,7 +83,7 @@ const LBP = (props) => {
   }
 
   const renderStatus = (pool) => {
-    const { status, timeClose = 0 } = pool
+    const { status, timeClose = 0 } = pool.info
     switch (status) {
       case 0:
         return (
@@ -121,7 +116,9 @@ const LBP = (props) => {
 
   return (
     <div className='detail_LBP'>
-      <h2 className='detail_LBP_title'>Black LBP</h2>
+      <h2 className='detail_LBP_title'>
+        {props && props.info && props.info.name}
+      </h2>
       <div className='detail_LBP_card'>
         <div className='detail_LBP_card_title'>
           <h2 className='LBP_title'>
@@ -129,7 +126,7 @@ const LBP = (props) => {
           </h2>
           <p className='detail_LBP_card_title_right'>
             {renderStatus(props)}
-            {props && props.status < 3 && left_time > 0 && (
+            {props && props.info.status < 3 && left_time > 0 && (
               <span className='detail_LBP_time'>
                 <Timer
                   initialTime={left_time}
