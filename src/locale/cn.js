@@ -94,5 +94,7 @@ const zh_CN = {
   recruit: 'Undergoing',
   recruitOver: 'Waiting',
   completed: 'Finished',
+  poolText20: 'Cancel',
+  poolText22: 'Confirm',
 }
 export default zh_CN
