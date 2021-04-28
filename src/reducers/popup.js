@@ -13,7 +13,7 @@ const initState = {
   changeNetworkFlag: false,
   popupLoadingFlag: false,
   slippage: false,
-  slippageVal: 0.5,
+  slippageVal: 10,
 }
 
 const reduces = {
