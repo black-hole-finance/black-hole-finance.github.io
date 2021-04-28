@@ -14,6 +14,9 @@ const initState = {
       decimal: 18,
       symbol: 'HT',
     },
+    underlying: {
+      symbol: 'BLACK',
+    },
   },
 }
 

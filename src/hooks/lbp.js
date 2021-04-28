@@ -11,10 +11,10 @@ import offering from '../constants/abis/offering.json'
 import { store } from '../store'
 import { useActiveWeb3React, useBlockHeight } from './index'
 import { useContract } from './useContract'
+import { fromWei } from '../utils/format'
 import Web3 from 'web3'
-import {useBalance, useTokenBalance} from './wallet'
-import {LBP_ABI} from "../constants/abis/lbp";
-
+import { useBalance, useTokenBalance } from './wallet'
+import { LBP_ABI } from '../constants/abis/lbp'
 
 /**
  * 可用额度
@@ -23,11 +23,7 @@ import {LBP_ABI} from "../constants/abis/lbp";
 export const useBegin = () => {
   const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
-  const contract = useContract(
-    chainId && LBP_ADDRESS[chainId],
-    LBP_ABI,
-    false
-  )
+  const contract = useContract(chainId && LBP_ADDRESS[chainId], LBP_ABI, false)
   const [begin, setBegin] = useState('')
   useEffect(() => {
     if (account && contract) {
@@ -46,11 +42,7 @@ export const useBegin = () => {
 export const useSpan = () => {
   const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
-  const contract = useContract(
-    chainId && LBP_ADDRESS[chainId],
-    LBP_ABI,
-    false
-  )
+  const contract = useContract(chainId && LBP_ADDRESS[chainId], LBP_ABI, false)
   const [span, setSpan] = useState('')
   useEffect(() => {
     if (account && contract) {
@@ -69,11 +61,7 @@ export const useSpan = () => {
 export const usePrice = () => {
   const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
-  const contract = useContract(
-    chainId && LBP_ADDRESS[chainId],
-    LBP_ABI,
-    false
-  )
+  const contract = useContract(chainId && LBP_ADDRESS[chainId], LBP_ABI, false)
   const [price, setPrice] = useState('')
   useEffect(() => {
     if (account && contract) {
@@ -89,38 +77,43 @@ export const usePrice = () => {
  *
  */
 export const useLBP = () => {
-  const {account, active, library} = useActiveWeb3React()
-  const {info} = store.getState().lbp
+  const { account, active, library } = useActiveWeb3React()
+  const { info } = store.getState().lbp
   const begin = useBegin()
   const span = useSpan()
   const price = usePrice()
   const balance = useBalance(account)
+  console.log(price, 'price')
   useEffect(() => {
-    const now = parseInt(Date.now()/ 1000)
-    if(account && library) {
+    const now = parseInt(Date.now() / 1000)
+    if (account && library) {
       // 连上钱包了，赋值
       Object.assign(info, {
         start_at: begin * 1,
         end_at: begin * 1 + span * 1,
         price,
         balance,
+        ratio: `1${info.underlying.symbol}= ${Web3.utils.fromWei(
+          price,
+          'ether'
+        )}${info.currency.symbol}`,
       })
     }
 
-    let {start_at, end_at, status} = info
+    let { start_at, end_at, status } = info
 
-    if(start_at < now) {
+    if (start_at < now) {
       status = 1
     }
 
-    if(end_at < now) {
+    if (end_at < now) {
       status = 2 // 结束
     }
 
     store.dispatch({
       type: 'LBP_INFO',
       payload: Object.assign(info, {
-        status
+        status,
       }),
     })
   }, [begin, span, price, balance])
