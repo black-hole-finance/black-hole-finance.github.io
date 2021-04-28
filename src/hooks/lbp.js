@@ -62,7 +62,7 @@ export const usePrice = () => {
   const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
   const contract = useContract(chainId && LBP_ADDRESS[chainId], LBP_ABI, false)
-  const [price, setPrice] = useState('')
+  const [price, setPrice] = useState('0')
   useEffect(() => {
     if (account && contract) {
       contract.priceLBP().then((val) => {
@@ -78,7 +78,7 @@ export const usePrice = () => {
  */
 export const useLBP = () => {
   const { account, active, library } = useActiveWeb3React()
-  const { info } = store.getState().lbp
+  const info = Object.assign(store.getState().lbp.info)
   const begin = useBegin()
   const span = useSpan()
   const price = usePrice()
