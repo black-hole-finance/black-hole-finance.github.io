@@ -25,7 +25,7 @@ const PoolsSlippage = (props) => {
   const onClose = () => {
     dispatch({
       type: 'HANDLE_WALLET_MODAL',
-      payload: false,
+      payload: null,
     })
   }
 
@@ -131,6 +131,6 @@ const PoolsSlippage = (props) => {
 }
 
 export default connect((store) => ({
-  slippage: store.popup.slippage,
+  walletModal: store.popup.walletModal,
   slippageVal: store.popup.slippageVal,
 }))(withRouter(PoolsSlippage))

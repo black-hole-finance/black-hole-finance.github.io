@@ -44,13 +44,13 @@ const LBP = (props) => {
   const [amount, setAmount] = useState(1)
 
   let left_time = 0
-  switch (status){
+  switch (status) {
     case 0:
       left_time = (start_at - now) * 1000
-      break;
+      break
     case 1:
-      left_time = (end_at - now)  * 1000
-      break;
+      left_time = (end_at - now) * 1000
+      break
   }
 
   const onMax = async () => {
@@ -140,6 +140,14 @@ const LBP = (props) => {
       })
       .on('receipt', (_, receipt) => {
         message.success('purchase success')
+      })
+      .on('confirmation', (confirmationNumber, receipt) => {
+        if (confirmationNumber - 0 === 0) {
+          dispatch({
+            type: 'HANDLE_WALLET_MODAL',
+            payload: 'slippageSuccess',
+          })
+        }
       })
       .on('error', (err, receipt) => {
         message.error('purchase fail')
@@ -256,7 +264,7 @@ const LBP = (props) => {
             <a
               className='set_slippage'
               onClick={() => {
-                dispatch({ type: 'HANDLE_WALLET_MODAL', payload: true })
+                dispatch({ type: 'HANDLE_WALLET_MODAL', payload: 'slippage' })
               }}
             >
               <svg

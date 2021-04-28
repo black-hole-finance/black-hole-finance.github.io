@@ -12,8 +12,10 @@ const initState = {
   connectWalletSuccessFlag: false,
   changeNetworkFlag: false,
   popupLoadingFlag: false,
+  walletModal: null,
   slippage: false,
   slippageVal: 10,
+  slippageSuccess: false,
 }
 
 const reduces = {
@@ -33,7 +35,7 @@ const reduces = {
     return { ...state, popupLoadingFlag: payload }
   },
   [HANDLE_WALLET_MODAL](state, payload) {
-    return { ...state, slippage: payload }
+    return { ...state, walletModal: payload }
   },
 
   [CHANGE_SLIPPAGE](state, payload) {

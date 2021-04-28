@@ -6,6 +6,7 @@ import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
 import LBPPopup from '../../components/LBPPopup'
+import SuccessPopup from '../../components/SuccessPopup'
 import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
 
@@ -40,7 +41,7 @@ const InitPage = (props) => {
     }
 
     if (props.location.pathname.toLowerCase().indexOf('lbp') == -1) {
-      dispatch({ type: 'HANDLE_WALLET_MODAL', payload: false })
+      dispatch({ type: 'HANDLE_WALLET_MODAL', payload: null })
     }
   }, [
     active,
@@ -86,10 +87,17 @@ const InitPage = (props) => {
         </div>
       )}
 
-      {props.slippage && (
+      {props.walletModal === 'slippage' && (
         <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <LBPPopup />
+          </div>
+        </div>
+      )}
+      {props.walletModal === 'slippageSuccess' && (
+        <div className='init_page_box'>
+          <div className='connect_wallet_popup'>
+            <SuccessPopup />
           </div>
         </div>
       )}
@@ -103,5 +111,5 @@ export default connect((store) => ({
   connectWalletFailedFlag: store.popup.connectWalletFailedFlag,
   connectWalletSuccessFlag: store.popup.connectWalletSuccessFlag,
   popupLoadingFlag: store.popup.popupLoadingFlag,
-  slippage: store.popup.slippage,
+  walletModal: store.popup.walletModal,
 }))(withRouter(InitPage))
