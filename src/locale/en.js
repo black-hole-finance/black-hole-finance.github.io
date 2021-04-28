@@ -87,7 +87,7 @@ const en_US = {
   warLBP4: 'Transaction Settings',
   warLBP5: 'Slippage tolerance',
   warLBP6: 'Succeed',
-  warLBP7: 'Please visit MDEX for trading',
+  warLBP7: 'Please visit Uniswap for trading',
   money: 'input investment amount',
   poolText19: 'Max',
   willStart: 'Will start in',
