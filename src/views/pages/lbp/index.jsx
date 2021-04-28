@@ -18,7 +18,7 @@ import { useActiveWeb3React } from '../../../hooks'
 import { LBP_ABI } from '../../../constants/abis/lbp'
 import { numToWei, formatAmount } from '../../../utils/format'
 import './index.less'
-import {message} from "antd";
+import { message } from 'antd'
 
 const LBP = (props) => {
   const { intl, dispatch, slippageVal } = props // 滑点
@@ -30,7 +30,7 @@ const LBP = (props) => {
   useLBP()
 
   useEffect(() => {
-    window.document.getElementById('container').style.display = 'none'
+    // window.document.getElementById('container').style.display = 'none'
   }, [])
 
   const { start_at, end_at, price, status, balance } = props.info
