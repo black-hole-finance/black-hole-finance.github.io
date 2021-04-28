@@ -7,7 +7,12 @@ import { useLBP } from '../../../hooks/lbp'
 import Timer from 'react-compound-timer'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
-import {ChainId, getContract, LBP_ADDRESS, OFFERING_ADDRESS} from '../../../constants'
+import {
+  ChainId,
+  getContract,
+  LBP_ADDRESS,
+  OFFERING_ADDRESS,
+} from '../../../constants'
 import Offering from '../../../constants/abis/offering.json'
 import { useActiveWeb3React } from '../../../hooks'
 import { LBP_ABI } from '../../../constants/abis/lbp'
@@ -37,7 +42,7 @@ const LBP = (props) => {
   const [amount, setAmount] = useState()
 
   const onMax = async () => {
-    if(balance <= 0){
+    if (balance <= 0) {
       return false
     }
     let max = balance
@@ -46,24 +51,28 @@ const LBP = (props) => {
     const contract = getContract(library, LBP_ABI, LBP_ADDRESS[chainId])
 
     // 估算一下gas费
-    const strapOut = await contract.methods.getStrapOut(max).call({ from: account })
+    const strapOut = await contract.methods
+      .getStrapOut(max)
+      .call({ from: account })
     let minOut = new BigNumber(strapOut)
       .multipliedBy(
         new BigNumber(100)
           .minus(new BigNumber(slippageVal))
           .dividedBy(new BigNumber(100))
-      ).toFixed(0, 1)
+      )
+      .toFixed(0, 1)
       .toString()
     const gas_limit = await contract.methods.strap(minOut).estimateGas({
-        from: account,
-        value: max
-      })
+      from: account,
+      value: max,
+    })
     const gas_price = Web3.utils.toWei('100', 'gwei')
-    const gas_fee = new BigNumber(gas_limit).multipliedBy(new BigNumber(gas_price))
+    const gas_fee = new BigNumber(gas_limit).multipliedBy(
+      new BigNumber(gas_price)
+    )
 
     max = maxB.gt(gas_fee) ? maxB.minus(gas_fee).toString() : 0
     setAmount(formatAmount(max, props.info.currency.decimal, 6))
-
   }
 
   const onChange = (e) => {
@@ -82,14 +91,18 @@ const LBP = (props) => {
   const onPurchase = async () => {
     const lbp_contract = getContract(library, LBP_ABI, LBP_ADDRESS[chainId])
 
-    const strapOut = await lbp_contract.methods.getStrapOut(numToWei(amount)).call({ from: account })
+    const strapOut = await lbp_contract.methods
+      .getStrapOut(numToWei(amount))
+      .call({ from: account })
 
     let minOut = new BigNumber(strapOut)
       .multipliedBy(
         new BigNumber(100)
           .minus(new BigNumber(slippageVal))
           .dividedBy(new BigNumber(100))
-      ).toFixed(0, 1).toString()
+      )
+      .toFixed(0, 1)
+      .toString()
     return lbp_contract.methods
       .strap(minOut)
       .send({
