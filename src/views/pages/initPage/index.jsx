@@ -48,6 +48,7 @@ const InitPage = (props) => {
     props.popupLoadingFlag,
     currency_allocation,
     props.location,
+    props.slippage,
   ])
 
   return (

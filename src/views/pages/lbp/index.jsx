@@ -53,6 +53,7 @@ const LBP = (props) => {
 
   const onMax = async () => {
     if (balance <= 0) {
+      setAmount(0)
       return false
     }
     let max = balance
