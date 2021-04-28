@@ -11,11 +11,9 @@ import offering from '../constants/abis/offering.json'
 import { store } from '../store'
 import { useActiveWeb3React, useBlockHeight } from './index'
 import { useContract } from './useContract'
-import { OFFERING_ABI } from '../constants/abis/offering'
 import Web3 from 'web3'
 import {useBalance, useTokenBalance} from './wallet'
 import {LBP_ABI} from "../constants/abis/lbp";
-import {useQuota, useUnlockCapacity, useVolume} from "./offering";
 
 
 /**
