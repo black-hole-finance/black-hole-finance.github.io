@@ -6,7 +6,7 @@ import { useLBP } from '../../../hooks/lbp'
 import Timer from 'react-compound-timer'
 import { FormattedMessage, injectIntl } from 'react-intl'
 import { connect } from 'react-redux'
-import { getContract, LBP_ADDRESS, OFFERING_ADDRESS } from '../../../constants'
+import {ChainId, getContract, LBP_ADDRESS, OFFERING_ADDRESS} from '../../../constants'
 import Offering from '../../../constants/abis/offering.json'
 import { useActiveWeb3React } from '../../../hooks'
 import { LBP_ABI } from '../../../constants/abis/lbp'
@@ -19,7 +19,8 @@ const LBP = (props) => {
   const [now, setNow] = useState(parseInt(Date.now() / 1000))
   const [left_time, setLeftTime] = useState(0)
   const [fee, setFee] = useState(0)
-  // useLBP()
+
+  useLBP()
 
   useEffect(() => {
     if (
@@ -37,9 +38,34 @@ const LBP = (props) => {
 
   const [amount, setAmount] = useState()
 
-  const onMax = () => {
+  const onMax = async () => {
+    if(balance <= 0){
+      debugger
+      return false
+    }
     let max = balance
     const maxB = new BigNumber(max)
+
+    const contract = getContract(library, LBP_ABI, LBP_ADDRESS[chainId])
+
+    // 估算一下gas费
+    console.log(max)
+    const strapOut = await contract.methods.getStrapOut(max).call({ from: account })
+    let slippageVal = 0.05
+    let minOut = new BigNumber(strapOut)
+      .multipliedBy(
+        new BigNumber(100)
+          .minus(new BigNumber(slippageVal))
+          .dividedBy(new BigNumber(100))
+      )
+      .toString()
+    minOut = parseInt(minOut)
+    console.log(minOut)
+    const gas_limit = await contract.methods.strap(minOut).estimateGas({
+        from: account,
+        value: max
+      })
+    debugger
     if (props.info.currency.is_ht && max == balance) {
       // 如果是ht,留部分手续费
       const feeB = new BigNumber(fee)
@@ -47,9 +73,7 @@ const LBP = (props) => {
     }
     setAmount(formatAmount(max, props.info.currency.decimal, 6))
   }
-  useEffect(() => {
-    console.log(props, 111111)
-  }, [props])
+
   const onChange = (e) => {
     const { value } = e.target
     const re = /^[0-9]+([.|,][0-9]+)?$/g

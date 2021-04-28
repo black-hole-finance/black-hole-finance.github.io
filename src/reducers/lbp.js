@@ -2,7 +2,7 @@ import { LBP_INFO } from '../const'
 
 const initState = {
   info: {
-    balance: '',
+    balance: '0',
     price: '',
     start_at: '1619492400',
     end_at: '1619611200',
