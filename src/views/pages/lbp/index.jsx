@@ -18,6 +18,7 @@ import { useActiveWeb3React } from '../../../hooks'
 import { LBP_ABI } from '../../../constants/abis/lbp'
 import { numToWei, formatAmount } from '../../../utils/format'
 import './index.less'
+import {message} from "antd";
 
 const LBP = (props) => {
   const { intl, dispatch, slippageVal } = props // 滑点
@@ -116,8 +117,14 @@ const LBP = (props) => {
         from: account,
         value: numToWei(amount),
       })
-      .on('confirmation', (confirmationNumber, receipt) => {
-        // TODO
+      .on('transactionHash', (hash) => {
+        message.info('broadcast success')
+      })
+      .on('receipt', (_, receipt) => {
+        message.success('purchase success')
+      })
+      .on('error', (err, receipt) => {
+        message.error('purchase fail')
       })
   }
 
