@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import cs from 'classnames'
+import Web3 from 'web3'
 import BigNumber from 'bignumber.js'
 import { withRouter } from 'react-router'
 import { useLBP } from '../../../hooks/lbp'
@@ -37,7 +38,6 @@ const LBP = (props) => {
 
   const onMax = async () => {
     if(balance <= 0){
-      debugger
       return false
     }
     let max = balance
@@ -46,29 +46,24 @@ const LBP = (props) => {
     const contract = getContract(library, LBP_ABI, LBP_ADDRESS[chainId])
 
     // 估算一下gas费
-    console.log(max)
     const strapOut = await contract.methods.getStrapOut(max).call({ from: account })
-    let slippageVal = 0.05
     let minOut = new BigNumber(strapOut)
       .multipliedBy(
         new BigNumber(100)
           .minus(new BigNumber(slippageVal))
           .dividedBy(new BigNumber(100))
-      )
+      ).toFixed(0, 1)
       .toString()
-    minOut = parseInt(minOut)
-    console.log(minOut)
     const gas_limit = await contract.methods.strap(minOut).estimateGas({
         from: account,
         value: max
       })
-    debugger
-    if (props.info.currency.is_ht && max == balance) {
-      // 如果是ht,留部分手续费
-      const feeB = new BigNumber(fee)
-      max = maxB.gt(feeB) ? maxB.minus(feeB).toString() : 0
-    }
+    const gas_price = Web3.utils.toWei('100', 'gwei')
+    const gas_fee = new BigNumber(gas_limit).multipliedBy(new BigNumber(gas_price))
+
+    max = maxB.gt(gas_fee) ? maxB.minus(gas_fee).toString() : 0
     setAmount(formatAmount(max, props.info.currency.decimal, 6))
+
   }
 
   const onChange = (e) => {
@@ -86,17 +81,15 @@ const LBP = (props) => {
   // 募资事件
   const onPurchase = async () => {
     const lbp_contract = getContract(library, LBP_ABI, LBP_ADDRESS[chainId])
-    const strapOut = await lbp_contract.methods
-      .getStrapOut(numToWei(amount))
-      .call({ from: account })
+
+    const strapOut = await lbp_contract.methods.getStrapOut(numToWei(amount)).call({ from: account })
 
     let minOut = new BigNumber(strapOut)
       .multipliedBy(
         new BigNumber(100)
           .minus(new BigNumber(slippageVal))
           .dividedBy(new BigNumber(100))
-      )
-      .toString()
+      ).toFixed(0, 1).toString()
     return lbp_contract.methods
       .strap(minOut)
       .send({
