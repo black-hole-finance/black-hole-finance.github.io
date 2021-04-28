@@ -52,7 +52,6 @@ const LBP = (props) => {
       left_time = (end_at - now)  * 1000
       break;
   }
-  console.log(left_time)
 
   const onMax = async () => {
     if (props.info.balance <= 0) {
