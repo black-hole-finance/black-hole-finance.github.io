@@ -20,10 +20,13 @@ import { useTokenBalance } from './wallet'
  * @returns {string}
  */
 export const useQuota = () => {
-  store.dispatch({
-    type: 'POPUP_LOADING_FLAG',
-    payload: true,
-  })
+  if (!store.getState().pools.connectPools.currency_allocation) {
+    store.dispatch({
+      type: 'POPUP_LOADING_FLAG',
+      payload: true,
+    })
+  }
+
   const { account, chainId, active } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
   const contract = useContract(

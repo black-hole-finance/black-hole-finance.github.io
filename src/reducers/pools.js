@@ -13,7 +13,7 @@ const initState = {
     token_allocation: '100,000,000',
     cliamable_balance: '999',
     round: 'Ambassador',
-    wallet_amount: '0',
+    wallet_amount: '',
   },
 }
 
