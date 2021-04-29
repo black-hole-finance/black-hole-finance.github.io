@@ -15,7 +15,7 @@ import {
 } from '../../../constants'
 import './index.less'
 import { formatAmount, fromWei } from '../../../utils/format'
-import {useInvestmentInfo} from "../../../hooks/offering";
+import { useInvestmentInfo } from '../../../hooks/offering'
 
 const Detail = (props) => {
   const {
@@ -60,7 +60,9 @@ const Detail = (props) => {
             <FormattedMessage id='detail_text_20' />
           </a>
           <p className='detail_allocation_coin'>
-            {formatAmount(currency_allocation, eth_usdt)}
+            {formatAmount(currency_allocation, eth_usdt) - 0
+              ? formatAmount(currency_allocation, eth_usdt)
+              : '-'}
             <span>（{currency_symbol}）</span>
           </p>
         </div>
@@ -69,7 +71,9 @@ const Detail = (props) => {
             <FormattedMessage id='detail_text_21' />
           </a>
           <p className='detail_allocation_coin'>
-            {formatAmount(token_allocation)}
+            {formatAmount(token_allocation) - 0
+              ? formatAmount(token_allocation)
+              : '-'}
             <span>（{token_symbol}）</span>
           </p>
         </div>
@@ -122,7 +126,11 @@ const Detail = (props) => {
                 <span>
                   <FormattedMessage id='detail_text_14' />
                 </span>
-                <span>{formatAmount(wallet_amount)}</span>
+                <span>
+                  {formatAmount(wallet_amount) - 0
+                    ? formatAmount(wallet_amount)
+                    : '-'}
+                </span>
               </p>
             </td>
           </tr>
