@@ -30,16 +30,31 @@ const Header = (props) => {
         <Link to='/'>
           <img className='header_logo' src={LogoText} />
         </Link>
-        {(!active) && (
+        {(!active) && props.location.pathname !== '/' && (
           <div className='header_connect_btn' onClick={connectWalletClick}>
             <img className='header_small_logo' src={SmallLogo} />
             <span className='connect_text'>
               {
-                props.location.pathname === '/' ? <FormattedMessage id='header_text_1' /> : <FormattedMessage id='header_text_2' />
+                <FormattedMessage id='header_text_2' />
               }
-
             </span>
           </div>
+        )}
+        {props.location.pathname === '/' && (
+          <div className="header_btn_warpper">
+            <a href='http://blackhole.black/#/activate' className="airdrop_btn">
+              Airdrop
+            </a>
+            <div className='header_connect_btn' onClick={connectWalletClick}>
+              <img className='header_small_logo' src={SmallLogo} />
+              <span className='connect_text'>
+              {
+                <FormattedMessage id='header_text_1' />
+              }
+            </span>
+            </div>
+          </div>
+
         )}
         {active && props.location.pathname !== '/' && (
           <div className='header_connect_btn'>
