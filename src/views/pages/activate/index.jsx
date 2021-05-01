@@ -4,7 +4,7 @@ import {useActivate} from "./hook";
 import {formatAmount} from "../../../utils/format";
 import {Button, message} from "antd";
 import {
-  BUSD_ADDRESS,
+  BUSD_ADDRESS, ChainId,
   getContract,
   iBLACK_ADDRESS,
   OFFERING_ADDRESS,
@@ -122,14 +122,20 @@ const Activate = props => {
                 </p></div>
               </div>
               {
-                active ? (
-                  <Button className='getReward' loading={loading} onClick={onActivate}>
-                    Activate
+                chainId !== ChainId.BSC ? (
+                  <Button className='getReward'>
+                    Please switch network to BSC
                   </Button>
-                ) :
-                  <Button className='getReward' onClick={onConnect}>
-                    Connect Wallet
-                  </Button>
+                  ) : (
+                  active ?
+                    <Button className='getReward' loading={loading} onClick={onActivate}>
+                      Activate
+                    </Button>
+                   :
+                    <Button className='getReward' onClick={onConnect}>
+                      Connect Wallet
+                    </Button>
+                )
               }
 
             </div>
