@@ -5,7 +5,7 @@ import { useWeb3React } from '@web3-react/core'
 import { ChainId, NetworkRPC } from '../constants'
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [ChainId.RINKEBY, ChainId.ETH],
+  supportedChainIds: [ChainId.RINKEBY, ChainId.ETH, ChainId.BSC],
 })
 
 export const network = new NetworkConnector({

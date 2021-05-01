@@ -11,11 +11,12 @@ import SmallLogo from '../../../assets/image/small_logo@2x.png'
 import { formatAmount } from '../../../utils/format'
 import {connectWallet} from "../../../utils";
 import {injected} from "../../../connectors";
+import {useTokenBalance} from "../../../hooks/wallet";
+import {BLACK_ADDRESS} from "../../../constants";
 
 const Header = (props) => {
-  const { token_symbol, wallet_amount } = props.connectPools
   const { active, chainId, account, activate, deactivate } = useActiveWeb3React()
-  console.log(props.location.pathname)
+  const wallet_amount = useTokenBalance(BLACK_ADDRESS[chainId])
 
   const connectWalletClick = () => {
     if(props.location.pathname === '/') return
@@ -43,7 +44,7 @@ const Header = (props) => {
         {active && props.location.pathname !== '/' && (
           <div className='header_connect_btn'>
             <span className='connect_text balance_text'>
-              {formatAmount(wallet_amount)} {token_symbol}
+              {formatAmount(wallet_amount)} BLACK
             </span>
             <span className='balance_line'></span>
             <span className='connect_text balance_text'>{account}</span>

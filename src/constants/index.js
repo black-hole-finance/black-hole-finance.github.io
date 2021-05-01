@@ -10,6 +10,7 @@ export const NetworkContextName = 'NETWORK'
 export const ChainId = {
   RINKEBY: 4,
   ETH: 1,
+  BSC: 56,
 }
 
 export const NetworkRPC = {
@@ -21,11 +22,13 @@ export const NetworkRPC = {
 export const SCAN_ADDRESS = {
   [ChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
   [ChainId.ETH]: 'https://etherscan.io/',
+  [ChainId.BSC]: 'https://bscscan.com/',
 }
 
 export const MULTICALL_NETWORKS = {
   [ChainId.RINKEBY]: '0x42Ad527de7d4e9d9d011aC45B31D8551f8Fe9821',
   [ChainId.ETH]: '0xeefBa1e63905eF1D7ACbA5a8513c70307C1cE441',
+  [ChainId.BSC]: '0x1Ee38d535d541c55C9dae27B12edf090C608E6Fb',
 }
 
 export const OFFERING_ADDRESS = {
@@ -46,4 +49,17 @@ export const USDT_ADDRESS = {
 export const BLACK_ADDRESS = {
   [ChainId.RINKEBY]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
   [ChainId.ETH]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
+  [ChainId.BSC]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
+}
+
+export const iBLACK_ADDRESS = {
+  [ChainId.BSC]: '0x04adbE36C4D39e6EC799F69906A48d83F88dC268'
+}
+
+export const BUSD_ADDRESS = {
+  [ChainId.BSC]: '0xe9e7cea3dedca5984780bafc599bd69add087d56'
+}
+
+export const OPTION_FACTORY_ADDRESS = {
+  [ChainId.BSC]: '0x021297e233550eDBa8e6487EB7c6696cFBB63b88'
 }
