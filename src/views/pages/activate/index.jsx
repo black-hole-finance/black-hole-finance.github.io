@@ -57,7 +57,7 @@ const Activate = props => {
     }
 
 
-    if(busd_balance < exercise_amount){
+    if(busd_balance - exercise_amount < 0){
       message.error('Insufficient funds')
       return  false
     }
