@@ -47,20 +47,20 @@ const Activate = props => {
     }
 
 
-    if(iblack_balance <= 0){
-      message.error('Insufficient funds')
-      return  false
-    }
+    // if(iblack_balance <= 0){
+    //   message.error('Insufficient funds')
+    //   return  false
+    // }
 
     if(exercise_amount <= 0) {
       return  false
     }
 
 
-    if(busd_balance < exercise_amount){
-      message.error('Insufficient funds')
-      return  false
-    }
+    // if(busd_balance - exercise_amount < 0){
+    //   message.error('Insufficient funds')
+    //   return  false
+    // }
 
 
     // 检查是否需要授权
