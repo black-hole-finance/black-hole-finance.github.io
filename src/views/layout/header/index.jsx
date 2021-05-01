@@ -43,7 +43,7 @@ const Header = (props) => {
         )}
         {active && props.location.pathname !== '/' && (
           <div className='header_connect_btn'>
-            <span className='connect_text balance_text'>
+            <span className='connect_text'>
               {formatAmount(wallet_amount)} BLACK
             </span>
             <span className='balance_line'></span>
