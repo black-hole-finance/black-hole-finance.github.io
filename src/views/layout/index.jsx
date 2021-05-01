@@ -16,6 +16,7 @@ import {
   useEagerConnect,
   useInactiveListener,
 } from '../../hooks'
+import Activate from "../pages/activate";
 
 function App() {
   const { activate, account } = useWeb3React()
@@ -37,6 +38,9 @@ function App() {
             </Route>
             <Route exact path='/LBP'>
               <LBP/>
+            </Route>
+            <Route>
+              <Activate exact path='/activate'/>
             </Route>
           </Switch>
           <InitPage />
