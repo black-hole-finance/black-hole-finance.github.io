@@ -12,7 +12,7 @@ const en_US = {
   banner_text_7:
     'Blackhole protocol originates from Ethereum network and gradually spread to Polkadot, BSC, Heco, Sol and eventually the whole blockchain world. ',
   home_text_1:
-    'Governance token BLACK token black hole deflation burning mechanism schematic',
+    'BLACK is a governance token which uses BlackHole deflation burning mechanism schematic',
   home_text_2:
     "The creator holds X tokens and Black's liquidity to create a black hole burn pool without a license, in which they can invest new tokens Y to incentivize the burn.Also Black returns linearly with the progress of burning.",
   home_text_3: 'Roadmap',
