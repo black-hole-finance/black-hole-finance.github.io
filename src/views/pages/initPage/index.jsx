@@ -56,7 +56,7 @@ const InitPage = (props) => {
     <>
       {/*loading */}
       {active && props.popupLoadingFlag && props.location.pathname !== '/' && (
-        <div className='init_page_box'>
+        <div className='init_page_box' style={{ top: '98px' }}>
           <div className='connect_wallet_popup'>
             <LoadingPopup />
           </div>
@@ -64,7 +64,7 @@ const InitPage = (props) => {
       )}
       {/* 连接错误弹框 */}
       {props.changeNetworkFlag && (
-        <div className='init_page_box'>
+        <div className='init_page_box' style={{ top: '98px' }}>
           <div className='connect_wallet_popup'>
             <ChangeNetworkPopup />
           </div>
@@ -72,7 +72,7 @@ const InitPage = (props) => {
       )}
       {/* 登录成功后判断用户是否是白名单 */}
       {props.connectWalletFailedFlag && (
-        <div className='init_page_box'>
+        <div className='init_page_box' style={{ top: '98px' }}>
           <div className='connect_wallet_popup'>
             <ConnectWalletFailedPopup />
           </div>
@@ -80,7 +80,7 @@ const InitPage = (props) => {
       )}
       {/* 登录后弹框展示🐟额 */}
       {props.connectWalletSuccessFlag && (
-        <div className='init_page_box'>
+        <div className='init_page_box' style={{ top: '98px' }}>
           <div className='connect_wallet_popup'>
             <ConnectWalletSuccessPopup />
           </div>
