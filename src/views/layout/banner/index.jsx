@@ -10,6 +10,8 @@ import './index.less'
 
 const Banner = (props) => {
   const { chainId } = useActiveWeb3React()
+  const BlackTokenAddress =
+    BLACK_ADDRESS[chainId] || '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2'
   const jumpPosition = (e) => {
     //e.target.innerText与id相同
     //获取到元素的offsetTop顶部距离
@@ -17,6 +19,9 @@ const Banner = (props) => {
     //滚动页面的section标签内的部分
     window.scrollTo({ top: offsetTop })
   }
+  useEffect(() => {
+    window.document.getElementById('container').style.display = ''
+  }, [props.location.pathname])
 
   const goDetail = (e) => {
     props.history.push(`/investment`)
@@ -35,10 +40,11 @@ const Banner = (props) => {
             </p>
             <a
               className='banner_text_top banner_text_bottom'
-              href={'https://etherscan.io/address/' + BLACK_ADDRESS[chainId]}
+              href={'https://etherscan.io/address/' + BlackTokenAddress}
               target='_blank'
             >
-              {BLACK_ADDRESS[chainId]}
+              BLACK Contract Address:
+              {' ' + BlackTokenAddress}
               <svg
                 t='1619095072712'
                 className='icon'
