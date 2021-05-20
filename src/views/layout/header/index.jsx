@@ -9,17 +9,23 @@ import { message } from 'antd'
 import LogoText from '../../../assets/image/Logo_text@2x.png'
 import SmallLogo from '../../../assets/image/small_logo@2x.png'
 import { formatAmount } from '../../../utils/format'
-import {connectWallet} from "../../../utils";
-import {injected} from "../../../connectors";
-import {useTokenBalance} from "../../../hooks/wallet";
-import {BLACK_ADDRESS} from "../../../constants";
+import { connectWallet } from '../../../utils'
+import { injected } from '../../../connectors'
+import { useTokenBalance } from '../../../hooks/wallet'
+import { BLACK_ADDRESS } from '../../../constants'
 
 const Header = (props) => {
-  const { active, chainId, account, activate, deactivate } = useActiveWeb3React()
+  const {
+    active,
+    chainId,
+    account,
+    activate,
+    deactivate,
+  } = useActiveWeb3React()
   const wallet_amount = useTokenBalance(BLACK_ADDRESS[chainId])
 
   const connectWalletClick = () => {
-    if(props.location.pathname === '/') return
+    if (props.location.pathname === '/') return
     connectWallet(activate, injected, deactivate)
       .then(() => console.log)
       .catch(() => console.log)
@@ -27,34 +33,33 @@ const Header = (props) => {
   return (
     <div className='header'>
       <div className='header_box'>
-        <Link to='/'>
-          <img className='header_logo' src={LogoText} />
-        </Link>
-        {(!active) && props.location.pathname !== '/' && (
+        <div className='header_link'>
+          <Link to='/'>
+            <img className='header_logo' src={LogoText} />
+          </Link>
+          <div className='header_link_nav'>
+            <Link to='/burn'>BURN</Link>
+            <a href='http://blackhole.black/#/activate'>Airdrop</a>
+          </div>
+        </div>
+
+        {!active && props.location.pathname !== '/' && (
           <div className='header_connect_btn' onClick={connectWalletClick}>
             <img className='header_small_logo' src={SmallLogo} />
             <span className='connect_text'>
-              {
-                <FormattedMessage id='header_text_2' />
-              }
+              {<FormattedMessage id='header_text_2' />}
             </span>
           </div>
         )}
         {props.location.pathname === '/' && (
-          <div className="header_btn_warpper">
-            <a href='http://blackhole.black/#/activate' className="airdrop_btn">
-              Airdrop
-            </a>
+          <div className='header_btn_warpper'>
             <div className='header_connect_btn' onClick={connectWalletClick}>
               <img className='header_small_logo' src={SmallLogo} />
               <span className='connect_text'>
-              {
-                <FormattedMessage id='header_text_1' />
-              }
-            </span>
+                {<FormattedMessage id='header_text_1' />}
+              </span>
             </div>
           </div>
-
         )}
         {active && props.location.pathname !== '/' && (
           <div className='header_connect_btn'>
