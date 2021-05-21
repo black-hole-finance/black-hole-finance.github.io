@@ -40,8 +40,8 @@ function App() {
             <Route exact path='/LBP'>
               <LBP />
             </Route>
-            <Route>
-              <Activate exact path='/activate' />
+            <Route exact path='/activate'>
+              <Activate />
             </Route>
             <Route exact path='/burn'>
               <Burn />

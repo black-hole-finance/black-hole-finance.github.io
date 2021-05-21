@@ -2,6 +2,7 @@ import './index.less'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import cs from 'classnames'
 import { FormattedMessage } from 'react-intl'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { useActiveWeb3React } from '../../../hooks'
@@ -38,8 +39,22 @@ const Header = (props) => {
             <img className='header_logo' src={LogoText} />
           </Link>
           <div className='header_link_nav'>
-            <Link to='/burn'>BURN</Link>
-            <a href='http://blackhole.black/#/activate'>Airdrop</a>
+            <Link
+              to='/burn'
+              className={cs(
+                props.location.pathname.indexOf('burn') > -1 && 'active'
+              )}
+            >
+              BURN
+            </Link>
+            <Link
+              className={cs(
+                props.location.pathname.indexOf('activate') > -1 && 'active'
+              )}
+              to='/activate'
+            >
+              Airdrop
+            </Link>
           </div>
         </div>
 
