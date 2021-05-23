@@ -23,6 +23,7 @@ const Header = (props) => {
     activate,
     deactivate,
   } = useActiveWeb3React()
+  const { dispatch } = props
   const wallet_amount = useTokenBalance(BLACK_ADDRESS[chainId])
 
   const connectWalletClick = () => {
@@ -93,6 +94,13 @@ const Header = (props) => {
             </CopyToClipboard>
           </div>
         )}
+
+        <a
+          className='more'
+          onClick={() => {
+            dispatch({ type: 'HANDLE_SHOW_MENUMASK_MODAL', payload: true })
+          }}
+        ></a>
       </div>
     </div>
   )
@@ -100,4 +108,5 @@ const Header = (props) => {
 
 export default connect((store) => ({
   connectPools: store.pools.connectPools,
+  showMenuMaskModal: store.menu.showMenuMaskModal,
 }))(withRouter(Header))

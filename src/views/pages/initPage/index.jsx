@@ -5,6 +5,7 @@ import { useActiveWeb3React } from '../../../hooks'
 import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
+import Menumask from '../../components/menumask'
 import LBPPopup from '../../components/LBPPopup'
 import SuccessPopup from '../../components/SuccessPopup'
 import LoadingPopup from '../../components/LoadingPopup'
@@ -54,6 +55,14 @@ const InitPage = (props) => {
 
   return (
     <>
+      {props.showMenuMaskModal && (
+        <div className='init_page_box'>
+          <div className='connect_wallet_popup'>
+            <Menumask />
+          </div>
+        </div>
+      )}
+
       {/*loading */}
       {active && props.popupLoadingFlag && props.location.pathname !== '/' && (
         <div className='init_page_box' style={{ top: '98px' }}>
@@ -111,5 +120,6 @@ export default connect((store) => ({
   connectWalletFailedFlag: store.popup.connectWalletFailedFlag,
   connectWalletSuccessFlag: store.popup.connectWalletSuccessFlag,
   popupLoadingFlag: store.popup.popupLoadingFlag,
+  showMenuMaskModal: store.menu.showMenuMaskModal,
   walletModal: store.popup.walletModal,
 }))(withRouter(InitPage))
