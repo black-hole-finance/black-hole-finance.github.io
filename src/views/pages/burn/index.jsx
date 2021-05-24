@@ -8,6 +8,8 @@ import { connectWallet } from '../../../utils'
 import { Button, message } from 'antd'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { injected } from '../../../connectors'
+import Footer from '../../layout/footer'
+import { connect } from 'react-redux'
 import OLD from '../../../assets/image/burn/old@2x.png'
 import NEW from '../../../assets/image/burn/new@2x.png'
 import comingSoon from '../../../assets/image/burn/comingSoon@2x.png'
@@ -20,6 +22,7 @@ const Burn = (props) => {
   const [approve, setApprove] = useState(false)
 
   useEffect(() => {
+    dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     window.document.getElementById('container').style.display = 'none'
   }, [])
 
@@ -241,8 +244,12 @@ const Burn = (props) => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   )
 }
 
-export default withRouter(Burn)
+export default connect((store) => ({
+  changeNetworkFlag: store.popup.changeNetworkFlag,
+  showMenuMaskModal: store.menu.showMenuMaskModal,
+}))(withRouter(Burn))

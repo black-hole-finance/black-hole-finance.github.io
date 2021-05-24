@@ -53,19 +53,24 @@ const InitPage = (props) => {
     props.slippage,
   ])
 
+  useEffect(() => {
+    props.location.pathname === '/' &&
+      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
+  }, [props.location])
+
   return (
     <>
       {props.showMenuMaskModal && (
-        <div className='init_page_box'>
-          <div className='connect_wallet_popup'>
-            <Menumask />
-          </div>
-        </div>
+        <Menumask
+          onClick={() => {
+            dispatch({ type: 'HANDLE_SHOW_MENUMASK_MODAL', payload: true })
+          }}
+        />
       )}
 
       {/*loading */}
       {active && props.popupLoadingFlag && props.location.pathname !== '/' && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <LoadingPopup />
           </div>
@@ -73,7 +78,7 @@ const InitPage = (props) => {
       )}
       {/* 连接错误弹框 */}
       {props.changeNetworkFlag && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <ChangeNetworkPopup />
           </div>
@@ -81,7 +86,7 @@ const InitPage = (props) => {
       )}
       {/* 登录成功后判断用户是否是白名单 */}
       {props.connectWalletFailedFlag && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <ConnectWalletFailedPopup />
           </div>
@@ -89,7 +94,7 @@ const InitPage = (props) => {
       )}
       {/* 登录后弹框展示🐟额 */}
       {props.connectWalletSuccessFlag && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <ConnectWalletSuccessPopup />
           </div>
