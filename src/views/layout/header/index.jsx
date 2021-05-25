@@ -59,48 +59,50 @@ const Header = (props) => {
           </div>
         </div>
 
-        {!active && props.location.pathname !== '/' && (
-          <div className='header_connect_btn' onClick={connectWalletClick}>
-            <img className='header_small_logo' src={SmallLogo} />
-            <span className='connect_text'>
-              {<FormattedMessage id='header_text_2' />}
-            </span>
-          </div>
-        )}
-        {props.location.pathname === '/' && (
-          <div className='header_btn_warpper'>
+        <div style={{ display: 'flex' }}>
+          {!active && props.location.pathname !== '/' && (
             <div className='header_connect_btn' onClick={connectWalletClick}>
               <img className='header_small_logo' src={SmallLogo} />
               <span className='connect_text'>
-                {<FormattedMessage id='header_text_1' />}
+                {<FormattedMessage id='header_text_2' />}
               </span>
             </div>
-          </div>
-        )}
-        {active && props.location.pathname !== '/' && (
-          <div className='header_connect_btn'>
-            <span className='connect_text'>
-              {formatAmount(wallet_amount)} BLACK
-            </span>
-            <span className='balance_line'></span>
-            <span className='connect_text balance_text'>{account}</span>
-            <CopyToClipboard
-              text={account}
-              onCopy={() => {
-                message.success('copy success')
-              }}
-            >
-              <a className='connect_wallet'></a>
-            </CopyToClipboard>
-          </div>
-        )}
+          )}
+          {props.location.pathname === '/' && (
+            <div className='header_btn_warpper'>
+              <div className='header_connect_btn' onClick={connectWalletClick}>
+                <img className='header_small_logo' src={SmallLogo} />
+                <span className='connect_text'>
+                  {<FormattedMessage id='header_text_1' />}
+                </span>
+              </div>
+            </div>
+          )}
+          {active && props.location.pathname !== '/' && (
+            <div className='header_connect_btn header_connect_wallet'>
+              <span className='connect_text'>
+                {formatAmount(wallet_amount)} BLACK
+              </span>
+              <span className='balance_line'></span>
+              <span className='connect_text balance_text'>{account}</span>
+              <CopyToClipboard
+                text={account}
+                onCopy={() => {
+                  message.success('copy success')
+                }}
+              >
+                <a className='connect_wallet'></a>
+              </CopyToClipboard>
+            </div>
+          )}
 
-        <a
-          className='more'
-          onClick={() => {
-            dispatch({ type: 'HANDLE_SHOW_MENUMASK_MODAL', payload: true })
-          }}
-        ></a>
+          <a
+            className='more'
+            onClick={() => {
+              dispatch({ type: 'HANDLE_SHOW_MENUMASK_MODAL', payload: true })
+            }}
+          ></a>
+        </div>
       </div>
     </div>
   )

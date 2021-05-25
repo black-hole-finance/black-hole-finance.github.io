@@ -8,23 +8,42 @@ import { connectWallet } from '../../../utils'
 import { Button, message } from 'antd'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { injected } from '../../../connectors'
+import { formatAmount } from '../../../utils/format'
 import Footer from '../../layout/footer'
+import { useActiveWeb3React } from '../../../hooks'
+import { useTokenBalance, useTokenAllowance } from '../../../hooks/wallet'
+import ERC20 from '../../../constants/abis/erc20.json'
+import { BLACK_ADDRESS, getContract } from '../../../constants'
 import { connect } from 'react-redux'
+import Timer from 'react-compound-timer'
 import OLD from '../../../assets/image/burn/old@2x.png'
 import NEW from '../../../assets/image/burn/new@2x.png'
 import comingSoon from '../../../assets/image/burn/comingSoon@2x.png'
 
 const Burn = (props) => {
   const { dispatch } = props
-  const { activate, deactivate } = useWeb3React()
-  const [amount, setAmount] = useState(1)
+  const { active, chainId, library, account } = useActiveWeb3React()
+  const [amount, setAmount] = useState('')
   const [loadFlag, setLoadFlag] = useState(false)
-  const [approve, setApprove] = useState(false)
+  const [approve, setApprove] = useState(true)
+  const left_time = ('1621944840' - parseInt(Date.now() / 1000)) * 1000
+  const OldBalance = useTokenBalance(BLACK_ADDRESS[chainId])
+  const allowance = useTokenAllowance(
+    // 燃烧池子地址
+    '0x0',
+    BLACK_ADDRESS[chainId]
+  )
 
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     window.document.getElementById('container').style.display = 'none'
   }, [])
+
+  useEffect(() => {
+    if (allowance > 0) {
+      setApprove(false)
+    }
+  }, [allowance])
 
   const onChange = (e) => {
     const { value } = e.target
@@ -38,7 +57,10 @@ const Burn = (props) => {
     }
   }
 
-  const onMax = () => {}
+  const onMax = () => {
+    let max = OldBalance
+    setAmount(formatAmount(max, 18, 8))
+  }
 
   const addToken = async () => {
     try {
@@ -62,7 +84,54 @@ const Burn = (props) => {
     }
   }
 
-  const onApprove = (e) => {}
+  const onApprove = (e) => {
+    if (!active) {
+      return false
+    }
+    if (loadFlag) return
+
+    setLoadFlag(true)
+    const contract = getContract(library, ERC20.abi, BLACK_ADDRESS[chainId])
+    contract.methods
+      .approve(
+        // 燃烧池子地址
+        '0x0',
+        '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+      )
+      .send({
+        from: account,
+      })
+      .on('receipt', (_, receipt) => {
+        console.log('approve success')
+        setLoadFlag(false)
+        setApprove(false)
+      })
+      .on('error', (err, receipt) => {
+        console.log('approve error', err)
+        setLoadFlag(false)
+      })
+  }
+
+  const onConfirm = () => {
+    if (!active) {
+      return false
+    }
+    if (!OldBalance) {
+      return false
+    }
+    if (isNaN(parseInt(OldBalance))) {
+      return false
+    }
+    if (!amount) {
+      return false
+    }
+    if (isNaN(parseInt(amount))) {
+      return false
+    }
+
+    if (loadFlag) return
+    setLoadFlag(true)
+  }
 
   return (
     <>
@@ -78,39 +147,106 @@ const Burn = (props) => {
               <img className='burn_box_card_new_logo' src={NEW} />
               <h3 className='burn_box_card_title'>BlackHole Burning</h3>
               <div className='burn_box_card_countdown'>
-                <div className='burn_box_card_day'>
-                  <span className='burn_box_card_countdown_title'>DAYS</span>
-                  <p className='burn_box_card_countdown_time'>
-                    <span className='burn_box_card_time'>1</span>
-                    <span className='burn_box_card_time'>2</span>
-                  </p>
-                </div>
-                <span className='delimiter'>:</span>
-                <div className='burn_box_card_day'>
-                  <span className='burn_box_card_countdown_title'>HOURS</span>
-                  <p className='burn_box_card_countdown_time'>
-                    <span className='burn_box_card_time'>1</span>
-                    <span className='burn_box_card_time'>2</span>
-                  </p>
-                </div>
-                <span className='delimiter'>:</span>
+                <Timer
+                  initialTime={left_time}
+                  key={left_time}
+                  direction='backward'
+                  formatValue={(number) => {
+                    if (number === 0) return '00'
+                    if (number < 10) {
+                      return `0${number}`
+                    }
+                    return number
+                  }}
+                >
+                  <div className='burn_box_card_day'>
+                    <span className='burn_box_card_countdown_title'>DAYS</span>
+                    <p className='burn_box_card_countdown_time'>
+                      <span className='burn_box_card_time'>
+                        <Timer.Consumer>
+                          {({ h, d, formatValue }) => parseInt(d / 10)}
+                        </Timer.Consumer>
+                      </span>
+                      <span className='burn_box_card_time'>
+                        <Timer.Consumer>
+                          {({ h, d, formatValue }) =>
+                            ((d / 10).toString().split('.')[1] &&
+                              (d / 10).toString().split('.')[1]) ||
+                            0
+                          }
+                        </Timer.Consumer>
+                      </span>
+                    </p>
+                  </div>
 
-                <div className='burn_box_card_day'>
-                  <span className='burn_box_card_countdown_title'>MINUTES</span>
-                  <p className='burn_box_card_countdown_time'>
-                    <span className='burn_box_card_time'>1</span>
-                    <span className='burn_box_card_time'>2</span>
-                  </p>
-                </div>
-                <span className='delimiter'>:</span>
+                  <span className='delimiter'>:</span>
+                  <div className='burn_box_card_day'>
+                    <span className='burn_box_card_countdown_title'>HOURS</span>
+                    <p className='burn_box_card_countdown_time'>
+                      <span className='burn_box_card_time'>
+                        <Timer.Consumer>
+                          {({ h, d, formatValue }) => parseInt(h / 10)}
+                        </Timer.Consumer>
+                      </span>
+                      <span className='burn_box_card_time'>
+                        <Timer.Consumer>
+                          {({ h, d, formatValue }) =>
+                            ((h / 10).toString().split('.')[1] &&
+                              (h / 10).toString().split('.')[1]) ||
+                            0
+                          }
+                        </Timer.Consumer>
+                      </span>
+                    </p>
+                  </div>
+                  <span className='delimiter'>:</span>
 
-                <div className='burn_box_card_day'>
-                  <span className='burn_box_card_countdown_title'>SECONDS</span>
-                  <p className='burn_box_card_countdown_time'>
-                    <span className='burn_box_card_time'>1</span>
-                    <span className='burn_box_card_time'>2</span>
-                  </p>
-                </div>
+                  <div className='burn_box_card_day'>
+                    <span className='burn_box_card_countdown_title'>
+                      MINUTES
+                    </span>
+                    <p className='burn_box_card_countdown_time'>
+                      <span className='burn_box_card_time'>
+                        <Timer.Consumer>
+                          {({ m, h, formatValue }) => parseInt(m / 10)}
+                        </Timer.Consumer>
+                      </span>
+                      <span className='burn_box_card_time'>
+                        <Timer.Consumer>
+                          {({ m, h, formatValue }) =>
+                            ((m / 10).toString().split('.')[1] &&
+                              (m / 10).toString().split('.')[1]) ||
+                            0
+                          }
+                        </Timer.Consumer>
+                      </span>
+                    </p>
+                  </div>
+                  <span className='delimiter'>:</span>
+
+                  <div className='burn_box_card_day'>
+                    <span className='burn_box_card_countdown_title'>
+                      SECONDS
+                    </span>
+                    <p className='burn_box_card_countdown_time'>
+                      <span className='burn_box_card_time'>
+                        {/* <Timer.Seconds /> */}
+                        <Timer.Consumer>
+                          {({ s, m, formatValue }) => parseInt(s / 10)}
+                        </Timer.Consumer>
+                      </span>
+                      <span className='burn_box_card_time'>
+                        <Timer.Consumer>
+                          {({ s, m, formatValue }) =>
+                            ((s / 10).toString().split('.')[1] &&
+                              (s / 10).toString().split('.')[1]) ||
+                            0
+                          }
+                        </Timer.Consumer>
+                      </span>
+                    </p>
+                  </div>
+                </Timer>
               </div>
               <div className='burn_box_card_progress'>
                 <p>Progress(20.12%)</p>
@@ -129,7 +265,7 @@ const Burn = (props) => {
               </div>
               <div className='burn_box_card_progress'>
                 <p>Available</p>
-                <p>0.0000 Old</p>
+                <p>{formatAmount(OldBalance)} Old</p>
               </div>
               <div className='burn_box_card_inputbox'>
                 <div className='burn_box_card_inputbox-control'>
@@ -156,9 +292,16 @@ const Burn = (props) => {
                 <p>My</p>
                 <p>1,000,000.00(10.00%)</p>
               </div>
-              <Button type='primary' onClick={onApprove} loading={loadFlag}>
-                Burn
-              </Button>
+              {approve && (
+                <Button type='primary' onClick={onApprove} loading={loadFlag}>
+                  Approve
+                </Button>
+              )}
+              {!approve && (
+                <Button type='primary' onClick={onConfirm} loading={loadFlag}>
+                  Burn
+                </Button>
+              )}
               <div className='burn_box_card_progress burn_box_card_add_contract'>
                 <p>
                   Old Contract Add

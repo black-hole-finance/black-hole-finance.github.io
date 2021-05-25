@@ -12,7 +12,7 @@ const Footer = () => {
           <a href='https://twitter.com/BlackHoleBurn' target='_blank'>
             <svg
               t='1621850331615'
-              class='icon'
+              className='icon'
               viewBox='0 0 1024 1024'
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
@@ -32,7 +32,7 @@ const Footer = () => {
           <a href='https://t.me/BlackholeProtocolOfficial' target='_blank'>
             <svg
               t='1621850396854'
-              class='icon'
+              className='icon'
               viewBox='0 0 1024 1024'
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
@@ -52,7 +52,7 @@ const Footer = () => {
           <a href='https://github.com/black-hole-finance' target='_blank'>
             <svg
               t='1621850433941'
-              class='icon'
+              className='icon'
               viewBox='0 0 1024 1024'
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
@@ -71,7 +71,7 @@ const Footer = () => {
           <a href='https://blackholeprotocol.medium.com/' target='_blank'>
             <svg
               t='1621850459903'
-              class='icon'
+              className='icon'
               viewBox='0 0 1024 1024'
               version='1.1'
               xmlns='http://www.w3.org/2000/svg'
