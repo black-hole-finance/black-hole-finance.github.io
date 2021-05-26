@@ -47,7 +47,7 @@
     min-width: 1200px;
     background: url('../../../assets/image/burn/burn_banner.png') no-repeat;
     background-size: 1920px 1080px;
-    background-position: center center;
+    background-position: top;
     background-color: #000;
     .burn_box_title {
       height: 62px;
@@ -59,6 +59,7 @@
     }
     .burn_box_content {
       margin-top: 20px;
+      padding-bottom: 40px;
       width: 500px;
       font-size: 14px;
       font-family: PingFangSC-Regular, PingFang SC;
@@ -67,18 +68,20 @@
       line-height: 26px;
     }
     .burn_box_card_box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 90px;
+      display: inline-block;
     }
     .burn_box_card {
+      display: inline-block;
       position: relative;
+      margin-top: 50px;
       padding: 26px 30px 22px;
       width: 380px;
       height: 462px;
       background: #262626;
       border-radius: 10px;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
       &_old_logo,
       &_new_logo {
         position: absolute;
@@ -384,26 +387,29 @@
       }
     }
     .coming_soon {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+      display: inline-block;
+      margin-top: 50px;
       width: 380px;
       height: 462px;
       background: #262626;
       border-radius: 10px;
+      vertical-align: top;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
       img {
-        display: inline-block;
-        margin-top: 150px;
+        display: block;
+        margin: 150px auto 18px;
         width: 106px;
         height: 106px;
       }
       h2 {
-        margin-top: 18px;
         font-size: 30px;
         font-family: HelveticaNeue-Bold, HelveticaNeue;
         font-weight: bold;
         color: #ffead5;
         line-height: 38px;
+        text-align: center;
       }
     }
   }
@@ -422,7 +428,7 @@
     min-width: 1200px;
     background: url('../../../assets/image/burn/burn_banner.png') no-repeat;
     background-size: 1920px 1080px;
-    background-position: center center;
+    background-position: top;
     background-color: #000;
     .burn_box_title {
       height: 62px;
@@ -434,6 +440,7 @@
     }
     .burn_box_content {
       margin-top: 20px;
+      padding-bottom: 40px;
       width: 500px;
       font-size: 14px;
       font-family: PingFangSC-Regular, PingFang SC;
@@ -442,18 +449,20 @@
       line-height: 26px;
     }
     .burn_box_card_box {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 90px;
+      display: inline-block;
     }
     .burn_box_card {
+      display: inline-block;
       position: relative;
+      margin-top: 50px;
       padding: 26px 30px 22px;
       width: 380px;
       height: 462px;
       background: #262626;
       border-radius: 10px;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
       &_old_logo,
       &_new_logo {
         position: absolute;
@@ -759,26 +768,29 @@
       }
     }
     .coming_soon {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
+      display: inline-block;
+      margin-top: 50px;
       width: 380px;
       height: 462px;
       background: #262626;
       border-radius: 10px;
+      vertical-align: top;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
       img {
-        display: inline-block;
-        margin-top: 150px;
+        display: block;
+        margin: 150px auto 18px;
         width: 106px;
         height: 106px;
       }
       h2 {
-        margin-top: 18px;
         font-size: 30px;
         font-family: HelveticaNeue-Bold, HelveticaNeue;
         font-weight: bold;
         color: #ffead5;
         line-height: 38px;
+        text-align: center;
       }
     }
   }
@@ -787,7 +799,7 @@
 @media (min-width: 359px) and (max-width: 747px) {
   .content {
     margin: 0 auto;
-    padding: 0 18px 40px;
+    padding-bottom: 40px;
   }
   .burn_box {
     padding-top: 88px;
@@ -798,6 +810,7 @@
     background-size: contain;
     background-color: #000;
     .burn_box_title {
+      padding: 0 18px;
       height: 46px;
       font-size: 32px;
       font-family: 'Arial-Black', Arial;
@@ -807,6 +820,7 @@
     }
     .burn_box_content {
       margin-top: 10px;
+      padding: 0 18px 20px;
       width: 310px;
       font-size: 12px;
       font-family: PingFangSC-Regular, PingFang SC;
@@ -818,10 +832,10 @@
       display: flex;
       align-items: center;
       flex-direction: column;
-      margin-top: 50px;
     }
     .burn_box_card {
       position: relative;
+      margin-top: 36px;
       padding: 26px 10px 22px;
       width: 340px;
       height: 462px;
@@ -1161,7 +1175,7 @@
 @media (max-width: 359px) {
   .content {
     margin: 0 auto;
-    padding: 0 18px 40px;
+    padding-bottom: 40px;
   }
   .burn_box {
     padding-top: 88px;
@@ -1172,6 +1186,7 @@
     background-size: contain;
     background-color: #000;
     .burn_box_title {
+      padding: 0 18px;
       height: 46px;
       font-size: 32px;
       font-family: 'Arial-Black', Arial;
@@ -1180,6 +1195,7 @@
       line-height: 46px;
     }
     .burn_box_content {
+      padding: 0 18px 20px;
       margin-top: 10px;
       width: 288px;
       font-size: 12px;
@@ -1192,10 +1208,10 @@
       display: flex;
       align-items: center;
       flex-direction: column;
-      margin-top: 50px;
     }
     .burn_box_card {
       position: relative;
+      margin-top: 36px;
       padding: 26px 10px 22px;
       width: 300px;
       height: 462px;
