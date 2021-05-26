@@ -1,6 +1,9 @@
 const zh_CN = {
   header_text_1: 'Dapp Coming Soon',
   header_text_2: 'Connect Wallet',
+  header_text_3: 'BURN',
+  header_text_4: 'Airdrop',
+  header_text_5: 'BLACK',
   banner_text_1: 'Black Hole — Protocol',
   banner_text_2:
     'An approval-free decentralized & cross-chain burning protocol, innovator of perpetual deflationary blockchain ecosystem.',
@@ -11,6 +14,7 @@ const zh_CN = {
   banner_text_6: 'Contribute',
   banner_text_7:
     'Blackhole protocol originates from Ethereum network and gradually spread to Polkadot, BSC, Heco, Sol and eventually the whole blockchain world. ',
+  banner_text_8: '{coin} Contract Address:',
   home_text_1:
     'BLACK is a governance token which uses BlackHole deflation burning mechanism schematic',
   home_text_2:
@@ -96,5 +100,37 @@ const zh_CN = {
   completed: 'Finished',
   poolText20: 'Cancel',
   poolText22: 'Confirm',
+  burn1: 'BlackHole Burn',
+  burn2:
+    '毁灭的意义，是为了重建，与新生，这就是生命哲学里面的「螺旋上升，或大起大落」的时间曲线，巨大的伤害，会让你粉身碎骨，但是，「我相信最为精彩的应该是，重建之时的信心，与勇气。」',
+  burn3: 'Coming soon…',
+  burn4: 'BlackHole Burning',
+  burn5: 'DAYS',
+  burn6: 'HOURS',
+  burn7: 'MINUTES',
+  burn8: 'SECONDS',
+  burn9: 'Progress',
+  burn10: 'Available',
+  burn11: 'Old',
+  burn12: 'Total',
+  burn13: 'My',
+  burn14: 'Approve',
+  burn15: 'Burn',
+  burn16: 'Old Contract Add.',
+  burn17: 'Add Old to',
+  burn18: 'New Rewards',
+  burn19: 'New Contract Add.',
+  burn20: 'Add New to',
+  burn21: 'Claim',
+  activate1: 'iBLACK Activate',
+  activate2: 'Swap IIO TOKEN',
+  activate3: 'You could swap BLACK during',
+  activate4: 'My {coin}',
+  activate5: 'Please switch network to BSC',
+  activate6: 'Activate',
+  activate7: 'Connect Wallet',
+  activate8: 'Need Pay',
+  activate9: 'Swap To',
+  activate10: 'Balance',
 }
 export default zh_CN

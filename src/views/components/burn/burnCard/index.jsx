@@ -138,7 +138,9 @@ const Burn = (props) => {
       <div className='burn_box_card'>
         <img className='burn_box_card_old_logo' src={OLD} />
         <img className='burn_box_card_new_logo' src={NEW} />
-        <h3 className='burn_box_card_title'>BlackHole Burning</h3>
+        <h3 className='burn_box_card_title'>
+          <FormattedMessage id='burn4' />
+        </h3>
         <div className='burn_box_card_countdown'>
           <Timer
             initialTime={left_time}
@@ -153,7 +155,9 @@ const Burn = (props) => {
             }}
           >
             <div className='burn_box_card_day'>
-              <span className='burn_box_card_countdown_title'>DAYS</span>
+              <span className='burn_box_card_countdown_title'>
+                <FormattedMessage id='burn5' />
+              </span>
               <p className='burn_box_card_countdown_time'>
                 <span className='burn_box_card_time'>
                   <Timer.Consumer>
@@ -176,7 +180,9 @@ const Burn = (props) => {
             </div>
             <span className='delimiter'>:</span>
             <div className='burn_box_card_day'>
-              <span className='burn_box_card_countdown_title'>HOURS</span>
+              <span className='burn_box_card_countdown_title'>
+                <FormattedMessage id='burn6' />
+              </span>
               <p className='burn_box_card_countdown_time'>
                 <span className='burn_box_card_time'>
                   <Timer.Consumer>
@@ -200,7 +206,9 @@ const Burn = (props) => {
             <span className='delimiter'>:</span>
 
             <div className='burn_box_card_day'>
-              <span className='burn_box_card_countdown_title'>MINUTES</span>
+              <span className='burn_box_card_countdown_title'>
+                <FormattedMessage id='burn7' />
+              </span>
               <p className='burn_box_card_countdown_time'>
                 <span className='burn_box_card_time'>
                   <Timer.Consumer>
@@ -224,7 +232,9 @@ const Burn = (props) => {
             <span className='delimiter'>:</span>
 
             <div className='burn_box_card_day'>
-              <span className='burn_box_card_countdown_title'>SECONDS</span>
+              <span className='burn_box_card_countdown_title'>
+                <FormattedMessage id='burn8' />
+              </span>
               <p className='burn_box_card_countdown_time'>
                 <span className='burn_box_card_time'>
                   <Timer.Consumer>
@@ -248,7 +258,10 @@ const Burn = (props) => {
           </Timer>
         </div>
         <div className='burn_box_card_progress'>
-          <p>Progress(20.12%)</p>
+          <p>
+            <FormattedMessage id='burn9' />
+            (20.12%)
+          </p>
           <p>
             999,999.99<span>/1,000,000</span>
           </p>
@@ -263,8 +276,12 @@ const Burn = (props) => {
           </p>
         </div>
         <div className='burn_box_card_progress'>
-          <p>Available</p>
-          <p>{formatAmount(OldBalance)} Old</p>
+          <p>
+            <FormattedMessage id='burn10' />
+          </p>
+          <p>
+            {formatAmount(OldBalance)} <FormattedMessage id='burn11' />
+          </p>
         </div>
         <div className='burn_box_card_inputbox'>
           <div className='burn_box_card_inputbox-control'>
@@ -284,26 +301,30 @@ const Burn = (props) => {
           </div>
         </div>
         <div className='burn_box_card_progress burn_box_card_total'>
-          <p>Total</p>
+          <p>
+            <FormattedMessage id='burn12' />
+          </p>
           <p>1,000,000.00</p>
         </div>
         <div className='burn_box_card_progress burn_box_card_total'>
-          <p>My</p>
+          <p>
+            <FormattedMessage id='burn13' />
+          </p>
           <p>1,000,000.00(10.00%)</p>
         </div>
         {approve && (
           <Button type='primary' onClick={onApprove} loading={loadFlag}>
-            Approve
+            <FormattedMessage id='burn14' />
           </Button>
         )}
         {!approve && (
           <Button type='primary' onClick={onConfirm} loading={loadFlag}>
-            Burn
+            <FormattedMessage id='burn15' />
           </Button>
         )}
         <div className='burn_box_card_progress burn_box_card_add_contract'>
           <p>
-            Old Contract Add
+            <FormattedMessage id='burn16' />
             <CopyToClipboard
               text='0x0'
               onCopy={() => {
@@ -329,7 +350,8 @@ const Burn = (props) => {
           </p>
 
           <p>
-            Add Old to<span className='metaMask_logo'></span>
+            <FormattedMessage id='burn17' />
+            <span className='metaMask_logo'></span>
           </p>
         </div>
         <div className='line'></div>
@@ -338,14 +360,16 @@ const Burn = (props) => {
           style={{ alignItems: 'self-start' }}
         >
           <p className='new_ewards'>
-            New Rewards
+            <FormattedMessage id='burn18' />
             <span>1,000,000.00(10.00%)</span>
           </p>
-          <a className='claim'>Claim</a>
+          <a className='claim'>
+            <FormattedMessage id='burn21' />
+          </a>
         </div>
         <div className='burn_box_card_progress burn_box_card_add_contract'>
           <p>
-            New Contract Add
+            <FormattedMessage id='burn19' />
             <CopyToClipboard
               text='0x0'
               onCopy={() => {
@@ -371,7 +395,8 @@ const Burn = (props) => {
           </p>
 
           <p onClick={addToken}>
-            Add New to<span className='metaMask_logo'></span>
+            <FormattedMessage id='burn20' />
+            <span className='metaMask_logo'></span>
           </p>
         </div>
       </div>

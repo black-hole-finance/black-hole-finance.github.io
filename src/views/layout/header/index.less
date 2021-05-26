@@ -52,7 +52,28 @@
       margin-right: 30px;
       color: #fff;
     }
-
+    .language {
+      margin-right: 16px;
+      font-size: 14px;
+      font-family: HelveticaNeue;
+      color: #fff;
+      line-height: 46px;
+      cursor: pointer;
+      &:hover {
+        color: #ffead5;
+        svg {
+          fill: #ffead5;
+        }
+      }
+      svg {
+        fill: #fff;
+        display: inline-block;
+        margin-right: 6px;
+        width: 20px;
+        height: 20px;
+        vertical-align: middle;
+      }
+    }
     .header_connect_btn {
       cursor: pointer;
       display: flex;
@@ -85,6 +106,7 @@
       width: 2px;
       height: 24px;
       background-color: #fff;
+      vertical-align: sub;
     }
     .connect_wallet {
       display: inline-block;
@@ -125,6 +147,7 @@
       display: flex;
       align-items: center;
       margin-left: 52px;
+      display: none;
       a {
         margin-right: 30px;
         font-size: 14px;
@@ -154,6 +177,9 @@
       margin-right: 30px;
       color: #fff;
     }
+    .language {
+      display: none;
+    }
     .header_connect_btn {
       cursor: pointer;
       display: flex;
@@ -163,6 +189,9 @@
       line-height: 46px;
       background: #1e1e1e;
       border-radius: 10px;
+    }
+    .header_connect_wallet {
+      display: none;
     }
     .header_small_logo {
       margin-right: 12px;
@@ -186,6 +215,7 @@
       width: 2px;
       height: 24px;
       background-color: #fff;
+      vertical-align: sub;
     }
     .connect_wallet {
       display: inline-block;
@@ -196,7 +226,13 @@
       background-size: 100% 100%;
     }
     .more {
-      display: none;
+      // display: none;
+      display: inline-block;
+      margin-left: 10px;
+      width: 40px;
+      height: 44px;
+      background: url('../../../assets/image/burn/more@2x.png') no-repeat;
+      background-size: 100% 100%;
     }
   }
 }
@@ -256,6 +292,9 @@
       margin-right: 10px;
       color: #fff;
     }
+    .language {
+      display: none;
+    }
     .header_connect_btn {
       cursor: pointer;
       display: flex;
@@ -291,10 +330,11 @@
       width: 1px;
       height: 12px;
       background-color: #fff;
+      vertical-align: sub;
     }
     .connect_wallet {
       display: inline-block;
-      margin-left: 16px;
+      margin-left: 6px;
       width: 10px;
       height: 12px;
       background: url('../../../assets/image/copy@2x.png') no-repeat;
@@ -366,6 +406,9 @@
       margin-right: 10px;
       color: #fff;
     }
+    .language {
+      display: none;
+    }
     .header_connect_btn {
       cursor: pointer;
       display: flex;
@@ -401,10 +444,11 @@
       width: 1px;
       height: 12px;
       background-color: #fff;
+      vertical-align: sub;
     }
     .connect_wallet {
       display: inline-block;
-      margin-left: 16px;
+      margin-left: 6px;
       width: 10px;
       height: 12px;
       background: url('../../../assets/image/copy@2x.png') no-repeat;

@@ -136,19 +136,25 @@ const Burn = (props) => {
     <>
       <div className='burn_box'>
         <div className='content'>
-          <h2 className='burn_box_title'>BlackHole Burn</h2>
+          <h2 className='burn_box_title'>
+            <FormattedMessage id='burn1' />
+          </h2>
           <p className='burn_box_content'>
-            毁灭的意义，是为了重建，与新生，这就是生命哲学里面的「螺旋上升，或大起大落」的时间曲线，巨大的伤害，会让你粉身碎骨，但是，「我相信最为精彩的应该是，重建之时的信心，与勇气。」
+            <FormattedMessage id='burn2' />
           </p>
           <div className='burn_box_card_box'>
             <BurnCard />
             <div className='coming_soon'>
               <img src={comingSoon} />
-              <h2>Coming soon…</h2>
+              <h2>
+                <FormattedMessage id='burn3' />
+              </h2>
             </div>
             <div className='coming_soon'>
               <img src={comingSoon} />
-              <h2>Coming soon…</h2>
+              <h2>
+                <FormattedMessage id='burn3' />
+              </h2>
             </div>
           </div>
         </div>

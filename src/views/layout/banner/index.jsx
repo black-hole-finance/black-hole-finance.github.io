@@ -43,7 +43,7 @@ const Banner = (props) => {
               href={'https://etherscan.io/address/' + BlackTokenAddress}
               target='_blank'
             >
-              BLACK Contract Address:
+              <FormattedMessage id='banner_text_8' value={{ coin: 'BLACK' }} />
               {' ' + BlackTokenAddress}
               <svg
                 t='1619095072712'
