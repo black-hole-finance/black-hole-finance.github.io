@@ -24,6 +24,7 @@ const Burn = (props) => {
   const [approve, setApprove] = useState(true)
   const [left_time, setLeft_time] = useState(0)
   const OldBalance = useTokenBalance(BLACK_ADDRESS[chainId])
+  const [hoverFlag, setHoverFlag] = useState(null)
   const allowance = useTokenAllowance(
     // 燃烧池子地址
     '0x0',
@@ -323,7 +324,15 @@ const Burn = (props) => {
           </Button>
         )}
         <div className='burn_box_card_progress burn_box_card_add_contract'>
-          <p>
+          <p
+            onMouseOver={() => setHoverFlag('oldAddress')}
+            onMouseOut={() => setHoverFlag(null)}
+          >
+            {hoverFlag === 'oldAddress' && (
+              <i className='tips_content'>
+                0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2
+              </i>
+            )}
             <FormattedMessage id='burn16' />
             <CopyToClipboard
               text='0x0'
@@ -368,7 +377,15 @@ const Burn = (props) => {
           </a>
         </div>
         <div className='burn_box_card_progress burn_box_card_add_contract'>
-          <p>
+          <p
+            onMouseOver={() => setHoverFlag('newAddress')}
+            onMouseOut={() => setHoverFlag(null)}
+          >
+            {hoverFlag === 'newAddress' && (
+              <i className='tips_content'>
+                0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2
+              </i>
+            )}
             <FormattedMessage id='burn19' />
             <CopyToClipboard
               text='0x0'
