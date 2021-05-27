@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import './index.less'
 import { useActivate } from './hook'
 import { formatAmount } from '../../../utils/format'
@@ -36,6 +36,10 @@ const Activate = (props) => {
       connectWallet(activate, injected, deactivate)
     }
   }
+
+  useEffect(() => {
+    window.document.getElementById('container').style.display = 'none'
+  }, [])
 
   const onActivate = (e) => {
     if (loading) {
