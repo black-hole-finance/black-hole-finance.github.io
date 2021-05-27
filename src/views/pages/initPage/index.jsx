@@ -11,6 +11,13 @@ import SuccessPopup from '../../components/SuccessPopup'
 import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
 
+if (window.ethereum) {
+  window.ethereum.on('networkChanged', () => {
+    // 链改了，刷新网页
+    window.location.reload()
+  })
+}
+
 const InitPage = (props) => {
   const { dispatch } = props
   const { token_allocation, currency_allocation } = props.connectPools
@@ -53,10 +60,10 @@ const InitPage = (props) => {
     props.slippage,
   ])
 
-  useEffect(() => {
-    props.location.pathname === '/' &&
-      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
-  }, [props.location])
+  // useEffect(() => {
+  //   props.location.pathname === '/' &&
+  //     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
+  // }, [props.location])
 
   return (
     <>
@@ -78,7 +85,10 @@ const InitPage = (props) => {
       )}
       {/* 连接错误弹框 */}
       {props.changeNetworkFlag && (
-        <div className='init_page_box'>
+        <div
+          className='init_page_box'
+          style={{ top: props.location.pathname == '/burn' && '0' }}
+        >
           <div className='connect_wallet_popup'>
             <ChangeNetworkPopup />
           </div>

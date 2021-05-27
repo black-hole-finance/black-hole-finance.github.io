@@ -124,7 +124,7 @@ const Activate = (props) => {
                   <span>
                     <FormattedMessage
                       id='activate4'
-                      value={{ coin: 'iBLACK' }}
+                      values={{ coin: 'iBLACK' }}
                     />
                   </span>{' '}
                   <span>{formatAmount(iblack_balance)} iBLACK</span>
@@ -142,7 +142,7 @@ const Activate = (props) => {
                     <span>
                       <FormattedMessage
                         id='activate4'
-                        value={{ coin: 'iBLACK' }}
+                        values={{ coin: 'iBLACK' }}
                       />
                     </span>
                     <span>{formatAmount(iblack_balance)} iBLACK</span>

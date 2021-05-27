@@ -37,7 +37,7 @@ const Header = (props) => {
   }, [locale])
 
   const connectWalletClick = () => {
-    if (props.location.pathname === '/') return
+    // if (props.location.pathname === '/') return
     connectWallet(activate, injected, deactivate)
       .then(() => console.log)
       .catch(() => console.log)
@@ -99,7 +99,7 @@ const Header = (props) => {
             </svg>
             {language === '中文简体' ? '中文简体' : 'English'}
           </div>
-          {!active && props.location.pathname !== '/' && (
+          {!active && (
             <div className='header_connect_btn' onClick={connectWalletClick}>
               <img className='header_small_logo' src={SmallLogo} />
               <span className='connect_text'>
@@ -107,7 +107,7 @@ const Header = (props) => {
               </span>
             </div>
           )}
-          {props.location.pathname === '/' && (
+          {/* {props.location.pathname === '/' && (
             <div className='header_btn_warpper'>
               <div className='header_connect_btn' onClick={connectWalletClick}>
                 <img className='header_small_logo' src={SmallLogo} />
@@ -116,8 +116,8 @@ const Header = (props) => {
                 </span>
               </div>
             </div>
-          )}
-          {active && props.location.pathname !== '/' && (
+          )} */}
+          {active && (
             <div className='header_connect_btn'>
               <div className='header_connect_wallet'>
                 <span className='connect_text'>

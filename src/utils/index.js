@@ -97,8 +97,7 @@ export function connectWallet(activate, connector, deactivate) {
       .catch((error) => {
         switch (true) {
           case error instanceof UnsupportedChainIdError:
-            window.location.hash.indexOf('burn') == -1 &&
-              store.dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
+            store.dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
             console.log('链错了')
             break
           case error instanceof NoEthereumProviderError:

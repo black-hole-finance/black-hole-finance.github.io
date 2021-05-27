@@ -296,7 +296,7 @@ const Burn = (props) => {
             </div>
             <div className='burn_box_card_inputbox-up' onClick={onMax}>
               <div className='burn_box_card_inputbox-up-pref'>
-                <FormattedMessage id='poolText19' />
+                <FormattedMessage id='warLBP8' />
               </div>
             </div>
           </div>

@@ -15,6 +15,7 @@ const zh_CN = {
   banner_text_7:
     'Blackhole protocol originates from Ethereum network and gradually spread to Polkadot, BSC, Heco, Sol and eventually the whole blockchain world. ',
   banner_text_8: '{coin} Contract Address:',
+  banner_text_9: 'Launch APP',
   home_text_1:
     'BLACK is a governance token which uses BlackHole deflation burning mechanism schematic',
   home_text_2:
@@ -93,7 +94,7 @@ const zh_CN = {
   warLBP6: 'Succeed',
   warLBP7: 'Please visit Uniswap for trading',
   money: 'input investment amount',
-  poolText19: 'Max',
+  warLBP8: 'Max',
   willStart: 'Will start in',
   recruit: 'Undergoing',
   recruitOver: 'Waiting',
