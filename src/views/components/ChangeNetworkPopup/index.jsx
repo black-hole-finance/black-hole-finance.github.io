@@ -13,6 +13,36 @@ const ChangeNetworkPopup = () => {
       <p style={{ marginTop: '20px' }}>
         <FormattedMessage id='changeNetwork_text_2' />
       </p>
+      <a
+        onClick={() => {
+          window.ethereum &&
+            window.ethereum
+              .request({
+                method: 'wallet_addEthereumChain',
+                params: [
+                  {
+                    chainId: '0x38',
+                    chainName: 'BSC',
+                    nativeCurrency: {
+                      name: 'BNB',
+                      symbol: 'BNB',
+                      decimals: 18,
+                    },
+                    rpcUrls: ['https://bsc-dataseed.binance.org/'],
+                    blockExplorerUrls: ['https://bscscan.com/'],
+                  },
+                ],
+              })
+              .then(() => {
+                window.location.reload()
+              })
+              .catch((e) => {
+                window.location.reload()
+              })
+        }}
+      >
+        <FormattedMessage id='changeNetwork_text_3' />
+      </a>
     </div>
   )
 }
