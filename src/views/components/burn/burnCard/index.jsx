@@ -216,8 +216,10 @@ const Burn = (props) => {
 
     setLoadFlag(true)
     toBurn(numToWei(amount, OldDecimals))
-      .then(() => {
-        setLoadFlag(false)
+      .then((tr) => {
+        tr.wait().then(() => {
+          setLoadFlag(false)
+        })
       })
       .catch((e) => {
         console.log(e)
@@ -235,8 +237,10 @@ const Burn = (props) => {
 
     setClaimLoadFlag(true)
     toClaim()
-      .then(() => {
-        setClaimLoadFlag(false)
+      .then((tr) => {
+        tr.wait().then(() => {
+          setClaimLoadFlag(false)
+        })
       })
       .catch((e) => {
         console.log(e)
