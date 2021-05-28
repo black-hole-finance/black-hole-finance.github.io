@@ -72,3 +72,7 @@ export const SHIB_BLACK_ADDRESS = {
 export const SHIB_ADDRESS = {
   [ChainId.BSC]: '0xaF90E457f4359adCC8b37E8dF8a27a1fF4c3F561',
 }
+
+export const SHIB_BLACK_CONTRACT_ADDRESS = {
+  [ChainId.BSC]: '0x494DEdee44af333628BBC8B860dfE7576E78d878',
+}

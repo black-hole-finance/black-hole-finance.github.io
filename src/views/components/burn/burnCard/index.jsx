@@ -14,6 +14,7 @@ import {
   BLACK_ADDRESS,
   SHIB_ADDRESS,
   SHIB_BLACK_ADDRESS,
+  SHIB_BLACK_CONTRACT_ADDRESS,
   getContract,
 } from '../../../../constants'
 import { connect } from 'react-redux'
@@ -29,6 +30,7 @@ const Burn = (props) => {
   const [amount, setAmount] = useState('')
   const [loadFlag, setLoadFlag] = useState(false)
   const [approve, setApprove] = useState(true)
+  const [now, setNow] = useState(parseInt(Date.now() / 1000))
   const [left_time, setLeft_time] = useState(0)
   const OldBalance = useTokenBalance(SHIB_ADDRESS[chainId])
   const [hoverFlag, setHoverFlag] = useState(null)
@@ -45,7 +47,21 @@ const Burn = (props) => {
   }, [])
 
   useEffect(() => {
-    // setLeft_time(('1621944840' - parseInt(Date.now() / 1000)) * 1000)
+    const timerId = setTimeout(() => {
+      const now = parseInt(Date.now() / 1000)
+      setNow(now)
+    }, 1000)
+    return () => {
+      clearTimeout(timerId)
+    }
+  }, [now])
+
+  useEffect(() => {
+    if (burnData && burnData.begin > now) {
+      setLeft_time((burnData && burnData.begin - now) * 1000)
+    } else {
+      setLeft_time((burnData && burnData.periodFinish - now) * 1000)
+    }
   }, [])
 
   useEffect(() => {
@@ -71,15 +87,37 @@ const Burn = (props) => {
     setAmount(formatAmount(max, 18, 8))
   }
 
-  const addToken = async () => {
+  const addOldToken = async () => {
     try {
       let addTokenClick = await window.ethereum.request({
         method: 'wallet_watchAsset',
         params: {
           type: 'ERC20',
           options: {
-            address: '0x0',
-            symbol: 'WAR',
+            address: SHIB_ADDRESS[chainId],
+            symbol: 'SHIB',
+            decimals: 18,
+            image: '',
+          },
+        },
+      })
+      if (addTokenClick) {
+        message.success('add success')
+      }
+    } catch (err) {
+      console.log(err, 'addToken')
+    }
+  }
+
+  const addNewToken = async () => {
+    try {
+      let addTokenClick = await window.ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20',
+          options: {
+            address: BLACK_ADDRESS[chainId],
+            symbol: 'BLACK',
             decimals: 18,
             image: '',
           },
@@ -337,9 +375,7 @@ const Burn = (props) => {
             onMouseOut={() => setHoverFlag(null)}
           >
             {hoverFlag === 'oldAddress' && (
-              <i className='tips_content'>
-                0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2
-              </i>
+              <i className='tips_content'>{SHIB_ADDRESS[chainId]}</i>
             )}
             <FormattedMessage id='burn16' />
             <CopyToClipboard
@@ -366,7 +402,7 @@ const Burn = (props) => {
             </CopyToClipboard>
           </p>
 
-          <p>
+          <p onClick={addOldToken}>
             <FormattedMessage id='burn17' />
             <span className='metaMask_logo'></span>
           </p>
@@ -390,9 +426,7 @@ const Burn = (props) => {
             onMouseOut={() => setHoverFlag(null)}
           >
             {hoverFlag === 'newAddress' && (
-              <i className='tips_content'>
-                0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2
-              </i>
+              <i className='tips_content'>{BLACK_ADDRESS[chainId]}</i>
             )}
             <FormattedMessage id='burn19' />
             <CopyToClipboard
@@ -419,7 +453,7 @@ const Burn = (props) => {
             </CopyToClipboard>
           </p>
 
-          <p onClick={addToken}>
+          <p onClick={addNewToken}>
             <FormattedMessage id='burn20' />
             <span className='metaMask_logo'></span>
           </p>

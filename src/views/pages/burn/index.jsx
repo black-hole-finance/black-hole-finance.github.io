@@ -14,12 +14,12 @@ import { BLACK_ADDRESS, getContract } from '../../../constants'
 import { connect } from 'react-redux'
 import BurnCard from '../../components/burn/burnCard'
 import comingSoon from '../../../assets/image/burn/comingSoon@2x.png'
-import {useBurn} from "../../../hooks/burn";
+import { useBurn } from '../../../hooks/burn'
 
 const Burn = (props) => {
-  const address = "0x494DEdee44af333628BBC8B860dfE7576E78d878"
+  const address = '0x494DEdee44af333628BBC8B860dfE7576E78d878'
   const burn = useBurn(address)
-  const {stakingToken} = burn
+  const { stakingToken } = burn
   const { dispatch } = props
   const { active, chainId, library, account } = useActiveWeb3React()
   const [amount, setAmount] = useState('')
@@ -33,9 +33,7 @@ const Burn = (props) => {
     BLACK_ADDRESS[chainId]
   )
 
-  useEffect(() => {
-
-  }, [burn])
+  useEffect(() => {}, [burn])
 
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
