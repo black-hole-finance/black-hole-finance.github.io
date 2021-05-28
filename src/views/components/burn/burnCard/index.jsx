@@ -1,11 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
-import cs from 'classnames'
 import { FormattedMessage } from 'react-intl'
 import './index.less'
 import { withRouter } from 'react-router'
 import { Button, message } from 'antd'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
-import { injected } from '../../../../connectors'
 import BigNumber from 'bignumber.js'
 import { formatAmount, numToWei } from '../../../../utils/format'
 import { useActiveWeb3React } from '../../../../hooks'
@@ -38,7 +36,6 @@ const Burn = (props) => {
   const [progress, setProgress] = useState(0)
 
   const [burn, toBurn, toClaim] = useBurn(SHIB_BLACK_ADDRESS[chainId])
-  const { stakingToken } = burn
 
   const OldBalance = useTokenBalance(SHIB_ADDRESS[chainId])
   const OldDecimals = useTokenDecimals(SHIB_ADDRESS[chainId])
