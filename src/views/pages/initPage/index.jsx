@@ -8,8 +8,11 @@ import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
 import Menumask from '../../components/menumask'
 import LBPPopup from '../../components/LBPPopup'
 import SuccessPopup from '../../components/SuccessPopup'
+import WalletConnect from '../../components/account/WalletConnect'
 import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
+import WalletModalPopup from '../../components/account/WalletModalPopup'
+import WalletChangePopup from '../../components/account/WalletChangePopup'
 
 if (window.ethereum) {
   window.ethereum.on('networkChanged', () => {
@@ -123,6 +126,24 @@ const InitPage = (props) => {
           <div className='connect_wallet_popup'>
             <SuccessPopup />
           </div>
+        </div>
+      )}
+      {/* 链接钱包 */}
+      {props.walletModal === 'walletConnect' && (
+        <div className='init_page_box hidden_header'>
+          <WalletConnect />
+        </div>
+      )}
+      {/* 退出钱包 */}
+      {props.walletModal === 'smallWalletConnect' && (
+        <div className='init_page_box hidden_header'>
+          <WalletModalPopup />
+        </div>
+      )}
+      {/* 切换钱包 */}
+      {props.walletModal === 'changeWalletConnect' && (
+        <div className='init_page_box hidden_header'>
+          <WalletChangePopup />
         </div>
       )}
     </>

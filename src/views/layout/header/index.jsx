@@ -100,7 +100,15 @@ const Header = (props) => {
             {language === '中文简体' ? '中文简体' : 'English'}
           </div>
           {!active && (
-            <div className='header_connect_btn' onClick={connectWalletClick}>
+            <div
+              className='header_connect_btn'
+              onClick={() => {
+                dispatch({
+                  type: 'HANDLE_WALLET_MODAL',
+                  payload: 'walletConnect',
+                })
+              }}
+            >
               <img className='header_small_logo' src={SmallLogo} />
               <span className='connect_text'>
                 {<FormattedMessage id='header_text_2' />}
@@ -118,7 +126,15 @@ const Header = (props) => {
             </div>
           )} */}
           {active && (
-            <div className='header_connect_btn'>
+            <div
+              className='header_connect_btn'
+              onClick={() => {
+                dispatch({
+                  type: 'HANDLE_WALLET_MODAL',
+                  payload: 'smallWalletConnect',
+                })
+              }}
+            >
               <div className='header_connect_wallet'>
                 <span className='connect_text'>
                   {formatAmount(wallet_amount)}{' '}
@@ -153,5 +169,6 @@ const Header = (props) => {
 export default connect((store) => ({
   locale: store.locale.locale,
   connectPools: store.pools.connectPools,
+  walletModal: store.popup.walletModal,
   showMenuMaskModal: store.menu.showMenuMaskModal,
 }))(withRouter(Header))

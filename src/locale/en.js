@@ -134,5 +134,13 @@ const en_US = {
   activate8: 'Need Pay',
   activate9: 'Swap To',
   activate10: 'Balance',
+  accountText6: 'METAMASK',
+  accountText7: 'WalletConnect',
+  accountText8: 'Connect to your Metamask Wallet',
+  accountText9: 'Connect to your WalletConnect',
+  modalsText59: 'ACCOUNT',
+  modalsText60: 'Copy Address',
+  modalsText61: 'Switch Wallet',
+  modalsText62: 'Disconnect Wallet',
 }
 export default en_US

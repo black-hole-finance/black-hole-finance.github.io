@@ -97,6 +97,10 @@ export function connectWallet(activate, connector, deactivate) {
       .catch((error) => {
         switch (true) {
           case error instanceof UnsupportedChainIdError:
+            store.dispatch({
+              type: 'HANDLE_WALLET_MODAL',
+              payload: null,
+            })
             store.dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
             console.log('链错了')
             break
