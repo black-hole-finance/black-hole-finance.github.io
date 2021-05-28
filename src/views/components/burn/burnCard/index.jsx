@@ -6,9 +6,9 @@ import { withRouter } from 'react-router'
 import { Button, message } from 'antd'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { injected } from '../../../../connectors'
-import { formatAmount } from '../../../../utils/format'
+import {formatAmount, numToWei} from '../../../../utils/format'
 import { useActiveWeb3React } from '../../../../hooks'
-import { useTokenBalance, useTokenAllowance } from '../../../../hooks/wallet'
+import {useTokenBalance, useTokenAllowance, useTokenDecimals} from '../../../../hooks/wallet'
 import ERC20 from '../../../../constants/abis/erc20.json'
 import {
   BLACK_ADDRESS,
@@ -23,6 +23,10 @@ import NEW from '../../../../assets/image/burn/new@2x.png'
 import { useBurn } from '../../../../hooks/burn'
 
 const Burn = (props) => {
+  const address = "0xe43611A0dE96e3BE22131c4F90d02613aAF50B8e"
+  const [burn, toBurn, toClaim] = useBurn(address)
+  const {stakingToken} = burn
+
   const { dispatch } = props
   const { active, chainId, library, account } = useActiveWeb3React()
   const burnData = useBurn(SHIB_BLACK_ADDRESS[chainId])
@@ -30,12 +34,15 @@ const Burn = (props) => {
   const [loadFlag, setLoadFlag] = useState(false)
   const [approve, setApprove] = useState(true)
   const [left_time, setLeft_time] = useState(0)
-  const OldBalance = useTokenBalance(SHIB_ADDRESS[chainId])
+
+  const OldBalance = useTokenBalance(stakingToken)
+  const OldDecimals = useTokenDecimals(stakingToken)
+
   const [hoverFlag, setHoverFlag] = useState(null)
   const allowance = useTokenAllowance(
     // 燃烧池子地址
-    SHIB_BLACK_ADDRESS[chainId],
-    SHIB_ADDRESS[chainId]
+    address,
+    stakingToken
   )
   console.log(burnData, 'burnData')
 
@@ -100,11 +107,11 @@ const Burn = (props) => {
     if (loadFlag) return
 
     setLoadFlag(true)
-    const contract = getContract(library, ERC20.abi, SHIB_ADDRESS[chainId])
+    const contract = getContract(library, ERC20, stakingToken)
     contract.methods
       .approve(
         // 燃烧池子地址
-        SHIB_BLACK_ADDRESS[chainId],
+        address,
         '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
       )
       .send({
@@ -139,7 +146,31 @@ const Burn = (props) => {
     }
 
     if (loadFlag) return
+
     setLoadFlag(true)
+    toBurn(numToWei(amount, OldDecimals)).then(() => {
+      setLoadFlag(false)
+    }).catch(e => {
+      console.log(e)
+      setLoadFlag(false)
+    })
+  }
+
+  const onClaim = () => {
+    if (!active) {
+      return false
+    }
+    // TODO 校验
+
+    if (loadFlag) return
+
+    setLoadFlag(true)
+    toClaim().then(() => {
+      setLoadFlag(false)
+    }).catch(e => {
+      console.log(e)
+      setLoadFlag(false)
+    })
   }
 
   return (
@@ -380,7 +411,7 @@ const Burn = (props) => {
             <FormattedMessage id='burn18' />
             <span>1,000,000.00(10.00%)</span>
           </p>
-          <a className='claim'>
+          <a className='claim' onClick={onClaim}>
             <FormattedMessage id='burn21' />
           </a>
         </div>

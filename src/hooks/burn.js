@@ -21,11 +21,12 @@ import { Contract } from 'ethers-multicall-x'
 
 /**
  * 可用额度
- * @returns {string}
+ * @returns {array}
  */
 export const useBurn = (address) => {
   const { account, chainId, active, library } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
+  const burn_contract = useContract(address, BURN_ABI)
   const [info, setInfo] = useState({
     begin: 0,
     periodFinish: 0,
@@ -33,8 +34,8 @@ export const useBurn = (address) => {
     balanceOf: 0,
     totalSupply: 0,
     earned: 0,
-    rewardsToken: ZERO_ADDRESS,
-    stakingToken: ZERO_ADDRESS,
+    rewardsToken: null,
+    stakingToken: null,
   })
   const multicallProvider = getMultiCallProvider(library, chainId)
   useEffect(() => {
@@ -79,5 +80,21 @@ export const useBurn = (address) => {
         })
     }
   }, [account, blockHeight])
-  return info
+
+
+  const toBurn = useCallback((amount) => {
+    if(!account || !active){
+      return  Promise.reject('not connect wallet')
+    }
+    return burn_contract.stake(amount)
+  }, [account, active])
+
+  const toClaim = useCallback(() => {
+    if(!account || !active){
+      return  Promise.reject('not connect wallet')
+    }
+    return burn_contract.getReward()
+  }, [account, active])
+
+  return [info, toBurn, toClaim]
 }
