@@ -5,10 +5,14 @@ import './index.less'
 import { withRouter } from 'react-router'
 import { message } from 'antd'
 import { injected } from '../../../connectors'
-import { formatAmount } from '../../../utils/format'
+import { formatAmount, numToWei } from '../../../utils/format'
 import Footer from '../../layout/footer'
 import { useActiveWeb3React } from '../../../hooks'
-import { useTokenBalance, useTokenAllowance } from '../../../hooks/wallet'
+import {
+  useTokenBalance,
+  useTokenAllowance,
+  useTokenDecimals,
+} from '../../../hooks/wallet'
 import ERC20 from '../../../constants/abis/erc20.json'
 import { BLACK_ADDRESS, getContract } from '../../../constants'
 import { connect } from 'react-redux'
@@ -17,8 +21,8 @@ import comingSoon from '../../../assets/image/burn/comingSoon@2x.png'
 import { useBurn } from '../../../hooks/burn'
 
 const Burn = (props) => {
-  const address = '0x494DEdee44af333628BBC8B860dfE7576E78d878'
-  const burn = useBurn(address)
+  const address = '0xe43611A0dE96e3BE22131c4F90d02613aAF50B8e'
+  const [burn, toBurn, toClaim] = useBurn(address)
   const { stakingToken } = burn
   const { dispatch } = props
   const { active, chainId, library, account } = useActiveWeb3React()
@@ -27,10 +31,11 @@ const Burn = (props) => {
   const [approve, setApprove] = useState(true)
   const [left_time, setLeft_time] = useState(0)
   const OldBalance = useTokenBalance(stakingToken)
+  const OldDecimals = useTokenDecimals(stakingToken)
   const allowance = useTokenAllowance(
     // 燃烧池子地址
     address,
-    BLACK_ADDRESS[chainId]
+    stakingToken
   )
 
   useEffect(() => {}, [burn])
@@ -96,7 +101,8 @@ const Burn = (props) => {
     if (loadFlag) return
 
     setLoadFlag(true)
-    const contract = getContract(library, ERC20.abi, BLACK_ADDRESS[chainId])
+    console.log(ERC20)
+    const contract = getContract(library, ERC20, stakingToken)
     contract.methods
       .approve(
         // 燃烧池子地址
@@ -135,6 +141,8 @@ const Burn = (props) => {
     }
 
     if (loadFlag) return
+
+    toBurn(numToWei(amount, OldDecimals))
     setLoadFlag(true)
   }
 

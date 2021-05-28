@@ -6,15 +6,19 @@ import { withRouter } from 'react-router'
 import { Button, message } from 'antd'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { injected } from '../../../../connectors'
-import { formatAmount } from '../../../../utils/format'
+import BigNumber from 'bignumber.js'
+import { formatAmount, numToWei } from '../../../../utils/format'
 import { useActiveWeb3React } from '../../../../hooks'
-import { useTokenBalance, useTokenAllowance } from '../../../../hooks/wallet'
+import {
+  useTokenBalance,
+  useTokenAllowance,
+  useTokenDecimals,
+} from '../../../../hooks/wallet'
 import ERC20 from '../../../../constants/abis/erc20.json'
 import {
   BLACK_ADDRESS,
   SHIB_ADDRESS,
   SHIB_BLACK_ADDRESS,
-  SHIB_BLACK_CONTRACT_ADDRESS,
   getContract,
 } from '../../../../constants'
 import { connect } from 'react-redux'
@@ -24,22 +28,29 @@ import NEW from '../../../../assets/image/burn/new@2x.png'
 import { useBurn } from '../../../../hooks/burn'
 
 const Burn = (props) => {
-  const { dispatch } = props
   const { active, chainId, library, account } = useActiveWeb3React()
-  const burnData = useBurn(SHIB_BLACK_ADDRESS[chainId])
+  const { dispatch } = props
   const [amount, setAmount] = useState('')
   const [loadFlag, setLoadFlag] = useState(false)
+  const [claimLoadFlag, setClaimLoadFlag] = useState(false)
   const [approve, setApprove] = useState(true)
   const [now, setNow] = useState(parseInt(Date.now() / 1000))
-  const [left_time, setLeft_time] = useState(0)
+  const [progress, setProgress] = useState(0)
+
+  const [burn, toBurn, toClaim] = useBurn(SHIB_BLACK_ADDRESS[chainId])
+  const { stakingToken } = burn
+
   const OldBalance = useTokenBalance(SHIB_ADDRESS[chainId])
+  const OldDecimals = useTokenDecimals(SHIB_ADDRESS[chainId])
+
   const [hoverFlag, setHoverFlag] = useState(null)
+  const [balanceProportion, setBalanceProportion] = useState(0)
   const allowance = useTokenAllowance(
-    // 燃烧池子地址
+    // 合约地址
     SHIB_BLACK_ADDRESS[chainId],
     SHIB_ADDRESS[chainId]
   )
-  console.log(burnData, 'burnData')
+  console.log(allowance, 'allowanceallowanceallowance')
 
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
@@ -56,19 +67,47 @@ const Burn = (props) => {
     }
   }, [now])
 
-  useEffect(() => {
-    if (burnData && burnData.begin > now) {
-      setLeft_time((burnData && burnData.begin - now) * 1000)
-    } else {
-      setLeft_time((burnData && burnData.periodFinish - now) * 1000)
-    }
-  }, [])
+  let left_time = 0
+  if (burn && burn.begin > now) {
+    left_time = (burn && burn.begin - now) * 1000
+  } else {
+    left_time = (burn && burn.periodFinish - now) * 1000
+  }
 
   useEffect(() => {
+    console.log(allowance, 'allowance')
     if (allowance > 0) {
       setApprove(false)
     }
   }, [allowance])
+
+  useEffect(() => {
+    if (burn && burn.rewards) {
+      setProgress(
+        new BigNumber(formatAmount(burn.rewards))
+          .dividedBy(new BigNumber(1))
+          .multipliedBy(new BigNumber(100))
+          .toNumber()
+          .toFixed(2) * 1
+      )
+    } else {
+      setProgress(0)
+    }
+  }, [burn, burn.rewards])
+
+  useEffect(() => {
+    if (burn && burn.balanceOf && burn.totalSupply) {
+      setBalanceProportion(
+        new BigNumber(formatAmount(burn.balanceOf))
+          .dividedBy(new BigNumber(formatAmount(burn.totalSupply)))
+          .multipliedBy(new BigNumber(100))
+          .toNumber()
+          .toFixed(2) * 1
+      )
+    } else {
+      setBalanceProportion(0)
+    }
+  }, [burn, burn.balanceOf, burn.totalSupply])
 
   const onChange = (e) => {
     const { value } = e.target
@@ -138,10 +177,10 @@ const Burn = (props) => {
     if (loadFlag) return
 
     setLoadFlag(true)
-    const contract = getContract(library, ERC20.abi, SHIB_ADDRESS[chainId])
+    const contract = getContract(library, ERC20, SHIB_ADDRESS[chainId])
     contract.methods
       .approve(
-        // 燃烧池子地址
+        // 合约地址
         SHIB_BLACK_ADDRESS[chainId],
         '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
       )
@@ -177,7 +216,35 @@ const Burn = (props) => {
     }
 
     if (loadFlag) return
+
     setLoadFlag(true)
+    toBurn(numToWei(amount, OldDecimals))
+      .then(() => {
+        setLoadFlag(false)
+      })
+      .catch((e) => {
+        console.log(e)
+        setLoadFlag(false)
+      })
+  }
+
+  const onClaim = () => {
+    if (!active) {
+      return false
+    }
+    // TODO 校验
+
+    if (loadFlag) return
+
+    setClaimLoadFlag(true)
+    toClaim()
+      .then(() => {
+        setClaimLoadFlag(false)
+      })
+      .catch((e) => {
+        console.log(e)
+        setClaimLoadFlag(false)
+      })
   }
 
   return (
@@ -306,20 +373,28 @@ const Burn = (props) => {
         </div>
         <div className='burn_box_card_progress'>
           <p>
-            <FormattedMessage id='burn9' />
-            (20.12%)
+            <FormattedMessage id='burn9' />({progress}%)
           </p>
           <p>
-            999,999.99<span>/1,000,000</span>
+            {(burn && formatAmount(burn.rewards)) || '-'}
+            <span>/1</span>
           </p>
         </div>
         <div className='burn_box_card_progress_bar'>
-          <i style={{ left: '10px' }}></i>
+          <i
+            style={{
+              left: `${progress >= 100 ? 100 : progress}%`,
+            }}
+          ></i>
           <p>
-            <span style={{ width: '20px' }}></span>
+            <span
+              style={{ width: `${progress >= 100 ? 100 : progress}%` }}
+            ></span>
           </p>
           <p>
-            <span style={{ width: '20px' }}></span>
+            <span
+              style={{ width: `${progress >= 100 ? 100 : progress}%` }}
+            ></span>
           </p>
         </div>
         <div className='burn_box_card_progress'>
@@ -351,13 +426,16 @@ const Burn = (props) => {
           <p>
             <FormattedMessage id='burn12' />
           </p>
-          <p>1,000,000.00</p>
+          <p>{(burn && formatAmount(burn.totalSupply)) || '-'}</p>
         </div>
         <div className='burn_box_card_progress burn_box_card_total'>
           <p>
             <FormattedMessage id='burn13' />
           </p>
-          <p>1,000,000.00(10.00%)</p>
+          <p>
+            {(burn && formatAmount(burn.balanceOf)) || '-'}({balanceProportion}
+            %)
+          </p>
         </div>
         {approve && (
           <Button type='primary' onClick={onApprove} loading={loadFlag}>
@@ -414,11 +492,21 @@ const Burn = (props) => {
         >
           <p className='new_ewards'>
             <FormattedMessage id='burn18' />
-            <span>1,000,000.00(10.00%)</span>
+            <span>{(burn && formatAmount(burn.earned)) || '-'}</span>
           </p>
-          <a className='claim'>
+
+          <Button
+            type='primary'
+            className='claim'
+            onClick={onClaim}
+            loading={claimLoadFlag}
+          >
             <FormattedMessage id='burn21' />
-          </a>
+          </Button>
+
+          {/* <a className='claim' onClick={onClaim}>
+            <FormattedMessage id='burn21' />
+          </a> */}
         </div>
         <div className='burn_box_card_progress burn_box_card_add_contract'>
           <p

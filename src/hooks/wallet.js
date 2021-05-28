@@ -42,7 +42,7 @@ export function useTokenBalance(address) {
   const contract = useContract(address, ERC20_ABI, false)
   const [balance, setBalance] = useState('0')
   useEffect(() => {
-    if (account && contract) {
+    if (account && contract && address) {
       contract
         .balanceOf(account)
         .then((balance) => {
@@ -52,7 +52,7 @@ export function useTokenBalance(address) {
           return 0
         })
     }
-  }, [account, blockHeight])
+  }, [account, blockHeight, address])
   return balance
 }
 
@@ -81,4 +81,31 @@ export function useTokenAllowance(address, token_address) {
     }
   }, [account, address, blockHeight])
   return allowance
+}
+
+
+/**
+ * 获取token余额
+ * @param address
+ * @param contract
+ * @returns {number}
+ */
+export function useTokenDecimals(address) {
+  const { account } = useActiveWeb3React()
+  const blockHeight = useBlockHeight()
+  const contract = useContract(address, ERC20_ABI, false)
+  const [decimals, setDecimals] = useState(18)
+  useEffect(() => {
+    if (account && contract && address) {
+      contract
+        .decimals()
+        .then((decimals) => {
+          setDecimals(decimals)
+        })
+        .catch((e) => {
+          return 18
+        })
+    }
+  }, [account, blockHeight, address])
+  return decimals
 }
