@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.e5914e8e.chunk.css",
-    "main.js": "/static/js/main.4b4dd018.chunk.js",
-    "main.js.map": "/static/js/main.4b4dd018.chunk.js.map",
+    "main.js": "/static/js/main.e4921016.chunk.js",
+    "main.js.map": "/static/js/main.e4921016.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.1b895232.js",
     "runtime-main.js.map": "/static/js/runtime-main.1b895232.js.map",
     "static/css/2.fdadc2a8.chunk.css": "/static/css/2.fdadc2a8.chunk.css",
@@ -24,7 +24,7 @@
     "static/media/crypto_times@2x.b2044b3f.png": "/static/media/crypto_times@2x.b2044b3f.png",
     "static/media/index.less": "/static/media/sketch_map_H5@2x.967a280b.png",
     "static/media/failed.94056908.svg": "/static/media/failed.94056908.svg",
-    "static/media/gate.io@2x.1425816a.png": "/static/media/gate.io@2x.1425816a.png",
+    "static/media/gate.io@2x.25299209.png": "/static/media/gate.io@2x.25299209.png",
     "static/media/github.4a8c994d.svg": "/static/media/github.4a8c994d.svg",
     "static/media/helmet@2x.518655e0.png": "/static/media/helmet@2x.518655e0.png",
     "static/media/medium.a862c568.svg": "/static/media/medium.a862c568.svg",
@@ -41,6 +41,6 @@
     "static/css/2.fdadc2a8.chunk.css",
     "static/js/2.35b58e27.chunk.js",
     "static/css/main.e5914e8e.chunk.css",
-    "static/js/main.4b4dd018.chunk.js"
+    "static/js/main.e4921016.chunk.js"
   ]
 }
