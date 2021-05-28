@@ -14,20 +14,28 @@ import { BLACK_ADDRESS, getContract } from '../../../constants'
 import { connect } from 'react-redux'
 import BurnCard from '../../components/burn/burnCard'
 import comingSoon from '../../../assets/image/burn/comingSoon@2x.png'
+import {useBurn} from "../../../hooks/burn";
 
 const Burn = (props) => {
+  const address = "0x494DEdee44af333628BBC8B860dfE7576E78d878"
+  const burn = useBurn(address)
+  const {stakingToken} = burn
   const { dispatch } = props
   const { active, chainId, library, account } = useActiveWeb3React()
   const [amount, setAmount] = useState('')
   const [loadFlag, setLoadFlag] = useState(false)
   const [approve, setApprove] = useState(true)
   const [left_time, setLeft_time] = useState(0)
-  const OldBalance = useTokenBalance(BLACK_ADDRESS[chainId])
+  const OldBalance = useTokenBalance(stakingToken)
   const allowance = useTokenAllowance(
     // 燃烧池子地址
-    '0x0',
+    address,
     BLACK_ADDRESS[chainId]
   )
+
+  useEffect(() => {
+
+  }, [burn])
 
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
@@ -94,7 +102,7 @@ const Burn = (props) => {
     contract.methods
       .approve(
         // 燃烧池子地址
-        '0x0',
+        address,
         '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
       )
       .send({

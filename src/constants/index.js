@@ -12,6 +12,7 @@ export const ChainId = {
   ETH: 1,
   BSC: 56,
 }
+export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
 export const NetworkRPC = {
   [ChainId.RINKEBY]:
