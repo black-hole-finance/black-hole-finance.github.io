@@ -257,7 +257,7 @@ const LBP = (props) => {
 
             <div className='detail_LBP_inputbox-up' onClick={onMax}>
               <div className='detail_LBP_inputbox-up-pref'>
-                <FormattedMessage id='poolText19' />
+                <FormattedMessage id='warLBP8' />
               </div>
             </div>
             {/* 设置滑点弹框 */}

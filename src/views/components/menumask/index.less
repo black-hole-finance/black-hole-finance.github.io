@@ -1,0 +1,213 @@
+.menumask {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: rgba(73, 73, 73, 0.6);
+  touch-action: none;
+  z-index: 99;
+  &__menu-wrapper {
+    display: flex;
+    align-items: center;
+    margin-bottom: 34px;
+  }
+  &_left {
+    width: 20%;
+    height: 100%;
+  }
+  &_right {
+    top: 0;
+    width: 80%;
+    height: 100%;
+    background: #262626;
+    position: absolute;
+    animation: mask_right 1s;
+    right: 0;
+  }
+  .exchange {
+    display: inline-block;
+    margin-right: 10px;
+    width: 22px;
+    height: 22px;
+  }
+  &_ht-balance {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12px;
+    height: 36px;
+    background: #1e1e1e;
+    border-radius: 5px;
+    span {
+      margin-right: 8px;
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      background: url('../../../assets/image/burn/blackhole_small_logo@2x.png')
+        no-repeat;
+      background-size: 100% 100%;
+    }
+    p {
+      margin-bottom: 0;
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+  &_language {
+    position: absolute;
+    width: 100%;
+    bottom: 40px;
+    left: 40px;
+  }
+  .language {
+    margin-bottom: 32px;
+    font-size: 14px;
+    font-family: HelveticaNeue;
+    color: #676767;
+    line-height: 20px;
+    cursor: pointer;
+    &:hover {
+      color: #ffead5;
+      svg {
+        fill: #ffead5;
+      }
+    }
+    svg {
+      fill: #676767;
+      display: inline-block;
+      margin-right: 6px;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+    }
+  }
+  &_header-account {
+    display: flex;
+    justify-content: inherit;
+    align-items: center;
+    position: relative;
+    color: #000;
+    transition: 1s;
+    // width: 100%;
+    height: 38px;
+    padding: 0 16px;
+    background: #d4e9e2;
+    border-radius: 5px;
+
+    .balance {
+      width: 160px;
+      text-align: right;
+
+      p {
+        color: #fff;
+        margin-right: 16px;
+      }
+    }
+
+    .address {
+      max-width: 153px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      img {
+        width: 24px;
+        margin-left: 4px;
+      }
+    }
+
+    .point {
+      width: 16px;
+      height: 16px;
+      background: var(--yellow);
+      border-radius: 50%;
+      margin-left: 16px;
+    }
+  }
+  @keyframes mask_right {
+    0% {
+      right: -80%;
+    }
+    100% {
+      right: 0%;
+    }
+  }
+  &_nav {
+    padding: 60px 40px 40px;
+    width: 100%;
+    height: 100%;
+  }
+  &_list {
+    padding-bottom: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+  &_item {
+    margin: 10px 0;
+  }
+  &_link {
+    position: relative;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    color: #fff;
+    &:hover {
+      color: #ffead5;
+    }
+  }
+  &_links {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 32px;
+    color: #fff;
+    &:hover {
+      color: #ffead5;
+    }
+    li {
+      margin-right: 20px;
+      svg {
+        fill: #676767;
+        width: 34px;
+        height: 34px;
+        &:hover {
+          color: #ffead5;
+        }
+      }
+    }
+  }
+  .active {
+    color: #ffead5;
+  }
+}
+@media (min-width: 1200px) {
+  .menumask {
+    display: none;
+  }
+}
+@media (min-width: 747px) and (max-width: 1199px) {
+  .menumask {
+    display: block;
+  }
+}
+@media (min-width: 359px) and (max-width: 747px) {
+  .menumask {
+    display: block;
+  }
+}
+@media (max-width: 359px) {
+  .menumask {
+    display: block;
+  }
+}

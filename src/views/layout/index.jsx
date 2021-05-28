@@ -8,6 +8,7 @@ import Home from '../pages/home'
 import Investment from '../pages/investment'
 import InitPage from '../pages/initPage'
 import LBP from '../pages/lbp'
+import Burn from '../pages/burn'
 import Intl from '../../locale/intl'
 
 import {
@@ -16,7 +17,7 @@ import {
   useEagerConnect,
   useInactiveListener,
 } from '../../hooks'
-import Activate from "../pages/activate";
+import Activate from '../pages/activate'
 
 function App() {
   const { activate, account } = useWeb3React()
@@ -37,10 +38,13 @@ function App() {
               <Investment />
             </Route>
             <Route exact path='/LBP'>
-              <LBP/>
+              <LBP />
             </Route>
-            <Route>
-              <Activate exact path='/activate'/>
+            <Route exact path='/activate'>
+              <Activate />
+            </Route>
+            <Route exact path='/burn'>
+              <Burn />
             </Route>
           </Switch>
           <InitPage />

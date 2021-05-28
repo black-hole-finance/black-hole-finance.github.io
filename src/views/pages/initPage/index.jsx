@@ -5,10 +5,21 @@ import { useActiveWeb3React } from '../../../hooks'
 import ConnectWalletFailedPopup from '../../components/ConnectWalletFailedPopup'
 import ConnectWalletSuccessPopup from '../../components/ConnectWalletSuccessPopup'
 import ChangeNetworkPopup from '../../components/ChangeNetworkPopup'
+import Menumask from '../../components/menumask'
 import LBPPopup from '../../components/LBPPopup'
 import SuccessPopup from '../../components/SuccessPopup'
+import WalletConnect from '../../components/account/WalletConnect'
 import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
+import WalletModalPopup from '../../components/account/WalletModalPopup'
+import WalletChangePopup from '../../components/account/WalletChangePopup'
+
+if (window.ethereum) {
+  window.ethereum.on('networkChanged', () => {
+    // 链改了，刷新网页
+    window.location.reload()
+  })
+}
 
 const InitPage = (props) => {
   const { dispatch } = props
@@ -52,11 +63,24 @@ const InitPage = (props) => {
     props.slippage,
   ])
 
+  // useEffect(() => {
+  //   props.location.pathname === '/' &&
+  //     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
+  // }, [props.location])
+
   return (
     <>
+      {props.showMenuMaskModal && (
+        <Menumask
+          onClick={() => {
+            dispatch({ type: 'HANDLE_SHOW_MENUMASK_MODAL', payload: true })
+          }}
+        />
+      )}
+
       {/*loading */}
       {active && props.popupLoadingFlag && props.location.pathname !== '/' && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <LoadingPopup />
           </div>
@@ -64,7 +88,10 @@ const InitPage = (props) => {
       )}
       {/* 连接错误弹框 */}
       {props.changeNetworkFlag && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div
+          className='init_page_box'
+          style={{ top: props.location.pathname == '/burn' && '0' }}
+        >
           <div className='connect_wallet_popup'>
             <ChangeNetworkPopup />
           </div>
@@ -72,7 +99,7 @@ const InitPage = (props) => {
       )}
       {/* 登录成功后判断用户是否是白名单 */}
       {props.connectWalletFailedFlag && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <ConnectWalletFailedPopup />
           </div>
@@ -80,7 +107,7 @@ const InitPage = (props) => {
       )}
       {/* 登录后弹框展示🐟额 */}
       {props.connectWalletSuccessFlag && (
-        <div className='init_page_box' style={{ top: '98px' }}>
+        <div className='init_page_box'>
           <div className='connect_wallet_popup'>
             <ConnectWalletSuccessPopup />
           </div>
@@ -101,6 +128,24 @@ const InitPage = (props) => {
           </div>
         </div>
       )}
+      {/* 链接钱包 */}
+      {props.walletModal === 'walletConnect' && (
+        <div className='init_page_box hidden_header'>
+          <WalletConnect />
+        </div>
+      )}
+      {/* 退出钱包 */}
+      {props.walletModal === 'smallWalletConnect' && (
+        <div className='init_page_box hidden_header'>
+          <WalletModalPopup />
+        </div>
+      )}
+      {/* 切换钱包 */}
+      {props.walletModal === 'changeWalletConnect' && (
+        <div className='init_page_box hidden_header'>
+          <WalletChangePopup />
+        </div>
+      )}
     </>
   )
 }
@@ -111,5 +156,6 @@ export default connect((store) => ({
   connectWalletFailedFlag: store.popup.connectWalletFailedFlag,
   connectWalletSuccessFlag: store.popup.connectWalletSuccessFlag,
   popupLoadingFlag: store.popup.popupLoadingFlag,
+  showMenuMaskModal: store.menu.showMenuMaskModal,
   walletModal: store.popup.walletModal,
 }))(withRouter(InitPage))

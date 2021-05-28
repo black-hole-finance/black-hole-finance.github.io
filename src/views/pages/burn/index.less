@@ -1,0 +1,1663 @@
+.ant-btn-primary {
+  margin-top: 10px;
+  padding: 0 16px;
+  width: 100%;
+  height: 36px;
+  font-size: 14px;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  line-height: 36px;
+  background: #4c4c4d !important;
+  color: #ffffff;
+  border-color: #4c4c4d !important;
+  box-shadow: none;
+  text-shadow: none;
+  border-radius: 4px;
+  &:hover {
+    background: #6b6b6e !important;
+    border-color: #6b6b6e !important;
+  }
+}
+
+.ant-btn.ant-btn-loading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ant-btn > .ant-btn-loading-icon {
+  svg {
+    margin-right: 4px;
+    width: 20px;
+    height: 20px;
+    fill: #fff !important;
+    vertical-align: sub;
+  }
+}
+@media (min-width: 1200px) {
+  .content {
+    margin: 0 auto;
+    width: 1180px !important;
+    height: 100%;
+  }
+  .burn_box {
+    padding-top: 140px;
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+    background: url('../../../assets/image/burn/burn_banner.png') no-repeat;
+    background-size: 1920px 1080px;
+    background-position: top;
+    background-color: #000;
+    .burn_box_title {
+      height: 62px;
+      font-size: 44px;
+      font-family: 'Arial-Black', Arial;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 62px;
+    }
+    .burn_box_content {
+      margin-top: 20px;
+      padding-bottom: 40px;
+      width: 500px;
+      font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 26px;
+    }
+    .burn_box_card_box {
+      display: inline-block;
+    }
+    .burn_box_card {
+      display: inline-block;
+      position: relative;
+      margin-top: 50px;
+      padding: 26px 30px 22px;
+      width: 380px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
+      &_old_logo,
+      &_new_logo {
+        position: absolute;
+        top: -28px;
+        width: 52px;
+        height: 52px;
+        z-index: 1;
+      }
+      &_old_logo {
+        left: 30px;
+      }
+      &_new_logo {
+        right: 30px;
+      }
+      &_title {
+        height: 26px;
+        font-size: 18px;
+        font-family: 'Arial-Black', Arial;
+        font-weight: 700;
+        color: #fff;
+        line-height: 26px;
+      }
+      &_countdown {
+        display: flex;
+      }
+      &_day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4px;
+        width: 44px;
+      }
+      &_countdown_title {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 16px;
+        opacity: 0.6;
+        transform: scale(0.7);
+      }
+      &_countdown_time {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        .burn_box_card_time {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 26px;
+          line-height: 26px;
+          font-size: 20px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #262626;
+          background: #e2dfdf;
+          box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5),
+            0px 0px 1px 0px rgba(55, 54, 54, 0.5);
+          border-radius: 2px;
+          text-align: center;
+          &:first-child {
+            margin-right: 2px;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(
+              360deg,
+              rgba(153, 153, 153, 0.76) 0%,
+              #fcfcfc 100%
+            );
+            border-radius: 2px 2px 0px 0px;
+            opacity: 0.5;
+          }
+        }
+      }
+      .delimiter {
+        display: flex;
+        align-items: flex-end;
+        margin: 0 4px;
+        font-size: 12px;
+        color: #d1d1d1;
+      }
+      &_progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        p {
+          font-size: 12px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 16px;
+          span {
+            color: #9c9c9c;
+          }
+        }
+      }
+      &_total {
+        margin-top: 8px;
+        p {
+          font-size: 14px;
+          color: #9c9c9c;
+          line-height: 20px;
+          &:last-child {
+            color: #fff;
+          }
+        }
+        &:last-child {
+          margin-top: 6px;
+        }
+        .new_ewards {
+          display: flex;
+          flex-direction: column;
+          span {
+            margin-top: 4px;
+            font-size: 14px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 20px;
+          }
+        }
+        .claim {
+          padding: 0 8px;
+          height: 26px;
+          line-height: 26px;
+          width: 80px;
+          font-size: 14px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #ffffff;
+          background: #4c4c4d;
+          border-radius: 4px;
+          &:hover {
+            color: #fff;
+            background: #6b6b6e;
+          }
+        }
+      }
+      &_add_contract {
+        p {
+          position: relative;
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffead5;
+          line-height: 20px;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+          .tips_content {
+            position: absolute;
+            bottom: 30px;
+            left: 0px;
+            padding: 0 10px;
+            margin-top: 0 !important;
+            height: 24px;
+            font-style: normal;
+            font-size: 12px;
+            color: #22292f;
+            line-height: 24px !important;
+            background: #ffead5;
+            border-radius: 3px;
+            white-space: nowrap;
+            &::after {
+              content: '';
+              display: inline-block;
+              position: absolute;
+              bottom: -5px;
+              left: 6px;
+              width: 0;
+              height: 0;
+              border-top: 7px solid #ffead5;
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+            }
+          }
+          svg {
+            margin-left: 4px;
+            width: 16px;
+            height: 16px;
+            fill: #ffead5;
+            vertical-align: middle;
+          }
+          .metaMask_logo {
+            display: inline-block;
+            margin-left: 8px;
+            width: 16px;
+            height: 16px;
+            background: url('../../../assets/image/burn/MetaMask_logo@2x.png')
+              no-repeat;
+            background-size: 100% 100%;
+            vertical-align: middle;
+          }
+        }
+      }
+      &_progress_bar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        i {
+          position: absolute;
+          top: -50%;
+          z-index: 1;
+          width: 16px;
+          height: 16px;
+          background: url('../../../assets/image/burn/huojian@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+        p {
+          position: relative;
+          width: 100%;
+          height: 2px;
+          background: #444343;
+          border-radius: 1px;
+          filter: blur(1px);
+          &:last-child {
+            margin-top: 4px;
+          }
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(270deg, #fd7504 0%, #ff9600 100%);
+            border-radius: 1px;
+          }
+        }
+      }
+      &_inputbox {
+        position: relative;
+        margin: 8px 0 10px;
+        max-width: 100%;
+        color: var(--bg);
+      }
+      &_inputbox-control {
+        position: relative;
+      }
+      &_inputbox-input {
+        display: flex;
+        align-items: center;
+        width: 320px;
+        height: 36px;
+
+        & > div {
+          margin-right: 8px;
+        }
+
+        input {
+          padding: 0 30px 0 14px;
+          width: 100%;
+          height: 100%;
+          line-height: 100%;
+          font-size: 16px;
+          color: #fff;
+          outline: none;
+          border-radius: 5px;
+          vertical-align: top;
+          border: 1px solid #68686a;
+          background: #262626 !important;
+          &::-webkit-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &::-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-ms-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+      &_inputbox-up {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+
+        &-logo {
+          margin-left: 14px;
+        }
+
+        &-suf {
+          margin-left: 14px;
+          font-size: 14px;
+          color: #000;
+          min-width: 36px;
+        }
+      }
+      &_inputbox-up-pref {
+        cursor: pointer;
+        font-size: 14px;
+        font-family: HelveticaNeue-Medium, HelveticaNeue;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
+        padding: 0 4px;
+        height: 24px;
+        line-height: 24px;
+        background-color: #4c4c4d;
+        border-radius: 4px;
+        text-transform: uppercase;
+        &:hover {
+          color: #ffead5;
+        }
+      }
+      .line {
+        margin: 6px 0 14px;
+        width: 100%;
+        height: 1px;
+        background-color: #4c4c4d;
+      }
+    }
+    .coming_soon {
+      display: inline-block;
+      margin-top: 50px;
+      width: 380px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      vertical-align: top;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
+      img {
+        display: block;
+        margin: 150px auto 18px;
+        width: 106px;
+        height: 106px;
+      }
+      h2 {
+        font-size: 30px;
+        font-family: HelveticaNeue-Bold, HelveticaNeue;
+        font-weight: bold;
+        color: #ffead5;
+        line-height: 38px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 747px) and (max-width: 1199px) {
+  .content {
+    margin: 0 auto;
+    width: 1180px !important;
+    height: 100%;
+  }
+  .burn_box {
+    padding-top: 140px;
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+    background: url('../../../assets/image/burn/burn_banner.png') no-repeat;
+    background-size: 1920px 1080px;
+    background-position: top;
+    background-color: #000;
+    .burn_box_title {
+      height: 62px;
+      font-size: 44px;
+      font-family: 'Arial-Black', Arial;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 62px;
+    }
+    .burn_box_content {
+      margin-top: 20px;
+      padding-bottom: 40px;
+      width: 500px;
+      font-size: 14px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 26px;
+    }
+    .burn_box_card_box {
+      display: inline-block;
+    }
+    .burn_box_card {
+      display: inline-block;
+      position: relative;
+      margin-top: 50px;
+      padding: 26px 30px 22px;
+      width: 380px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
+      &_old_logo,
+      &_new_logo {
+        position: absolute;
+        top: -28px;
+        width: 52px;
+        height: 52px;
+        z-index: 1;
+      }
+      &_old_logo {
+        left: 30px;
+      }
+      &_new_logo {
+        right: 30px;
+      }
+      &_title {
+        height: 26px;
+        font-size: 18px;
+        font-family: 'Arial-Black', Arial;
+        font-weight: 700;
+        color: #fff;
+        line-height: 26px;
+      }
+      &_countdown {
+        display: flex;
+      }
+      &_day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4px;
+        width: 44px;
+      }
+      &_countdown_title {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 16px;
+        opacity: 0.6;
+        transform: scale(0.7);
+      }
+      &_countdown_time {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        .burn_box_card_time {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 26px;
+          line-height: 26px;
+          font-size: 20px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #262626;
+          background: #e2dfdf;
+          box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5),
+            0px 0px 1px 0px rgba(55, 54, 54, 0.5);
+          border-radius: 2px;
+          text-align: center;
+          &:first-child {
+            margin-right: 2px;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(
+              360deg,
+              rgba(153, 153, 153, 0.76) 0%,
+              #fcfcfc 100%
+            );
+            border-radius: 2px 2px 0px 0px;
+            opacity: 0.5;
+          }
+        }
+      }
+      .delimiter {
+        display: flex;
+        align-items: flex-end;
+        margin: 0 4px;
+        font-size: 12px;
+        color: #d1d1d1;
+      }
+      &_progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        p {
+          font-size: 12px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 16px;
+          span {
+            color: #9c9c9c;
+          }
+        }
+      }
+      &_total {
+        margin-top: 8px;
+        p {
+          font-size: 14px;
+          color: #9c9c9c;
+          line-height: 20px;
+          &:last-child {
+            color: #fff;
+          }
+        }
+        &:last-child {
+          margin-top: 6px;
+        }
+        .new_ewards {
+          display: flex;
+          flex-direction: column;
+          span {
+            margin-top: 4px;
+            font-size: 14px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 20px;
+          }
+        }
+        .claim {
+          padding: 0 8px;
+          width: 80px;
+          height: 26px;
+          line-height: 26px;
+          font-size: 14px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #ffffff;
+          background: #4c4c4d;
+          border-radius: 4px;
+          &:hover {
+            color: #fff;
+            background: #6b6b6e;
+          }
+        }
+      }
+      &_add_contract {
+        p {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffead5;
+          line-height: 20px;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+          .tips_content {
+            position: absolute;
+            bottom: 30px;
+            left: 0px;
+            padding: 0 10px;
+            margin-top: 0 !important;
+            height: 24px;
+            font-style: normal;
+            font-size: 12px;
+            color: #22292f;
+            line-height: 24px !important;
+            background: #ffead5;
+            border-radius: 3px;
+            white-space: nowrap;
+            &::after {
+              content: '';
+              display: inline-block;
+              position: absolute;
+              bottom: -5px;
+              left: 6px;
+              width: 0;
+              height: 0;
+              border-top: 7px solid #ffead5;
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+            }
+          }
+          svg {
+            margin-left: 4px;
+            width: 16px;
+            height: 16px;
+            fill: #ffead5;
+            vertical-align: middle;
+          }
+          .metaMask_logo {
+            display: inline-block;
+            margin-left: 8px;
+            width: 16px;
+            height: 16px;
+            background: url('../../../assets/image/burn/MetaMask_logo@2x.png')
+              no-repeat;
+            background-size: 100% 100%;
+            vertical-align: middle;
+          }
+        }
+      }
+      &_progress_bar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        i {
+          position: absolute;
+          top: -50%;
+          z-index: 1;
+          width: 16px;
+          height: 16px;
+          background: url('../../../assets/image/burn/huojian@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+        p {
+          position: relative;
+          width: 100%;
+          height: 2px;
+          background: #444343;
+          border-radius: 1px;
+          filter: blur(1px);
+          &:last-child {
+            margin-top: 4px;
+          }
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(270deg, #fd7504 0%, #ff9600 100%);
+            border-radius: 1px;
+          }
+        }
+      }
+      &_inputbox {
+        position: relative;
+        margin: 8px 0 10px;
+        max-width: 100%;
+        color: var(--bg);
+      }
+      &_inputbox-control {
+        position: relative;
+      }
+      &_inputbox-input {
+        display: flex;
+        align-items: center;
+        width: 320px;
+        height: 36px;
+
+        & > div {
+          margin-right: 8px;
+        }
+
+        input {
+          padding: 0 30px 0 14px;
+          width: 100%;
+          height: 100%;
+          line-height: 100%;
+          font-size: 16px;
+          color: #fff;
+          outline: none;
+          border-radius: 5px;
+          vertical-align: top;
+          border: 1px solid #68686a;
+          background: #262626 !important;
+          &::-webkit-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &::-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-ms-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+      &_inputbox-up {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+
+        &-logo {
+          margin-left: 14px;
+        }
+
+        &-suf {
+          margin-left: 14px;
+          font-size: 14px;
+          color: #000;
+          min-width: 36px;
+        }
+      }
+      &_inputbox-up-pref {
+        cursor: pointer;
+        font-size: 14px;
+        font-family: HelveticaNeue-Medium, HelveticaNeue;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
+        padding: 0 4px;
+        height: 24px;
+        line-height: 24px;
+        background-color: #4c4c4d;
+        border-radius: 4px;
+        text-transform: uppercase;
+        &:hover {
+          color: #ffead5;
+        }
+      }
+      .line {
+        margin: 6px 0 14px;
+        width: 100%;
+        height: 1px;
+        background-color: #4c4c4d;
+      }
+    }
+    .coming_soon {
+      display: inline-block;
+      margin-top: 50px;
+      width: 380px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      vertical-align: top;
+      &:nth-child(3n-1) {
+        margin: 50px 20px 0;
+      }
+      img {
+        display: block;
+        margin: 150px auto 18px;
+        width: 106px;
+        height: 106px;
+      }
+      h2 {
+        font-size: 30px;
+        font-family: HelveticaNeue-Bold, HelveticaNeue;
+        font-weight: bold;
+        color: #ffead5;
+        line-height: 38px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+@media (min-width: 359px) and (max-width: 747px) {
+  .content {
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+  .burn_box {
+    padding-top: 88px;
+    // width: 375px;
+    width: 100%;
+    height: 100%;
+    background: url('../../../assets/image/burn/burn_banner_h5.png') no-repeat;
+    background-size: contain;
+    background-color: #000;
+    .burn_box_title {
+      padding: 0 18px;
+      height: 46px;
+      font-size: 32px;
+      font-family: 'Arial-Black', Arial;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 46px;
+    }
+    .burn_box_content {
+      margin-top: 10px;
+      padding: 0 18px 20px;
+      width: 310px;
+      font-size: 12px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 22px;
+    }
+    .burn_box_card_box {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .burn_box_card {
+      position: relative;
+      margin-top: 36px;
+      padding: 26px 10px 22px;
+      width: 340px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      &_old_logo,
+      &_new_logo {
+        position: absolute;
+        top: -28px;
+        width: 52px;
+        height: 52px;
+        z-index: 1;
+      }
+      &_old_logo {
+        left: 30px;
+      }
+      &_new_logo {
+        right: 30px;
+      }
+      &_title {
+        height: 26px;
+        font-size: 18px;
+        font-family: 'Arial-Black', Arial;
+        font-weight: 700;
+        color: #fff;
+        line-height: 26px;
+      }
+      &_countdown {
+        display: flex;
+      }
+      &_day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4px;
+        width: 44px;
+      }
+      &_countdown_title {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 16px;
+        opacity: 0.6;
+        transform: scale(0.7);
+      }
+      &_countdown_time {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        .burn_box_card_time {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 26px;
+          line-height: 26px;
+          font-size: 20px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #262626;
+          background: #e2dfdf;
+          box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5),
+            0px 0px 1px 0px rgba(55, 54, 54, 0.5);
+          border-radius: 2px;
+          text-align: center;
+          &:first-child {
+            margin-right: 2px;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(
+              360deg,
+              rgba(153, 153, 153, 0.76) 0%,
+              #fcfcfc 100%
+            );
+            border-radius: 2px 2px 0px 0px;
+            opacity: 0.5;
+          }
+        }
+      }
+      .delimiter {
+        display: flex;
+        align-items: flex-end;
+        margin: 0 4px;
+        font-size: 12px;
+        color: #d1d1d1;
+      }
+      &_progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        p {
+          font-size: 12px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 16px;
+          span {
+            color: #9c9c9c;
+          }
+        }
+      }
+      &_total {
+        margin-top: 8px;
+        p {
+          font-size: 14px;
+          color: #9c9c9c;
+          line-height: 20px;
+          &:last-child {
+            color: #fff;
+          }
+        }
+        &:last-child {
+          margin-top: 6px;
+        }
+        .new_ewards {
+          display: flex;
+          flex-direction: column;
+          span {
+            margin-top: 4px;
+            font-size: 14px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 20px;
+          }
+        }
+        .claim {
+          padding: 0 8px;
+          height: 26px;
+          line-height: 26px;
+          width: 80px;
+          font-size: 14px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #ffffff;
+          background: #4c4c4d;
+          border-radius: 4px;
+          &:hover {
+            color: #fff;
+            background: #6b6b6e;
+          }
+        }
+      }
+      &_add_contract {
+        p {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffead5;
+          line-height: 20px;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+          .tips_content {
+            position: absolute;
+            bottom: 30px;
+            left: 0px;
+            padding: 0 10px;
+            margin-top: 0 !important;
+            height: 24px;
+            font-style: normal;
+            font-size: 12px;
+            color: #22292f;
+            line-height: 24px !important;
+            background: #ffead5;
+            border-radius: 3px;
+            white-space: nowrap;
+            &::after {
+              content: '';
+              display: inline-block;
+              position: absolute;
+              bottom: -5px;
+              left: 6px;
+              width: 0;
+              height: 0;
+              border-top: 7px solid #ffead5;
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+            }
+          }
+          svg {
+            margin-left: 4px;
+            width: 16px;
+            height: 16px;
+            fill: #ffead5;
+            vertical-align: middle;
+          }
+          .metaMask_logo {
+            display: inline-block;
+            margin-left: 8px;
+            width: 16px;
+            height: 16px;
+            background: url('../../../assets/image/burn/MetaMask_logo@2x.png')
+              no-repeat;
+            background-size: 100% 100%;
+            vertical-align: middle;
+          }
+        }
+      }
+      &_progress_bar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        i {
+          position: absolute;
+          top: -50%;
+          z-index: 1;
+          width: 16px;
+          height: 16px;
+          background: url('../../../assets/image/burn/huojian@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+        p {
+          position: relative;
+          width: 100%;
+          height: 2px;
+          background: #444343;
+          border-radius: 1px;
+          filter: blur(1px);
+          &:last-child {
+            margin-top: 4px;
+          }
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(270deg, #fd7504 0%, #ff9600 100%);
+            border-radius: 1px;
+          }
+        }
+      }
+      &_inputbox {
+        position: relative;
+        margin: 8px 0 10px;
+        max-width: 100%;
+        color: var(--bg);
+      }
+      &_inputbox-control {
+        position: relative;
+      }
+      &_inputbox-input {
+        display: flex;
+        align-items: center;
+        width: 320px;
+        height: 36px;
+
+        & > div {
+          margin-right: 8px;
+        }
+
+        input {
+          padding: 0 30px 0 14px;
+          width: 100%;
+          height: 100%;
+          line-height: 100%;
+          font-size: 16px;
+          color: #fff;
+          outline: none;
+          border-radius: 5px;
+          vertical-align: top;
+          border: 1px solid #68686a;
+          background: #262626 !important;
+          &::-webkit-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &::-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-ms-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+      &_inputbox-up {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+
+        &-logo {
+          margin-left: 14px;
+        }
+
+        &-suf {
+          margin-left: 14px;
+          font-size: 14px;
+          color: #000;
+          min-width: 36px;
+        }
+      }
+      &_inputbox-up-pref {
+        cursor: pointer;
+        font-size: 14px;
+        font-family: HelveticaNeue-Medium, HelveticaNeue;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
+        padding: 0 4px;
+        height: 24px;
+        line-height: 24px;
+        background-color: #4c4c4d;
+        border-radius: 4px;
+        text-transform: uppercase;
+        &:hover {
+          color: #ffead5;
+        }
+      }
+      .line {
+        margin: 6px 0 14px;
+        width: 100%;
+        height: 1px;
+        background-color: #4c4c4d;
+      }
+    }
+    .coming_soon {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 10px;
+      width: 340px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      img {
+        display: inline-block;
+        margin-top: 150px;
+        width: 106px;
+        height: 106px;
+      }
+      h2 {
+        margin-top: 18px;
+        font-size: 30px;
+        font-family: HelveticaNeue-Bold, HelveticaNeue;
+        font-weight: bold;
+        color: #ffead5;
+        line-height: 38px;
+      }
+    }
+  }
+}
+
+@media (max-width: 359px) {
+  .content {
+    margin: 0 auto;
+    padding-bottom: 40px;
+  }
+  .burn_box {
+    padding-top: 88px;
+    // width: 359px;
+    width: 100%;
+    height: 100%;
+    background: url('../../../assets/image/burn/burn_banner_h5.png') no-repeat;
+    background-size: contain;
+    background-color: #000;
+    .burn_box_title {
+      padding: 0 18px;
+      height: 46px;
+      font-size: 32px;
+      font-family: 'Arial-Black', Arial;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 46px;
+    }
+    .burn_box_content {
+      padding: 0 18px 20px;
+      margin-top: 10px;
+      width: 288px;
+      font-size: 12px;
+      font-family: PingFangSC-Regular, PingFang SC;
+      font-weight: 400;
+      color: #ffffff;
+      line-height: 22px;
+    }
+    .burn_box_card_box {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+    .burn_box_card {
+      position: relative;
+      margin-top: 36px;
+      padding: 26px 10px 22px;
+      width: 300px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      &_old_logo,
+      &_new_logo {
+        position: absolute;
+        top: -28px;
+        width: 52px;
+        height: 52px;
+        z-index: 1;
+      }
+      &_old_logo {
+        left: 30px;
+      }
+      &_new_logo {
+        right: 30px;
+      }
+      &_title {
+        height: 26px;
+        font-size: 18px;
+        font-family: 'Arial-Black', Arial;
+        font-weight: 700;
+        color: #fff;
+        line-height: 26px;
+      }
+      &_countdown {
+        display: flex;
+      }
+      &_day {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 4px;
+        width: 44px;
+      }
+      &_countdown_title {
+        font-size: 12px;
+        font-family: PingFangSC-Regular, PingFang SC;
+        font-weight: 400;
+        color: #ffffff;
+        line-height: 16px;
+        opacity: 0.6;
+        transform: scale(0.7);
+      }
+      &_countdown_time {
+        margin-top: 4px;
+        display: flex;
+        align-items: center;
+        .burn_box_card_time {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 26px;
+          line-height: 26px;
+          font-size: 20px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #262626;
+          background: #e2dfdf;
+          box-shadow: 0px 1px 2px 1px rgba(0, 0, 0, 0.5),
+            0px 0px 1px 0px rgba(55, 54, 54, 0.5);
+          border-radius: 2px;
+          text-align: center;
+          &:first-child {
+            margin-right: 2px;
+          }
+          &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(
+              360deg,
+              rgba(153, 153, 153, 0.76) 0%,
+              #fcfcfc 100%
+            );
+            border-radius: 2px 2px 0px 0px;
+            opacity: 0.5;
+          }
+        }
+      }
+      .delimiter {
+        display: flex;
+        align-items: flex-end;
+        margin: 0 4px;
+        font-size: 12px;
+        color: #d1d1d1;
+      }
+      &_progress {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px;
+        p {
+          font-size: 12px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffffff;
+          line-height: 16px;
+          span {
+            color: #9c9c9c;
+          }
+        }
+      }
+      &_total {
+        margin-top: 8px;
+        p {
+          font-size: 14px;
+          color: #9c9c9c;
+          line-height: 20px;
+          &:last-child {
+            color: #fff;
+          }
+        }
+        &:last-child {
+          margin-top: 6px;
+        }
+        .new_ewards {
+          display: flex;
+          flex-direction: column;
+          span {
+            margin-top: 4px;
+            font-size: 14px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: 400;
+            color: #ffffff;
+            line-height: 20px;
+          }
+        }
+        .claim {
+          padding: 0 8px;
+          height: 26px;
+          line-height: 26px;
+          width: 80px;
+          font-size: 14px;
+          font-family: PingFangSC-Medium, PingFang SC;
+          font-weight: 500;
+          color: #ffffff;
+          background: #4c4c4d;
+          border-radius: 4px;
+          &:hover {
+            color: #fff;
+            background: #6b6b6e;
+          }
+        }
+      }
+      &_add_contract {
+        p {
+          font-size: 14px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          font-weight: 400;
+          color: #ffead5;
+          line-height: 20px;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+          .tips_content {
+            position: absolute;
+            bottom: 30px;
+            left: 0px;
+            padding: 0 10px;
+            margin-top: 0 !important;
+            height: 24px;
+            font-style: normal;
+            font-size: 12px;
+            color: #22292f;
+            line-height: 24px !important;
+            background: #ffead5;
+            border-radius: 3px;
+            white-space: nowrap;
+            &::after {
+              content: '';
+              display: inline-block;
+              position: absolute;
+              bottom: -5px;
+              left: 6px;
+              width: 0;
+              height: 0;
+              border-top: 7px solid #ffead5;
+              border-left: 7px solid transparent;
+              border-right: 7px solid transparent;
+            }
+          }
+          svg {
+            margin-left: 4px;
+            width: 16px;
+            height: 16px;
+            fill: #ffead5;
+            vertical-align: middle;
+          }
+          .metaMask_logo {
+            display: inline-block;
+            margin-left: 8px;
+            width: 16px;
+            height: 16px;
+            background: url('../../../assets/image/burn/MetaMask_logo@2x.png')
+              no-repeat;
+            background-size: 100% 100%;
+            vertical-align: middle;
+          }
+        }
+      }
+      &_progress_bar {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 10px;
+        i {
+          position: absolute;
+          top: -50%;
+          z-index: 1;
+          width: 16px;
+          height: 16px;
+          background: url('../../../assets/image/burn/huojian@2x.png') no-repeat;
+          background-size: 100% 100%;
+        }
+        p {
+          position: relative;
+          width: 100%;
+          height: 2px;
+          background: #444343;
+          border-radius: 1px;
+          filter: blur(1px);
+          &:last-child {
+            margin-top: 4px;
+          }
+          span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2px;
+            background: linear-gradient(270deg, #fd7504 0%, #ff9600 100%);
+            border-radius: 1px;
+          }
+        }
+      }
+      &_inputbox {
+        position: relative;
+        margin: 8px 0 10px;
+        max-width: 100%;
+        color: var(--bg);
+      }
+      &_inputbox-control {
+        position: relative;
+      }
+      &_inputbox-input {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 36px;
+
+        & > div {
+          margin-right: 8px;
+        }
+
+        input {
+          padding: 0 30px 0 14px;
+          width: 100%;
+          height: 100%;
+          line-height: 100%;
+          font-size: 16px;
+          color: #fff;
+          outline: none;
+          border-radius: 5px;
+          vertical-align: top;
+          border: 1px solid #68686a;
+          background: #262626 !important;
+          &::-webkit-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &::-moz-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          &:-ms-input-placeholder {
+            font-size: 14px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+          }
+        }
+      }
+      &_inputbox-up {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+
+        &-logo {
+          margin-left: 14px;
+        }
+
+        &-suf {
+          margin-left: 14px;
+          font-size: 14px;
+          color: #000;
+          min-width: 36px;
+        }
+      }
+      &_inputbox-up-pref {
+        cursor: pointer;
+        font-size: 14px;
+        font-family: HelveticaNeue-Medium, HelveticaNeue;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
+        padding: 0 4px;
+        height: 24px;
+        line-height: 24px;
+        background-color: #4c4c4d;
+        border-radius: 4px;
+        text-transform: uppercase;
+        &:hover {
+          color: #ffead5;
+        }
+      }
+      .line {
+        margin: 6px 0 14px;
+        width: 100%;
+        height: 1px;
+        background-color: #4c4c4d;
+      }
+    }
+    .coming_soon {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 10px;
+      width: 300px;
+      height: 462px;
+      background: #262626;
+      border-radius: 10px;
+      img {
+        display: inline-block;
+        margin-top: 150px;
+        width: 106px;
+        height: 106px;
+      }
+      h2 {
+        margin-top: 18px;
+        font-size: 30px;
+        font-family: HelveticaNeue-Bold, HelveticaNeue;
+        font-weight: bold;
+        color: #ffead5;
+        line-height: 38px;
+      }
+    }
+  }
+}

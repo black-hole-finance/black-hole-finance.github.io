@@ -23,8 +23,8 @@ const Banner = (props) => {
     window.document.getElementById('container').style.display = ''
   }, [props.location.pathname])
 
-  const goDetail = (e) => {
-    props.history.push(`/investment`)
+  const goDetail = (val) => {
+    props.history.push(val)
   }
 
   return (
@@ -43,7 +43,7 @@ const Banner = (props) => {
               href={'https://etherscan.io/address/' + BlackTokenAddress}
               target='_blank'
             >
-              BLACK Contract Address:
+              <FormattedMessage id='banner_text_8' values={{ coin: 'BLACK' }} />
               {' ' + BlackTokenAddress}
               <svg
                 t='1619095072712'
@@ -66,6 +66,14 @@ const Banner = (props) => {
             <a href='https://docsend.com/view/5sagkb87dt96mccm' target='_blank'>
               <FormattedMessage id='banner_text_4' />
             </a>
+            {/* <a
+              onClick={(e) => {
+                goDetail('/burn')
+              }}
+              target='_blank'
+            >
+              <FormattedMessage id='banner_text_9' />
+            </a> */}
             {/* <a
               onClick={(e) => {
                 jumpPosition(e)
