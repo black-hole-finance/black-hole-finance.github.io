@@ -54,13 +54,21 @@ export const BLACK_ADDRESS = {
 }
 
 export const iBLACK_ADDRESS = {
-  [ChainId.BSC]: '0x04adbE36C4D39e6EC799F69906A48d83F88dC268'
+  [ChainId.BSC]: '0x04adbE36C4D39e6EC799F69906A48d83F88dC268',
 }
 
 export const BUSD_ADDRESS = {
-  [ChainId.BSC]: '0xe9e7cea3dedca5984780bafc599bd69add087d56'
+  [ChainId.BSC]: '0xe9e7cea3dedca5984780bafc599bd69add087d56',
 }
 
 export const OPTION_FACTORY_ADDRESS = {
-  [ChainId.BSC]: '0x021297e233550eDBa8e6487EB7c6696cFBB63b88'
+  [ChainId.BSC]: '0x021297e233550eDBa8e6487EB7c6696cFBB63b88',
+}
+
+export const SHIB_BLACK_ADDRESS = {
+  [ChainId.BSC]: '0xe43611A0dE96e3BE22131c4F90d02613aAF50B8e604',
+}
+
+export const SHIB_ADDRESS = {
+  [ChainId.BSC]: '0xaF90E457f4359adCC8b37E8dF8a27a1fF4c3F561',
 }

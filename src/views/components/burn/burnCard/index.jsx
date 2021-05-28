@@ -10,26 +10,34 @@ import { formatAmount } from '../../../../utils/format'
 import { useActiveWeb3React } from '../../../../hooks'
 import { useTokenBalance, useTokenAllowance } from '../../../../hooks/wallet'
 import ERC20 from '../../../../constants/abis/erc20.json'
-import { BLACK_ADDRESS, getContract } from '../../../../constants'
+import {
+  BLACK_ADDRESS,
+  SHIB_ADDRESS,
+  SHIB_BLACK_ADDRESS,
+  getContract,
+} from '../../../../constants'
 import { connect } from 'react-redux'
 import Timer from 'react-compound-timer'
 import OLD from '../../../../assets/image/burn/old@2x.png'
 import NEW from '../../../../assets/image/burn/new@2x.png'
+import { useBurn } from '../../../../hooks/burn'
 
 const Burn = (props) => {
   const { dispatch } = props
   const { active, chainId, library, account } = useActiveWeb3React()
+  const burnData = useBurn(SHIB_BLACK_ADDRESS[chainId])
   const [amount, setAmount] = useState('')
   const [loadFlag, setLoadFlag] = useState(false)
   const [approve, setApprove] = useState(true)
   const [left_time, setLeft_time] = useState(0)
-  const OldBalance = useTokenBalance(BLACK_ADDRESS[chainId])
+  const OldBalance = useTokenBalance(SHIB_ADDRESS[chainId])
   const [hoverFlag, setHoverFlag] = useState(null)
   const allowance = useTokenAllowance(
     // 燃烧池子地址
-    '0x0',
-    BLACK_ADDRESS[chainId]
+    SHIB_BLACK_ADDRESS[chainId],
+    SHIB_ADDRESS[chainId]
   )
+  console.log(burnData, 'burnData')
 
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
@@ -92,11 +100,11 @@ const Burn = (props) => {
     if (loadFlag) return
 
     setLoadFlag(true)
-    const contract = getContract(library, ERC20.abi, BLACK_ADDRESS[chainId])
+    const contract = getContract(library, ERC20.abi, SHIB_ADDRESS[chainId])
     contract.methods
       .approve(
         // 燃烧池子地址
-        '0x0',
+        SHIB_BLACK_ADDRESS[chainId],
         '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
       )
       .send({
