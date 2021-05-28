@@ -18,6 +18,9 @@ import { iBlack_ABI } from '../../../constants/abis/iBlack'
 import ERC20 from '../../../constants/abis/erc20.json'
 import { connectWallet } from '../../../utils'
 import { injected } from '../../../connectors'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+
 const Activate = (props) => {
   const {
     active,
@@ -27,6 +30,7 @@ const Activate = (props) => {
     activate,
     deactivate,
   } = useActiveWeb3React()
+  const { dispatch } = props
   const data = useActivate()
   const [loading, setLoading] = useState(false)
   const { busd_allowance, busd_balance, exercise_amount, iblack_balance } = data
@@ -40,6 +44,12 @@ const Activate = (props) => {
   useEffect(() => {
     window.document.getElementById('container').style.display = 'none'
   }, [])
+
+  useEffect(() => {
+    if (chainId !== 56) {
+      dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
+    }
+  }, [chainId])
 
   const onActivate = (e) => {
     if (loading) {
@@ -189,4 +199,7 @@ const Activate = (props) => {
     </>
   )
 }
-export default Activate
+
+export default connect((store) => ({
+  changeNetworkFlag: store.popup.changeNetworkFlag,
+}))(withRouter(Activate))
