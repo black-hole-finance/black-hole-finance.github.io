@@ -64,20 +64,20 @@ export const MenuMask = (props) => {
               )}
             </div>
 
-            { <li className='menumask_item'>
-              <NavLink
-                to='/burn'
-                className='menumask_link'
-                onClick={() =>
-                  dispatch({
-                    type: 'HANDLE_SHOW_MENUMASK_MODAL',
-                    payload: false,
-                  })
-                }
-              >
-                <FormattedMessage id='header_text_3' />
-              </NavLink>
-            </li> }
+            {/*{ <li className='menumask_item'>*/}
+            {/*  <NavLink*/}
+            {/*    to='/burn'*/}
+            {/*    className='menumask_link'*/}
+            {/*    onClick={() =>*/}
+            {/*      dispatch({*/}
+            {/*        type: 'HANDLE_SHOW_MENUMASK_MODAL',*/}
+            {/*        payload: false,*/}
+            {/*      })*/}
+            {/*    }*/}
+            {/*  >*/}
+            {/*    <FormattedMessage id='header_text_3' />*/}
+            {/*  </NavLink>*/}
+            {/*</li> }*/}
             {/*<li className='menumask_item'>*/}
             {/*  <NavLink*/}
             {/*    to='/activate'*/}

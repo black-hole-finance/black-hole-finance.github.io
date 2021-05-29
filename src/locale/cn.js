@@ -15,7 +15,7 @@ const zh_CN = {
   banner_text_7:
     'Blackhole protocol originates from Ethereum network and gradually spread to Polkadot, BSC, Heco, Sol and eventually the whole blockchain world. ',
   banner_text_8: '{coin}合约地址:',
-  banner_text_9: '运行APP',
+  banner_text_9: 'Launch APP',
   home_text_1:
     '治理代币Black token 黑洞通缩燃烧机制示意',
   home_text_2:
