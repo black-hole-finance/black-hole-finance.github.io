@@ -44,8 +44,10 @@ import HongLianSmall from '../../../assets/image/honglian_small@2x.png'
 import WinkryptoSmall from '../../../assets/image/Winkrypto_small@2x.png'
 import HeartBitSmall from '../../../assets/image/heart_bit_small@2x.png'
 import NULSSmall from '../../../assets/image/NULS_small@2x.png'
+import {connect} from "react-redux";
 
 const Home = (props) => {
+  const {locale} = props
   useEffect(() => {
     window.document.getElementById('container').style.display = ''
   }, [props.location.pathname])
@@ -62,7 +64,7 @@ const Home = (props) => {
                 <p className='home_content_text'>
                   <FormattedMessage id='home_text_2' />
                 </p>
-                <a className='home_sketch_map'></a>
+                <a className={`home_sketch_map ${locale}`}></a>
               </div>
             </div>
           </div>
@@ -278,4 +280,6 @@ const Home = (props) => {
   )
 }
 
-export default withRouter(Home)
+export default connect((store) => ({
+  locale: store.locale.locale
+}))(withRouter(Home))
