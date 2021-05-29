@@ -64,7 +64,7 @@ export const MenuMask = (props) => {
               )}
             </div>
 
-            {/* <li className='menumask_item'>
+            { <li className='menumask_item'>
               <NavLink
                 to='/burn'
                 className='menumask_link'
@@ -77,24 +77,24 @@ export const MenuMask = (props) => {
               >
                 <FormattedMessage id='header_text_3' />
               </NavLink>
-            </li> */}
-            <li className='menumask_item'>
-              <NavLink
-                to='/activate'
-                className='menumask_link'
-                onClick={() =>
-                  dispatch({
-                    type: 'HANDLE_SHOW_MENUMASK_MODAL',
-                    payload: false,
-                  })
-                }
-              >
-                <FormattedMessage id='header_text_4' />
-              </NavLink>
-            </li>
+            </li> }
+            {/*<li className='menumask_item'>*/}
+            {/*  <NavLink*/}
+            {/*    to='/activate'*/}
+            {/*    className='menumask_link'*/}
+            {/*    onClick={() =>*/}
+            {/*      dispatch({*/}
+            {/*        type: 'HANDLE_SHOW_MENUMASK_MODAL',*/}
+            {/*        payload: false,*/}
+            {/*      })*/}
+            {/*    }*/}
+            {/*  >*/}
+            {/*    <FormattedMessage id='header_text_4' />*/}
+            {/*  </NavLink>*/}
+            {/*</li>*/}
           </ul>
           <div className='menumask_language'>
-            {/* <div className='language' onClick={() => tabLanguage(language)}>
+            {<div className='language' onClick={() => tabLanguage(language)}>
               <svg
                 t='1622030905482'
                 class='icon'
@@ -111,7 +111,7 @@ export const MenuMask = (props) => {
                 ></path>
               </svg>
               {language === '中文简体' ? '中文简体' : 'English'}
-            </div> */}
+            </div>}
             <ul className='menumask_links'>
               <li>
                 <a

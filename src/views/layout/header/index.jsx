@@ -61,27 +61,27 @@ const Header = (props) => {
             <img className='header_logo' src={LogoText} />
           </Link>
           <div className='header_link_nav'>
-            {/* <Link
+            { <Link
               to='/burn'
               className={cs(
                 props.location.pathname.indexOf('burn') > -1 && 'active'
               )}
             >
               <FormattedMessage id='header_text_3' />
-            </Link> */}
-            <Link
-              className={cs(
-                props.location.pathname.indexOf('activate') > -1 && 'active'
-              )}
-              to='/activate'
-            >
-              <FormattedMessage id='header_text_4' />
-            </Link>
+            </Link> }
+            {/*<Link*/}
+            {/*  className={cs(*/}
+            {/*    props.location.pathname.indexOf('activate') > -1 && 'active'*/}
+            {/*  )}*/}
+            {/*  to='/activate'*/}
+            {/*>*/}
+            {/*  <FormattedMessage id='header_text_4' />*/}
+            {/*</Link>*/}
           </div>
         </div>
 
         <div style={{ display: 'flex' }}>
-          {/* <div className='language' onClick={() => tabLanguage(language)}>
+          {<div className='language' onClick={() => tabLanguage(language)}>
             <svg
               t='1622030905482'
               className='icon'
@@ -98,7 +98,7 @@ const Header = (props) => {
               ></path>
             </svg>
             {language === '中文简体' ? '中文简体' : 'English'}
-          </div> */}
+          </div>}
           {!active && (
             <div
               className='header_connect_btn'

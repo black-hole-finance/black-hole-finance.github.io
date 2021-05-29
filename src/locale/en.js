@@ -104,7 +104,7 @@ const en_US = {
   poolText22: 'Confirm',
   burn1: 'BlackHole Burn',
   burn2:
-    '毁灭的意义，是为了重建，与新生，这就是生命哲学里面的「螺旋上升，或大起大落」的时间曲线，巨大的伤害，会让你粉身碎骨，但是，「我相信最为精彩的应该是，重建之时的信心，与勇气。」',
+    'Blackhole Protocol originates from Ethereum network and gradually spread to Polkadot, BSC, HECO, SOL and eventually the whole blockchain world. Any user or project governor could create a burning pool by holding BLACK and old token LP to permanently burn the old Token into a new Token, thus gaining ecological vitality.',
   burn3: 'Coming soon…',
   burn4: 'BlackHole Burning',
   burn5: 'DAYS',
