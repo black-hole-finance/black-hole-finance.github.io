@@ -14,9 +14,6 @@ import {
 } from '../../../../hooks/wallet'
 import ERC20 from '../../../../constants/abis/erc20.json'
 import {
-  BLACK_ADDRESS,
-  SHIB_ADDRESS,
-  SHIB_BLACK_ADDRESS,
   getContract,
 } from '../../../../constants'
 import { connect } from 'react-redux'
@@ -27,7 +24,7 @@ import { useBurn } from '../../../../hooks/burn'
 
 const Burn = (props) => {
   const { active, chainId, library, account } = useActiveWeb3React()
-  const { dispatch } = props
+  const { dispatch, address, stakingToken, rewardsToken, stakingTokenSymbol, rewardsTokenSymbol } = props
   const [amount, setAmount] = useState('')
   const [loadFlag, setLoadFlag] = useState(false)
   const [claimLoadFlag, setClaimLoadFlag] = useState(false)
@@ -35,17 +32,17 @@ const Burn = (props) => {
   const [now, setNow] = useState(parseInt(Date.now() / 1000))
   const [progress, setProgress] = useState(0)
 
-  const [burn, toBurn, toClaim] = useBurn(SHIB_BLACK_ADDRESS[chainId])
+  const [burn, toBurn, toClaim] = useBurn(address)
 
-  const OldBalance = useTokenBalance(SHIB_ADDRESS[chainId])
-  const OldDecimals = useTokenDecimals(SHIB_ADDRESS[chainId])
+  const OldBalance = useTokenBalance(stakingToken)
+  const OldDecimals = useTokenDecimals(stakingToken)
 
   const [hoverFlag, setHoverFlag] = useState(null)
   const [balanceProportion, setBalanceProportion] = useState(0)
   const allowance = useTokenAllowance(
     // 合约地址
-    SHIB_BLACK_ADDRESS[chainId],
-    SHIB_ADDRESS[chainId]
+    address,
+    stakingToken
   )
   console.log(allowance, 'allowanceallowanceallowance')
 
@@ -130,8 +127,8 @@ const Burn = (props) => {
         params: {
           type: 'ERC20',
           options: {
-            address: SHIB_ADDRESS[chainId],
-            symbol: 'SHIB',
+            address: stakingToken,
+            symbol: stakingTokenSymbol,
             decimals: 18,
             image: '',
           },
@@ -152,8 +149,8 @@ const Burn = (props) => {
         params: {
           type: 'ERC20',
           options: {
-            address: BLACK_ADDRESS[chainId],
-            symbol: 'BLACK',
+            address: rewardsToken,
+            symbol:  rewardsTokenSymbol,
             decimals: 18,
             image: '',
           },
@@ -174,11 +171,11 @@ const Burn = (props) => {
     if (loadFlag) return
 
     setLoadFlag(true)
-    const contract = getContract(library, ERC20, SHIB_ADDRESS[chainId])
+    const contract = getContract(library, ERC20, stakingToken)
     contract.methods
       .approve(
         // 合约地址
-        SHIB_BLACK_ADDRESS[chainId],
+        address,
         '0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
       )
       .send({
@@ -403,7 +400,7 @@ const Burn = (props) => {
             <FormattedMessage id='burn10' />
           </p>
           <p>
-            {formatAmount(OldBalance)} <FormattedMessage id='burn11' />
+            {formatAmount(OldBalance)} {stakingTokenSymbol}
           </p>
         </div>
         <div className='burn_box_card_inputbox'>
@@ -454,9 +451,9 @@ const Burn = (props) => {
             onMouseOut={() => setHoverFlag(null)}
           >
             {hoverFlag === 'oldAddress' && (
-              <i className='tips_content'>{SHIB_ADDRESS[chainId]}</i>
+              <i className='tips_content'>{stakingToken}</i>
             )}
-            <FormattedMessage id='burn16' />
+            <FormattedMessage id='burn16'  values={{token: stakingTokenSymbol}}/>
             <CopyToClipboard
               text='0x0'
               onCopy={() => {
@@ -482,7 +479,7 @@ const Burn = (props) => {
           </p>
 
           <p onClick={addOldToken}>
-            <FormattedMessage id='burn17' />
+            <FormattedMessage id='burn17' values={{token: stakingTokenSymbol}}/>
             <span className='metaMask_logo'></span>
           </p>
         </div>
@@ -492,7 +489,7 @@ const Burn = (props) => {
           style={{ alignItems: 'self-start' }}
         >
           <p className='new_ewards'>
-            <FormattedMessage id='burn18' />
+            <FormattedMessage id='burn18' values={{token: rewardsTokenSymbol}}/>
             <span>{(burn && formatAmount(burn.earned)) || '-'}</span>
           </p>
 
@@ -515,9 +512,9 @@ const Burn = (props) => {
             onMouseOut={() => setHoverFlag(null)}
           >
             {hoverFlag === 'newAddress' && (
-              <i className='tips_content'>{BLACK_ADDRESS[chainId]}</i>
+              <i className='tips_content'>{rewardsToken}</i>
             )}
-            <FormattedMessage id='burn19' />
+            <FormattedMessage id='burn19' values={{token: rewardsTokenSymbol}}/>
             <CopyToClipboard
               text='0x0'
               onCopy={() => {
@@ -543,7 +540,7 @@ const Burn = (props) => {
           </p>
 
           <p onClick={addNewToken}>
-            <FormattedMessage id='burn20' />
+            <FormattedMessage id='burn20' values={{token: rewardsTokenSymbol}} />
             <span className='metaMask_logo'></span>
           </p>
         </div>

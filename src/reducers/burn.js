@@ -1,7 +1,7 @@
 import { BURN_INFO } from '../const'
 
 const initState = {
-  info: {
+  pools: [{
     name: 'BLACKHole Burning',
     begin: 0,
     periodFinish: 0, // 结束时间
@@ -9,10 +9,12 @@ const initState = {
     balanceOf: 0,
     totalSupply: 0,
     earned: 0,
-    rewardsToken: null,
     stakingToken: '0xaF90E457f4359adCC8b37E8dF8a27a1fF4c3F561',
-    SHIB_BLACK_Address: '0xe43611A0dE96e3BE22131c4F90d02613aAF50B8e',
-  },
+    stakingTokenSymbol: 'SHIB',
+    rewardsToken: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
+    rewardsTokenSymbol: 'BLACK',
+    address: '0xe43611A0dE96e3BE22131c4F90d02613aAF50B8e',
+  }],
 }
 
 const reduces = {

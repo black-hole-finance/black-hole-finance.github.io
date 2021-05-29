@@ -8,7 +8,7 @@ import BurnCard from '../../components/burn/burnCard'
 import comingSoon from '../../../assets/image/burn/comingSoon@2x.png'
 
 const Burn = (props) => {
-  const { dispatch } = props
+  const { dispatch, burnPools } = props
 
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
@@ -26,7 +26,10 @@ const Burn = (props) => {
             <FormattedMessage id='burn2' />
           </p>
           <div className='burn_box_card_box'>
-            <BurnCard />
+            {
+              burnPools && burnPools.map(pool => <BurnCard {...pool}/>)
+            }
+
             <div className='coming_soon'>
               <img src={comingSoon} />
               <h2>
@@ -48,6 +51,7 @@ const Burn = (props) => {
 }
 
 export default connect((store) => ({
+  burnPools: store.burn.pools,
   changeNetworkFlag: store.popup.changeNetworkFlag,
   showMenuMaskModal: store.menu.showMenuMaskModal,
 }))(withRouter(Burn))
