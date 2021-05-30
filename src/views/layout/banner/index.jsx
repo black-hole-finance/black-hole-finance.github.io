@@ -66,14 +66,14 @@ const Banner = (props) => {
             <a href='https://docsend.com/view/5sagkb87dt96mccm' target='_blank'>
               <FormattedMessage id='banner_text_4' />
             </a>
-            {<a
+            {/* {<a
               onClick={(e) => {
                 goDetail('/burn')
               }}
               target='_blank'
             >
               <FormattedMessage id='banner_text_9' />
-            </a> }
+            </a> } */}
             {/* <a
               onClick={(e) => {
                 jumpPosition(e)
