@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.b98d433c.chunk.css",
-    "main.js": "/static/js/main.9e61c5bf.chunk.js",
-    "main.js.map": "/static/js/main.9e61c5bf.chunk.js.map",
+    "main.js": "/static/js/main.4d5d2caa.chunk.js",
+    "main.js.map": "/static/js/main.4d5d2caa.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.9a01f31a.js",
     "runtime-main.js.map": "/static/js/runtime-main.9a01f31a.js.map",
     "static/css/2.fdadc2a8.chunk.css": "/static/css/2.fdadc2a8.chunk.css",
@@ -34,10 +34,10 @@
     "static/media/github.4a8c994d.svg": "/static/media/github.4a8c994d.svg",
     "static/media/helmet@2x.518655e0.png": "/static/media/helmet@2x.518655e0.png",
     "static/media/medium.a862c568.svg": "/static/media/medium.a862c568.svg",
-    "static/media/new@2x.d65d0c55.png": "/static/media/new@2x.d65d0c55.png",
+    "static/media/new@2x.fe6f4b2c.png": "/static/media/new@2x.fe6f4b2c.png",
     "static/media/oasis_capital@2x.efd3a545.png": "/static/media/oasis_capital@2x.efd3a545.png",
     "static/media/oasis_capital_small@2x.db21d94a.png": "/static/media/oasis_capital_small@2x.db21d94a.png",
-    "static/media/old@2x.393392e3.png": "/static/media/old@2x.393392e3.png",
+    "static/media/old@2x.c5d41191.png": "/static/media/old@2x.c5d41191.png",
     "static/media/power_law@2x.e838718e.png": "/static/media/power_law@2x.e838718e.png",
     "static/media/shin_chan@2x.efcad50c.png": "/static/media/shin_chan@2x.efcad50c.png",
     "static/media/telegram.c64393d6.svg": "/static/media/telegram.c64393d6.svg",
@@ -49,6 +49,6 @@
     "static/css/2.fdadc2a8.chunk.css",
     "static/js/2.7a07efe4.chunk.js",
     "static/css/main.b98d433c.chunk.css",
-    "static/js/main.9e61c5bf.chunk.js"
+    "static/js/main.4d5d2caa.chunk.js"
   ]
 }
