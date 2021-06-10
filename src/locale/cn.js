@@ -33,7 +33,7 @@ const zh_CN = {
   home_text_13: '2021年Q4',
   home_text_13_2: 'V2.0 Singular Torus（奇异环）',
   home_text_14: '支持NFT奖励燃烧',
-  home_text_14_2: '治理机制',
+  home_text_14_2: '治理机制 V2.0',
   home_text_15: 'IDO',
   home_text_16: '种子轮',
   home_text_17: 'Ratio',

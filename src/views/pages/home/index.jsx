@@ -87,15 +87,27 @@ const Home = (props) => {
                     <FormattedMessage id='home_text_4_2' />
                   </h4>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_5' />
                   </p>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_6' />
                   </p>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_7' />
                   </p>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_8' />
                   </p>
                 </div>
@@ -107,12 +119,21 @@ const Home = (props) => {
                     <FormattedMessage id='home_text_9_2' />
                   </h4>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_10' />
                   </p>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_11' />
                   </p>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_12' />
                   </p>
                 </div>
@@ -124,14 +145,22 @@ const Home = (props) => {
                     <FormattedMessage id='home_text_13_2' />
                   </h4>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_14' />
                   </p>
                   <p className='roadmap_card_text'>
+                    {locale !== 'zh' && (
+                      <span className='roadmap_card_symbol'></span>
+                    )}
                     <FormattedMessage id='home_text_14_2' />
                   </p>
                 </div>
               </div>
-              <a className='roadmap_png'></a>
+              <a
+                className={`roadmap_png ${locale === 'zh' && 'roadmap_png_zh'}`}
+              ></a>
             </div>
           </div>
         </div>
