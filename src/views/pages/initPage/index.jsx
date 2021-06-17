@@ -128,24 +128,31 @@ const InitPage = (props) => {
           </div>
         </div>
       )}
-      {/* 链接钱包 */}
-      {props.walletModal === 'walletConnect' && (
-        <div className='init_page_box hidden_header'>
-          <WalletConnect />
+      {/* 链接钱包 || 切换钱包*/}
+      {(props.walletModal === 'walletConnect' || props.walletModal === 'changeWalletConnect') && (
+        <div className='init_page_box'>
+          <WalletConnect
+              onClose={() =>
+                  dispatch({
+                    type: 'HANDLE_WALLET_MODAL',
+                    walletModal: null,
+                  })
+              }
+          />
         </div>
       )}
       {/* 退出钱包 */}
       {props.walletModal === 'smallWalletConnect' && (
-        <div className='init_page_box hidden_header'>
+        <div className='init_page_box'>
           <WalletModalPopup />
         </div>
       )}
       {/* 切换钱包 */}
-      {props.walletModal === 'changeWalletConnect' && (
-        <div className='init_page_box hidden_header'>
-          <WalletChangePopup />
-        </div>
-      )}
+      {/*{props.walletModal === 'changeWalletConnect' && (*/}
+      {/*  <div className='init_page_box'>*/}
+      {/*    <WalletChangePopup />*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </>
   )
 }

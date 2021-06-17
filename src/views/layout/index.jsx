@@ -10,6 +10,7 @@ import InitPage from '../pages/initPage'
 import LBP from '../pages/lbp'
 import Burn from '../pages/burn'
 import Intl from '../../locale/intl'
+import './index.less'
 
 import {
   usePoolsInfo,
@@ -18,12 +19,11 @@ import {
   useInactiveListener,
 } from '../../hooks'
 import Activate from '../pages/activate'
+import {connect} from "react-redux";
 
-function App() {
+function App(props) {
   const { activate, account } = useWeb3React()
   const tried = useEagerConnect()
-  // const pools = usePoolsInfo(store.getState().pools.connectPools.address)
-
   return (
     <Intl>
       <Router>
@@ -53,5 +53,4 @@ function App() {
     </Intl>
   )
 }
-
 export default App

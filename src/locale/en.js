@@ -142,5 +142,9 @@ const en_US = {
   modalsText60: 'Copy Address',
   modalsText61: 'Switch Wallet',
   modalsText62: 'Disconnect Wallet',
+  netWork1: 'Choose Network',
+  netWork2: 'Choose Wallet',
+  netWork3: 'Change Network',
+  linkWallet: 'Connect wallet',
 }
 export default en_US

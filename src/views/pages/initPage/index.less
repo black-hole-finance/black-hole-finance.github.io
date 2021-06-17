@@ -1,99 +1,12 @@
-@media (min-width: 1200px) {
-  .init_page_box {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    z-index: 8;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-  }
-  .init_page_popup {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-  }
-  .hidden_header {
-    top: 0;
-    z-index: 16;
-  }
+.init_page_box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.8);
 }
-
-@media (min-width: 747px) and (max-width: 1199px) {
-  .init_page_box {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    z-index: 8;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-  }
-  .init_page_popup {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-  }
-  .hidden_header {
-    top: 0;
-    z-index: 16;
-  }
-}
-
-@media (min-width: 359px) and (max-width: 747px) {
-  .init_page_box {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 8;
-    background-color: #000;
-  }
-  .init_page_popup {
-    position: absolute;
-    top: 0px;
-    left: 0;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-  }
-  .hidden_header {
-    top: 0;
-    z-index: 16;
-  }
-}
-
-@media (max-width: 359px) {
-  .init_page_box {
-    position: absolute;
-    top: 60px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 8;
-    background-color: #000;
-  }
-  .init_page_popup {
-    position: absolute;
-    top: 0px;
-    left: 0;
-    z-index: 9;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-  }
-  .hidden_header {
-    top: 0;
-    z-index: 16;
-  }
+html{
+  overflow: hidden;
 }
