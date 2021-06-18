@@ -54,7 +54,7 @@ export const MenuMask = (props) => {
         <nav className='menumask_nav'>
           <ul className='menumask_list'>
             <div className='menumask__menu-wrapper'>
-              <SwitchNetworkBtn />
+              <SwitchNetworkBtn staticView/>
             </div>
             <div className='menumask__menu-wrapper'>
               {active && (

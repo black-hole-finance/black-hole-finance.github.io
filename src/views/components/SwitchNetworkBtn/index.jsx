@@ -8,7 +8,7 @@ import BSC from "../../../assets/image/icon/BSC@2x.png";
 import {useActiveWeb3React} from "../../../hooks";
 import './index.less'
 
-function SwitchNetworkBtn({dispatch}) {
+function SwitchNetworkBtn({dispatch, staticView = false}) {
     const {chainId} = useActiveWeb3React()
     const chainIdIcon = {
         [ChainId.ETH]: ETH,
@@ -18,18 +18,21 @@ function SwitchNetworkBtn({dispatch}) {
     if (!chainIdIcon) {
         return null
     }
-    return (
-        chainIdIcon && <div className='switch_network_btn' onClick={() => {
-            dispatch({
-                type: 'HANDLE_SHOW_MENUMASK_MODAL',
-                payload: false,
-            })
-            dispatch({
-                type: SWITCH_NETWORK_POPUP,
-                payload: true,
-            })
+    const btnClick = () => {
+        if (staticView) {
+            return
         }
-        }>
+        dispatch({
+            type: 'HANDLE_SHOW_MENUMASK_MODAL',
+            payload: false,
+        })
+        dispatch({
+            type: SWITCH_NETWORK_POPUP,
+            payload: true,
+        })
+    }
+    return (
+        chainIdIcon && <div className='switch_network_btn' onClick={btnClick}>
             <img src={chainIdIcon} alt=""/>
             {ChainIdName[chainId]}
         </div>
