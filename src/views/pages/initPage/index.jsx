@@ -13,6 +13,8 @@ import LoadingPopup from '../../components/LoadingPopup'
 import { connect } from 'react-redux'
 import WalletModalPopup from '../../components/account/WalletModalPopup'
 import WalletChangePopup from '../../components/account/WalletChangePopup'
+import SwitchNetWorkPopup from '../../components/SwitchNetworkPopup'
+import {SWITCH_NETWORK_POPUP} from '../../../const'
 
 if (window.ethereum) {
   window.ethereum.on('networkChanged', () => {
@@ -67,7 +69,6 @@ const InitPage = (props) => {
   //   props.location.pathname === '/' &&
   //     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
   // }, [props.location])
-
   return (
     <>
       {props.showMenuMaskModal && (
@@ -93,7 +94,15 @@ const InitPage = (props) => {
           style={{ top: props.location.pathname == '/burn' && '0' }}
         >
           <div className='connect_wallet_popup'>
-            <ChangeNetworkPopup />
+            <ChangeNetworkPopup
+                {...props}
+                onClose={() =>
+                    dispatch({
+                      type: 'CHANGE_NETWORK_FLAG',
+                      walletModal: null,
+                    })
+                }
+            />
           </div>
         </div>
       )}
@@ -147,6 +156,20 @@ const InitPage = (props) => {
           <WalletModalPopup />
         </div>
       )}
+
+      {props.switchNetworkPopup && (
+          <div className='init_page_box'>
+            <SwitchNetWorkPopup
+                onClose={() =>
+                    dispatch({
+                      type: SWITCH_NETWORK_POPUP,
+                      payload: false,
+                    })
+                }
+            />
+          </div>
+      )}
+
       {/* 切换钱包 */}
       {/*{props.walletModal === 'changeWalletConnect' && (*/}
       {/*  <div className='init_page_box'>*/}
@@ -165,4 +188,5 @@ export default connect((store) => ({
   popupLoadingFlag: store.popup.popupLoadingFlag,
   showMenuMaskModal: store.menu.showMenuMaskModal,
   walletModal: store.popup.walletModal,
+  switchNetworkPopup: store.popup.switchNetworkPopup
 }))(withRouter(InitPage))

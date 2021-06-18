@@ -15,6 +15,7 @@ import walletConnect from '../../../../assets/image/icon/walletConnect.png'
 import './index.less'
 import {ChainId, walletConnector} from '../../../../constants/index'
 import {BinanceLogo, HecoLogo} from "../../../../assets/js/svgData";
+import {HANDLE_WALLET_MODAL} from  '../../../../const'
 
 const WalletConnect = (props) => {
     const connectWallet = useConnectWallet()
@@ -36,7 +37,7 @@ const WalletConnect = (props) => {
     const connectMetamaskWalletClick = () => {
         connectWallet(injected, netWorkFlag).then(() => {
             dispatch({
-                type: 'HANDLE_WALLET_MODAL',
+                type: HANDLE_WALLET_MODAL,
                 walletModal: null,
             })
         })
@@ -45,7 +46,7 @@ const WalletConnect = (props) => {
     const connectWalletClick = () => {
         connectWallet(walletConnector[netWorkFlag]).then(() => {
             dispatch({
-                type: 'HANDLE_WALLET_MODAL',
+                type: HANDLE_WALLET_MODAL,
                 walletModal: null,
             })
         })

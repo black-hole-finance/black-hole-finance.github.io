@@ -36,6 +36,7 @@ export const useQuota = () => {
   )
   const [quota, setQuota] = useState('')
   useEffect(() => {
+    console.log(account && contract)
     if (account && contract) {
       contract.getQuota(account).then((quota) => {
         store.dispatch({
