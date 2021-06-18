@@ -58,7 +58,7 @@ const Banner = (props) => {
         </CopyToClipboard>
           </div>
           <div className='banner_btn'>
-            <a href='https://docsend.com/view/5sagkb87dt96mccm' target='_blank'>
+            <a href='https://docsend.com/view/5sagkb87dt96mccm' >
               <FormattedMessage id='banner_text_4' />
             </a>
             {/* {<a

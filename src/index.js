@@ -9,6 +9,8 @@ import { PersistGate } from 'redux-persist/integration/react'
 import { store } from './store/index'
 import { getLibrary } from './utils/getLibrary'
 import { Web3ReactProvider } from '@web3-react/core'
+import VConsole from 'vconsole';
+const vConsole = new VConsole();
 
 ReactDOM.render(
   <Provider store={store}>
