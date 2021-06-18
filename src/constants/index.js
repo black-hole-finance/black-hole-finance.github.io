@@ -1,29 +1,102 @@
 import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 import Web3 from 'web3'
+import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 
 export function getContract(library, abi, address) {
   const web3 = new Web3(library.provider)
   return new web3.eth.Contract(abi, address)
 }
-
 export const NetworkContextName = 'NETWORK'
 export const ChainId = {
   RINKEBY: 4,
   ETH: 1,
   BSC: 56,
+  HECO: 128,
 }
-export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
-export const NetworkRPC = {
-  [ChainId.RINKEBY]:
-    'https://rinkeby.infura.io/v3/3adb5694c0e04bd29683f9e4c5f4c458',
-  [ChainId.ETH]: 'https://http-testnet.hecochain.com',
+export const ChainIdName = {
+  [ChainId.RINKEBY]: 'Rinkeby',
+  [ChainId.ETH]: 'Ethereum',
+  [ChainId.BSC]: 'BSC',
+  [ChainId.HECO]: 'HECO',
 }
 
 export const SCAN_ADDRESS = {
   [ChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
   [ChainId.ETH]: 'https://etherscan.io/',
   [ChainId.BSC]: 'https://bscscan.com/',
+  [ChainId.HECO]: 'https://hecoinfo.com',
+}
+
+export const bscNetwork =  {
+  chainId: '0x38',
+  chainName: 'BSC',
+  nativeCurrency: {
+    name: 'BNB',
+    symbol: 'BNB',
+    decimals: 18,
+  },
+  rpcUrls: ['https://bsc-dataseed.binance.org/'],
+  blockExplorerUrls: [SCAN_ADDRESS[ChainId.BSC]],
+}
+
+export const hecoNetwork = {
+  chainId: '0x80',
+  chainName: 'HECO',
+  nativeCurrency: {
+    name: 'HT',
+    symbol: 'HT',
+    decimals: 18,
+  },
+  rpcUrls: [
+    'https://http-mainnet-node.huobichain.com',
+  ],
+  blockExplorerUrls: [SCAN_ADDRESS[ChainId.HECO]],
+}
+export const ethNetwork = {
+  chainId: '0x1'
+}
+export const networkConf = {
+  [ChainId.HECO]: hecoNetwork,
+  [ChainId.BSC]: bscNetwork,
+  [ChainId.ETH] : ethNetwork
+}
+export const POLLING_INTERVAL = 12000
+
+const bscWalletConnector = new WalletConnectConnector({
+  rpc: { 56: 'https://bsc-dataseed.binance.org/' },
+  bridge: 'https://bridge.walletconnect.org',
+  qrcode: true,
+  pollingInterval: POLLING_INTERVAL,
+})
+
+const hecoWalletConnector = new WalletConnectConnector({
+  rpc: { 128: 'https://http-mainnet-node.huobichain.com' },
+  bridge: 'https://bridge.walletconnect.org',
+  qrcode: true,
+  pollingInterval: POLLING_INTERVAL,
+})
+
+const ethWalletConnector = new WalletConnectConnector({
+  rpc: { 1: 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161' },
+  bridge: 'https://bridge.walletconnect.org',
+  qrcode: true,
+  pollingInterval: POLLING_INTERVAL,
+})
+
+export const walletConnector = {
+  [ChainId.HECO]: hecoWalletConnector,
+  [ChainId.BSC]: bscWalletConnector,
+  [ChainId.ETH]: ethWalletConnector,
+}
+
+
+export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
+
+export const NetworkRPC = {
+  [ChainId.RINKEBY]:
+    'https://rinkeby.infura.io/v3/3adb5694c0e04bd29683f9e4c5f4c458',
+  [ChainId.ETH]: 'https://http-testnet.hecochain.com',
 }
 
 export const MULTICALL_NETWORKS = {
@@ -51,6 +124,7 @@ export const BLACK_ADDRESS = {
   [ChainId.RINKEBY]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
   [ChainId.ETH]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
   [ChainId.BSC]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
+  [ChainId.HECO]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
 }
 
 export const iBLACK_ADDRESS = {

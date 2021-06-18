@@ -17,6 +17,7 @@ import './index.less'
 import { formatAmount, fromWei } from '../../../utils/format'
 import { useInvestmentInfo } from '../../../hooks/offering'
 
+
 const Detail = (props) => {
   const {
     currency_symbol,
@@ -36,6 +37,14 @@ const Detail = (props) => {
       window.document.getElementById('container').style.display = 'none'
     }
   }, [])
+
+  useEffect(() => {
+    if (chainId !== ChainId.ETH) {
+      setTimeout(()=>{
+        props.dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: true })
+      },0)
+    }
+  }, [chainId])
 
   const onClaim = () => {
     if (formatAmount(cliamable_balance) - 0 === 0) return

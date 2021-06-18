@@ -137,5 +137,9 @@ const zh_CN = {
   modalsText60: '复制地址',
   modalsText61: '切花钱包',
   modalsText62: '断开钱包',
+  netWork1: '选择网络',
+  netWork2: '选择钱包',
+  netWork3: '切换网络',
+  linkWallet: '链接钱包',
 }
 export default zh_CN

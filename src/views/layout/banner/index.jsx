@@ -3,9 +3,10 @@ import { FormattedMessage } from 'react-intl'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { useActiveWeb3React } from '../../../hooks'
-import { Web3ReactActivate } from '../../../connectors'
 import { BLACK_ADDRESS } from '../../../constants'
-
+import { CopyToClipboard } from 'react-copy-to-clipboard'
+import { message } from 'antd'
+import {CopySvg, SuccessSvg} from "../../../assets/js/svgData";
 import './index.less'
 
 const Banner = (props) => {
@@ -38,32 +39,26 @@ const Banner = (props) => {
             <p className='banner_text_top'>
               <FormattedMessage id='banner_text_2' />
             </p>
-            <a
-              className='banner_text_top banner_text_bottom'
-              href={'https://etherscan.io/address/' + BlackTokenAddress}
-              target='_blank'
+            <CopyToClipboard
+                text={BlackTokenAddress}
+                onCopy={() => {
+                  message.success({
+                    content: 'copy success',
+                    icon: <span className="copy_message_icon"><SuccessSvg/></span>
+                  })
+                }}
             >
-              <FormattedMessage id='banner_text_8' values={{ coin: 'BLACK' }} />
-              {' ' + BlackTokenAddress}
-              <svg
-                t='1619095072712'
-                className='icon'
-                viewBox='0 0 1024 1024'
-                version='1.1'
-                xmlns='http://www.w3.org/2000/svg'
-                p-id='1281'
-                width='20'
-                height='20'
+              <span
+                  className='banner_text_top banner_text_bottom'
               >
-                <path
-                  d='M424.96 128v87.04H215.04v599.04h599.04v-215.04h87.04v256c0 25.6-20.48 40.96-40.96 40.96H168.96c-25.6 0-40.96-20.48-40.96-40.96V168.96c0-25.6 20.48-40.96 40.96-40.96h256z m327.68 87.04h-194.56V128h343.04v343.04h-87.04V271.36L512 573.44 450.56 512l302.08-296.96z'
-                  p-id='1282'
-                ></path>
-              </svg>
-            </a>
+              <FormattedMessage id='banner_text_8' values={{ coin: 'BLACK' }} />
+                {' ' + BlackTokenAddress}
+                <CopySvg />
+            </span>
+        </CopyToClipboard>
           </div>
           <div className='banner_btn'>
-            <a href='https://docsend.com/view/5sagkb87dt96mccm' target='_blank'>
+            <a href='https://docsend.com/view/5sagkb87dt96mccm' >
               <FormattedMessage id='banner_text_4' />
             </a>
             {/* {<a

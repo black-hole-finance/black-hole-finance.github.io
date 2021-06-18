@@ -4,6 +4,7 @@ import {
   CHANGE_NETWORK_FLAG,
   POPUP_LOADING_FLAG,
   HANDLE_WALLET_MODAL,
+  SWITCH_NETWORK_POPUP,
   CHANGE_SLIPPAGE,
 } from '../const'
 
@@ -16,6 +17,7 @@ const initState = {
   slippage: false,
   slippageVal: 10,
   slippageSuccess: false,
+  switchNetworkPopup: false
 }
 
 const reduces = {
@@ -36,6 +38,9 @@ const reduces = {
   },
   [HANDLE_WALLET_MODAL](state, payload) {
     return { ...state, walletModal: payload }
+  },
+  [SWITCH_NETWORK_POPUP](state, switchNetworkPopup) {
+    return {...state, switchNetworkPopup}
   },
 
   [CHANGE_SLIPPAGE](state, payload) {

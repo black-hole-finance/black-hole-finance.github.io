@@ -14,8 +14,8 @@ import { formatAmount } from '../../../utils/format'
 import { connectWallet } from '../../../utils'
 import { injected } from '../../../connectors'
 import { useTokenBalance } from '../../../hooks/wallet'
-import { BLACK_ADDRESS } from '../../../constants'
-import globe from '../../../assets/image/burn/globe.png'
+import { BLACK_ADDRESS, ChainId, ChainIdName } from '../../../constants'
+import SwitchNetworkBtn from '../../components/SwitchNetworkBtn'
 
 const Header = (props) => {
   const {
@@ -79,7 +79,6 @@ const Header = (props) => {
             {/*</Link>*/}
           </div>
         </div>
-
         <div style={{ display: 'flex' }}>
           {<div className='language' onClick={() => tabLanguage(language)}>
             <svg
@@ -99,6 +98,7 @@ const Header = (props) => {
             </svg>
             {language === '中文简体' ? '中文简体' : 'English'}
           </div>}
+          <div className='header_chain_id_icon'><SwitchNetworkBtn /></div>
           {!active && (
             <div
               className='header_connect_btn'
@@ -143,14 +143,16 @@ const Header = (props) => {
                 <span className='balance_line'></span>
               </div>
               <span className='connect_text balance_text'>{account}</span>
+              <span onClick={event => event.stopPropagation()}>
               <CopyToClipboard
-                text={account}
-                onCopy={() => {
-                  message.success('copy success')
-                }}
+                  text={account}
+                  onCopy={(e) => {
+                    message.success('copy success')
+                  }}
               >
                 <a className='connect_wallet'></a>
               </CopyToClipboard>
+              </span>
             </div>
           )}
 

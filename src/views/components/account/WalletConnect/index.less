@@ -1,184 +1,142 @@
-@media (min-width: 1200px) {
-  .wallet-connect {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+.wallet_connect{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 404px;
+  text-align: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 30px;
+  .choose_network_box_header {
+    max-width: 100%;
+    font-size: 18px;
+  }
+  .choose_network_title {
+    margin-top: 16px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-family: PingFangSC-Medium, PingFang SC;
+    font-weight: 500;
+    color: #121212;
+    line-height: 40px;
+    text-align: left;
+  }
+  .choose_network_close_btn{
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}
+
+.choose_network_box {
+  margin-top: 40px;
+  .choose-network {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    width: 640px;
-    height: 280px;
-    background-color: #f2f0eb;
-    border-radius: 5px;
-    &_metamask {
-      width: 320px;
-      height: 100%;
+    flex-wrap: wrap;
+    p {
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
-      grid-gap: 30px;
-      gap: 30px;
-      border-radius: 5px 0 0 5px;
+      align-items: center;
+      position: relative;
+      margin-bottom: 16px;
+      margin-right: 22px;
+      //width: 120px;
+      height: 42px;
+      border-radius: 5px;
+      border: 2px solid #EBE9E3;
       cursor: pointer;
-      &:hover {
-        background-color: #fff;
+      &:nth-child(1){
+        width: 111px;
       }
-      &:first-child {
-        border-right: 1px rgba(235, 233, 227, 1) solid;
+      &:nth-child(2){
+        width: 101px;
+      }
+      &:nth-child(3){
+        width: 82px;
+      }
+      &:hover {
+        border: 2px solid #0F8C20;
       }
       &:last-child {
-        border-radius: 0 5px 5px 0;
+        margin-right: 0;
       }
       img {
-        width: 80px;
-        height: 80px;
+        display: inline-block;
+        margin-right: 4px;
+        width: 24px;
+        height: 24px;
+        border: 1px solid;
+        border-radius: 50%;
       }
-      p {
+      span {
         font-size: 14px;
-        font-family: HelveticaNeue;
-        color: #22292f;
+        font-family: HelveticaNeue-Medium, HelveticaNeue;
+        font-weight: 500;
+        color: #22292F;
+        line-height: 18px;
+      }
+      svg {
+        display: none;
+      }
+    }
+    .active {
+      border: 2px solid #0F8C20;
+      svg {
+        display: inline-block;
+        position: absolute;
+        right: -1px;
+        bottom: -1px;
+        fill: #0F8C20;
       }
     }
   }
-}
-@media (min-width: 747px) and (max-width: 1199px) {
-  .wallet-connect {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    display: flex;
+  .change-network {
+    margin-top: 38px;
     justify-content: center;
-    align-items: center;
-    width: 640px;
-    height: 280px;
-    background-color: #f2f0eb;
-    border-radius: 5px;
-    &_metamask {
-      width: 320px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      grid-gap: 30px;
-      gap: 30px;
-      border-radius: 5px 0 0 5px;
-      cursor: pointer;
-      &:hover {
-        background-color: #fff;
-      }
-      &:first-child {
-        border-right: 1px rgba(235, 233, 227, 1) solid;
-      }
-      &:last-child {
-        border-radius: 0 5px 5px 0;
-      }
-      img {
-        width: 80px;
-        height: 80px;
-      }
-      p {
-        font-size: 14px;
-        font-family: HelveticaNeue;
-        color: #22292f;
-      }
-    }
   }
 }
-@media (min-width: 359px) and (max-width: 747px) {
-  .wallet-connect {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
+
+.wallet_connect_metamask{
+  display: flex;
+  .wallet_connect_metamask_item{
+    width: 160px;
+    height: 160px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 320px;
-    height: 480px;
-    background-color: #f2f0eb;
+    justify-content: center;
+    grid-gap: 30px;
+    gap: 30px;
+    background: #ffffff;
+    cursor: pointer;
+    margin-top: 16px;
     border-radius: 5px;
-    &_metamask {
-      width: 320px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      grid-gap: 30px;
-      gap: 30px;
-      border-radius: 5px;
-      cursor: pointer;
-      &:hover {
-        background-color: #fff;
-      }
-      &:first-child {
-        border-bottom: 1px rgba(235, 233, 227, 1) solid;
-      }
-      &:last-child {
-        border-radius: 5px;
-      }
-      img {
-        width: 80px;
-        height: 80px;
-      }
-      p {
-        font-size: 14px;
-        font-family: HelveticaNeue;
-        color: #22292f;
-      }
+    &:hover{
+      background: #F2F0EB;
+    }
+    img{
+      width: 40px;
+      height: 40px;
     }
   }
 }
-@media (max-width: 359px) {
-  .wallet-connect {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    display: flex;
+
+@media (max-width: 747px){
+  .choose_network_box,.choose_network_title{
+    display: none;
+  }
+  .wallet_connect{
+    max-width: calc(100% - 40px);
+  }
+  .wallet_connect_metamask{
     flex-direction: column;
     align-items: center;
-    width: 320px;
-    height: 480px;
-    background-color: #f2f0eb;
-    border-radius: 5px;
-    &_metamask {
-      width: 320px;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      grid-gap: 30px;
-      gap: 30px;
-      border-radius: 5px;
-      cursor: pointer;
-      &:hover {
-        background-color: #fff;
-      }
-      &:first-child {
-        border-bottom: 1px rgba(235, 233, 227, 1) solid;
-      }
-      &:last-child {
-        border-radius: 5px;
-      }
-      img {
-        width: 80px;
-        height: 80px;
-      }
-      p {
-        font-size: 14px;
-        font-family: HelveticaNeue;
-        color: #22292f;
-      }
-    }
+    justify-content: center;
   }
 }
