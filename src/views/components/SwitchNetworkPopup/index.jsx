@@ -8,6 +8,7 @@ import {FormattedMessage} from 'react-intl'
 import ETH from "../../../assets/image/icon/ETH@2x.png";
 import {BinanceLogo, HecoLogo} from "../../../assets/js/svgData";
 import '../ChangeNetworkPopup/index.less'
+import './index.less'
 import CLOSE from "../../../assets/image/icon/close.png";
 
 export default function SwitchNetworks({onClose}) {
@@ -25,9 +26,6 @@ export default function SwitchNetworks({onClose}) {
                 <FormattedMessage id='linkWallet'/>
             </div>
             <div className='choose_network_box'>
-                <p className='choose_network_title'>
-                    <FormattedMessage id='netWork1'/>
-                </p>
                 <div className={`choose-network`}>
                     <p className={`${initChainId == ChainId.ETH ? 'active' : ''}`} onClick={() => {
                         onChangeNetWork(ChainId.ETH)

@@ -9,6 +9,7 @@ import { BLACK_ADDRESS } from '../../../constants'
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import './index.less'
+import SwitchNetworkBtn from "../SwitchNetworkBtn";
 
 export const MenuMask = (props) => {
   const { dispatch, locale } = props
@@ -52,6 +53,9 @@ export const MenuMask = (props) => {
       <div className='menumask_right'>
         <nav className='menumask_nav'>
           <ul className='menumask_list'>
+            <div className='menumask__menu-wrapper'>
+              <SwitchNetworkBtn />
+            </div>
             <div className='menumask__menu-wrapper'>
               {active && (
                 <div className='menumask_ht-balance'>

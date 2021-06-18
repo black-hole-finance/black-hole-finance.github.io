@@ -14,12 +14,8 @@ import { formatAmount } from '../../../utils/format'
 import { connectWallet } from '../../../utils'
 import { injected } from '../../../connectors'
 import { useTokenBalance } from '../../../hooks/wallet'
-import { BLACK_ADDRESS, ChainId } from '../../../constants'
-import globe from '../../../assets/image/burn/globe.png'
-import BSC from '../../../assets/image/icon/BSC@2x.png'
-import HECO from '../../../assets/image/icon/HECO@2x.png'
-import ETH from '../../../assets/image/icon/ETH@2x.png'
-import {SWITCH_NETWORK_POPUP} from "../../../const";
+import { BLACK_ADDRESS, ChainId, ChainIdName } from '../../../constants'
+import SwitchNetworkBtn from '../../components/SwitchNetworkBtn'
 
 const Header = (props) => {
   const {
@@ -56,11 +52,7 @@ const Header = (props) => {
       payload: val,
     })
   }
-const chainIdIcon = {
-    [ChainId.ETH]: ETH,
-    [ChainId.HECO]: HECO,
-    [ChainId.BSC]: BSC
-}[chainId]
+
   return (
     <div className='header'>
       <div className='header_box'>
@@ -106,16 +98,7 @@ const chainIdIcon = {
             </svg>
             {language === '中文简体' ? '中文简体' : 'English'}
           </div>}
-
-          {
-            chainIdIcon && <div className='header_chain_id_icon' onClick={() =>{
-              dispatch({
-                type: SWITCH_NETWORK_POPUP,
-                payload: true,
-              })
-            }
-            }><img src={chainIdIcon} alt=""/></div>
-          }
+          <div className='header_chain_id_icon'><SwitchNetworkBtn /></div>
           {!active && (
             <div
               className='header_connect_btn'

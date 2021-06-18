@@ -14,6 +14,13 @@ export const ChainId = {
   HECO: 128,
 }
 
+export const ChainIdName = {
+  [ChainId.RINKEBY]: 'Rinkeby',
+  [ChainId.ETH]: 'Ethereum',
+  [ChainId.BSC]: 'Binance',
+  [ChainId.HECO]: 'HECO',
+}
+
 export const SCAN_ADDRESS = {
   [ChainId.RINKEBY]: 'https://rinkeby.etherscan.io',
   [ChainId.ETH]: 'https://etherscan.io/',
