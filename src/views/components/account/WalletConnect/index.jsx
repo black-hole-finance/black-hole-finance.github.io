@@ -71,7 +71,7 @@ const WalletConnect = (props) => {
                     </p>
                     <p className={`${netWorkFlag == ChainId.BSC ? 'active' : ''}`} onClick={() => {selectNetWork(ChainId.BSC)}}>
                         <img src={BSC}/>
-                        <span>Binance</span>
+                        <span>BSC</span>
                         <BinanceLogo/>
                     </p>
                     <p className={`${netWorkFlag == ChainId.HECO ? 'active' : ''}`} onClick={() => {selectNetWork(ChainId.HECO)}}>

@@ -133,6 +133,7 @@ export const changeNetwork = (chainId) => {
             ],
           })
           .then(() => {
+            // debugger
             setTimeout(reslove, 100)
           })
     }else{
@@ -205,6 +206,7 @@ export const useConnectWallet = () => {
     // !active && connectWallet(injected)
     window.ethereum.on('networkChanged', () => {
       // 切换网络后，尝试连接
+      console.log('active',active)
       !active && connectWallet(injected)
     })
   }, [])

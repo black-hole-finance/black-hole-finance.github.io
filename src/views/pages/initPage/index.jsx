@@ -15,6 +15,7 @@ import WalletModalPopup from '../../components/account/WalletModalPopup'
 import WalletChangePopup from '../../components/account/WalletChangePopup'
 import SwitchNetWorkPopup from '../../components/SwitchNetworkPopup'
 import {SWITCH_NETWORK_POPUP} from '../../../const'
+import {useConnectWallet} from "../../../utils";
 
 // if (window.ethereum) {
 //   window.ethereum.on('networkChanged', () => {
@@ -27,6 +28,7 @@ const InitPage = (props) => {
   const { dispatch } = props
   const { token_allocation, currency_allocation } = props.connectPools
   const { active, chainId, account } = useActiveWeb3React()
+  const connectWallet = useConnectWallet()
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     // 如果链接钱包成功后，不是白名单情况 && 在 connectWallet 页面时，弹框提示

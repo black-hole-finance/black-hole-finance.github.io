@@ -17,7 +17,7 @@ export const ChainId = {
 export const ChainIdName = {
   [ChainId.RINKEBY]: 'Rinkeby',
   [ChainId.ETH]: 'Ethereum',
-  [ChainId.BSC]: 'Binance',
+  [ChainId.BSC]: 'BSC',
   [ChainId.HECO]: 'HECO',
 }
 
@@ -124,6 +124,7 @@ export const BLACK_ADDRESS = {
   [ChainId.RINKEBY]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
   [ChainId.ETH]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
   [ChainId.BSC]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
+  [ChainId.HECO]: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
 }
 
 export const iBLACK_ADDRESS = {

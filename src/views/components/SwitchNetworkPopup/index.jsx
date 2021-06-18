@@ -38,7 +38,7 @@ export default function SwitchNetworks({onClose}) {
                         onChangeNetWork(ChainId.BSC)
                     }}>
                         <img src={BSC}/>
-                        <span>Binance</span>
+                        <span>BSC</span>
                         <BinanceLogo/>
                     </p>
                     <p className={`${initChainId == ChainId.HECO ? 'active' : ''}`} onClick={() => {
