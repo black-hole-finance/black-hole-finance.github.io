@@ -71,7 +71,7 @@ export function connectWallet(activate, connector, deactivate) {
               deactivate()
             }
             // 账号改了，刷新网页
-            window.location.reload()
+            // window.location.reload()
           })
 
           window.ethereum.on('disconnect', () => {
@@ -90,7 +90,7 @@ export function connectWallet(activate, connector, deactivate) {
 
           window.ethereum.on('networkChanged', () => {
             // 链改了，刷新网页
-            window.location.reload()
+            // window.location.reload()
           })
         }
         reslove(e)
@@ -133,7 +133,7 @@ export const changeNetwork = (chainId) => {
             ],
           })
           .then(() => {
-            setTimeout(reslove, 500)
+            setTimeout(reslove, 100)
           })
     }else{
       reslove()
@@ -158,7 +158,7 @@ export const useConnectWallet = () => {
                     deactivate()
                   }
                   // 账号改了，刷新网页
-                  window.location.reload()
+                  // window.location.reload()
                 })
 
                 window.ethereum.on('disconnect', () => {
@@ -202,7 +202,7 @@ export const useConnectWallet = () => {
   },[])
 
   useEffect(() => {
-    !active && connectWallet(injected)
+    // !active && connectWallet(injected)
     window.ethereum.on('networkChanged', () => {
       // 切换网络后，尝试连接
       !active && connectWallet(injected)

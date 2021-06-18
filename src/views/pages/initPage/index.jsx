@@ -16,12 +16,12 @@ import WalletChangePopup from '../../components/account/WalletChangePopup'
 import SwitchNetWorkPopup from '../../components/SwitchNetworkPopup'
 import {SWITCH_NETWORK_POPUP} from '../../../const'
 
-if (window.ethereum) {
-  window.ethereum.on('networkChanged', () => {
-    // 链改了，刷新网页
-    window.location.reload()
-  })
-}
+// if (window.ethereum) {
+//   window.ethereum.on('networkChanged', () => {
+//     // 链改了，刷新网页
+//     window.location.reload()
+//   })
+// }
 
 const InitPage = (props) => {
   const { dispatch } = props
