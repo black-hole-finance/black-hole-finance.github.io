@@ -27,7 +27,7 @@ const WalletConnect = (props) => {
         deactivate,
     } = useActiveWeb3React()
     const {dispatch, changeNetworkFlag} = props
-    const initChainId = chainId || ChainId.HECO
+    const initChainId = chainId || window.ethereum ? window.ethereum.chainId : 0
     const [netWorkFlag, setNetWorkFlag] = useState(initChainId)
 
     useEffect(() => {
