@@ -83,7 +83,7 @@ const WalletConnect = (props) => {
             </div>
 
             <p className='choose_network_title'>
-                <FormattedMessage id='netWork1'/>
+                <FormattedMessage id='netWork2'/>
             </p>
             <div className='wallet_connect_metamask'>
                 <div onClick={connectMetamaskWalletClick} className='wallet_connect_metamask_item'>

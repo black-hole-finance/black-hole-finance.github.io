@@ -143,14 +143,16 @@ const Header = (props) => {
                 <span className='balance_line'></span>
               </div>
               <span className='connect_text balance_text'>{account}</span>
+              <span onClick={event => event.stopPropagation()}>
               <CopyToClipboard
-                text={account}
-                onCopy={() => {
-                  message.success('copy success')
-                }}
+                  text={account}
+                  onCopy={(e) => {
+                    message.success('copy success')
+                  }}
               >
                 <a className='connect_wallet'></a>
               </CopyToClipboard>
+              </span>
             </div>
           )}
 
