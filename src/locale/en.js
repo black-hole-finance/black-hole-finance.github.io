@@ -148,5 +148,6 @@ const en_US = {
   netWork2: 'Choose Wallet',
   netWork3: 'Change Network',
   linkWallet: 'Connect wallet',
+  switchNetwork: 'Switch to {chain}',
 }
 export default en_US

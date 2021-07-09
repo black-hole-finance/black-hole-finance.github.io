@@ -13,10 +13,11 @@ import {
   useTokenDecimals,
 } from '../../../../hooks/wallet'
 import ERC20 from '../../../../constants/abis/erc20.json'
-import {BLACK_ADDRESS, getContract} from '../../../../constants'
+import {BLACK_ADDRESS, ChainId, getContract} from '../../../../constants'
 import { connect } from 'react-redux'
 import Timer from 'react-compound-timer'
 import { useBurn } from '../../../../hooks/burn'
+import {changeNetwork} from "../../../../utils";
 
 const Burn = (props) => {
   const { active, chainId, library, account } = useActiveWeb3React()
@@ -469,6 +470,13 @@ const Burn = (props) => {
               <Button type='primary'>
                 <FormattedMessage id='burnNotStarted' />
               </Button>
+          ) : chainId != ChainId.HECO ? (
+              <Button type='primary' onClick={()=>changeNetwork(ChainId.HECO)}>
+                <FormattedMessage
+                    id='switchNetwork'
+                    values={{ chain: 'HECO' }}
+                />
+              </Button>
           ) : (
               <>
                 {approve && (
@@ -538,7 +546,7 @@ const Burn = (props) => {
               id='burn18'
               values={{ token: rewardsTokenSymbol }}
             />
-            <span>{(burn && formatAmount(burn.earned, 18, 18)) || '-'}</span>
+            <span>{(burn && new BigNumber(formatAmount(burn.earned, 18, 18))).toFixed() || '-'}</span>
           </p>
 
           <Button

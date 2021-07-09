@@ -143,5 +143,6 @@ const zh_CN = {
   netWork2: '选择钱包',
   netWork3: '切换网络',
   linkWallet: '链接钱包',
+  switchNetwork: '切换到{chain}',
 }
 export default zh_CN
