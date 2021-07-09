@@ -13,32 +13,39 @@ import {
   useTokenDecimals,
 } from '../../../../hooks/wallet'
 import ERC20 from '../../../../constants/abis/erc20.json'
-import { getContract } from '../../../../constants'
+import {BLACK_ADDRESS, getContract} from '../../../../constants'
 import { connect } from 'react-redux'
 import Timer from 'react-compound-timer'
-import OLD from '../../../../assets/image/burn/old@2x.png'
-import NEW from '../../../../assets/image/burn/new@2x.png'
 import { useBurn } from '../../../../hooks/burn'
 
 const Burn = (props) => {
   const { active, chainId, library, account } = useActiveWeb3React()
   const {
     dispatch,
+    poolConfig
+  } = props
+  const {
     address,
+    poolTitle,
     stakingToken,
     rewardsToken,
     stakingTokenSymbol,
     rewardsTokenSymbol,
-  } = props
+    stakingIcon,
+    rewardsTokenIcon,
+    rewardsTotal
+  } = poolConfig
   const [amount, setAmount] = useState('')
   const [loadFlag, setLoadFlag] = useState(false)
   const [claimLoadFlag, setClaimLoadFlag] = useState(false)
   const [approve, setApprove] = useState(true)
   const [now, setNow] = useState(parseInt(Date.now() / 1000))
   const [progress, setProgress] = useState(0)
+  const wallet_amount = useTokenBalance(BLACK_ADDRESS[chainId])
 
-  const [burn, toBurn, toClaim] = useBurn(address)
-
+  let [burn, toBurn, toClaim] = useBurn(address)
+  console.log('burn', burn)
+    // burn = poolConfig
   const OldBalance = useTokenBalance(stakingToken)
   const OldDecimals = useTokenDecimals(stakingToken)
 
@@ -49,7 +56,6 @@ const Burn = (props) => {
     address,
     stakingToken
   )
-  console.log(allowance, 'allowanceallowanceallowance')
 
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
@@ -84,7 +90,7 @@ const Burn = (props) => {
     if (burn && burn.rewards) {
       setProgress(
         new BigNumber(formatAmount(burn.rewards))
-          .dividedBy(new BigNumber(1))
+          .dividedBy(new BigNumber(rewardsTotal))
           .multipliedBy(new BigNumber(100))
           .toNumber()
           .toFixed(2) * 1
@@ -116,7 +122,13 @@ const Burn = (props) => {
       re.test(value) ||
       (value.split('.').length === 2 && value.slice(value.length - 1) === '.')
     ) {
-      setAmount(value)
+      const maxAmount = formatAmount(wallet_amount)
+      let resultAmount = Number(value) > Number(maxAmount) ? maxAmount : value
+      const point = resultAmount.toString().split(".")
+      if (point[1] && point[1].length > 8) {
+        resultAmount = Number(resultAmount).toFixed(8)
+      }
+      setAmount(resultAmount)
     }
   }
 
@@ -207,7 +219,7 @@ const Burn = (props) => {
     if (isNaN(parseInt(OldBalance))) {
       return false
     }
-    if (!amount) {
+    if (!amount || amount<=0) {
       return false
     }
     if (isNaN(parseInt(amount))) {
@@ -249,14 +261,13 @@ const Burn = (props) => {
         setClaimLoadFlag(false)
       })
   }
-
   return (
     <>
       <div className='burn_box_card'>
-        <img className='burn_box_card_old_logo' src={OLD} />
-        <img className='burn_box_card_new_logo' src={NEW} />
+        <img className='burn_box_card_old_logo' src={stakingIcon} />
+        <img className='burn_box_card_new_logo' src={rewardsTokenIcon} />
         <h3 className='burn_box_card_title'>
-          <FormattedMessage id='burn4' />
+          <FormattedMessage id='burn4' values={{ B: poolTitle }}/>
         </h3>
         <div className='burn_box_card_countdown'>
           <Timer
@@ -380,7 +391,7 @@ const Burn = (props) => {
           </p>
           <p>
             {(burn && formatAmount(burn.rewards)) || '-'}
-            <span>/1</span>
+            <span>/{rewardsTotal}</span>
           </p>
         </div>
         <div className='burn_box_card_progress_bar'>
@@ -436,17 +447,17 @@ const Burn = (props) => {
             <FormattedMessage id='burn13' />
           </p>
           <p>
-            {(burn && formatAmount(burn.balanceOf)) || '-'}({balanceProportion}
+            {(burn && formatAmount(burn.balanceOf||0)) || '-'}({balanceProportion}
             %)
           </p>
         </div>
         {approve && (
-          <Button type='primary' onClick={onApprove} loading={loadFlag}>
+          <Button type='primary' onClick={onApprove} loading={loadFlag} disabled={!active}>
             <FormattedMessage id='burn14' />
           </Button>
         )}
         {!approve && (
-          <Button type='primary' onClick={onConfirm} loading={loadFlag}>
+          <Button type='primary' onClick={onConfirm} loading={loadFlag} disabled={!active}>
             <FormattedMessage id='burn15' />
           </Button>
         )}
@@ -504,7 +515,7 @@ const Burn = (props) => {
               id='burn18'
               values={{ token: rewardsTokenSymbol }}
             />
-            <span>{(burn && formatAmount(burn.earned)) || '-'}</span>
+            <span>{(burn && formatAmount(burn.earned, 18, 18)) || '-'}</span>
           </p>
 
           <Button

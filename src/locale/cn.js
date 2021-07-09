@@ -101,7 +101,7 @@ const zh_CN = {
   burn2:
     '黑洞协议（Blackhole Protocol）起源于Ethereum网络，逐步将向Polkadot、BSC、Heco、SOL辐射，最终辐射整个区块链世界。任何用户或者项目治理者都可以通过持有黑洞协议燃烧代币BLACK与旧Token的组合创建燃烧池从而永久的销毁旧Token并产生全新的Token，从而赋予新项目获取全新的生态活力。',
   burn3: '敬请期待',
-  burn4: 'SHIB 燃烧池',
+  burn4: '{B} 燃烧池',
   burn5: 'DAYS',
   burn6: 'HOURS',
   burn7: 'MINUTES',

@@ -5,7 +5,7 @@ import {
   MULTICALL_NETWORKS,
   LBP_ADDRESS,
   USDT_ADDRESS,
-  ZERO_ADDRESS,
+  ZERO_ADDRESS, ChainId,
 } from '../constants'
 import { POPUP_LOADING_FLAG } from '../const'
 import offering from '../constants/abis/offering.json'
@@ -16,7 +16,7 @@ import { formatAmount, fromWei } from '../utils/format'
 import Web3 from 'web3'
 import { useBalance, useTokenBalance } from './wallet'
 import { BURN_ABI } from '../constants/abis/burn'
-import { getMultiCallProvider, processResult } from '../utils/multicall'
+import {getMultiCallProvider, getOnlyMultiCallProvider, processResult} from '../utils/multicall'
 import { Contract } from 'ethers-multicall-x'
 
 /**
@@ -37,48 +37,52 @@ export const useBurn = (address) => {
     rewardsToken: null,
     stakingToken: null,
   })
-  const multicallProvider = getMultiCallProvider(library, chainId)
+  const multicallProvider = getOnlyMultiCallProvider(chainId||ChainId.HECO)
   useEffect(() => {
     const contract = new Contract(address, BURN_ABI)
+    const rpcArr = [
+      contract.begin(),
+      contract.periodFinish(),
+      contract.rewards(ZERO_ADDRESS),
+      contract.totalSupply(),
+    ]
     if (account) {
-      multicallProvider
-        .all([
-          contract.begin(),
-          contract.periodFinish(),
-          contract.rewards(ZERO_ADDRESS),
-          contract.balanceOf(account),
-          contract.totalSupply(),
-          contract.earned(account),
+      rpcArr.push(
           contract.rewardsToken(),
           contract.stakingToken(),
-        ])
+          contract.balanceOf(account),
+          contract.earned(account),
+      )
+    }
+      multicallProvider
+        .all(rpcArr)
         .then((data) => {
           data = processResult(data)
+          console.log('data', data)
           const [
             begin,
             periodFinish,
             rewards,
-            balanceOf,
             totalSupply,
-            earned,
-            rewardsToken,
-            stakingToken,
+            rewardsToken='',
+            stakingToken='',
+            balanceOf=0,
+            earned=0,
           ] = data
+          console.log('burn,data', data)
           setInfo({
             begin,
             periodFinish,
             rewards,
-            balanceOf,
             totalSupply,
-            earned,
             rewardsToken,
             stakingToken,
+            balanceOf,
+            earned,
           })
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-    }
+        }).catch(e =>{
+        console.log(e)
+      })
   }, [account, blockHeight])
 
 

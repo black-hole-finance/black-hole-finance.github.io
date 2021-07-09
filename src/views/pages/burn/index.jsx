@@ -27,7 +27,7 @@ const Burn = (props) => {
           </p>
           <div className='burn_box_card_box'>
             {
-              burnPools && burnPools.map(pool => <BurnCard {...pool}/>)
+              burnPools && burnPools.map((pool, index) => <BurnCard poolConfig={pool} key={index}/>)
             }
 
             <div className='coming_soon'>

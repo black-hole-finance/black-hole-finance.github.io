@@ -27,7 +27,15 @@ export const SCAN_ADDRESS = {
   [ChainId.BSC]: 'https://bscscan.com/',
   [ChainId.HECO]: 'https://hecoinfo.com',
 }
-
+export function RPC_URLS (chainId) {
+  return {
+    [ChainId.HECO]: 'https://http-mainnet-node.huobichain.com',
+    [ChainId.BSC]: 'https://bsc-dataseed.binance.org/',
+    [ChainId.ETH]: 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+    [ChainId.RINKEBY]: 'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+    // [ChainId.MATIC]: 'https://rpc-mainnet.maticvigil.com'
+  }[chainId]
+}
 export const bscNetwork =  {
   chainId: '0x38',
   chainName: 'BSC',

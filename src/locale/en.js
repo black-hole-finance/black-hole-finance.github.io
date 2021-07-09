@@ -106,7 +106,7 @@ const en_US = {
   burn2:
     'Blackhole Protocol originates from Ethereum network and gradually spread to Polkadot, BSC, HECO, SOL and eventually the whole blockchain world. Any user or project governor could create a burning pool by holding BLACK and old token LP to permanently burn the old Token into a new Token, thus gaining ecological vitality.',
   burn3: 'Coming soon…',
-  burn4: 'SHIB Burning',
+  burn4: ' {B} Burning',
   burn5: 'DAYS',
   burn6: 'HOURS',
   burn7: 'MINUTES',
