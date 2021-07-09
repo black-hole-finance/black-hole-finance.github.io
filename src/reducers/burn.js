@@ -4,9 +4,9 @@ import burnHTmoon from '../assets/image/icon/burnHTmoon.png'
 import burnWAR from '../assets/image/icon/burnWAR.png'
 const initState = {
   pools: [{
-    poolTitle: 'BLACKHole',
-    begin: 1625846400000,
-    periodFinish: 1627056000000, // 结束时间
+    poolTitle: 'BlackHole',
+    begin: 1625832000,
+    periodFinish: 1627041600, // 结束时间
     rewards: 0,// 大家的总奖励
     rewardsTotal: 50000,//池子总奖励
     balanceOf: 0,

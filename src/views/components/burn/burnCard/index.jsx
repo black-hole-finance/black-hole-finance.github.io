@@ -43,7 +43,7 @@ const Burn = (props) => {
   const [progress, setProgress] = useState(0)
   const wallet_amount = useTokenBalance(BLACK_ADDRESS[chainId])
 
-  let [burn, toBurn, toClaim] = useBurn(address)
+  let [burn, toBurn, toClaim] = useBurn(address, poolConfig)
   console.log('burn', burn)
     // burn = poolConfig
   const OldBalance = useTokenBalance(stakingToken)
@@ -73,12 +73,21 @@ const Burn = (props) => {
   }, [now])
 
   let left_time = 0
-  if (burn && burn.begin > now) {
-    left_time = (burn && burn.begin - now) * 1000
-  } else {
-    left_time = (burn && burn.periodFinish - now) * 1000
+  let poolType = 'not_started' //not_started ing end
+  if (burn) {
+    if (now < burn.begin) {
+      // 未开始
+      left_time = (burn.begin - now) * 1000
+      poolType = 'not_started'
+    } else if (burn.begin < now && now < burn.periodFinish) {
+      // 进行中
+      left_time = (burn && burn.periodFinish - now) * 1000
+      poolType = 'ing'
+    } else if (now > burn.periodFinish){
+      poolType = 'end'
+    }
+    console.log('left_time', left_time, burn, now, poolType)
   }
-
   useEffect(() => {
     console.log(allowance, 'allowance')
     if (allowance > 0) {
@@ -451,16 +460,30 @@ const Burn = (props) => {
             %)
           </p>
         </div>
-        {approve && (
-          <Button type='primary' onClick={onApprove} loading={loadFlag} disabled={!active}>
-            <FormattedMessage id='burn14' />
-          </Button>
-        )}
-        {!approve && (
-          <Button type='primary' onClick={onConfirm} loading={loadFlag} disabled={!active}>
-            <FormattedMessage id='burn15' />
-          </Button>
-        )}
+        {
+          poolType === 'end' ? (
+              <Button type='primary'>
+                <FormattedMessage id='burnEnd' />
+              </Button>
+          ) : poolType === 'not_started' ? (
+              <Button type='primary'>
+                <FormattedMessage id='burnNotStarted' />
+              </Button>
+          ) : (
+              <>
+                {approve && (
+                    <Button type='primary' onClick={onApprove} loading={loadFlag} disabled={!active}>
+                      <FormattedMessage id='burn14' />
+                    </Button>
+                )}
+                {!approve && (
+                    <Button type='primary' onClick={onConfirm} loading={loadFlag} disabled={!active}>
+                      <FormattedMessage id='burn15' />
+                    </Button>
+                )}
+              </>
+          )
+        }
         <div className='burn_box_card_progress burn_box_card_add_contract'>
           <p
             onMouseOver={() => setHoverFlag('oldAddress')}
@@ -474,7 +497,7 @@ const Burn = (props) => {
               values={{ token: stakingTokenSymbol }}
             />
             <CopyToClipboard
-              text='0x0'
+              text={stakingToken}
               onCopy={() => {
                 message.success('copy success')
               }}
@@ -544,7 +567,7 @@ const Burn = (props) => {
               values={{ token: rewardsTokenSymbol }}
             />
             <CopyToClipboard
-              text='0x0'
+              text={rewardsToken}
               onCopy={() => {
                 message.success('copy success')
               }}

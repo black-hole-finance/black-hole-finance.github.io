@@ -117,6 +117,8 @@ const en_US = {
   burn12: 'Total',
   burn13: 'My',
   burn14: 'Approve',
+  burnEnd: 'End',
+  burnNotStarted: 'Not started',
   burn15: 'Burn',
   burn16: '{token} Contract Add.',
   burn17: 'Add {token} to',

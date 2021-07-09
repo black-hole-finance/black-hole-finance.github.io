@@ -112,6 +112,8 @@ const zh_CN = {
   burn12: '总计',
   burn13: '我的',
   burn14: '授权',
+  burnEnd: '已结束',
+  burnNotStarted: '未开始',
   burn15: '燃烧',
   burn16: '{token} 合约地址',
   burn17: '添加 {token} 到',

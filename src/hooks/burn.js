@@ -23,13 +23,13 @@ import { Contract } from 'ethers-multicall-x'
  * 可用额度
  * @returns {array}
  */
-export const useBurn = (address) => {
+export const useBurn = (address, poolConfig) => {
   const { account, chainId, active, library } = useActiveWeb3React()
   const blockHeight = useBlockHeight()
   const burn_contract = useContract(address, BURN_ABI)
   const [info, setInfo] = useState({
-    begin: 0,
-    periodFinish: 0,
+    begin: poolConfig.begin,
+    periodFinish: poolConfig.periodFinish,
     rewards: 0,
     balanceOf: 0,
     totalSupply: 0,
