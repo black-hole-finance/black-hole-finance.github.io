@@ -16,6 +16,7 @@ const en_US = {
     'Blackhole protocol originates from Ethereum network and gradually spread to Polkadot, BSC, Heco, Sol and eventually the whole blockchain world. ',
   banner_text_8: '{coin} Contract Address:',
   banner_text_9: 'Launch APP',
+  banner_text_10: 'Audit Report',
   home_text_1:
     'BLACK is a governance token which uses BlackHole deflation burning mechanism schematic',
   home_text_2:
