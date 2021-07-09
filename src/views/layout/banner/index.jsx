@@ -7,6 +7,8 @@ import { BLACK_ADDRESS } from '../../../constants'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { message } from 'antd'
 import {CopySvg, SuccessSvg} from "../../../assets/js/svgData";
+import HalBornLogo from '../../../assets/image/halborn-logo@2x.png'
+import BlackHoleAuditReport from '../../pdfFile/BlackHoleAuditReport.pdf'
 import './index.less'
 
 const Banner = (props) => {
@@ -40,35 +42,40 @@ const Banner = (props) => {
               <FormattedMessage id='banner_text_2' />
             </p>
             <CopyToClipboard
-                text={BlackTokenAddress}
-                onCopy={() => {
-                  message.success({
-                    content: 'copy success',
-                    icon: <span className="copy_message_icon"><SuccessSvg/></span>
-                  })
-                }}
+              text={BlackTokenAddress}
+              onCopy={() => {
+                message.success({
+                  content: 'copy success',
+                  icon: (
+                    <span className='copy_message_icon'>
+                      <SuccessSvg />
+                    </span>
+                  ),
+                })
+              }}
             >
-              <span
-                  className='banner_text_top banner_text_bottom'
-              >
-              <FormattedMessage id='banner_text_8' values={{ coin: 'BLACK' }} />
+              <span className='banner_text_top banner_text_bottom'>
+                <FormattedMessage
+                  id='banner_text_8'
+                  values={{ coin: 'BLACK' }}
+                />
                 {' ' + BlackTokenAddress}
                 <CopySvg />
-            </span>
-        </CopyToClipboard>
+              </span>
+            </CopyToClipboard>
           </div>
           <div className='banner_btn'>
-            <a href='https://docsend.com/view/5sagkb87dt96mccm' >
+            <a href='https://docsend.com/view/5sagkb87dt96mccm'>
               <FormattedMessage id='banner_text_4' />
             </a>
-            {/* {<a
+            {<a
               onClick={(e) => {
                 goDetail('/burn')
               }}
               target='_blank'
             >
               <FormattedMessage id='banner_text_9' />
-            </a> } */}
+            </a> }
             {/* <a
               onClick={(e) => {
                 jumpPosition(e)
@@ -76,13 +83,10 @@ const Banner = (props) => {
             >
               <FormattedMessage id='banner_text_5' />
             </a> */}
-            {/* <a
-              onClick={(e) => {
-                goDetail(e)
-              }}
-            >
-              <FormattedMessage id='banner_text_6' />
-            </a> */}
+            <a href={BlackHoleAuditReport} className='audit_report' target='_blank'>
+              <img src={HalBornLogo} />
+              <FormattedMessage id='banner_text_10' />
+            </a>
           </div>
         </div>
       </div>
