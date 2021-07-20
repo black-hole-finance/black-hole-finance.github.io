@@ -58,6 +58,8 @@ const Burn = (props) => {
     stakingToken
   )
 
+  const [rewards_, setRewards_] = useState(0)
+
   useEffect(() => {
     dispatch({ type: 'CHANGE_NETWORK_FLAG', payload: false })
     window.document.getElementById('container').style.display = 'none'
@@ -98,17 +100,34 @@ const Burn = (props) => {
 
   useEffect(() => {
     if (burn && burn.rewards) {
-      setProgress(
-        new BigNumber(formatAmount(burn.rewards))
-          .dividedBy(new BigNumber(rewardsTotal))
-          .multipliedBy(new BigNumber(100))
-          .toNumber()
-          .toFixed(2) * 1
-      )
+      const t = new Date().getTime() / 1000
+      const totalTime = burn.periodFinish - burn.begin
+      const surplus = burn.periodFinish - t
+      const past = t - burn.begin
+      // console.log('past/totalTime', past, totalTime, past/totalTime, surplus)
+      if (surplus < 0) {
+        setProgress(100)
+        setRewards_(poolConfig.rewardsTotal)
+      } else {
+        const proportion = (past/totalTime * 100).toFixed(2)
+        // console.log('proportion', proportion)
+        const rewards__ = (poolConfig.rewardsTotal * past/totalTime).toFixed(2)
+        // console.log('rewards__', rewards__)
+        setRewards_(rewards__)
+        setProgress(proportion)
+      }
+      // setProgress(
+      //   new BigNumber(formatAmount(burn.rewards))
+      //     .dividedBy(new BigNumber(rewardsTotal))
+      //     .multipliedBy(new BigNumber(100))
+      //     .toNumber()
+      //     .toFixed(2) * 1
+      // )
     } else {
       setProgress(0)
     }
-  }, [burn, burn.rewards])
+  }, [burn, burn.rewards, now])
+
 
   useEffect(() => {
     if (burn && burn.balanceOf && burn.totalSupply) {
@@ -400,7 +419,8 @@ const Burn = (props) => {
             <FormattedMessage id='burn9' />({progress}%)
           </p>
           <p>
-            {(burn && formatAmount(burn.rewards)) || '-'}
+            {/*{(burn && formatAmount(burn.rewards)) || '-'}*/}
+            {(burn && rewards_) || '-'}
             <span>/{rewardsTotal}</span>
           </p>
         </div>

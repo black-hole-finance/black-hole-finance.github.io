@@ -8,10 +8,11 @@ const initState = {
     begin: 1625832000,
     periodFinish: 1627041600, // 结束时间
     rewards: 0,// 大家的总奖励
+    earnedTotal: 0, // 大家的总奖励-new
     rewardsTotal: 50000,//池子总奖励
-    balanceOf: 0,
-    totalSupply: 0,
-    earned: 0,
+    balanceOf: 0,// 个人的燃烧
+    totalSupply: 0, // 大家总燃烧
+    earned: 0,// 个人的奖励
     stakingToken: '0xd714d91A169127e11D8FAb3665d72E8b7ef9Dbe2',
     stakingTokenSymbol: 'BLACK',
     stakingIcon: burnBlack,
