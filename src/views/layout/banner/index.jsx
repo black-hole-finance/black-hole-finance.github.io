@@ -76,6 +76,12 @@ const Banner = (props) => {
             >
               <FormattedMessage id='banner_text_9' />
             </a> }
+            <a
+              href='https://www.gateio.pro/cn/trade/BLACK_USDT'
+              target='_blank'
+            >
+              <FormattedMessage id='banner_text_11' />
+            </a>
             {/* <a
               onClick={(e) => {
                 jumpPosition(e)

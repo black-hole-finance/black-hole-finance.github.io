@@ -17,6 +17,7 @@ const en_US = {
   banner_text_8: '{coin} Contract Address:',
   banner_text_9: 'Launch APP',
   banner_text_10: 'Audit Report',
+  banner_text_11: 'Buy BLACK',
   home_text_1:
     'BLACK is a governance token which uses BlackHole deflation burning mechanism schematic',
   home_text_2:
