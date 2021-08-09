@@ -16,6 +16,7 @@ const zh_CN = {
   banner_text_8: '{coin}合约地址:',
   banner_text_9: 'Launch APP',
   banner_text_10: 'Audit Report',
+  banner_text_11: 'Buy BLACK',
   home_text_1: '治理代币Black token 黑洞通缩燃烧机制示意',
   home_text_2:
     '创建者持有X代币和Black的流动性即可无许可地创建黑洞燃烧池，在燃烧池中投入新代币Y激励燃烧。同时Black也会随着燃烧的进度线性返回。',
