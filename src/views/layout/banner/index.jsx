@@ -77,7 +77,9 @@ const Banner = (props) => {
               <FormattedMessage id='banner_text_9' />
             </a> }
             <a
-              href='https://www.gateio.pro/cn/trade/BLACK_USDT'
+              href={
+                props.locale === 'zh' ? 'https://www.gateio.pro/cn/trade/BLACK_USDT' : 'https://www.gateio.pro/en/trade/BLACK_USDT'
+              }
               target='_blank'
             >
               <FormattedMessage id='banner_text_11' />
@@ -102,4 +104,5 @@ const Banner = (props) => {
 
 export default connect((store) => ({
   connectPools: store.pools.connectPools,
+  locale: store.locale.locale,
 }))(withRouter(Banner))
