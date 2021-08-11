@@ -117,13 +117,13 @@ const InitPage = (props) => {
         </div>
       )}
       {/* 登录后弹框展示🐟额 */}
-      {props.connectWalletSuccessFlag && (
-        <div className='init_page_box'>
-          <div className='connect_wallet_popup'>
-            <ConnectWalletSuccessPopup />
-          </div>
-        </div>
-      )}
+      {/*{props.connectWalletSuccessFlag && (*/}
+      {/*  <div className='init_page_box'>*/}
+      {/*    <div className='connect_wallet_popup'>*/}
+      {/*      <ConnectWalletSuccessPopup />*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*)}*/}
 
       {props.walletModal === 'slippage' && (
         <div className='init_page_box'>
