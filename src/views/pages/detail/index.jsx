@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, {useContext, useEffect, useMemo, useState} from 'react'
 import cs from 'classnames'
 import { FormattedMessage } from 'react-intl'
 import { connect } from 'react-redux'
@@ -29,6 +29,10 @@ const Detail = (props) => {
     wallet_amount,
     round,
   } = props.connectPools
+  const [cliamableBalance, setCliamableBalance] = useState('0')
+  useMemo(() => {
+    setCliamableBalance(cliamable_balance)
+  }, [cliamable_balance])
   useInvestmentInfo()
   const { active, chainId, library, account } = useActiveWeb3React()
 
@@ -47,7 +51,7 @@ const Detail = (props) => {
   }, [chainId])
 
   const onClaim = () => {
-    if (formatAmount(cliamable_balance) - 0 === 0) return
+    if (formatAmount(cliamableBalance) - 0 === 0) return
     const pool_contract = getContract(
       library,
       Offering,
@@ -151,11 +155,11 @@ const Detail = (props) => {
                 </span>
                 <p className='money_claim'>
                   <span>
-                    {formatAmount(cliamable_balance)} {token_symbol}
+                    {formatAmount(cliamableBalance)} {token_symbol}
                   </span>
                   <a
                     className={cs(
-                      formatAmount(cliamable_balance) - 0 === 0 &&
+                      formatAmount(cliamableBalance) - 0 === 0 &&
                         'disable_style'
                     )}
                     onClick={onClaim}
@@ -170,7 +174,7 @@ const Detail = (props) => {
       </table>
       <a
         className={cs(
-          formatAmount(cliamable_balance) - 0 === 0 && 'disable_style',
+          formatAmount(cliamableBalance) - 0 === 0 && 'disable_style',
           'detail_claim_btn'
         )}
         onClick={onClaim}
