@@ -8,7 +8,7 @@ const zh_CN = {
   banner_text_2: '无许可去中心化跨链燃烧协议，永久通缩的区块链生态重构者。',
   banner_text_3:
     'The Blackhole protocol is an approval-free cross-chain burning platform based on Ethereum network. Any user or project governor could create a burning pool by holding BLACK and old token LP to permanently burn the old Token into a new Token, thus gaining a new ecological vitality.',
-  banner_text_4: '项目概括（简介）',
+  banner_text_4: '项目概括',
   banner_text_5: '白皮书',
   banner_text_6: '捐赠',
   banner_text_7:

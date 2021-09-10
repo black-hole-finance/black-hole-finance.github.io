@@ -91,10 +91,10 @@ const Banner = (props) => {
             >
               <FormattedMessage id='banner_text_5' />
             </a> */}
-            {/*<a href={BlackHoleAuditReport} className='audit_report' target='_blank'>*/}
-            {/*  <img src={HalBornLogo} />*/}
-            {/*  <FormattedMessage id='banner_text_10' />*/}
-            {/*</a>*/}
+            <a href={BlackHoleAuditReport} className='audit_report' target='_blank'>
+             {/* <img src={HalBornLogo} /> */}
+             <FormattedMessage id='banner_text_10' />
+            </a>
           </div>
         </div>
       </div>
