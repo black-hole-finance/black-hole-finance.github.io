@@ -12,6 +12,7 @@ export const ChainId = {
   ETH: 1,
   BSC: 56,
   HECO: 128,
+  LOCALHOST: 31337
 }
 
 export const ChainIdName = {
@@ -33,6 +34,7 @@ export function RPC_URLS (chainId) {
     [ChainId.BSC]: 'https://bsc-dataseed.binance.org/',
     [ChainId.ETH]: 'https://mainnet.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
     [ChainId.RINKEBY]: 'https://rinkeby.infura.io/v3/9aa3d95b3bc440fa88ea12eaa4456161',
+    [ChainId.LOCALHOST]: 'https://localhost:8545'
     // [ChainId.MATIC]: 'https://rpc-mainnet.maticvigil.com'
   }[chainId]
 }
@@ -61,13 +63,27 @@ export const hecoNetwork = {
   ],
   blockExplorerUrls: [SCAN_ADDRESS[ChainId.HECO]],
 }
+export const localNetwork = {
+  chainId: 31337,
+  chainName: 'LOCALHOST',
+  nativeCurrency: {
+    name: 'ETH',
+    symbol: 'ETH',
+    decimals: 18,
+  },
+  rpcUrls: [
+    RPC_URLS[ChainId.LOCALHOST]
+  ],
+  blockExplorerUrls: [SCAN_ADDRESS[ChainId.ETH]],
+}
 export const ethNetwork = {
   chainId: '0x1'
 }
 export const networkConf = {
   [ChainId.HECO]: hecoNetwork,
   [ChainId.BSC]: bscNetwork,
-  [ChainId.ETH] : ethNetwork
+  [ChainId.ETH] : ethNetwork,
+  [ChainId.LOCALHOST]: localNetwork
 }
 export const POLLING_INTERVAL = 12000
 

@@ -6,7 +6,7 @@ import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { ChainId, NetworkRPC } from '../constants'
 
 export const injected = new InjectedConnector({
-  supportedChainIds: [ChainId.RINKEBY, ChainId.ETH, ChainId.BSC, ChainId.HECO],
+  supportedChainIds: [ChainId.RINKEBY, ChainId.ETH, ChainId.BSC, ChainId.HECO, ChainId.LOCALHOST],
 })
 
 export const network = new NetworkConnector({

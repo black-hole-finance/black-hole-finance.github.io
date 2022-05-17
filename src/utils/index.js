@@ -198,8 +198,6 @@ export const useConnectWallet = () => {
             })
       })
     })
-
-
   },[])
 
   useEffect(() => {

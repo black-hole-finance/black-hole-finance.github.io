@@ -9,6 +9,7 @@ import Investment from '../pages/investment'
 import InitPage from '../pages/initPage'
 import LBP from '../pages/lbp'
 import Burn from '../pages/burn'
+import Mining from '../pages/mining'
 import Intl from '../../locale/intl'
 import './index.less'
 
@@ -45,6 +46,9 @@ function App(props) {
             </Route>
             <Route exact path='/burn'>
               <Burn />
+            </Route>
+            <Route exact path='/mining'>
+              <Mining />
             </Route>
           </Switch>
           <InitPage />

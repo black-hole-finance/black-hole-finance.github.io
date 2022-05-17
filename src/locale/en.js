@@ -4,6 +4,7 @@ const en_US = {
   header_text_3: 'BURN',
   header_text_4: 'Airdrop',
   header_text_5: 'BLACK',
+  header_text_6: 'mining',
   banner_text_1: 'Black Hole — Protocol',
   banner_text_2:
     'An approval-free decentralized & cross-chain burning protocol, innovator of perpetual deflationary blockchain ecosystem.',
@@ -151,5 +152,17 @@ const en_US = {
   netWork3: 'Change Network',
   linkWallet: 'Connect wallet',
   switchNetwork: 'Switch to {chain}',
+  inputStake: 'Input Stake Value',
+  Available: 'Available',
+  StakeMining: 'Stake',
+  MyStake: 'My',
+  TotalStake: 'Total',
+  MyPoolShare: 'My Pool Share',
+  Withdraw: 'Withdraw',
+  WithdrawReward: 'Withdraw & Get Reward',
+  Rewards: 'Rewards',
+  GetReward: 'Get Reward',
+  Compound: 'Compound',
+  ContractAdd: 'Contract Add'
 }
 export default en_US

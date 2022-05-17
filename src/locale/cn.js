@@ -4,6 +4,7 @@ const zh_CN = {
   header_text_3: '燃烧',
   header_text_4: '空投',
   header_text_5: 'BLACK',
+  header_text_6: '矿池',
   banner_text_1: '黑洞协议',
   banner_text_2: '无许可去中心化跨链燃烧协议，永久通缩的区块链生态重构者。',
   banner_text_3:
@@ -146,5 +147,18 @@ const zh_CN = {
   netWork3: '切换网络',
   linkWallet: '链接钱包',
   switchNetwork: '切换到{chain}',
+  inputStake: '输入抵押的量',
+  Available: '可抵押',
+  StakeMining: '质押挖矿',
+  MyStake: '我的抵押',
+  TotalStake: '总抵押',
+  MyPoolShare: '我的占比',
+  Withdraw: '取出',
+  WithdrawReward: '赎回质押 & 领取奖励',
+  Rewards: '待领取奖励',
+  GetReward: '获取奖励',
+  Compound: '复投',
+  ContractAdd: '代币添加'
+
 }
 export default zh_CN

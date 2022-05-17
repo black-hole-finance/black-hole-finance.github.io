@@ -61,14 +61,14 @@ const Header = (props) => {
             <img className='header_logo' src={LogoText} />
           </Link>
           <div className='header_link_nav'>
-            {/*{ <Link*/}
-            {/*  to='/burn'*/}
-            {/*  className={cs(*/}
-            {/*    props.location.pathname.indexOf('burn') > -1 && 'active'*/}
-            {/*  )}*/}
-            {/*>*/}
-            {/*  <FormattedMessage id='header_text_3' />*/}
-            {/*</Link> }*/}
+            <Link
+              to='/mining'
+              className={cs(
+                props.location.pathname.indexOf('mining') > -1 && 'active'
+              )}
+            >
+              <FormattedMessage id='header_text_6' />
+            </Link>
             {/*<Link*/}
             {/*  className={cs(*/}
             {/*    props.location.pathname.indexOf('activate') > -1 && 'active'*/}

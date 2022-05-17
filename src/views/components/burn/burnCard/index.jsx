@@ -45,7 +45,6 @@ const Burn = (props) => {
   const wallet_amount = useTokenBalance(BLACK_ADDRESS[chainId])
 
   let [burn, toBurn, toClaim] = useBurn(address, poolConfig)
-  console.log('burn', burn)
     // burn = poolConfig
   const OldBalance = useTokenBalance(stakingToken)
   const OldDecimals = useTokenDecimals(stakingToken)
@@ -89,10 +88,8 @@ const Burn = (props) => {
     } else if (now > burn.periodFinish){
       poolType = 'end'
     }
-    console.log('left_time', left_time, burn, now, poolType)
   }
   useEffect(() => {
-    console.log(allowance, 'allowance')
     if (allowance > 0) {
       setApprove(false)
     }
